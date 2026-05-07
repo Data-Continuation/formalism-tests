@@ -10,9 +10,11 @@ RECEIPTS_PATH = ROOT / "reports" / "sample_receipts.jsonl"
 REPORT_PATH = ROOT / "reports" / "continuation_report.md"
 
 def load_receipts() -> list[dict]:
-    if not RECEIPTS_PATH.exists():
-        raise FileNotFoundError(f"missing receipts: {RECEIPTS_PATH}")
-    return [json.loads(line) for line in RECEIPTS_PATH.read_text(encoding="utf-8").splitlines() if line.strip()]
+    return [
+        json.loads(line)
+        for line in RECEIPTS_PATH.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
 
 def main() -> int:
     receipts = load_receipts()
@@ -29,6 +31,14 @@ def main() -> int:
         "```",
         "",
         "This report demonstrates that the same datum can receive different continuation decisions when it is assigned different consequence-bearing roles.",
+        "",
+        "## Theorem mapping",
+        "",
+        "| Theorem | Evidence in this report |",
+        "|---|---|",
+        "| Role Non-Transfer | Same data appears as informational note, recommendation, and autonomous actuation with different outcomes. |",
+        "| Continuation Capacity | Insufficient legitimacy capacity produces FAIL_CLOSED. |",
+        "| Fail-Closed Basis Requirement | Missing required block basis produces FAIL_CLOSED. |",
         "",
         "## Summary",
         "",
@@ -65,7 +75,7 @@ def main() -> int:
         "",
         "## Verification",
         "",
-        "This report verifies the initial DCF proof surface:",
+        "This report verifies:",
         "",
         "```text",
         "same data",
@@ -80,10 +90,10 @@ def main() -> int:
         "",
         "A datum can be safe as an informational note, conditional as a clinician recommendation, and inadmissible as autonomous actuation.",
         "",
-        "That means governance cannot be attached only to data content. It must be attached to the role and transition through which the data seeks continuation into consequence.",
+        "Governance cannot be attached only to data content. It must be attached to the role and transition through which the data seeks continuation into consequence.",
     ])
 
-    REPORT_PATH.write_text("\\n".join(lines) + "\\n", encoding="utf-8")
+    REPORT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"Wrote report: {REPORT_PATH}")
     return 0
 
