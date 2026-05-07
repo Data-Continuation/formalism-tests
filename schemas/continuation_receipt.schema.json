@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Continuation Receipt",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "timestamp",
+    "data_id",
+    "role",
+    "transition_class",
+    "consequence_mass",
+    "legitimacy_capacity",
+    "capacity_gap",
+    "required_blocks",
+    "block_results",
+    "decision",
+    "basis"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "data_id": {
+      "type": "string"
+    },
+    "data": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "transition_class": {
+      "type": "string"
+    },
+    "consequence_mass": {
+      "type": "number"
+    },
+    "legitimacy_capacity": {
+      "type": "number"
+    },
+    "capacity_gap": {
+      "type": "number"
+    },
+    "required_blocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "block_results": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "ALLOW",
+        "ALLOW_WITH_SIGNOFF",
+        "DENY",
+        "FAIL_CLOSED",
+        "REDIRECT",
+        "ESCALATE"
+      ]
+    },
+    "basis": {
+      "type": "string"
+    }
+  }
+}
