@@ -23,13 +23,17 @@ jobs:
       - name: Run continuation gate
         run: python src/continuation_gate.py
 
+      - name: Validate expected outcomes
+        run: python src/validate_expected_outcomes.py
+
       - name: Generate continuation report
         run: python src/generate_report.py
 
       - name: Upload continuation artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: data-continuation-report
+          name: data-continuation-theorem-surface
           path: |
             reports/sample_receipts.jsonl
             reports/continuation_report.md
+            docs/THEOREM_PROOF_MAP.md
