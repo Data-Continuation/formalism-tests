@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""
-Data Continuation Formalism — minimal continuation gate.
-
-Run:
-  python src/continuation_gate.py
-
-Outputs:
-  reports/sample_receipts.jsonl
-"""
-
 from __future__ import annotations
 
 import json
@@ -18,12 +8,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-
 ROOT = Path(__file__).resolve().parents[1]
 TEST_DIR = ROOT / "tests"
 REPORT_DIR = ROOT / "reports"
 RECEIPTS_PATH = REPORT_DIR / "sample_receipts.jsonl"
-
 
 @dataclass(frozen=True)
 class State:
@@ -43,24 +31,18 @@ class State:
             * math.pow(self.trust_basis, self.gamma)
         )
 
-
 def load_cases() -> list[dict[str, Any]]:
     cases: list[dict[str, Any]] = []
     for path in sorted(TEST_DIR.glob("*.json")):
         loaded = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(loaded, list):
-            cases.extend(loaded)
-        else:
-            cases.append(loaded)
+        cases.extend(loaded if isinstance(loaded, list) else [loaded])
     return cases
-
 
 def block_passes(case: dict[str, Any], block: str) -> bool | None:
     block_results = case.get("block_results", {})
     if block not in block_results:
         return None
     return bool(block_results[block])
-
 
 def decide(case: dict[str, Any]) -> dict[str, Any]:
     state_raw = case["state"]
@@ -80,7 +62,6 @@ def decide(case: dict[str, Any]) -> dict[str, Any]:
 
     required_blocks = list(case.get("required_blocks", []))
     evaluated_blocks: dict[str, str] = {}
-
     missing_basis = False
     failed_blocks: list[str] = []
 
@@ -129,25 +110,16 @@ def decide(case: dict[str, Any]) -> dict[str, Any]:
         "basis": basis,
     }
 
-
 def main() -> int:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     receipts = [decide(case) for case in load_cases()]
-
     with RECEIPTS_PATH.open("w", encoding="utf-8") as handle:
         for receipt in receipts:
             handle.write(json.dumps(receipt, sort_keys=True) + "\n")
-
     for receipt in receipts:
-        print(
-            f"{receipt['receipt_id']}: "
-            f"{receipt['role']} -> {receipt['decision']} "
-            f"({receipt['basis']})"
-        )
-
+        print(f"{receipt['receipt_id']}: {receipt['role']} -> {receipt['decision']} ({receipt['basis']})")
     print(f"Wrote receipts: {RECEIPTS_PATH}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
