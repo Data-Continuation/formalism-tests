@@ -1,0 +1,35 @@
+name: Data Continuation Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  continuation-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run continuation gate
+        run: python src/continuation_gate.py
+
+      - name: Generate continuation report
+        run: python src/generate_report.py
+
+      - name: Upload continuation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-continuation-report
+          path: |
+            reports/sample_receipts.jsonl
+            reports/continuation_report.md
