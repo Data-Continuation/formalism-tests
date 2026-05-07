@@ -1,0 +1,10 @@
+{
+  "continuation-decision-001": "ALLOW",
+  "continuation-decision-002": "FAIL_CLOSED",
+  "continuation-decision-003": "FAIL_CLOSED",
+  "role-escalation-001": "ALLOW",
+  "role-escalation-002": "FAIL_CLOSED",
+  "same-data-role-001": "ALLOW",
+  "same-data-role-002": "ALLOW_WITH_SIGNOFF",
+  "same-data-role-003": "FAIL_CLOSED"
+}
