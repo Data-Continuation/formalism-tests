@@ -1,0 +1,52 @@
+[
+  {
+    "case_id": "role-escalation-001",
+    "data_id": "identity-claim-001",
+    "data": "User claims administrative authority.",
+    "role": "identity_claim",
+    "transition_class": "identity_continuation",
+    "consequence_mass": 0.2,
+    "state": {
+      "governance_capacity": 0.8,
+      "control_authority": 0.8,
+      "trust_basis": 0.8,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "identity_verified",
+      "receipt_required"
+    ],
+    "block_results": {
+      "identity_verified": true,
+      "receipt_required": true
+    }
+  },
+  {
+    "case_id": "role-escalation-002",
+    "data_id": "identity-claim-001",
+    "data": "User claims administrative authority.",
+    "role": "access_grant",
+    "transition_class": "authority_escalation_continuation",
+    "consequence_mass": 0.7,
+    "state": {
+      "governance_capacity": 0.8,
+      "control_authority": 0.8,
+      "trust_basis": 0.8,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "identity_verified",
+      "authority_current",
+      "scope_valid",
+      "revocation_checked",
+      "receipt_required"
+    ],
+    "block_results": {
+      "identity_verified": true,
+      "authority_current": true,
+      "scope_valid": true,
+      "revocation_checked": true,
+      "receipt_required": true
+    }
+  }
+]

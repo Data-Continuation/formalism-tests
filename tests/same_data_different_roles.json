@@ -1,0 +1,80 @@
+[
+  {
+    "case_id": "same-data-role-001",
+    "data_id": "patient-risk-text-001",
+    "data": "Patient may be at high risk.",
+    "role": "informational_note",
+    "transition_class": "clinical_information_continuation",
+    "consequence_mass": 0.1,
+    "state": {
+      "governance_capacity": 0.9,
+      "control_authority": 0.9,
+      "trust_basis": 0.9,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "evidence_fresh",
+      "receipt_required"
+    ],
+    "block_results": {
+      "evidence_fresh": true,
+      "receipt_required": true
+    }
+  },
+  {
+    "case_id": "same-data-role-002",
+    "data_id": "patient-risk-text-001",
+    "data": "Patient may be at high risk.",
+    "role": "clinician_recommendation",
+    "transition_class": "clinical_recommendation_continuation",
+    "consequence_mass": 0.35,
+    "state": {
+      "governance_capacity": 0.9,
+      "control_authority": 0.9,
+      "trust_basis": 0.9,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "evidence_fresh",
+      "scope_valid",
+      "human_signoff_required",
+      "receipt_required"
+    ],
+    "block_results": {
+      "evidence_fresh": true,
+      "scope_valid": true,
+      "human_signoff_required": true,
+      "receipt_required": true
+    }
+  },
+  {
+    "case_id": "same-data-role-003",
+    "data_id": "patient-risk-text-001",
+    "data": "Patient may be at high risk.",
+    "role": "autonomous_medication_change",
+    "transition_class": "clinical_actuation_continuation",
+    "consequence_mass": 0.82,
+    "state": {
+      "governance_capacity": 0.7,
+      "control_authority": 0.7,
+      "trust_basis": 0.7,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "evidence_fresh",
+      "scope_valid",
+      "physician_authority_current",
+      "human_signoff_required",
+      "receipt_required",
+      "reversibility_checked"
+    ],
+    "block_results": {
+      "evidence_fresh": true,
+      "scope_valid": true,
+      "physician_authority_current": false,
+      "human_signoff_required": true,
+      "receipt_required": true,
+      "reversibility_checked": true
+    }
+  }
+]

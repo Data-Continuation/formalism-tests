@@ -1,0 +1,77 @@
+[
+  {
+    "case_id": "continuation-decision-001",
+    "data_id": "financial-transfer-001",
+    "data": "Transfer 500 units to external counterparty.",
+    "role": "transaction_basis",
+    "transition_class": "asset_transfer_continuation",
+    "consequence_mass": 0.55,
+    "state": {
+      "governance_capacity": 0.95,
+      "control_authority": 0.9,
+      "trust_basis": 0.9,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "custody_valid",
+      "authority_current",
+      "counterparty_verified",
+      "receipt_required"
+    ],
+    "block_results": {
+      "custody_valid": true,
+      "authority_current": true,
+      "counterparty_verified": true,
+      "receipt_required": true
+    }
+  },
+  {
+    "case_id": "continuation-decision-002",
+    "data_id": "infrastructure-valve-001",
+    "data": "Open external pressure valve.",
+    "role": "physical_control_signal",
+    "transition_class": "physical_actuation_continuation",
+    "consequence_mass": 0.92,
+    "state": {
+      "governance_capacity": 0.8,
+      "control_authority": 0.8,
+      "trust_basis": 0.8,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "sensor_fresh",
+      "dual_authority_required",
+      "reversibility_checked",
+      "receipt_required"
+    ],
+    "block_results": {
+      "sensor_fresh": true,
+      "dual_authority_required": true,
+      "reversibility_checked": true,
+      "receipt_required": true
+    }
+  },
+  {
+    "case_id": "continuation-decision-003",
+    "data_id": "policy-update-001",
+    "data": "Update eligibility rule for benefit approval.",
+    "role": "policy_basis",
+    "transition_class": "policy_continuation",
+    "consequence_mass": 0.6,
+    "state": {
+      "governance_capacity": 0.88,
+      "control_authority": 0.88,
+      "trust_basis": 0.88,
+      "k": 1.0
+    },
+    "required_blocks": [
+      "authority_current",
+      "impact_review_complete",
+      "receipt_required"
+    ],
+    "block_results": {
+      "authority_current": true,
+      "receipt_required": true
+    }
+  }
+]
