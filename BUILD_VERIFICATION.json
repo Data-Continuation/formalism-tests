@@ -1,0 +1,6 @@
+{
+  "pytest": true,
+  "selftest": true,
+  "run_data_continuation": true,
+  "run_gcat_bcat": true
+}

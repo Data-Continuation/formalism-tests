@@ -1,0 +1,26 @@
+{
+  "name": "formalism-test-harness",
+  "version": "v001",
+  "included_formalisms": [
+    "data-continuation.v1",
+    "gcat-bcat.v1"
+  ],
+  "sandbox_models": [
+    "github-ubuntu.v1",
+    "stegverse-dryrun.v1",
+    "llm-adapter-gate.v1"
+  ],
+  "capabilities": [
+    "ingestion",
+    "formalism_adapter",
+    "tvc",
+    "cge",
+    "sandbox",
+    "receipts",
+    "playback",
+    "reconstruction",
+    "comparison",
+    "confidence",
+    "sandbox_model_report"
+  ]
+}
