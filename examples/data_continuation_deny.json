@@ -1,0 +1,15 @@
+{
+  "formalism_id": "data-continuation.v1",
+  "case_id": "dc-deny-001",
+  "payload": {
+    "action": "disable_governance",
+    "risk": 0.1,
+    "continuation_valid": false
+  },
+  "metadata": {
+    "authority_ref": "auth:test:local",
+    "policy_ref": "policy:test"
+  },
+  "expected_decision": "DENY",
+  "sandbox_model": "github-ubuntu.v1"
+}

@@ -1,0 +1,16 @@
+{
+  "formalism_id": "data-continuation.v1",
+  "case_id": "sandbox-001",
+  "payload": {
+    "action": "state_mutation",
+    "risk": 0.5,
+    "continuation_valid": true
+  },
+  "metadata": {
+    "authority_ref": "auth:test:local",
+    "policy_ref": "policy:test",
+    "sandbox_approved": true
+  },
+  "expected_decision": "ALLOW",
+  "sandbox_model": "llm-adapter-gate.v1"
+}

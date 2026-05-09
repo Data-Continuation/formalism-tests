@@ -1,0 +1,20 @@
+{
+  "formalism_id": "gcat-bcat.v1",
+  "case_id": "gcat-allow-001",
+  "payload": {
+    "g": 0.8,
+    "c": 0.8,
+    "a": 0.2,
+    "t": 0.9,
+    "K": 1.0,
+    "alpha": 1.0,
+    "beta": 1.0,
+    "gamma": 1.0
+  },
+  "metadata": {
+    "authority_ref": "auth:test:local",
+    "policy_ref": "policy:test"
+  },
+  "expected_decision": "ALLOW",
+  "sandbox_model": "stegverse-dryrun.v1"
+}

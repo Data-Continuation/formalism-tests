@@ -1,0 +1,15 @@
+{
+  "formalism_id": "data-continuation.v1",
+  "case_id": "dc-allow-001",
+  "payload": {
+    "action": "continue",
+    "risk": 0.1,
+    "continuation_valid": true
+  },
+  "metadata": {
+    "authority_ref": "auth:test:local",
+    "policy_ref": "policy:test"
+  },
+  "expected_decision": "ALLOW",
+  "sandbox_model": "github-ubuntu.v1"
+}
