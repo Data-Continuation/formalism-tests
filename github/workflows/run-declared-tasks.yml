@@ -1,0 +1,50 @@
+name: Run Declared Tasks
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_manifest:
+        description: 'Path to the declared task manifest'
+        required: true
+        default: 'tools/tasks/formalism_tests_tasks.json'
+      task_id:
+        description: 'Optional task_id to run. Leave blank to run all enabled tasks.'
+        required: false
+        default: ''
+  push:
+    paths:
+      - 'tools/run_declared_tasks.py'
+      - 'tools/tasks/**'
+      - 'tools/evaluate_boundary_dynamics.py'
+      - 'tests/fixtures/**'
+      - '.github/workflows/run-declared-tasks.yml'
+
+jobs:
+  run-declared-tasks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run declared tasks
+        run: |
+          if [ -n "${{ github.event.inputs.task_id }}" ]; then
+            python tools/run_declared_tasks.py "${{ github.event.inputs.task_manifest }}" --task-id "${{ github.event.inputs.task_id }}"
+          else
+            python tools/run_declared_tasks.py "${{ github.event.inputs.task_manifest }}"
+          fi
+
+      - name: Upload declared task reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: declared-task-reports
+          path: |
+            declared_task_report.json
+            boundary_dynamics_report.json
+          if-no-files-found: warn
