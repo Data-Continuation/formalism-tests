@@ -1,0 +1,22 @@
+{
+  "archive_dir": "legacy/runtime-artifacts/20260511T174249Z",
+  "generated_at": "2026-05-11T17:42:49.223738+00:00",
+  "moved": [
+    {
+      "from": "verification.json",
+      "to": "legacy/runtime-artifacts/20260511T174249Z/root/verification.json"
+    },
+    {
+      "from": "boundary_dynamics_report.json",
+      "to": "legacy/runtime-artifacts/20260511T174249Z/root/boundary_dynamics_report.json"
+    },
+    {
+      "from": "reports/sample_receipts.jsonl",
+      "to": "legacy/runtime-artifacts/20260511T174249Z/reports/sample_receipts.jsonl"
+    }
+  ],
+  "moved_count": 3,
+  "rule_file": "tools/rules/runtime_artifact_rules.json",
+  "rule_id": "archive-root-runtime-artifacts",
+  "schema": "stegverse_runtime_archive_manifest.v1"
+}
