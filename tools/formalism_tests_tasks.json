@@ -1,0 +1,20 @@
+{
+  "name": "formalism-tests declared tasks",
+  "version": "0.1.0",
+  "description": "Repo-local task declarations for Data-Continuation/formalism-tests. The workflow remains generic; this file declares what should run.",
+  "tasks": [
+    {
+      "task_id": "boundary_dynamics_evaluation",
+      "enabled": true,
+      "description": "Evaluate toy scenarios for multi-body admissibility and system-coherent boundary dynamics.",
+      "command": [
+        "python",
+        "tools/evaluate_boundary_dynamics.py",
+        "tests/fixtures/boundary_scenarios.json"
+      ],
+      "expected_outputs": [
+        "boundary_dynamics_report.json"
+      ]
+    }
+  ]
+}
