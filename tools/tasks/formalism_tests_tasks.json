@@ -1,19 +1,42 @@
 {
   "name": "formalism-tests declared tasks",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Repo-local task declarations for Data-Continuation/formalism-tests. The workflow remains generic; this file declares what should run.",
   "tasks": [
     {
-      "task_id": "boundary_dynamics_evaluation",
+      "task_id": "archive_runtime_artifacts",
       "enabled": true,
-      "description": "Evaluate toy scenarios for multi-body admissibility and system-coherent boundary dynamics.",
+      "description": "Apply runtime artifact rules before running tests so root-level generated files are moved into legacy archive storage.",
       "command": [
         "python",
-        "tools/evaluate_boundary_dynamics.py",
-        "tests/fixtures/boundary_scenarios.json"
+        "tools/apply_runtime_artifact_rules.py",
+        "tools/rules/runtime_artifact_rules.json"
+      ],
+      "expected_outputs": []
+    },
+    {
+      "task_id": "continuation_gate",
+      "enabled": true,
+      "description": "Run the base continuation gate.",
+      "command": [
+        "python",
+        "src/continuation_gate.py"
       ],
       "expected_outputs": [
-        "boundary_dynamics_report.json"
+        "continuation_gate_report.json"
+      ]
+    },
+    {
+      "task_id": "compound_continuation_gate",
+      "enabled": true,
+      "description": "Run Stage 3 compound continuation proof cases.",
+      "command": [
+        "python",
+        "src/compound_continuation_gate.py"
+      ],
+      "expected_outputs": [
+        "reports/compound_receipts.jsonl",
+        "reports/compound_continuation_report.md"
       ]
     }
   ]
