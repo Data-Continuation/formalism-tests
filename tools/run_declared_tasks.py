@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """
-Generic declared-task runner for StegVerse / Data-Continuation repos.
+Generic declared-task runner for Data-Continuation/formalism-tests.
 
-The workflow should stay generic. Task intent belongs in JSON manifests under
-tools/tasks/.
-
-Usage:
-    python tools/run_declared_tasks.py tools/tasks/formalism_tests_tasks.json
-    python tools/run_declared_tasks.py tools/tasks/formalism_tests_tasks.json --task-id boundary_dynamics_evaluation
+The workflow should stay generic.
+Task behavior belongs in tools/tasks/*.json.
+File routing policy belongs in tools/rules/*.json.
 """
 
 from __future__ import annotations
@@ -125,7 +122,11 @@ def write_report(manifest_path: Path, manifest: Dict[str, Any], results: List[Di
         "results": results,
     }
 
-    REPORT_PATH.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    REPORT_PATH.write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
     print(json.dumps(report, indent=2, sort_keys=True))
 
 
@@ -149,10 +150,7 @@ def main() -> int:
     results = [run_task(task) for task in tasks]
     write_report(manifest_path, manifest, results)
 
-    if all(result["success"] for result in results):
-        return 0
-
-    return 1
+    return 0 if all(result["success"] for result in results) else 1
 
 
 if __name__ == "__main__":
@@ -165,6 +163,9 @@ if __name__ == "__main__":
             "success": False,
             "error": str(exc),
         }
-        REPORT_PATH.write_text(json.dumps(error_report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        REPORT_PATH.write_text(
+            json.dumps(error_report, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
         print(json.dumps(error_report, indent=2, sort_keys=True), file=sys.stderr)
         raise SystemExit(1)
