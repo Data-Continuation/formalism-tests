@@ -74,7 +74,7 @@ def move_file(source: Path, destination_dir: Path) -> Dict[str, str]:
 
     return {
         "from": source.as_posix(),
-        "to": destination.as_posix()
+        "to": destination.as_posix(),
     }
 
 
@@ -126,14 +126,14 @@ def apply_rules(rule_path: Path) -> Dict[str, Any]:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "archive_dir": archive_dir.as_posix(),
         "moved_count": len(moved),
-        "moved": moved
+        "moved": moved,
     }
 
     if moved and write_archive_manifest:
         archive_dir.mkdir(parents=True, exist_ok=True)
         (archive_dir / "archive_manifest.json").write_text(
             json.dumps(manifest, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8"
+            encoding="utf-8",
         )
 
     print(json.dumps(manifest, indent=2, sort_keys=True))
@@ -146,7 +146,7 @@ def parse_args() -> argparse.Namespace:
         "rule_file",
         nargs="?",
         default="tools/rules/runtime_artifact_rules.json",
-        help="Path to runtime artifact rule JSON."
+        help="Path to runtime artifact rule JSON.",
     )
     return parser.parse_args()
 
