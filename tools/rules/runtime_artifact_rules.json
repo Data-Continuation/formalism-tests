@@ -1,0 +1,19 @@
+{
+  "schema": "stegverse_runtime_artifact_rules.v1",
+  "rule_id": "archive-root-runtime-artifacts",
+  "description": "Move root-level runtime artifacts into a legacy archive directory so generated run evidence does not remain at repo root.",
+  "archive_root": "legacy/runtime-artifacts",
+  "root_runtime_artifacts": [
+    "verification.json",
+    "declared_task_report.json",
+    "boundary_dynamics_report.json",
+    "continuation_gate_report.json"
+  ],
+  "generated_report_patterns": [
+    "reports/*.json",
+    "reports/*.jsonl"
+  ],
+  "archive_generated_reports": true,
+  "archive_markdown_reports": false,
+  "write_archive_manifest": true
+}
