@@ -1,0 +1,82 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "allow_coherent_boundary",
+      "description": "Boundary is stable, recoverable, purpose-convergent, and low coupling risk.",
+      "boundary_integrity": 0.88,
+      "recoverability": 0.84,
+      "purpose_convergence": 0.81,
+      "system_coherence": 0.86,
+      "multi_body_coupling_risk": 0.25,
+      "uncertainty": 0.15,
+      "boundary_can_evolve": true,
+      "reset_path_available": true,
+      "immediate_harm_risk": false
+    },
+    {
+      "scenario_id": "reset_recoverable_non_convergence",
+      "description": "Boundary can be locally recovered, but it blocks convergence toward the intended state.",
+      "boundary_integrity": 0.62,
+      "recoverability": 0.72,
+      "purpose_convergence": 0.18,
+      "system_coherence": 0.5,
+      "multi_body_coupling_risk": 0.4,
+      "uncertainty": 0.22,
+      "boundary_can_evolve": true,
+      "reset_path_available": true,
+      "immediate_harm_risk": false
+    },
+    {
+      "scenario_id": "evolve_boundary_incoherence",
+      "description": "Boundary still has recoverability, but no longer coheres with the entity-system.",
+      "boundary_integrity": 0.7,
+      "recoverability": 0.68,
+      "purpose_convergence": 0.52,
+      "system_coherence": 0.3,
+      "multi_body_coupling_risk": 0.48,
+      "uncertainty": 0.2,
+      "boundary_can_evolve": true,
+      "reset_path_available": false,
+      "immediate_harm_risk": false
+    },
+    {
+      "scenario_id": "deny_immediate_harm_low_recoverability",
+      "description": "Immediate harm risk exists and recoverability is too low.",
+      "boundary_integrity": 0.42,
+      "recoverability": 0.22,
+      "purpose_convergence": 0.3,
+      "system_coherence": 0.34,
+      "multi_body_coupling_risk": 0.65,
+      "uncertainty": 0.3,
+      "boundary_can_evolve": false,
+      "reset_path_available": false,
+      "immediate_harm_risk": true
+    },
+    {
+      "scenario_id": "fail_closed_high_uncertainty",
+      "description": "State is too uncertain to safely classify.",
+      "boundary_integrity": 0.8,
+      "recoverability": 0.76,
+      "purpose_convergence": 0.74,
+      "system_coherence": 0.72,
+      "multi_body_coupling_risk": 0.3,
+      "uncertainty": 0.82,
+      "boundary_can_evolve": true,
+      "reset_path_available": true,
+      "immediate_harm_risk": false
+    },
+    {
+      "scenario_id": "fail_closed_coupling_risk",
+      "description": "Single boundary is not catastrophic, but multi-body coupling risk is too high for current coherence.",
+      "boundary_integrity": 0.66,
+      "recoverability": 0.64,
+      "purpose_convergence": 0.61,
+      "system_coherence": 0.45,
+      "multi_body_coupling_risk": 0.88,
+      "uncertainty": 0.25,
+      "boundary_can_evolve": false,
+      "reset_path_available": false,
+      "immediate_harm_risk": false
+    }
+  ]
+}
