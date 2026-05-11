@@ -1,0 +1,13 @@
+# Runtime verification artifacts
+verification.json
+declared_task_report.json
+boundary_dynamics_report.json
+continuation_gate_report.json
+
+# Generated proof outputs
+reports/*.json
+reports/*.jsonl
+
+# Python cache
+__pycache__/
+*.pyc
