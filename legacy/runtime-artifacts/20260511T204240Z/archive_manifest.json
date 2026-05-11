@@ -1,0 +1,14 @@
+{
+  "archive_dir": "legacy/runtime-artifacts/20260511T204240Z",
+  "generated_at": "2026-05-11T20:42:40.421889+00:00",
+  "moved": [
+    {
+      "from": "verification.json",
+      "to": "legacy/runtime-artifacts/20260511T204240Z/root/verification.json"
+    }
+  ],
+  "moved_count": 1,
+  "rule_file": "tools/rules/runtime_artifact_rules.json",
+  "rule_id": "archive-root-runtime-artifacts",
+  "schema": "stegverse_runtime_archive_manifest.v1"
+}

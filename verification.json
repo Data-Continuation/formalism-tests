@@ -1,8 +1,0 @@
-{
-  "command": "python src/transition_table_gate.py",
-  "returncode": 0,
-  "stdout": "{\n  \"receipt_count\": 6,\n  \"receipts_path\": \"reports/transition_table_receipts.jsonl\",\n  \"report_path\": \"reports/transition_table_report.md\",\n  \"stage\": \"stage_4_transition_table_integration\",\n  \"success\": true\n}\n",
-  "stderr": "",
-  "transition_table_receipts_exists": true,
-  "transition_table_report_exists": true
-}
