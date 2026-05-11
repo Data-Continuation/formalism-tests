@@ -1,0 +1,127 @@
+{
+  "formalism": "multi-body-admissibility-and-system-coherent-boundary-dynamics",
+  "result_count": 6,
+  "results": [
+    {
+      "flags": {
+        "boundary_can_evolve": true,
+        "immediate_harm_risk": false,
+        "reset_path_available": true
+      },
+      "reasons": [
+        "boundary is recoverable, convergent, coherent, and coupling risk is bounded"
+      ],
+      "recommended_outcome": "ALLOW",
+      "scenario_id": "allow_coherent_boundary",
+      "scores": {
+        "boundary_integrity": 0.88,
+        "multi_body_coupling_risk": 0.25,
+        "purpose_convergence": 0.81,
+        "recoverability": 0.84,
+        "system_coherence": 0.86,
+        "uncertainty": 0.15
+      }
+    },
+    {
+      "flags": {
+        "boundary_can_evolve": true,
+        "immediate_harm_risk": false,
+        "reset_path_available": true
+      },
+      "reasons": [
+        "purpose convergence is failing but a reset path exists"
+      ],
+      "recommended_outcome": "RESET_BOUNDARY",
+      "scenario_id": "reset_recoverable_non_convergence",
+      "scores": {
+        "boundary_integrity": 0.62,
+        "multi_body_coupling_risk": 0.4,
+        "purpose_convergence": 0.18,
+        "recoverability": 0.72,
+        "system_coherence": 0.5,
+        "uncertainty": 0.22
+      }
+    },
+    {
+      "flags": {
+        "boundary_can_evolve": true,
+        "immediate_harm_risk": false,
+        "reset_path_available": false
+      },
+      "reasons": [
+        "system coherence is degraded and bounded boundary evolution is available"
+      ],
+      "recommended_outcome": "EVOLVE_BOUNDARY",
+      "scenario_id": "evolve_boundary_incoherence",
+      "scores": {
+        "boundary_integrity": 0.7,
+        "multi_body_coupling_risk": 0.48,
+        "purpose_convergence": 0.52,
+        "recoverability": 0.68,
+        "system_coherence": 0.3,
+        "uncertainty": 0.2
+      }
+    },
+    {
+      "flags": {
+        "boundary_can_evolve": false,
+        "immediate_harm_risk": true,
+        "reset_path_available": false
+      },
+      "reasons": [
+        "immediate harm risk with insufficient recoverability"
+      ],
+      "recommended_outcome": "DENY",
+      "scenario_id": "deny_immediate_harm_low_recoverability",
+      "scores": {
+        "boundary_integrity": 0.42,
+        "multi_body_coupling_risk": 0.65,
+        "purpose_convergence": 0.3,
+        "recoverability": 0.22,
+        "system_coherence": 0.34,
+        "uncertainty": 0.3
+      }
+    },
+    {
+      "flags": {
+        "boundary_can_evolve": true,
+        "immediate_harm_risk": false,
+        "reset_path_available": true
+      },
+      "reasons": [
+        "uncertainty exceeds fail-closed threshold"
+      ],
+      "recommended_outcome": "FAIL_CLOSED",
+      "scenario_id": "fail_closed_high_uncertainty",
+      "scores": {
+        "boundary_integrity": 0.8,
+        "multi_body_coupling_risk": 0.3,
+        "purpose_convergence": 0.74,
+        "recoverability": 0.76,
+        "system_coherence": 0.72,
+        "uncertainty": 0.82
+      }
+    },
+    {
+      "flags": {
+        "boundary_can_evolve": false,
+        "immediate_harm_risk": false,
+        "reset_path_available": false
+      },
+      "reasons": [
+        "high coupling risk with insufficient system coherence"
+      ],
+      "recommended_outcome": "FAIL_CLOSED",
+      "scenario_id": "fail_closed_coupling_risk",
+      "scores": {
+        "boundary_integrity": 0.66,
+        "multi_body_coupling_risk": 0.88,
+        "purpose_convergence": 0.61,
+        "recoverability": 0.64,
+        "system_coherence": 0.45,
+        "uncertainty": 0.25
+      }
+    }
+  ],
+  "version": "0.1.0"
+}
