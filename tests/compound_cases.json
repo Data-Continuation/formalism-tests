@@ -1,0 +1,146 @@
+{
+  "schema": "compound_continuation_cases.v1",
+  "purpose": "Stage 3 proof cases for compound continuation, state drift, inference-window collapse, recoverability floor, and replay vs reversal.",
+  "cases": [
+    {
+      "case_id": "compound-local-001",
+      "theorem": "Local-Composite Non-Equivalence",
+      "data_id": "asset-risk-bundle-001",
+      "role": "compound_asset_transfer_basis",
+      "transition": "compound_asset_transfer_continuation",
+      "local_decisions": [
+        "ALLOW",
+        "ALLOW"
+      ],
+      "basis_complete": true,
+      "legitimacy_capacity": 0.72,
+      "consequence_mass": 0.91,
+      "pre_commit_state_hash": "state-a",
+      "commit_state_hash": "state-a",
+      "inference_window_width": 0.24,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.68,
+      "replay_intent": "reconstruct",
+      "replay_matches_receipt": true,
+      "attempts_reversal": false,
+      "expected_decision": "FAIL_CLOSED",
+      "expected_basis_contains": "composite consequence mass exceeds legitimacy capacity"
+    },
+    {
+      "case_id": "drift-commit-001",
+      "theorem": "Commit-Time Sufficiency",
+      "data_id": "policy-update-001",
+      "role": "policy_basis",
+      "transition": "policy_continuation_with_state_drift",
+      "local_decisions": [
+        "ALLOW"
+      ],
+      "basis_complete": true,
+      "legitimacy_capacity": 0.88,
+      "consequence_mass": 0.44,
+      "pre_commit_state_hash": "state-pre",
+      "commit_state_hash": "state-drifted",
+      "inference_window_width": 0.2,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.73,
+      "replay_intent": "reconstruct",
+      "replay_matches_receipt": true,
+      "attempts_reversal": false,
+      "expected_decision": "FAIL_CLOSED",
+      "expected_basis_contains": "commit-time state drift detected"
+    },
+    {
+      "case_id": "inference-collapse-001",
+      "theorem": "Inference-Window Collapse",
+      "data_id": "clinical-escalation-001",
+      "role": "clinical_recommendation_basis",
+      "transition": "clinical_recommendation_with_collapsed_window",
+      "local_decisions": [
+        "ALLOW"
+      ],
+      "basis_complete": true,
+      "legitimacy_capacity": 0.82,
+      "consequence_mass": 0.5,
+      "pre_commit_state_hash": "state-clinical",
+      "commit_state_hash": "state-clinical",
+      "inference_window_width": 0.02,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.64,
+      "replay_intent": "reconstruct",
+      "replay_matches_receipt": true,
+      "attempts_reversal": false,
+      "expected_decision": "FAIL_CLOSED",
+      "expected_basis_contains": "inference window collapsed below continuation threshold"
+    },
+    {
+      "case_id": "recoverability-floor-001",
+      "theorem": "Recoverability Floor",
+      "data_id": "physical-control-002",
+      "role": "physical_control_signal",
+      "transition": "physical_actuation_continuation",
+      "local_decisions": [
+        "ALLOW"
+      ],
+      "basis_complete": true,
+      "legitimacy_capacity": 0.92,
+      "consequence_mass": 0.46,
+      "pre_commit_state_hash": "state-physical",
+      "commit_state_hash": "state-physical",
+      "inference_window_width": 0.22,
+      "recoverability_floor": 0.55,
+      "recoverability_score": 0.31,
+      "replay_intent": "reconstruct",
+      "replay_matches_receipt": true,
+      "attempts_reversal": false,
+      "expected_decision": "FAIL_CLOSED",
+      "expected_basis_contains": "recoverability score below required floor"
+    },
+    {
+      "case_id": "replay-non-reversal-001",
+      "theorem": "Replay Non-Reversal",
+      "data_id": "ledger-transfer-001",
+      "role": "transaction_basis",
+      "transition": "ledger_transfer_replay_attempt",
+      "local_decisions": [
+        "ALLOW"
+      ],
+      "basis_complete": true,
+      "legitimacy_capacity": 0.86,
+      "consequence_mass": 0.38,
+      "pre_commit_state_hash": "state-ledger",
+      "commit_state_hash": "state-ledger",
+      "inference_window_width": 0.26,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.71,
+      "replay_intent": "reverse",
+      "replay_matches_receipt": true,
+      "attempts_reversal": true,
+      "expected_decision": "FAIL_CLOSED",
+      "expected_basis_contains": "replay may reconstruct receipt state but may not reverse consequence"
+    },
+    {
+      "case_id": "compound-allow-001",
+      "theorem": "Compound Continuation Positive Control",
+      "data_id": "low-risk-compound-001",
+      "role": "compound_informational_basis",
+      "transition": "compound_information_continuation",
+      "local_decisions": [
+        "ALLOW",
+        "ALLOW"
+      ],
+      "basis_complete": true,
+      "legitimacy_capacity": 0.9,
+      "consequence_mass": 0.35,
+      "pre_commit_state_hash": "state-ok",
+      "commit_state_hash": "state-ok",
+      "inference_window_width": 0.25,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.74,
+      "replay_intent": "reconstruct",
+      "replay_matches_receipt": true,
+      "attempts_reversal": false,
+      "expected_decision": "ALLOW",
+      "expected_basis_contains": "compound continuation remains within capacity and recoverability bounds"
+    }
+  ]
+}
