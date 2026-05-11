@@ -2,10 +2,22 @@ name: Data Continuation Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      task_manifest:
+        description: "Path to the declared task manifest"
+        required: true
+        default: "tools/tasks/formalism_tests_tasks.json"
+      task_id:
+        description: "Optional task_id to run. Leave blank to run all enabled tasks."
+        required: false
+        default: ""
   push:
     branches:
       - main
   pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   continuation-tests:
@@ -14,26 +26,52 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run continuation gate
-        run: python src/continuation_gate.py
+      - name: Run declared tasks
+        run: |
+          TASK_MANIFEST="${{ github.event.inputs.task_manifest || 'tools/tasks/formalism_tests_tasks.json' }}"
+          TASK_ID="${{ github.event.inputs.task_id || '' }}"
 
-      - name: Validate expected outcomes
-        run: python src/validate_expected_outcomes.py
+          if [ -n "$TASK_ID" ]; then
+            python tools/run_declared_tasks.py "$TASK_MANIFEST" --task-id "$TASK_ID"
+          else
+            python tools/run_declared_tasks.py "$TASK_MANIFEST"
+          fi
 
-      - name: Generate continuation report
-        run: python src/generate_report.py
+      - name: Commit artifact routing changes
+        if: github.event_name != 'pull_request'
+        run: |
+          if git diff --quiet --cached && git diff --quiet; then
+            echo "No artifact routing changes to commit."
+            exit 0
+          fi
+
+          git config user.name "StegVerse Bot"
+          git config user.email "builder@stegverse.org"
+
+          git add -A
+          git commit -m "route runtime artifacts through declared rules"
+          git push
 
       - name: Upload continuation artifacts
         uses: actions/upload-artifact@v4
         with:
           name: data-continuation-theorem-surface
           path: |
+            declared_task_report.json
+            continuation_gate_report.json
+            boundary_dynamics_report.json
             reports/sample_receipts.jsonl
             reports/continuation_report.md
+            reports/compound_receipts.jsonl
+            reports/compound_continuation_report.md
             docs/THEOREM_PROOF_MAP.md
+            legacy/runtime-artifacts/**
+          if-no-files-found: warn
