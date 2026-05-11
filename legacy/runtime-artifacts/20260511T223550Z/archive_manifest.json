@@ -1,0 +1,18 @@
+{
+  "archive_dir": "legacy/runtime-artifacts/20260511T223550Z",
+  "generated_at": "2026-05-11T22:35:50.481428+00:00",
+  "moved": [
+    {
+      "from": "verification.json",
+      "to": "legacy/runtime-artifacts/20260511T223550Z/root/verification.json"
+    },
+    {
+      "from": "reports/transition_table_receipts.jsonl",
+      "to": "legacy/runtime-artifacts/20260511T223550Z/reports/transition_table_receipts.jsonl"
+    }
+  ],
+  "moved_count": 2,
+  "rule_file": "tools/rules/runtime_artifact_rules.json",
+  "rule_id": "archive-root-runtime-artifacts",
+  "schema": "stegverse_runtime_archive_manifest.v1"
+}
