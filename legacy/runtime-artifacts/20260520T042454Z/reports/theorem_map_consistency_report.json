@@ -1,0 +1,15 @@
+{
+  "assertion_count": 76,
+  "covered_theorem_count": 15,
+  "current_theorem_map": "reports/current/THEOREM_PROOF_MAP.md",
+  "generated_at": "2026-05-20T04:18:40.625092+00:00",
+  "message": "Theorem map consistency validation passed.",
+  "report_sources": [
+    "tests/fixtures/theorem_map_consistency_reports/representation_non_consequence_report.json",
+    "tests/fixtures/theorem_map_consistency_reports/site_mirror_integrity_report.json",
+    "tests/fixtures/theorem_map_consistency_reports/current_report_preservation_report.json"
+  ],
+  "root_theorem_map": "THEOREM_PROOF_MAP.md",
+  "schema": "stegverse_theorem_map_consistency_report.v1",
+  "success": true
+}
