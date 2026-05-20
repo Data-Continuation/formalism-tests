@@ -1,0 +1,32 @@
+{
+  "schema": "stegverse.bundle_manifest.v1",
+  "bundle_id": "formalism-tests-site-mirror-wire-v1",
+  "bundle_type": "formalism-tools-update",
+  "title": "Formalism-Tests Site Mirror Auto-Update",
+  "description": "Adds run_site_mirror_update.py \u2014 reads reports/current/ after tests pass, writes Site/data/formalism-tests/ automatically. Updates formalism_tests_tasks.json with site_mirror_update task (depends on stage6, mirror integrity, current preservation). Includes workflow step for auto-commit to Site on test pass. Authority: formalism-tests produces. Site publishes.",
+  "created_at": "2026-05-20T00:00:00Z",
+  "classification": {
+    "risk_level": "low",
+    "contains_executable_code": true,
+    "contains_workflows": false,
+    "contains_secrets": false
+  },
+  "files": [
+    {
+      "path": "tools/run_site_mirror_update.py",
+      "sha256": "0f7df8041ab8b45a90ac00ee515a20fc7d1f4752348eccdf2fb67b6b3e9964c2",
+      "size_bytes": 16959
+    },
+    {
+      "path": "tools/tasks/formalism_tests_tasks.json",
+      "sha256": "52a21aa6504f45d30c36b4ddb02fac8c9c0ae761b4f03f8d776c958f5f589ca6",
+      "size_bytes": 4086
+    },
+    {
+      "path": "workflow-site-mirror-step.yml",
+      "sha256": "2dedd56e5ffaf681e5f36b65d829831e15cdefe337ecba9c131cfbdf71ff3bf6",
+      "size_bytes": 1754
+    }
+  ],
+  "next_target": "element_dependency_closure_tests"
+}

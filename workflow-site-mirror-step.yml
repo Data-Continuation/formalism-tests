@@ -1,0 +1,38 @@
+      # ── Site mirror update ─────────────────────────────────────────────
+      # Runs after all declared tasks pass.
+      # Reads reports/current/ proof outputs.
+      # Writes updated data files to Site/data/formalism-tests/.
+      # Commits directly to Site repo.
+      # Authority: formalism-tests produces. Site publishes.
+      - name: Update Site mirror data
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_DATA_DIR: ${{ github.workspace }}/../Site/data/formalism-tests
+        run: |
+          # Check out Site repo alongside formalism-tests
+          git clone \
+            --depth=1 \
+            --branch main \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/StegVerse-Labs/Site.git \
+            ../Site
+
+          # Run the mirror update
+          python tools/run_site_mirror_update.py \
+            --site-data-dir ../Site/data/formalism-tests
+
+          # Commit and push to Site if data changed
+          cd ../Site
+          git config user.name "StegVerse Formalism Mirror"
+          git config user.email "formalism-mirror@stegverse.org"
+          git add data/formalism-tests/transition-proof-surface.json
+          git add data/formalism-tests/transition-table-classes.json
+
+          if git diff --cached --quiet; then
+            echo "Site data already current — no commit needed."
+          else
+            git commit -m "mirror: update proof surface from formalism-tests $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "Site data updated and pushed."
+          fi
