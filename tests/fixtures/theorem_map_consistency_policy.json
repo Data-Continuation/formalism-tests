@@ -1,0 +1,51 @@
+{
+  "schema": "stegverse_theorem_map_consistency_policy.v1",
+  "root_theorem_map": "THEOREM_PROOF_MAP.md",
+  "current_theorem_map": "reports/current/THEOREM_PROOF_MAP.md",
+  "required_covered_theorems": [
+    "Representation Non-Consequence",
+    "Role Non-Transfer",
+    "Continuation Capacity",
+    "Fail-Closed Basis Requirement",
+    "Local-Composite Non-Equivalence",
+    "Commit-Time Sufficiency",
+    "Replay Non-Reversal",
+    "Inference-Window Collapse",
+    "Recoverability Floor",
+    "Role-Transition Dependence",
+    "Compound Continuation Positive Control",
+    "Stage 6 Unified Gate",
+    "Transition Table Public Surface",
+    "Site Mirror Integrity",
+    "Current Report Preservation"
+  ],
+  "forbidden_markers": [
+    "Representation Non-Consequence remains partially covered",
+    "| Representation Non-Consequence | Indirect;",
+    "Partially covered theorem group"
+  ],
+  "required_report_checks": [
+    {
+      "path": "reports/representation_non_consequence_report.json",
+      "required": {
+        "success": true,
+        "theorem": "Representation Non-Consequence"
+      }
+    },
+    {
+      "path": "reports/site_mirror_integrity_report.json",
+      "required": {
+        "success": true,
+        "representation_non_consequence_status": "Covered"
+      }
+    },
+    {
+      "path": "reports/current_report_preservation_report.json",
+      "required": {
+        "success": true,
+        "current_dir": "reports/current"
+      }
+    }
+  ],
+  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
+}
