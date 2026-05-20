@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Validate theorem-map consistency against latest proof reports.
 
-This runner prevents stale theorem coverage text from reappearing in the root
-or current theorem proof map after Representation Non-Consequence and later
-proof layers have passed.
+This version is independently runnable. For each dependent report, it prefers
+the live reports/ path and falls back to tests/fixtures/theorem_map_consistency_reports/
+when the test is run by itself.
 """
 
 from __future__ import annotations
@@ -41,26 +41,55 @@ def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def resolve_report_path(report: dict[str, Any], policy: dict[str, Any]) -> Path:
+    live_path = Path(report["path"])
+    if live_path.exists():
+        return live_path
+
+    fixture_name = report.get("fixture")
+    fixture_dir = Path(policy.get("fixture_report_dir", "tests/fixtures/theorem_map_consistency_reports"))
+    if fixture_name:
+        fixture_path = fixture_dir / fixture_name
+        if fixture_path.exists():
+            return fixture_path
+
+    raise AssertionError(f"missing JSON file: {live_path}")
+
+
 def validate_map_text(path: Path, text: str, policy: dict[str, Any]) -> int:
     checks = 0
     checks += require("formalism-tests produces receipts" in text, f"{path}: missing authority boundary")
+
     for theorem in policy.get("required_covered_theorems", []):
         checks += require(f"| {theorem} |" in text, f"{path}: missing theorem row for {theorem}")
         row_lines = [line for line in text.splitlines() if line.startswith(f"| {theorem} |")]
-        checks += require(any(line.rstrip().endswith("| Covered |") for line in row_lines), f"{path}: theorem not marked Covered: {theorem}")
+        checks += require(
+            any(line.rstrip().endswith("| Covered |") for line in row_lines),
+            f"{path}: theorem not marked Covered: {theorem}"
+        )
+
     for marker in policy.get("forbidden_markers", []):
         checks += require(marker not in text, f"{path}: stale forbidden marker present: {marker}")
+
     return checks
 
 
-def validate_reports(policy: dict[str, Any]) -> int:
+def validate_reports(policy: dict[str, Any]) -> tuple[int, list[str]]:
     checks = 0
+    report_sources: list[str] = []
+
     for report in policy.get("required_report_checks", []):
-        path = Path(report["path"])
+        path = resolve_report_path(report, policy)
         data = load_json(path)
+        report_sources.append(str(path))
+
         for key, expected in report.get("required", {}).items():
-            checks += require(data.get(key) == expected, f"{path}: expected {key}={expected!r}, got {data.get(key)!r}")
-    return checks
+            checks += require(
+                data.get(key) == expected,
+                f"{path}: expected {key}={expected!r}, got {data.get(key)!r}"
+            )
+
+    return checks, report_sources
 
 
 def main() -> int:
@@ -72,7 +101,6 @@ def main() -> int:
         root_text = read_text(root_path)
         current_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # Keep current theorem map synchronized with root map before validation.
         shutil.copy2(root_path, current_path)
         current_text = read_text(current_path)
 
@@ -80,8 +108,14 @@ def main() -> int:
         checks += validate_map_text(root_path, root_text, policy)
         checks += validate_map_text(current_path, current_text, policy)
         checks += require(root_text == current_text, "root and current theorem maps must match exactly")
-        checks += validate_reports(policy)
-        checks += require(policy.get("authority_boundary", "").startswith("formalism-tests produces receipts"), "policy missing authority boundary")
+
+        report_checks, report_sources = validate_reports(policy)
+        checks += report_checks
+
+        checks += require(
+            policy.get("authority_boundary", "").startswith("formalism-tests produces receipts"),
+            "policy missing authority boundary"
+        )
 
         report = {
             "schema": "stegverse_theorem_map_consistency_report.v1",
@@ -91,8 +125,10 @@ def main() -> int:
             "root_theorem_map": str(root_path),
             "current_theorem_map": str(current_path),
             "covered_theorem_count": len(policy.get("required_covered_theorems", [])),
+            "report_sources": report_sources,
             "message": "Theorem map consistency validation passed."
         }
+
         REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
         REPORT_PATH.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         print(json.dumps(report, indent=2, sort_keys=True))
