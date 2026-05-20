@@ -1,51 +1,60 @@
-# Stage 6 Existing Workflow Task Bundle — Fix 1
+# Stage 6 Existing Workflow Task Bundle — Fix 2
 
 ## Assumptions
 
 1. No workflow file should be added or changed.
 2. The existing `Data Continuation Tests` workflow is the execution surface.
-3. The failure shown in GitHub Actions is caused by the declared-task runner requiring `expected_outputs` to be a list.
-4. Stage 6 tests are already installed at `tests/test_stage6_unified_gate.py`.
+3. The workflow environment does not install `pytest`.
+4. Stage 6 must therefore run through a standard-library declared-task runner.
 5. Stage 6 candidates are already installed at `tests/fixtures/stage6_candidates.json`.
 
 ## Done Definition
 
 This fix is done when:
 
-1. `tools/tasks/formalism_tests_tasks.json` parses as JSON.
-2. Every task uses `expected_outputs` as a list.
+1. `tools/run_stage6_unified_gate_tests.py` exists.
+2. `tools/tasks/formalism_tests_tasks.json` points `stage6_unified_gate_tests` to the standard-library runner.
 3. The existing workflow can run only Stage 6 using `task_id=stage6_unified_gate_tests`.
-4. No new workflow file is added.
+4. No workflow file is added or changed.
+
+## What Failed
+
+The existing workflow reached the Stage 6 task, but failed because the runner attempted:
+
+```bash
+python -m pytest tests/test_stage6_unified_gate.py
+```
+
+The GitHub-hosted Python environment reported:
+
+```text
+No module named pytest
+```
 
 ## What Changed
 
-The previous Stage 6 task used:
-
-```json
-"expected_outputs": {}
-```
-
-The current declared-task runner rejected that with:
+This bundle adds:
 
 ```text
-task stage6_unified_gate_tests expected_outputs must be a list
+tools/run_stage6_unified_gate_tests.py
 ```
 
-This replacement manifest changes it to:
+and changes the Stage 6 declared task to run:
 
-```json
-"expected_outputs": []
+```bash
+python tools/run_stage6_unified_gate_tests.py
 ```
 
-For consistency, all declared tasks in this replacement manifest now use list-form `expected_outputs`.
+The runner uses only Python standard library modules.
 
 ## Files Included
 
 | Path | Purpose |
 |---|---|
-| `tools/tasks/formalism_tests_tasks.json` | Full replacement declared-task manifest with list-form `expected_outputs`. |
-| `bundle_manifest.json` | Bundle manifest. |
+| `tools/run_stage6_unified_gate_tests.py` | Standard-library Stage 6 test runner. |
+| `tools/tasks/formalism_tests_tasks.json` | Full replacement manifest pointing Stage 6 to the runner. |
 | `README.md` | This explanation and verification checklist. |
+| `bundle_manifest.json` | Bundle manifest. |
 
 ## Run Stage 6 Through the Existing Workflow
 
@@ -70,22 +79,25 @@ task_manifest = tools/tasks/formalism_tests_tasks.json
 task_id       = stage6_unified_gate_tests
 ```
 
-Expected command inside the workflow:
+The workflow runs:
 
 ```bash
 python tools/run_declared_tasks.py tools/tasks/formalism_tests_tasks.json --task-id stage6_unified_gate_tests
 ```
 
-The declared task then runs:
+The declared task runs:
 
 ```bash
-python -m pytest tests/test_stage6_unified_gate.py
+python tools/run_stage6_unified_gate_tests.py
 ```
 
-Expected test result:
+Expected result:
 
-```text
-94 passed
+```json
+{
+  "success": true,
+  "candidate_count": 10
+}
 ```
 
 ## Boundary Rule

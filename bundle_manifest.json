@@ -1,15 +1,20 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "stage6-existing-workflow-task-bundle-fix1",
+  "bundle_id": "stage6-existing-workflow-task-bundle-fix2",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Fix declared-task manifest so Stage 6 runs through the existing workflow.",
-  "fix_reason": "Declared-task runner requires expected_outputs to be a list.",
+  "purpose": "Run Stage 6 through the existing workflow without requiring pytest installation.",
+  "fix_reason": "GitHub Actions environment did not have pytest installed.",
   "files": [
+    {
+      "path": "tools/run_stage6_unified_gate_tests.py",
+      "action": "create",
+      "description": "Standard-library Stage 6 test runner."
+    },
     {
       "path": "tools/tasks/formalism_tests_tasks.json",
       "action": "replace",
-      "description": "Full declared-task manifest replacement with list-form expected_outputs."
+      "description": "Full declared-task manifest replacement pointing Stage 6 to the standard-library runner."
     },
     {
       "path": "README.md",
@@ -26,11 +31,8 @@
     "task_id": "stage6_unified_gate_tests",
     "command": [
       "python",
-      "-m",
-      "pytest",
-      "tests/test_stage6_unified_gate.py"
+      "tools/run_stage6_unified_gate_tests.py"
     ],
     "expected_outputs": []
-  },
-  "expected_result": "94 passed"
+  }
 }
