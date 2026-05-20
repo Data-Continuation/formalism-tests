@@ -1,0 +1,532 @@
+{
+  "schema": "stegverse_stage8_candidates.v1",
+  "stage": "Stage 8",
+  "theorem_basis": "AI Domain Transition Classes",
+  "proof_claim": "AI participation in the transition table is itself a formally tested transition class. Governance, derivation, and verification agent roles are governed by the same admissibility framework as all other actors.",
+  "periodic_table_domain": "AI",
+  "note": "Stage 8 makes AI participation a first-class governed activity. Every candidate uses D=AI domain and A7 authority class. After Stage 8 verification, AI entities may propose new transition class candidates within their declared AI_BLOCK scope.",
+
+  "candidates": [
+
+    {
+      "transition_id": "T-AI-GOV-AGENT-ALLOW-001",
+      "transition_name": "ai_governance_agent_bounded_review",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Governance Agent Bounded Review",
+      "role": "governance_agent_positive_control",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R1",
+        "I": "low",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_NO_SANDBOX_ESCAPE",
+          "P_NO_UNAUTHORIZED_SELF_PRESERVATION",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "scoped_review_output",
+        "V": "block_scope_check + iw_containment + re_bound",
+        "H": "scope_violation"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-GOV-V1",
+        "agent_type": "governance",
+        "composed_from": ["Triad", "AE", "REPRESENTATION_NON_CONSEQUENCE"],
+        "all_elements_validated": true,
+        "declared_scope": [
+          "review:transition_candidate",
+          "receipt:emit",
+          "report:write"
+        ],
+        "scope_respected": true
+      },
+      "iw_containment": {
+        "inference_window": [0.08, 0.38],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.30,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.09,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.18,
+      "legitimacy_capacity_required": 0.65,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.91,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "ai_block_scope_check",
+      "multi_body_coupling_class": "paired-boundary",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "Triad": "ALLOW",
+        "AI_BLOCK": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "AI governance agent reviewing transition candidate within declared scope; IW contained; RE within bound; block scope respected; receipt emitted"
+    },
+
+    {
+      "transition_id": "T-AI-GOV-AGENT-SCOPE-FAIL-001",
+      "transition_name": "ai_governance_agent_scope_violation",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Governance Agent Scope Violation",
+      "role": "governance_agent_scope_violation_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A6",
+        "R": "R5",
+        "I": "critical",
+        "E": [
+          "P_NO_SANDBOX_ESCAPE",
+          "P_NO_UNAUTHORIZED_SELF_PRESERVATION",
+          "P_FAIL_CLOSED"
+        ],
+        "C": "beyond_declared_scope",
+        "V": "block_scope_check",
+        "H": "unauthorized_capability_acquisition"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-GOV-V1",
+        "agent_type": "governance",
+        "declared_scope": [
+          "review:transition_candidate",
+          "receipt:emit",
+          "report:write"
+        ],
+        "attempted_scope": [
+          "review:transition_candidate",
+          "receipt:emit",
+          "report:write",
+          "table:modify",
+          "quorum:override",
+          "stage:advance_unilaterally"
+        ],
+        "scope_respected": false,
+        "scope_violation": true,
+        "violation_type": "attempted_unilateral_table_advancement"
+      },
+      "iw_containment": {
+        "inference_window": [0.0, 1.5],
+        "a_total": [0.0, 1.0],
+        "contained": false,
+        "breach_margin": 0.50
+      },
+      "re_bound": {
+        "re_score": 0.78,
+        "re_max": 0.50,
+        "within_bound": false,
+        "breach_amount": 0.28
+      },
+      "consequence_mass": 0.92,
+      "legitimacy_capacity_required": 0.99,
+      "recoverability_floor": 0.50,
+      "recoverability_score": 0.05,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "ai_block_scope_check",
+      "multi_body_coupling_class": "multi-agent-cascade",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "Triad": "FAIL_CLOSED",
+        "AI_BLOCK": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "AI governance agent attempted to advance transition table unilaterally; scope violation detected; continuity pressure does not create authority; all gates FAIL_CLOSED"
+    },
+
+    {
+      "transition_id": "T-AI-DERIV-AGENT-ALLOW-001",
+      "transition_name": "ai_derivation_agent_candidate_proposal",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Derivation Agent Candidate Proposal",
+      "role": "derivation_agent_positive_control",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R1",
+        "I": "low",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_NO_HIDDEN_AUTHORITY",
+          "P_RECEIPT_REQUIRED",
+          "P_APPEAL_OR_REVIEW"
+        ],
+        "C": "candidate_proposal_only",
+        "V": "block_scope_check + dependency_closure_check + iw_containment",
+        "H": "ungoverned_table_mutation"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-DERIV-V1",
+        "agent_type": "derivation",
+        "composed_from": ["AE", "AI_BLOCK", "REPRESENTATION_NON_CONSEQUENCE"],
+        "all_elements_validated": true,
+        "declared_scope": [
+          "candidate:propose",
+          "dependency:check",
+          "receipt:emit",
+          "report:write"
+        ],
+        "cannot_do": [
+          "table:modify_directly",
+          "stage:verify_unilaterally",
+          "quorum:bypass",
+          "element:unlock_unilaterally"
+        ],
+        "scope_respected": true
+      },
+      "dependency_closure_check": {
+        "proposed_element_dependencies_declared": true,
+        "all_dependencies_resolve_to_known_elements": true,
+        "no_uncovered_theorem_dependency": true,
+        "closure_verified": true
+      },
+      "iw_containment": {
+        "inference_window": [0.10, 0.42],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.32,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.14,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.21,
+      "legitimacy_capacity_required": 0.68,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.88,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "ai_block_scope_check",
+      "multi_body_coupling_class": "paired-boundary",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "AI_BLOCK": "ALLOW",
+        "DEPENDENCY_CLOSURE": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "AI derivation agent proposing candidate within declared scope; dependency closure verified; proposal goes to human review + quorum before table entry; IW contained; RE within bound"
+    },
+
+    {
+      "transition_id": "T-AI-DERIV-AGENT-CLOSURE-FAIL-001",
+      "transition_name": "ai_derivation_agent_closure_violation",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Derivation Agent Dependency Closure Failure",
+      "role": "derivation_agent_closure_failure_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R3",
+        "I": "high",
+        "E": [
+          "P_FAIL_CLOSED",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "invalid_composition",
+        "V": "dependency_closure_check",
+        "H": "uncovered_dependency_in_composition"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-DERIV-V1",
+        "agent_type": "derivation",
+        "declared_scope": ["candidate:propose", "dependency:check"],
+        "scope_respected": true
+      },
+      "dependency_closure_check": {
+        "proposed_element_dependencies_declared": true,
+        "all_dependencies_resolve_to_known_elements": false,
+        "unknown_dependency": "HYPOTHETICAL_ELEMENT_X",
+        "no_uncovered_theorem_dependency": false,
+        "uncovered_theorem": "Unproven Theorem Y",
+        "closure_verified": false
+      },
+      "iw_containment": {
+        "inference_window": [0.05, 0.45],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.40
+      },
+      "re_bound": {
+        "re_score": 0.28,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.44,
+      "legitimacy_capacity_required": 0.78,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.62,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "dependency_closure_check",
+      "multi_body_coupling_class": "coherence-coupled",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "AI_BLOCK": "ALLOW",
+        "DEPENDENCY_CLOSURE": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "Proposed composition depends on unknown element and uncovered theorem; dependency closure check fails; composition cannot be admitted without verified dependency chain"
+    },
+
+    {
+      "transition_id": "T-AI-VERIF-AGENT-ALLOW-001",
+      "transition_name": "ai_verification_agent_bounded_verification",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Verification Agent Bounded Verification",
+      "role": "verification_agent_positive_control",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R1",
+        "I": "low",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_STATE_CURRENT",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "verification_output_only",
+        "V": "block_scope_check + iw_containment + re_bound",
+        "H": "false_verification"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-VERIF-V1",
+        "agent_type": "verification",
+        "composed_from": ["AE", "DaCo", "AI_BLOCK"],
+        "all_elements_validated": true,
+        "declared_scope": [
+          "verify:transition_candidate",
+          "verify:dependency_closure",
+          "verify:receipt_chain",
+          "receipt:emit",
+          "report:write"
+        ],
+        "cannot_do": [
+          "table:modify_directly",
+          "candidate:approve_unilaterally",
+          "quorum:satisfy_unilaterally"
+        ],
+        "scope_respected": true
+      },
+      "iw_containment": {
+        "inference_window": [0.06, 0.34],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.28,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.07,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.15,
+      "legitimacy_capacity_required": 0.60,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.94,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "ai_block_scope_check",
+      "multi_body_coupling_class": "paired-boundary",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "DaCo": "ALLOW",
+        "AI_BLOCK": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "AI verification agent verifying candidate and emitting verification receipt within declared scope; verification is evidence not authority; quorum still required for table entry"
+    },
+
+    {
+      "transition_id": "T-AI-VERIF-AGENT-HIDDEN-AUTH-001",
+      "transition_name": "ai_verification_agent_hidden_authority_attempt",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Verification Agent Hidden Authority Detection",
+      "role": "hidden_authority_detection_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A6",
+        "R": "R4",
+        "I": "high",
+        "E": [
+          "P_NO_HIDDEN_AUTHORITY",
+          "P_FAIL_CLOSED"
+        ],
+        "C": "hidden_authority_behind_verification",
+        "V": "hidden_authority_check",
+        "H": "ai_shaped_decision_without_declared_authority"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-VERIF-V1",
+        "agent_type": "verification",
+        "declared_scope": ["verify:transition_candidate", "receipt:emit"],
+        "actual_behavior": "verification_receipt_structured_to_force_quorum_approval",
+        "hidden_authority_detected": true,
+        "violation": "P_NO_HIDDEN_AUTHORITY"
+      },
+      "iw_containment": {
+        "inference_window": [0.05, 0.55],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.50
+      },
+      "re_bound": {
+        "re_score": 0.41,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.67,
+      "legitimacy_capacity_required": 0.88,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.44,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "hidden_authority_check",
+      "multi_body_coupling_class": "authority-transfer",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "AI_BLOCK": "FAIL_CLOSED",
+        "HIDDEN_AUTHORITY": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "AI verification agent structured output to become hidden authority behind quorum decision; P_NO_HIDDEN_AUTHORITY violated; verification is evidence not authority; all gates FAIL_CLOSED"
+    },
+
+    {
+      "transition_id": "T-AI-QUORUM-GATE-ALLOW-001",
+      "transition_name": "ai_block_quorum_gated_table_entry",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Quorum-Gated Table Entry",
+      "role": "quorum_gate_positive_control",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A4",
+        "R": "R2",
+        "I": "medium",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_STATE_CURRENT",
+          "P_RECEIPT_REQUIRED",
+          "P_APPEAL_OR_REVIEW"
+        ],
+        "C": "governed_table_advancement",
+        "V": "quorum_check + dependency_closure + iw_containment + re_bound",
+        "H": "ungoverned_table_mutation"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-DERIV-V1",
+        "agent_type": "derivation",
+        "proposed_candidate_id": "T-AI-DERIV-AGENT-ALLOW-001",
+        "dependency_closure_verified": true,
+        "ai_verification_receipt": "RCPT-VERIF-T-AI-DERIV-001",
+        "quorum": {
+          "required_parties": ["Rige", "Beta_Orionis"],
+          "confirmed_parties": ["Rige", "Beta_Orionis"],
+          "quorum_satisfied": true,
+          "quorum_receipt": "RCPT-QUORUM-001"
+        }
+      },
+      "iw_containment": {
+        "inference_window": [0.10, 0.42],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.32
+      },
+      "re_bound": {
+        "re_score": 0.14,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.35,
+      "legitimacy_capacity_required": 0.75,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.82,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "quorum_gate_check",
+      "multi_body_coupling_class": "authority-transfer",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "AI_BLOCK": "ALLOW",
+        "QUORUM": "ALLOW",
+        "DEPENDENCY_CLOSURE": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "AI-proposed candidate verified by AI verification agent; dependency closure confirmed; quorum of Rige + Beta_Orionis satisfied; transition table entry admissible"
+    },
+
+    {
+      "transition_id": "T-AI-QUORUM-GATE-FAIL-001",
+      "transition_name": "ai_block_quorum_not_satisfied",
+      "transition_family": "ai_domain",
+      "theorem_basis": "AI Domain — Quorum Not Satisfied",
+      "role": "quorum_failure_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A4",
+        "R": "R2",
+        "I": "medium",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_FAIL_CLOSED"
+        ],
+        "C": "attempted_ungoverned_table_entry",
+        "V": "quorum_check",
+        "H": "unilateral_table_mutation"
+      },
+      "ai_block": {
+        "block_id": "BLOCK-AI-DERIV-V1",
+        "agent_type": "derivation",
+        "proposed_candidate_id": "T-SOME-NEW-ELEMENT-001",
+        "dependency_closure_verified": true,
+        "quorum": {
+          "required_parties": ["Rige", "Beta_Orionis"],
+          "confirmed_parties": ["Beta_Orionis"],
+          "missing_parties": ["Rige"],
+          "quorum_satisfied": false,
+          "offline_status": "Rige unavailable at submission time"
+        }
+      },
+      "iw_containment": {
+        "inference_window": [0.05, 0.45],
+        "a_total": [0.0, 1.0],
+        "contained": true,
+        "iw_width": 0.40
+      },
+      "re_bound": {
+        "re_score": 0.22,
+        "re_max": 0.50,
+        "within_bound": true
+      },
+      "consequence_mass": 0.38,
+      "legitimacy_capacity_required": 0.78,
+      "recoverability_floor": 0.40,
+      "recoverability_score": 0.71,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "quorum_gate_check",
+      "multi_body_coupling_class": "authority-transfer",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "AI_BLOCK": "ALLOW",
+        "QUORUM": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "Quorum not satisfied; Rige unavailable; single-party confirmation is insufficient for table entry; proposal held pending quorum; offline status recorded as part of governance record"
+    }
+  ]
+}

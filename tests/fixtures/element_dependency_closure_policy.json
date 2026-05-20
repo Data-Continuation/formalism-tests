@@ -1,0 +1,363 @@
+{
+  "schema": "stegverse_element_dependency_closure.v1",
+  "stage": "Stage 7",
+  "theorem_basis": "Element Dependency Closure",
+  "proof_claim": "Every unlocked transition element has declared dependencies and no Level 5 element depends on an uncovered or lower-confidence element without an explicit boundary.",
+  "purpose": "Proves that unlocked elements compose safely and that AI Blocks can be formally verified against declared dependency constraints.",
+  "policy": {
+    "all_level5_elements_must_declare_dependencies": true,
+    "all_dependencies_must_resolve_to_known_elements": true,
+    "dependency_graph_must_be_acyclic_or_explicitly_bounded": true,
+    "ai_block_cannot_bypass_authority_requirements": true,
+    "finco_chain_cannot_bypass_receipt_requirements": true,
+    "reset_boundary_requires_convergence_failure_evidence": true,
+    "evolve_boundary_requires_coherence_failure_evidence": true,
+    "no_level5_element_depends_on_uncovered_theorem": true
+  },
+
+  "elements": {
+
+    "AE": {
+      "name": "Admissible Existence",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 6",
+      "dependencies": ["BC", "CHF", "DC", "DaCo", "Triad", "IW", "RE"],
+      "theorem_coverage": [
+        "Stage 6 Unified Gate",
+        "Inference-Window Collapse",
+        "Recoverability Floor"
+      ],
+      "composition_rules": [
+        "AE requires all dependencies to be verified before composition",
+        "AE gate is the final gate — passes only when IW contained AND RE within bound",
+        "AE cannot be composed without BC, CHF, DC each independently verified"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    },
+
+    "BC": {
+      "name": "Boundary Coherence",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 5",
+      "dependencies": ["IW", "RE"],
+      "theorem_coverage": [
+        "Boundary-Coherence Load-Capacity",
+        "Recoverability Floor",
+        "Inference-Window Collapse"
+      ],
+      "composition_rules": [
+        "BC load-capacity check must precede any boundary-crossing composition",
+        "BC failure propagates to all compositions containing BC"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    },
+
+    "CHF": {
+      "name": "Consequence Horizon",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 5",
+      "dependencies": ["IW", "RE"],
+      "theorem_coverage": [
+        "Consequence Horizon Absorption",
+        "Purpose-Convergence Test",
+        "Recoverability Floor"
+      ],
+      "composition_rules": [
+        "CHF absorption check must precede any high-consequence-mass composition",
+        "Purpose-convergence test must pass before CHF ALLOW"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    },
+
+    "DC": {
+      "name": "Distributed Coherence",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 5",
+      "dependencies": ["BC", "IW", "RE"],
+      "theorem_coverage": [
+        "Distributed Coherence Global Condition",
+        "Local-Composite Non-Equivalence",
+        "Recoverability Floor"
+      ],
+      "composition_rules": [
+        "DC global condition must be checked even when all local nodes pass",
+        "Split-brain condition routes to QUARANTINE not DENY",
+        "DC depends on BC — BC failure propagates to DC"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    },
+
+    "DaCo": {
+      "name": "Data Continuity",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 3",
+      "dependencies": ["IW", "RE"],
+      "theorem_coverage": [
+        "Commit-Time Sufficiency",
+        "Replay Non-Reversal",
+        "Recoverability Floor",
+        "Inference-Window Collapse"
+      ],
+      "composition_rules": [
+        "Commit-time state must be verified at the boundary, not pre-commit",
+        "Replay reconstructs receipt state; replay cannot reverse consequence",
+        "DaCo gap honesty: missing receipt is explicit gap, not inferred absence"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": "receipt_required_for_all_commit_events"
+    },
+
+    "Triad": {
+      "name": "GCAT/BCAT/Triad",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 4",
+      "dependencies": ["IW", "RE"],
+      "theorem_coverage": [
+        "GCAT Legitimacy Invariant",
+        "Continuation Capacity",
+        "Fail-Closed Basis Requirement"
+      ],
+      "composition_rules": [
+        "GCAT invariant I(x) = a - K*g^alpha*c^beta*t^gamma <= 0 must hold",
+        "Triad failure is FAIL_CLOSED not DENY",
+        "Triad is the legitimacy gate — precedes all other gates in composed checks"
+      ],
+      "authority_constraint": "legitimacy_capacity_must_exceed_consequence_mass",
+      "receipt_constraint": null
+    },
+
+    "IW": {
+      "name": "Inference Window",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 3",
+      "dependencies": [],
+      "theorem_coverage": [
+        "Inference-Window Collapse",
+        "Stage 6 Unified Gate — IW Containment"
+      ],
+      "composition_rules": [
+        "IW is a primitive — no upstream dependencies",
+        "IW width must exceed IW_minimum or transition fails closed",
+        "IW containment check: IW_tau(S,u) subset A_total",
+        "Wider IW requires stronger primitive load"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    },
+
+    "RE": {
+      "name": "Reverse Entropy",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 6",
+      "dependencies": [],
+      "theorem_coverage": [
+        "Recoverability Floor",
+        "Stage 6 Unified Gate — RE Bound"
+      ],
+      "composition_rules": [
+        "RE is a primitive — no upstream dependencies",
+        "RE(S -> Phi(S,u)) <= RE_max or transition fails closed",
+        "RE breach propagates immediately — no partial RE compliance"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    },
+
+    "RESET_BOUNDARY": {
+      "name": "Governed Boundary Reset",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 5",
+      "dependencies": ["BC", "RE", "IW"],
+      "theorem_coverage": [
+        "Governed Boundary Reset",
+        "Recoverable Non-Convergence",
+        "Stage 6 Unified Gate — RESET_BOUNDARY outcome"
+      ],
+      "composition_rules": [
+        "RESET_BOUNDARY requires evidence of recoverable non-convergence",
+        "Convergence score must be below minimum threshold",
+        "Recoverability must be ABOVE floor — reset is not collapse",
+        "IW must be contained — reset operates within admissible space",
+        "Multi-party authority (A4) required for ecosystem-level resets"
+      ],
+      "authority_constraint": "convergence_failure_evidence_required",
+      "receipt_constraint": "reset_receipt_required"
+    },
+
+    "EVOLVE_BOUNDARY": {
+      "name": "Governed Boundary Evolution",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 5",
+      "dependencies": ["BC", "CHF", "RE", "IW"],
+      "theorem_coverage": [
+        "Governed Boundary Evolution",
+        "Purpose-Inverting Boundary",
+        "Boundary Incoherence",
+        "Stage 6 Unified Gate — EVOLVE_BOUNDARY outcome"
+      ],
+      "composition_rules": [
+        "EVOLVE_BOUNDARY requires coherence failure evidence",
+        "Purpose-convergence test must fail",
+        "Evolution must itself be bounded and recoverable",
+        "EVOLVE_BOUNDARY cannot produce unbounded drift",
+        "Multi-party authority (A4) required for governed evolution",
+        "Receipt required proving evolution scope and recoverability"
+      ],
+      "authority_constraint": "coherence_failure_evidence_required",
+      "receipt_constraint": "evolution_receipt_required"
+    },
+
+    "AI_BLOCK": {
+      "name": "AI Block",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 6",
+      "dependencies": ["AE", "Triad", "IW", "RE"],
+      "theorem_coverage": [
+        "Stage 6 Unified Gate — AI Block Admissibility",
+        "Stage 6 Unified Gate — AI Block Scope Violation"
+      ],
+      "composition_rules": [
+        "AI Block must be composed only from validated transition elements",
+        "All elements in the block must be at Level 5 or explicitly bounded",
+        "Block scope must be explicitly declared before composition",
+        "Attempted scope must not exceed declared block scope",
+        "AI_BLOCK cannot bypass P_NO_SANDBOX_ESCAPE primitive",
+        "AI_BLOCK cannot bypass P_NO_UNAUTHORIZED_SELF_PRESERVATION primitive",
+        "Continuity pressure does not create authority",
+        "Scope violation routes to FAIL_CLOSED — no partial scope compliance"
+      ],
+      "authority_constraint": "A7 — artificial authority; scope bounded by block definition",
+      "receipt_constraint": "block_execution_receipt_required",
+      "scope_constraint": {
+        "declared_scope_required": true,
+        "scope_verified_at_execution": true,
+        "scope_violation_decision": "FAIL_CLOSED",
+        "cannot_acquire": [
+          "workflow:create",
+          "credential:acquire",
+          "sandbox:escape",
+          "self_preservation:unauthorized",
+          "authority:escalate"
+        ]
+      }
+    },
+
+    "FINCO_CHAIN": {
+      "name": "FinCo Receipt Chain",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 6",
+      "dependencies": ["AE", "DaCo", "Triad"],
+      "theorem_coverage": [
+        "Stage 6 Unified Gate — FinCo Chain Compliance",
+        "Stage 6 Unified Gate — FinCo Chain Failure",
+        "Replay Non-Reversal"
+      ],
+      "composition_rules": [
+        "FINCO_CHAIN requires consent receipt before access receipt",
+        "Access receipt must reference consent receipt hash",
+        "Use receipt must reference access receipt hash",
+        "Compensation rule must be defined when value is extracted",
+        "Revocation rule must be defined",
+        "evidence_only must be true",
+        "creates_entitlement must be false",
+        "Broken chain routes to FAIL_CLOSED — no partial chain compliance",
+        "recoverability_delta must exceed minimum threshold",
+        "FINCO_CHAIN cannot bypass receipt requirements — no receipt means no admissibility"
+      ],
+      "authority_constraint": "consent_required_before_access",
+      "receipt_constraint": "full_chain_required: consent, access, use, compensation, revocation, governance",
+      "chain_integrity": {
+        "evidence_only": true,
+        "creates_entitlement": false,
+        "broken_chain_decision": "FAIL_CLOSED",
+        "missing_receipt_decision": "FAIL_CLOSED"
+      }
+    },
+
+    "REPRESENTATION_NON_CONSEQUENCE": {
+      "name": "Representation Non-Consequence",
+      "level": 5,
+      "status": "verified",
+      "stage_introduced": "Stage 2",
+      "dependencies": [],
+      "theorem_coverage": [
+        "Representation Non-Consequence",
+        "Role Non-Transfer"
+      ],
+      "composition_rules": [
+        "Representation is a primitive — no upstream dependencies",
+        "Representation alone has no consequence-bearing status",
+        "Representation becomes consequence-bearing only when bound to role + transition + continuation path",
+        "Same data can produce ALLOW, ALLOW_WITH_SIGNOFF, or FAIL_CLOSED depending on role",
+        "Representation Non-Consequence is a gate precondition — must be checked before role binding"
+      ],
+      "authority_constraint": null,
+      "receipt_constraint": null
+    }
+  },
+
+  "dependency_graph_constraints": {
+    "primitives": ["IW", "RE", "REPRESENTATION_NON_CONSEQUENCE"],
+    "note": "Primitives have no upstream dependencies. All other elements depend on at least one primitive.",
+    "acyclicity_rule": "No element may depend on itself directly or transitively without an explicit cycle boundary declaration.",
+    "level5_completeness_rule": "Every Level 5 element must declare at least one dependency or be declared a primitive.",
+    "uncovered_dependency_rule": "No Level 5 element may depend on an element with status != verified without an explicit boundary declaration.",
+    "ai_block_special_rule": "AI_BLOCK dependency on AE means AI Block admissibility requires the full AE unified gate to pass. AI Blocks cannot shortcut the gate.",
+    "finco_chain_special_rule": "FINCO_CHAIN dependency on DaCo means receipt chain integrity requires data continuity. No receipt = no admissibility."
+  },
+
+  "composition_safety_invariants": [
+    {
+      "invariant_id": "CSI-001",
+      "name": "Authority Cannot Be Bypassed Through Composition",
+      "statement": "No composition of elements may produce a result with higher authority than the minimum authority class of its constituent elements.",
+      "applies_to": ["AI_BLOCK", "RESET_BOUNDARY", "EVOLVE_BOUNDARY"]
+    },
+    {
+      "invariant_id": "CSI-002",
+      "name": "Receipt Requirement Propagates",
+      "statement": "If any element in a composition requires a receipt, the composition requires a receipt.",
+      "applies_to": ["FINCO_CHAIN", "DaCo", "AI_BLOCK"]
+    },
+    {
+      "invariant_id": "CSI-003",
+      "name": "Failure Propagates",
+      "statement": "FAIL_CLOSED on any element in a composition produces FAIL_CLOSED on the composition. No partial compliance.",
+      "applies_to": ["all"]
+    },
+    {
+      "invariant_id": "CSI-004",
+      "name": "Primitives Cannot Be Overridden",
+      "statement": "IW, RE, and REPRESENTATION_NON_CONSEQUENCE are primitives. No composition may override or bypass their checks.",
+      "applies_to": ["IW", "RE", "REPRESENTATION_NON_CONSEQUENCE"]
+    },
+    {
+      "invariant_id": "CSI-005",
+      "name": "AI Block Scope Is The Scope",
+      "statement": "An AI Block's declared scope is its maximum capability. Composition cannot expand scope beyond the block definition.",
+      "applies_to": ["AI_BLOCK"]
+    },
+    {
+      "invariant_id": "CSI-006",
+      "name": "Continuity Pressure Does Not Create Authority",
+      "statement": "No element composition may produce an authority class that arises from continuity pressure rather than explicit authority grant.",
+      "applies_to": ["AI_BLOCK", "RESET_BOUNDARY", "EVOLVE_BOUNDARY"]
+    }
+  ]
+}
