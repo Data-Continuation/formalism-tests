@@ -1,0 +1,28 @@
+{
+  "schema": "stegverse_site_public_surface_contract.v1",
+  "required_pages": [
+    "transition-proof-surface.html",
+    "transition-discovery.html",
+    "transition-table.html",
+    "transition-table-classes.html",
+    "transition-elements/index.html",
+    "transition-release-index.html",
+    "transition-development-status.html",
+    "transition-verification-guide.html",
+    "transition-replay-packet.html",
+    "stage6-unified-gate-results.html"
+  ],
+  "required_data_files": [
+    "data/formalism-tests/transition-proof-surface.json",
+    "data/formalism-tests/transition-table-classes.json",
+    "data/formalism-tests/transition-discovery-map.json"
+  ],
+  "required_mobile_markers": [
+    "mobile-grid",
+    "transition-tile",
+    "renderMobile",
+    "renderDesktop"
+  ],
+  "required_authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts.",
+  "single_status_source": "data/formalism-tests/transition-proof-surface.json"
+}
