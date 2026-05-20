@@ -1,0 +1,26 @@
+{
+  "assertion_count": 30,
+  "canonical_receipts": [
+    "reports/sample_receipts.jsonl",
+    "reports/transition_table_receipts.jsonl",
+    "reports/representation_non_consequence_receipts.jsonl"
+  ],
+  "current_dir": "reports/current",
+  "generated_at": "2026-05-20T03:34:41.502107+00:00",
+  "message": "Current proof reports preserved under stable reports/current paths.",
+  "noncanonical_duplicates": [
+    "reports/transition_table_receipts 2.jsonl"
+  ],
+  "preserved_count": 7,
+  "preserved_reports": [
+    "reports/current/continuation_report.md",
+    "reports/current/compound_continuation_report.md",
+    "reports/current/representation_non_consequence_report.json",
+    "reports/current/representation_non_consequence_report.md",
+    "reports/current/transition_table_public_surface_report.json",
+    "reports/current/site_mirror_integrity_report.json",
+    "reports/current/THEOREM_PROOF_MAP.md"
+  ],
+  "schema": "stegverse_current_report_preservation_report.v1",
+  "success": true
+}
