@@ -2,6 +2,7 @@
   "schema": "stegverse_theorem_map_consistency_policy.v1",
   "root_theorem_map": "THEOREM_PROOF_MAP.md",
   "current_theorem_map": "reports/current/THEOREM_PROOF_MAP.md",
+  "fixture_report_dir": "tests/fixtures/theorem_map_consistency_reports",
   "required_covered_theorems": [
     "Representation Non-Consequence",
     "Role Non-Transfer",
@@ -27,6 +28,7 @@
   "required_report_checks": [
     {
       "path": "reports/representation_non_consequence_report.json",
+      "fixture": "representation_non_consequence_report.json",
       "required": {
         "success": true,
         "theorem": "Representation Non-Consequence"
@@ -34,6 +36,7 @@
     },
     {
       "path": "reports/site_mirror_integrity_report.json",
+      "fixture": "site_mirror_integrity_report.json",
       "required": {
         "success": true,
         "representation_non_consequence_status": "Covered"
@@ -41,6 +44,7 @@
     },
     {
       "path": "reports/current_report_preservation_report.json",
+      "fixture": "current_report_preservation_report.json",
       "required": {
         "success": true,
         "current_dir": "reports/current"
