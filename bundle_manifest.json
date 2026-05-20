@@ -1,12 +1,16 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "transition-table-public-surface-test-bundle",
+  "bundle_id": "representation-non-consequence-test-bundle",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Validate the Transition Table as a complete public proof surface.",
+  "purpose": "Directly validate Representation Non-Consequence and update theorem coverage.",
   "files": [
     {
-      "path": "tools/run_transition_table_public_surface_tests.py",
+      "path": "tests/fixtures/representation_non_consequence_cases.json",
+      "action": "create"
+    },
+    {
+      "path": "tools/run_representation_non_consequence_tests.py",
       "action": "create"
     },
     {
@@ -14,20 +18,8 @@
       "action": "replace"
     },
     {
-      "path": "tests/fixtures/site/transition-proof-surface.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site/transition-discovery-map.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site/transition-table-classes.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site/site-public-surface-contract.json",
-      "action": "create"
+      "path": "THEOREM_PROOF_MAP.md",
+      "action": "replace"
     },
     {
       "path": "README.md",
@@ -38,6 +30,10 @@
       "action": "include"
     }
   ],
-  "declared_task": "transition_table_public_surface_tests",
-  "expected_output": "reports/transition_table_public_surface_report.json"
+  "declared_task": "representation_non_consequence_tests",
+  "expected_outputs": [
+    "reports/representation_non_consequence_report.json",
+    "reports/representation_non_consequence_report.md",
+    "reports/representation_non_consequence_receipts.jsonl"
+  ]
 }
