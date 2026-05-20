@@ -1,38 +1,43 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "stage6-existing-workflow-task-bundle-fix2",
+  "bundle_id": "transition-table-public-surface-test-bundle",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Run Stage 6 through the existing workflow without requiring pytest installation.",
-  "fix_reason": "GitHub Actions environment did not have pytest installed.",
+  "purpose": "Validate the Transition Table as a complete public proof surface.",
   "files": [
     {
-      "path": "tools/run_stage6_unified_gate_tests.py",
-      "action": "create",
-      "description": "Standard-library Stage 6 test runner."
+      "path": "tools/run_transition_table_public_surface_tests.py",
+      "action": "create"
     },
     {
       "path": "tools/tasks/formalism_tests_tasks.json",
-      "action": "replace",
-      "description": "Full declared-task manifest replacement pointing Stage 6 to the standard-library runner."
+      "action": "replace"
+    },
+    {
+      "path": "tests/fixtures/site/transition-proof-surface.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site/transition-discovery-map.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site/transition-table-classes.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site/site-public-surface-contract.json",
+      "action": "create"
     },
     {
       "path": "README.md",
-      "action": "include",
-      "description": "Fix explanation and verification checklist."
+      "action": "include"
     },
     {
       "path": "bundle_manifest.json",
-      "action": "include",
-      "description": "Bundle manifest."
+      "action": "include"
     }
   ],
-  "stage6_task": {
-    "task_id": "stage6_unified_gate_tests",
-    "command": [
-      "python",
-      "tools/run_stage6_unified_gate_tests.py"
-    ],
-    "expected_outputs": []
-  }
+  "declared_task": "transition_table_public_surface_tests",
+  "expected_output": "reports/transition_table_public_surface_report.json"
 }

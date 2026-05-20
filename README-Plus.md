@@ -1,107 +1,96 @@
-# Stage 6 Existing Workflow Task Bundle — Fix 2
+# Transition Table Public Surface Test Bundle
 
 ## Assumptions
 
-1. No workflow file should be added or changed.
-2. The existing `Data Continuation Tests` workflow is the execution surface.
-3. The workflow environment does not install `pytest`.
-4. Stage 6 must therefore run through a standard-library declared-task runner.
-5. Stage 6 candidates are already installed at `tests/fixtures/stage6_candidates.json`.
+1. This bundle belongs in `formalism-tests`.
+2. The existing `Data Continuation Tests` workflow remains the execution surface.
+3. No new workflow files are added.
+4. The Transition Table should now be validated as a complete public proof surface, not only as math fixtures.
+5. Site-facing data is represented here as fixture snapshots under `tests/fixtures/site/`.
 
 ## Done Definition
 
-This fix is done when:
+This bundle is done when:
 
-1. `tools/run_stage6_unified_gate_tests.py` exists.
-2. `tools/tasks/formalism_tests_tasks.json` points `stage6_unified_gate_tests` to the standard-library runner.
-3. The existing workflow can run only Stage 6 using `task_id=stage6_unified_gate_tests`.
-4. No workflow file is added or changed.
-
-## What Failed
-
-The existing workflow reached the Stage 6 task, but failed because the runner attempted:
-
-```bash
-python -m pytest tests/test_stage6_unified_gate.py
-```
-
-The GitHub-hosted Python environment reported:
-
-```text
-No module named pytest
-```
-
-## What Changed
-
-This bundle adds:
-
-```text
-tools/run_stage6_unified_gate_tests.py
-```
-
-and changes the Stage 6 declared task to run:
-
-```bash
-python tools/run_stage6_unified_gate_tests.py
-```
-
-The runner uses only Python standard library modules.
+1. `tools/run_transition_table_public_surface_tests.py` exists.
+2. `tools/tasks/formalism_tests_tasks.json` includes `transition_table_public_surface_tests`.
+3. The runner validates:
+   - single-source status data
+   - Stage 6 verified status
+   - Stage 6 declared-task result
+   - discovery map coverage
+   - unlocked Level 5 elements
+   - transition class coverage
+   - RESET_BOUNDARY / EVOLVE_BOUNDARY presence
+   - public page contract
+   - mobile presentation contract markers
+4. The runner emits `reports/transition_table_public_surface_report.json`.
+5. No workflow files are included.
 
 ## Files Included
 
 | Path | Purpose |
 |---|---|
-| `tools/run_stage6_unified_gate_tests.py` | Standard-library Stage 6 test runner. |
-| `tools/tasks/formalism_tests_tasks.json` | Full replacement manifest pointing Stage 6 to the runner. |
-| `README.md` | This explanation and verification checklist. |
+| `tools/run_transition_table_public_surface_tests.py` | Standard-library public-surface validator. |
+| `tools/tasks/formalism_tests_tasks.json` | Full replacement declared-task manifest with new task. |
+| `tests/fixtures/site/transition-proof-surface.json` | Single-source Site status fixture. |
+| `tests/fixtures/site/transition-discovery-map.json` | Transition discovery and element-page fixture. |
+| `tests/fixtures/site/transition-table-classes.json` | Transition class fixture. |
+| `tests/fixtures/site/site-public-surface-contract.json` | Public page and mobile contract fixture. |
+| `README.md` | Bundle explanation. |
 | `bundle_manifest.json` | Bundle manifest. |
 
-## Run Stage 6 Through the Existing Workflow
+## Run Through Existing Workflow
 
-Open GitHub Actions for `formalism-tests`.
-
-Select:
+Use:
 
 ```text
-Data Continuation Tests
+Actions
+→ Data Continuation Tests
+→ Run workflow
 ```
 
-Click:
-
-```text
-Run workflow
-```
-
-Use these inputs:
+Inputs:
 
 ```text
 task_manifest = tools/tasks/formalism_tests_tasks.json
-task_id       = stage6_unified_gate_tests
+task_id       = transition_table_public_surface_tests
 ```
 
-The workflow runs:
+The existing workflow runs:
 
 ```bash
-python tools/run_declared_tasks.py tools/tasks/formalism_tests_tasks.json --task-id stage6_unified_gate_tests
+python tools/run_declared_tasks.py tools/tasks/formalism_tests_tasks.json --task-id transition_table_public_surface_tests
 ```
 
 The declared task runs:
 
 ```bash
-python tools/run_stage6_unified_gate_tests.py
+python tools/run_transition_table_public_surface_tests.py
 ```
 
-Expected result:
+Expected output:
 
-```json
-{
-  "success": true,
-  "candidate_count": 10
-}
+```text
+reports/transition_table_public_surface_report.json
 ```
 
-## Boundary Rule
+## What This Validates
 
-Do not add a workflow for Stage 6.
+```text
+Stage 6 status is verified.
+Stage 6 result contains 10 candidates and 320 assertions.
+At least 12 elements are unlocked at Level 5.
+Every mapped element has detail-page metadata.
+Transition classes include RESET_BOUNDARY and EVOLVE_BOUNDARY.
+The public table has a mobile presentation contract.
+One shared status source controls all transition status pages.
+```
 
-The existing workflow is the execution surface. The declared-task manifest is the extension point.
+## Authority Boundary
+
+```text
+formalism-tests produces receipts.
+Site publishes receipts.
+Site must not become the authority for receipts.
+```
