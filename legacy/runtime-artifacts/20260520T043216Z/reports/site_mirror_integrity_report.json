@@ -1,0 +1,14 @@
+{
+  "assertion_count": 98,
+  "current_stage": "Stage 6",
+  "element_count": 16,
+  "message": "Site mirror integrity validation passed.",
+  "representation_non_consequence_status": "Covered",
+  "schema": "stegverse_site_mirror_integrity_report.v1",
+  "single_status_source": "data/formalism-tests/transition-proof-surface.json",
+  "stage6_assertion_count": 320,
+  "stage6_candidate_count": 10,
+  "success": true,
+  "transition_class_count": 10,
+  "unlocked_level_5_count": 13
+}
