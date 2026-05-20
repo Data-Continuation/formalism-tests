@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "0.6.0",
+  "manifest_version": "0.6.1",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -12,7 +12,7 @@
         "tools/apply_runtime_artifact_rules.py",
         "tools/rules/runtime_artifact_rules.json"
       ],
-      "expected_outputs": {}
+      "expected_outputs": []
     },
     {
       "task_id": "continuation_gate",
@@ -22,9 +22,9 @@
         "python",
         "src/continuation_gate.py"
       ],
-      "expected_outputs": {
-        "continuation_gate_report.json": true
-      }
+      "expected_outputs": [
+        "continuation_gate_report.json"
+      ]
     },
     {
       "task_id": "compound_continuation_gate",
@@ -34,10 +34,10 @@
         "python",
         "src/compound_continuation_gate.py"
       ],
-      "expected_outputs": {
-        "reports/compound_receipts.jsonl": true,
-        "reports/compound_continuation_report.md": true
-      }
+      "expected_outputs": [
+        "reports/compound_receipts.jsonl",
+        "reports/compound_continuation_report.md"
+      ]
     },
     {
       "task_id": "transition_table_gate",
@@ -47,10 +47,10 @@
         "python",
         "src/transition_table_gate.py"
       ],
-      "expected_outputs": {
-        "reports/transition_table_receipts.jsonl": true,
-        "reports/transition_table_report.md": true
-      }
+      "expected_outputs": [
+        "reports/transition_table_receipts.jsonl",
+        "reports/transition_table_report.md"
+      ]
     },
     {
       "task_id": "boundary_transition_gate",
@@ -60,10 +60,10 @@
         "python",
         "src/boundary_transition_gate.py"
       ],
-      "expected_outputs": {
-        "reports/boundary_transition_receipts.jsonl": true,
-        "reports/boundary_transition_report.md": true
-      }
+      "expected_outputs": [
+        "reports/boundary_transition_receipts.jsonl",
+        "reports/boundary_transition_report.md"
+      ]
     },
     {
       "task_id": "stage6_unified_gate_tests",
@@ -75,7 +75,7 @@
         "pytest",
         "tests/test_stage6_unified_gate.py"
       ],
-      "expected_outputs": {}
+      "expected_outputs": []
     }
   ]
 }
