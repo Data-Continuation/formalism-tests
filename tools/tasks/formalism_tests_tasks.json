@@ -1,141 +1,105 @@
 {
-  "schema": "stegverse_declared_task_manifest.v1",
-  "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "1.1.1",
+  "schema": "stegverse.declared_tasks.v1",
+  "task_manifest": "tools/tasks/formalism_tests_tasks.json",
+  "policy": {
+    "no_new_workflow_unless_existing_cannot_express_task": true,
+    "presentation_pages_do_not_become_proof_authority": true,
+    "site_mirror_update_runs_after_stage6_passes": true
+  },
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
-      "description": "Apply runtime artifact rules before running tests so root-level generated files are moved into legacy archive storage.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/apply_runtime_artifact_rules.py",
-        "tools/rules/runtime_artifact_rules.json"
-      ],
-      "expected_outputs": []
+      "description": "Archive old runtime outputs to legacy/runtime-artifacts/.",
+      "runner": "tools/apply_runtime_artifact_rules.py",
+      "runner_args": ["tools/rules/runtime_artifact_rules.json"]
     },
     {
       "task_id": "continuation_gate",
-      "description": "Run the base continuation gate.",
       "enabled": true,
-      "command": [
-        "python",
-        "src/continuation_gate.py"
-      ],
-      "expected_outputs": [
-        "continuation_gate_report.json"
-      ]
+      "description": "Stage 2 data continuation gate.",
+      "runner": "src/validate_expected_outcomes.py"
     },
     {
       "task_id": "compound_continuation_gate",
-      "description": "Run Stage 3 compound continuation proof cases.",
       "enabled": true,
-      "command": [
-        "python",
-        "src/compound_continuation_gate.py"
-      ],
-      "expected_outputs": [
-        "reports/compound_receipts.jsonl",
-        "reports/compound_continuation_report.md"
-      ]
+      "description": "Stage 3 compound continuation gate.",
+      "runner": "src/compound_continuation_gate.py"
     },
     {
       "task_id": "transition_table_gate",
-      "description": "Run Stage 4 transition table integration proof cases.",
       "enabled": true,
-      "command": [
-        "python",
-        "src/transition_table_gate.py"
-      ],
-      "expected_outputs": [
-        "reports/transition_table_receipts.jsonl",
-        "reports/transition_table_report.md"
-      ]
+      "description": "Stage 4 transition table gate.",
+      "runner": "src/transition_table_gate.py"
     },
     {
       "task_id": "boundary_transition_gate",
-      "description": "Run Stage 5 system-coherent boundary transition class proof cases.",
       "enabled": true,
-      "command": [
-        "python",
-        "src/boundary_transition_gate.py"
-      ],
-      "expected_outputs": [
-        "reports/boundary_transition_receipts.jsonl",
-        "reports/boundary_transition_report.md"
-      ]
+      "description": "Stage 5 boundary transition gate.",
+      "runner": "src/boundary_transition_gate.py"
     },
     {
       "task_id": "stage6_unified_gate_tests",
-      "description": "Run Stage 6 Admissible Existence Unified Gate fixture tests through the existing declared-task workflow without external dependencies.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/run_stage6_unified_gate_tests.py"
-      ],
-      "expected_outputs": []
+      "description": "Stage 6 unified AE gate — 10 candidates, 320 assertions.",
+      "runner": "tools/run_stage6_unified_gate_tests.py",
+      "outputs": [
+        "reports/stage6_unified_gate_report.json",
+        "reports/stage6_unified_gate_receipts.jsonl",
+        "reports/current/stage6_unified_gate_report.json"
+      ]
     },
     {
       "task_id": "transition_table_public_surface_tests",
-      "description": "Validate Transition Table public proof-surface completeness, element coverage, links, mobile contract, and single-source status behavior.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/run_transition_table_public_surface_tests.py"
-      ],
-      "expected_outputs": [
-        "reports/transition_table_public_surface_report.json"
-      ]
+      "description": "Validate transition table as public proof surface.",
+      "runner": "tools/run_transition_table_public_surface_tests.py"
     },
     {
       "task_id": "representation_non_consequence_tests",
-      "description": "Directly validate Representation Non-Consequence with representation-only and role-bound transition receipts.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/run_representation_non_consequence_tests.py"
-      ],
-      "expected_outputs": [
-        "reports/representation_non_consequence_report.json",
-        "reports/representation_non_consequence_report.md",
-        "reports/representation_non_consequence_receipts.jsonl"
-      ]
+      "description": "Representation Non-Consequence direct coverage.",
+      "runner": "tools/run_representation_non_consequence_tests.py"
     },
     {
       "task_id": "site_mirror_integrity_tests",
-      "description": "Validate that the Site public mirror matches the latest formalism-tests proof surface and does not drift.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/run_site_mirror_integrity_tests.py"
-      ],
-      "expected_outputs": [
-        "reports/site_mirror_integrity_report.json"
-      ]
+      "description": "Validate Site mirror alignment with proof authority.",
+      "runner": "tools/run_site_mirror_integrity_tests.py"
     },
     {
       "task_id": "current_report_preservation_tests",
-      "description": "Preserve latest successful proof reports under stable reports/current paths while allowing runtime archival to continue.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/run_current_report_preservation_tests.py"
-      ],
-      "expected_outputs": [
-        "reports/current_report_preservation_report.json"
-      ]
+      "description": "Validate stable reports/current/ preservation.",
+      "runner": "tools/run_current_report_preservation_tests.py"
     },
     {
       "task_id": "theorem_map_consistency_tests",
-      "description": "Validate that root and reports/current theorem maps agree with latest successful proof reports. Uses fixture fallbacks when run standalone.",
       "enabled": true,
-      "command": [
-        "python",
-        "tools/run_theorem_map_consistency_tests.py"
+      "description": "Validate root and current theorem maps agree with latest reports.",
+      "runner": "tools/run_theorem_map_consistency_tests.py"
+    },
+    {
+      "task_id": "site_mirror_update",
+      "enabled": true,
+      "description": "Read verified proof outputs from reports/current/ and write updated data files to Site/data/formalism-tests/. Runs automatically after stage6_unified_gate_tests passes. This is the only path by which Site data files are updated.",
+      "runner": "tools/run_site_mirror_update.py",
+      "depends_on": [
+        "stage6_unified_gate_tests",
+        "site_mirror_integrity_tests",
+        "current_report_preservation_tests"
       ],
-      "expected_outputs": [
-        "reports/theorem_map_consistency_report.json"
-      ]
+      "outputs": [
+        "reports/site_mirror_update_receipt.json"
+      ],
+      "authority_note": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
+    },
+    {
+      "task_id": "element_dependency_closure_tests",
+      "enabled": false,
+      "description": "Validate that every unlocked transition element has declared dependencies and no Level 5 element depends on an uncovered element without an explicit boundary. Enables formal AI Block composition verification.",
+      "runner": "tools/run_element_dependency_closure_tests.py",
+      "status": "next_target"
     }
   ]
 }
