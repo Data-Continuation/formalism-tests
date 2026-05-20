@@ -1,12 +1,16 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "site-mirror-integrity-test-bundle",
+  "bundle_id": "current-report-preservation-test-bundle",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Validate that the Site public mirror matches the latest formalism-tests proof surface.",
+  "purpose": "Preserve latest successful proof reports under stable reports/current paths and update theorem coverage map.",
   "files": [
     {
-      "path": "tools/run_site_mirror_integrity_tests.py",
+      "path": "tools/run_current_report_preservation_tests.py",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/current_report_preservation_policy.json",
       "action": "create"
     },
     {
@@ -14,32 +18,8 @@
       "action": "replace"
     },
     {
-      "path": "tests/fixtures/site_mirror/transition-proof-surface.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site_mirror/stage6-unified-gate-results.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site_mirror/transition-discovery-map.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site_mirror/transition-table-classes.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site_mirror/representation-non-consequence-report.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site_mirror/theorem-coverage-summary.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/site_mirror/site-mirror-page-contract.json",
-      "action": "create"
+      "path": "THEOREM_PROOF_MAP.md",
+      "action": "replace"
     },
     {
       "path": "README.md",
@@ -50,6 +30,6 @@
       "action": "include"
     }
   ],
-  "declared_task": "site_mirror_integrity_tests",
-  "expected_output": "reports/site_mirror_integrity_report.json"
+  "declared_task": "current_report_preservation_tests",
+  "expected_output": "reports/current_report_preservation_report.json"
 }
