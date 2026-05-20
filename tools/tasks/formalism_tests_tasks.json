@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "1.0.0",
+  "manifest_version": "1.1.0",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -123,6 +123,18 @@
       ],
       "expected_outputs": [
         "reports/current_report_preservation_report.json"
+      ]
+    },
+    {
+      "task_id": "theorem_map_consistency_tests",
+      "description": "Validate that root and reports/current theorem maps agree with latest successful proof reports.",
+      "enabled": true,
+      "command": [
+        "python",
+        "tools/run_theorem_map_consistency_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/theorem_map_consistency_report.json"
       ]
     }
   ]
