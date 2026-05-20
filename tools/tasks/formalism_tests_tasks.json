@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "0.6.1",
+  "manifest_version": "0.6.2",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -67,13 +67,11 @@
     },
     {
       "task_id": "stage6_unified_gate_tests",
-      "description": "Run Stage 6 Admissible Existence Unified Gate fixture tests through the existing declared-task workflow.",
+      "description": "Run Stage 6 Admissible Existence Unified Gate fixture tests through the existing declared-task workflow without external dependencies.",
       "enabled": true,
       "command": [
         "python",
-        "-m",
-        "pytest",
-        "tests/test_stage6_unified_gate.py"
+        "tools/run_stage6_unified_gate_tests.py"
       ],
       "expected_outputs": []
     }
