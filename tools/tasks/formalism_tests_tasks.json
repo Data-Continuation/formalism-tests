@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "0.9.0",
+  "manifest_version": "1.0.0",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -111,6 +111,18 @@
       ],
       "expected_outputs": [
         "reports/site_mirror_integrity_report.json"
+      ]
+    },
+    {
+      "task_id": "current_report_preservation_tests",
+      "description": "Preserve latest successful proof reports under stable reports/current paths while allowing runtime archival to continue.",
+      "enabled": true,
+      "command": [
+        "python",
+        "tools/run_current_report_preservation_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/current_report_preservation_report.json"
       ]
     }
   ]
