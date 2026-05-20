@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "0.7.0",
+  "manifest_version": "0.8.0",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -85,6 +85,20 @@
       ],
       "expected_outputs": [
         "reports/transition_table_public_surface_report.json"
+      ]
+    },
+    {
+      "task_id": "representation_non_consequence_tests",
+      "description": "Directly validate Representation Non-Consequence with representation-only and role-bound transition receipts.",
+      "enabled": true,
+      "command": [
+        "python",
+        "tools/run_representation_non_consequence_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/representation_non_consequence_report.json",
+        "reports/representation_non_consequence_report.md",
+        "reports/representation_non_consequence_receipts.jsonl"
       ]
     }
   ]
