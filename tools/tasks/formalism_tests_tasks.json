@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "0.6.2",
+  "manifest_version": "0.7.0",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -74,6 +74,18 @@
         "tools/run_stage6_unified_gate_tests.py"
       ],
       "expected_outputs": []
+    },
+    {
+      "task_id": "transition_table_public_surface_tests",
+      "description": "Validate Transition Table public proof-surface completeness, element coverage, links, mobile contract, and single-source status behavior.",
+      "enabled": true,
+      "command": [
+        "python",
+        "tools/run_transition_table_public_surface_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/transition_table_public_surface_report.json"
+      ]
     }
   ]
 }
