@@ -1,0 +1,43 @@
+{
+  "schema": "stegverse_bundle_manifest.v1",
+  "name": "stage6-complete-first-test-bundle",
+  "stage": "Stage 6",
+  "theorem_basis": "Admissible Existence Unified Gate",
+  "purpose": "Install the complete first Stage 6 test set derived from the completed Stage 6 candidate fixture without adding or modifying workflows.",
+  "contains_workflows": false,
+  "workflow_files": [],
+  "candidate_count": 10,
+  "pytest_test_count": 94,
+  "files": [
+    {
+      "path": "tests/fixtures/stage6_candidates.json",
+      "bytes": 23632,
+      "sha256": "58b821f567fbc122e85ac6a890103df14d907ecd007b9ff44e839c9b3b6618a4"
+    },
+    {
+      "path": "tests/test_stage6_unified_gate.py",
+      "bytes": 17006,
+      "sha256": "730ff07c67eca407c5ca391ef6883c3bb04c2fbed187ee0294f79dc0ce3a1ad5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7324,
+      "sha256": "e815510000fce463aa3fa7f4a56bfe1f8b886e1373cad2531977f684fe874b91"
+    },
+    {
+      "path": "bundle_manifest.json",
+      "bytes": null,
+      "sha256": "self-referential-hash-omitted"
+    }
+  ],
+  "commands": [
+    "python -m pytest tests/test_stage6_unified_gate.py"
+  ],
+  "expected_result": "94 passed",
+  "notes": [
+    "The number of tests is derived from the completed Stage 6 candidates and the required invariants implied by those candidates.",
+    "No files are installed under .github/workflows/.",
+    "validated_decision and validation_status remain reserved for a later receipt-producing validator.",
+    "The manifest self-hash is intentionally omitted to avoid self-referential hash instability."
+  ]
+}
