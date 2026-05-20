@@ -1,16 +1,12 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "representation-non-consequence-test-bundle",
+  "bundle_id": "site-mirror-integrity-test-bundle",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Directly validate Representation Non-Consequence and update theorem coverage.",
+  "purpose": "Validate that the Site public mirror matches the latest formalism-tests proof surface.",
   "files": [
     {
-      "path": "tests/fixtures/representation_non_consequence_cases.json",
-      "action": "create"
-    },
-    {
-      "path": "tools/run_representation_non_consequence_tests.py",
+      "path": "tools/run_site_mirror_integrity_tests.py",
       "action": "create"
     },
     {
@@ -18,8 +14,32 @@
       "action": "replace"
     },
     {
-      "path": "THEOREM_PROOF_MAP.md",
-      "action": "replace"
+      "path": "tests/fixtures/site_mirror/transition-proof-surface.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site_mirror/stage6-unified-gate-results.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site_mirror/transition-discovery-map.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site_mirror/transition-table-classes.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site_mirror/representation-non-consequence-report.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site_mirror/theorem-coverage-summary.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/site_mirror/site-mirror-page-contract.json",
+      "action": "create"
     },
     {
       "path": "README.md",
@@ -30,10 +50,6 @@
       "action": "include"
     }
   ],
-  "declared_task": "representation_non_consequence_tests",
-  "expected_outputs": [
-    "reports/representation_non_consequence_report.json",
-    "reports/representation_non_consequence_report.md",
-    "reports/representation_non_consequence_receipts.jsonl"
-  ]
+  "declared_task": "site_mirror_integrity_tests",
+  "expected_output": "reports/site_mirror_integrity_report.json"
 }
