@@ -1,69 +1,81 @@
 {
-  "name": "formalism-tests declared tasks",
-  "version": "0.5.0",
-  "description": "Repo-local task declarations for Data-Continuation/formalism-tests. The workflow remains generic; this file declares what should run.",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "manifest_name": "formalism-tests declared tasks",
+  "manifest_version": "0.6.0",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
-      "enabled": true,
       "description": "Apply runtime artifact rules before running tests so root-level generated files are moved into legacy archive storage.",
+      "enabled": true,
       "command": [
         "python",
         "tools/apply_runtime_artifact_rules.py",
         "tools/rules/runtime_artifact_rules.json"
       ],
-      "expected_outputs": []
+      "expected_outputs": {}
     },
     {
       "task_id": "continuation_gate",
-      "enabled": true,
       "description": "Run the base continuation gate.",
+      "enabled": true,
       "command": [
         "python",
         "src/continuation_gate.py"
       ],
-      "expected_outputs": [
-        "continuation_gate_report.json"
-      ]
+      "expected_outputs": {
+        "continuation_gate_report.json": true
+      }
     },
     {
       "task_id": "compound_continuation_gate",
-      "enabled": true,
       "description": "Run Stage 3 compound continuation proof cases.",
+      "enabled": true,
       "command": [
         "python",
         "src/compound_continuation_gate.py"
       ],
-      "expected_outputs": [
-        "reports/compound_receipts.jsonl",
-        "reports/compound_continuation_report.md"
-      ]
+      "expected_outputs": {
+        "reports/compound_receipts.jsonl": true,
+        "reports/compound_continuation_report.md": true
+      }
     },
     {
       "task_id": "transition_table_gate",
-      "enabled": true,
       "description": "Run Stage 4 transition table integration proof cases.",
+      "enabled": true,
       "command": [
         "python",
         "src/transition_table_gate.py"
       ],
-      "expected_outputs": [
-        "reports/transition_table_receipts.jsonl",
-        "reports/transition_table_report.md"
-      ]
+      "expected_outputs": {
+        "reports/transition_table_receipts.jsonl": true,
+        "reports/transition_table_report.md": true
+      }
     },
     {
       "task_id": "boundary_transition_gate",
-      "enabled": true,
       "description": "Run Stage 5 system-coherent boundary transition class proof cases.",
+      "enabled": true,
       "command": [
         "python",
         "src/boundary_transition_gate.py"
       ],
-      "expected_outputs": [
-        "reports/boundary_transition_receipts.jsonl",
-        "reports/boundary_transition_report.md"
-      ]
+      "expected_outputs": {
+        "reports/boundary_transition_receipts.jsonl": true,
+        "reports/boundary_transition_report.md": true
+      }
+    },
+    {
+      "task_id": "stage6_unified_gate_tests",
+      "description": "Run Stage 6 Admissible Existence Unified Gate fixture tests through the existing declared-task workflow.",
+      "enabled": true,
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "tests/test_stage6_unified_gate.py"
+      ],
+      "expected_outputs": {}
     }
   ]
 }
