@@ -1,19 +1,20 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "stage6-existing-workflow-task-bundle",
+  "bundle_id": "stage6-existing-workflow-task-bundle-fix1",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Add Stage 6 tests to the existing declared-task workflow without creating a new workflow.",
+  "purpose": "Fix declared-task manifest so Stage 6 runs through the existing workflow.",
+  "fix_reason": "Declared-task runner requires expected_outputs to be a list.",
   "files": [
     {
       "path": "tools/tasks/formalism_tests_tasks.json",
       "action": "replace",
-      "description": "Full declared-task manifest replacement with stage6_unified_gate_tests added."
+      "description": "Full declared-task manifest replacement with list-form expected_outputs."
     },
     {
       "path": "README.md",
       "action": "include",
-      "description": "Instructions for running Stage 6 through the existing workflow."
+      "description": "Fix explanation and verification checklist."
     },
     {
       "path": "bundle_manifest.json",
@@ -21,16 +22,15 @@
       "description": "Bundle manifest."
     }
   ],
-  "workflow_behavior": {
-    "existing_workflow_name": "Data Continuation Tests",
-    "task_manifest_input": "tools/tasks/formalism_tests_tasks.json",
-    "stage6_task_id": "stage6_unified_gate_tests",
-    "stage6_command": [
+  "stage6_task": {
+    "task_id": "stage6_unified_gate_tests",
+    "command": [
       "python",
       "-m",
       "pytest",
       "tests/test_stage6_unified_gate.py"
-    ]
+    ],
+    "expected_outputs": []
   },
   "expected_result": "94 passed"
 }
