@@ -27,6 +27,7 @@ transition_table_public_surface_tests
 representation_non_consequence_tests
 site_mirror_integrity_tests
 current_report_preservation_tests
+theorem_map_consistency_tests
 ```
 
 ## Current Artifacts
@@ -43,15 +44,18 @@ reports/representation_non_consequence_report.json
 reports/representation_non_consequence_report.md
 reports/transition_table_public_surface_report.json
 reports/site_mirror_integrity_report.json
+reports/current_report_preservation_report.json
 reports/current/
 tests/fixtures/representation_non_consequence_cases.json
 tests/fixtures/site/
 tests/fixtures/site_mirror/
+tests/fixtures/current_report_preservation_policy.json
 tools/run_stage6_unified_gate_tests.py
 tools/run_transition_table_public_surface_tests.py
 tools/run_representation_non_consequence_tests.py
 tools/run_site_mirror_integrity_tests.py
 tools/run_current_report_preservation_tests.py
+tools/run_theorem_map_consistency_tests.py
 tools/tasks/formalism_tests_tasks.json
 tools/run_declared_tasks.py
 ```
@@ -75,6 +79,7 @@ tools/run_declared_tasks.py
 | Transition Table Public Surface | Public surface runner validates 10 transition classes, 16 elements, 12+ unlocked Level 5 elements, single-source status, and mobile contract. | Covered |
 | Site Mirror Integrity | Site mirror runner validates Stage 6 status, public result alignment, Representation Non-Consequence coverage, element pages, mobile contract, and duplicate receipt handling. | Covered |
 | Current Report Preservation | Current-report runner preserves latest successful reports under `reports/current/` while runtime artifact archiving remains available. | Covered |
+| Theorem Map Consistency | Theorem-map runner verifies root and current theorem maps agree with latest successful proof reports. | Covered |
 
 ## Stage 2 Proof Surface
 
@@ -192,6 +197,7 @@ recoverable convergence
 system-coherent boundary evolution
 public mirror integrity
 current-report preservation
+theorem-map consistency
 ```
 
 The Transition Table is now a validated public map of admissible transition classes, theorem coverage, and consequence-bearing state movement.
