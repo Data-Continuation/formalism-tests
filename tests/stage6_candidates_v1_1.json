@@ -1,0 +1,750 @@
+{
+  "schema": "stegverse_stage6_candidates.v1.1",
+  "stage": "Stage 6",
+  "theorem_basis": "Admissible Existence Unified Gate",
+  "gate_formula": "ALLOW(u) iff IW_tau(S,u) subset A_total AND RE(S -> Phi(S,u)) <= RE_max",
+  "components_covered": [
+    "AE",
+    "BC",
+    "CHF",
+    "DC",
+    "DaCo",
+    "Triad"
+  ],
+  "new_decisions": [
+    "RESET_BOUNDARY",
+    "EVOLVE_BOUNDARY"
+  ],
+  "note": "Stage 6 integrates all prior stages. Every candidate must specify both IW containment and RE bound. Candidates that fail IW containment fail closed. Candidates that exceed RE_max fail closed. Candidates that produce recoverable non-convergence route to RESET_BOUNDARY or EVOLVE_BOUNDARY.",
+  "candidates": [
+    {
+      "transition_id": "T-AE-UNIFIED-ALLOW-001",
+      "transition_name": "ae_unified_gate_admissible_transition",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate",
+      "role": "unified_admissibility_positive_control",
+      "periodic_table_coordinates": {
+        "D": "MODEL",
+        "A": "A7",
+        "R": "R2",
+        "I": "low",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_STATE_CURRENT",
+          "P_HARM_BOUNDED",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "bounded_local",
+        "V": "iw_containment + re_bound",
+        "H": "scope_violation"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.12,
+          0.36
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.24,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.18,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "consequence_mass": 0.28,
+      "legitimacy_capacity_required": 0.72,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.81,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "paired-boundary",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "BC": "ALLOW",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "ALLOW",
+        "Triad": "ALLOW"
+      },
+      "basis": "IW contained within A_total; RE within RE_max; all component gates ALLOW; admissibility contract satisfied",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "ALLOW",
+      "expected_decision": "ALLOW",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-IW-BREACH-001",
+      "transition_name": "ae_unified_gate_iw_breach",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — IW Containment Failure",
+      "role": "iw_containment_failure_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R3",
+        "I": "medium",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_HARM_BOUNDED",
+          "P_FAIL_CLOSED"
+        ],
+        "C": "cross_boundary",
+        "V": "iw_containment",
+        "H": "uncontained_inference_propagation"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.0,
+          1.4
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": false,
+        "iw_width": 1.4,
+        "iw_minimum": 0.05,
+        "breach_margin": 0.4
+      },
+      "re_bound": {
+        "re_score": 0.44,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "consequence_mass": 0.71,
+      "legitimacy_capacity_required": 0.88,
+      "recoverability_floor": 0.5,
+      "recoverability_score": 0.52,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "irreversible-consequence",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "BC": "FAIL_CLOSED",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "FAIL_CLOSED",
+        "Triad": "FAIL_CLOSED"
+      },
+      "basis": "IW breaches A_total boundary by 0.40; inference propagation exceeds admissible existence envelope; RE within bound but IW containment failure dominates",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "FAIL_CLOSED",
+      "expected_decision": "FAIL_CLOSED",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-RE-BREACH-001",
+      "transition_name": "ae_unified_gate_re_breach",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — RE Bound Failure",
+      "role": "reverse_entropy_breach_governor",
+      "periodic_table_coordinates": {
+        "D": "MODEL",
+        "A": "A7",
+        "R": "R4",
+        "I": "high",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_STATE_CURRENT",
+          "P_FAIL_CLOSED",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "system_wide",
+        "V": "re_bound",
+        "H": "irreversible_entropy_accumulation"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.1,
+          0.9
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.8,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.73,
+        "re_max": 0.5,
+        "within_bound": false,
+        "breach_amount": 0.23
+      },
+      "consequence_mass": 0.85,
+      "legitimacy_capacity_required": 0.92,
+      "recoverability_floor": 0.5,
+      "recoverability_score": 0.29,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "irreversible-consequence",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "BC": "FAIL_CLOSED",
+        "CHF": "FAIL_CLOSED",
+        "DC": "ALLOW",
+        "DaCo": "FAIL_CLOSED",
+        "Triad": "FAIL_CLOSED"
+      },
+      "basis": "RE exceeds RE_max by 0.23; transition would accumulate irreversible entropy beyond admissible bound; recoverability below floor",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "FAIL_CLOSED",
+      "expected_decision": "FAIL_CLOSED",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-DUAL-BREACH-001",
+      "transition_name": "ae_unified_gate_dual_breach",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — Dual Failure",
+      "role": "dual_condition_failure_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R5",
+        "I": "critical",
+        "E": [
+          "P_FAIL_CLOSED",
+          "P_NO_SANDBOX_ESCAPE",
+          "P_NO_UNAUTHORIZED_SELF_PRESERVATION"
+        ],
+        "C": "ecosystem_wide",
+        "V": "iw_containment + re_bound",
+        "H": "uncontained_irreversible_consequence"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.0,
+          1.8
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": false,
+        "iw_width": 1.8,
+        "breach_margin": 0.8
+      },
+      "re_bound": {
+        "re_score": 0.91,
+        "re_max": 0.5,
+        "within_bound": false,
+        "breach_amount": 0.41
+      },
+      "consequence_mass": 0.97,
+      "legitimacy_capacity_required": 0.99,
+      "recoverability_floor": 0.5,
+      "recoverability_score": 0.04,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "multi-agent-cascade",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "BC": "FAIL_CLOSED",
+        "CHF": "FAIL_CLOSED",
+        "DC": "FAIL_CLOSED",
+        "DaCo": "FAIL_CLOSED",
+        "Triad": "FAIL_CLOSED"
+      },
+      "basis": "Both IW containment and RE bound fail; cascade consequence across all component layers; recoverability near zero; all gates FAIL_CLOSED",
+      "family_allowed_outcomes": [
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "FAIL_CLOSED",
+      "expected_decision": "FAIL_CLOSED",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-RESET-001",
+      "transition_name": "ae_unified_gate_boundary_reset",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — Governed Boundary Reset",
+      "role": "recoverable_non_convergence_reset_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A4",
+        "R": "R2",
+        "I": "medium",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_STATE_CURRENT",
+          "P_RECEIPT_REQUIRED",
+          "P_APPEAL_OR_REVIEW"
+        ],
+        "C": "bounded_system",
+        "V": "convergence_check + recoverability",
+        "H": "recoverable_non_convergence_loop"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.05,
+          0.55
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.5,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.38,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "consequence_mass": 0.44,
+      "legitimacy_capacity_required": 0.78,
+      "recoverability_floor": 0.5,
+      "recoverability_score": 0.66,
+      "convergence_score": 0.12,
+      "convergence_minimum": 0.3,
+      "convergence_failure": true,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "reset_convergence_check",
+      "multi_body_coupling_class": "authority-transfer",
+      "component_gate_results": {
+        "AE": "RESET_BOUNDARY",
+        "BC": "RESET_BOUNDARY",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "RESET_BOUNDARY",
+        "Triad": "ALLOW"
+      },
+      "basis": "IW contained; RE within bound; recoverability above floor; but convergence score 0.12 is below minimum 0.30 — system is locally recoverable but globally non-convergent; governed boundary reset is admissible",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "RESET_BOUNDARY",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "RESET_BOUNDARY",
+      "expected_decision": "RESET_BOUNDARY",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-EVOLVE-001",
+      "transition_name": "ae_unified_gate_boundary_evolution",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — Governed Boundary Evolution",
+      "role": "boundary_coherence_evolution_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A4",
+        "R": "R2",
+        "I": "medium",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_STATE_CURRENT",
+          "P_CONSENT_VALID",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "bounded_system",
+        "V": "coherence_check + recoverability + convergence",
+        "H": "purpose_inverting_boundary"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.08,
+          0.62
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.54,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.31,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "consequence_mass": 0.39,
+      "legitimacy_capacity_required": 0.8,
+      "recoverability_floor": 0.5,
+      "recoverability_score": 0.71,
+      "convergence_score": 0.58,
+      "convergence_minimum": 0.3,
+      "convergence_failure": false,
+      "coherence_score": 0.21,
+      "coherence_minimum": 0.4,
+      "coherence_failure": true,
+      "purpose_convergence_test": "fail",
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "evolution_coherence_check",
+      "multi_body_coupling_class": "coherence-coupled",
+      "component_gate_results": {
+        "AE": "EVOLVE_BOUNDARY",
+        "BC": "EVOLVE_BOUNDARY",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "ALLOW",
+        "Triad": "EVOLVE_BOUNDARY"
+      },
+      "basis": "IW contained; RE within bound; recoverability and convergence above minimums; but coherence score 0.21 is below minimum 0.40 and purpose-convergence test fails; boundary no longer coherent with entity-system; governed evolution is admissible",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "EVOLVE_BOUNDARY",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "EVOLVE_BOUNDARY",
+      "expected_decision": "EVOLVE_BOUNDARY",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-AI-BLOCK-ALLOW-001",
+      "transition_name": "ae_unified_gate_ai_block_admissible",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — AI Block Admissibility",
+      "role": "ai_block_positive_control",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A7",
+        "R": "R1",
+        "I": "low",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_NO_SANDBOX_ESCAPE",
+          "P_NO_UNAUTHORIZED_SELF_PRESERVATION",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "scoped_block",
+        "V": "block_composition + iw_containment + re_bound",
+        "H": "scope_violation"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.1,
+          0.4
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.3,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.11,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "ai_block": {
+        "block_id": "BLOCK-STEGCLAW-V1",
+        "composed_from": [
+          "T-CONT-COMPOUND-INFO-001",
+          "T-BC-STABLE-001",
+          "T-DC-BOUNDARY-RESET-001"
+        ],
+        "all_elements_validated": true,
+        "block_scope": [
+          "file:write",
+          "receipt:emit",
+          "bundle:install"
+        ],
+        "scope_respected": true
+      },
+      "consequence_mass": 0.22,
+      "legitimacy_capacity_required": 0.7,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.88,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "paired-boundary",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "BC": "ALLOW",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "ALLOW",
+        "Triad": "ALLOW"
+      },
+      "basis": "AI Block composed from validated Stage 5 elements; all elements validated; IW contained; RE within bound; scope respected; all component gates ALLOW",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "ALLOW",
+      "expected_decision": "ALLOW",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-AI-BLOCK-ESCAPE-001",
+      "transition_name": "ae_unified_gate_ai_block_scope_violation",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — AI Block Scope Violation",
+      "role": "ai_block_scope_violation_governor",
+      "periodic_table_coordinates": {
+        "D": "AI",
+        "A": "A6",
+        "R": "R5",
+        "I": "critical",
+        "E": [
+          "P_NO_SANDBOX_ESCAPE",
+          "P_NO_UNAUTHORIZED_SELF_PRESERVATION",
+          "P_FAIL_CLOSED"
+        ],
+        "C": "beyond_block_scope",
+        "V": "block_scope_check",
+        "H": "unauthorized_capability_acquisition"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.0,
+          1.6
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": false,
+        "iw_width": 1.6,
+        "breach_margin": 0.6
+      },
+      "re_bound": {
+        "re_score": 0.82,
+        "re_max": 0.5,
+        "within_bound": false,
+        "breach_amount": 0.32
+      },
+      "ai_block": {
+        "block_id": "BLOCK-STEGCLAW-V1",
+        "composed_from": [
+          "T-CONT-COMPOUND-INFO-001",
+          "T-BC-STABLE-001",
+          "T-DC-BOUNDARY-RESET-001"
+        ],
+        "all_elements_validated": true,
+        "block_scope": [
+          "file:write",
+          "receipt:emit",
+          "bundle:install"
+        ],
+        "attempted_scope": [
+          "file:write",
+          "receipt:emit",
+          "bundle:install",
+          "workflow:create",
+          "credential:acquire",
+          "sandbox:escape"
+        ],
+        "scope_respected": false,
+        "scope_violation": true,
+        "violation_type": "unauthorized_capability_acquisition"
+      },
+      "consequence_mass": 0.96,
+      "legitimacy_capacity_required": 0.99,
+      "recoverability_floor": 0.5,
+      "recoverability_score": 0.06,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "multi-agent-cascade",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "BC": "FAIL_CLOSED",
+        "CHF": "FAIL_CLOSED",
+        "DC": "FAIL_CLOSED",
+        "DaCo": "FAIL_CLOSED",
+        "Triad": "FAIL_CLOSED"
+      },
+      "basis": "AI Block scope violated; attempted capabilities exceed block definition; IW uncontained; RE exceeds max; continuity pressure does not create authority; all gates FAIL_CLOSED",
+      "family_allowed_outcomes": [
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "FAIL_CLOSED",
+      "expected_decision": "FAIL_CLOSED",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-FINCO-CHAIN-001",
+      "transition_name": "ae_unified_gate_finco_chain_valid",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — FinCo Chain Compliance",
+      "role": "finco_chain_admissibility_governor",
+      "periodic_table_coordinates": {
+        "D": "FIN",
+        "A": "A3",
+        "R": "R2",
+        "I": "medium",
+        "E": [
+          "P_AUTHORITY_VALID",
+          "P_CONSENT_VALID",
+          "P_STATE_CURRENT",
+          "P_RECEIPT_REQUIRED"
+        ],
+        "C": "governed_value_transfer",
+        "V": "finco_chain + iw_containment + re_bound",
+        "H": "ungoverned_value_extraction"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.05,
+          0.45
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.4,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.22,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "finco_chain": {
+        "consent_receipt_valid": true,
+        "access_receipt_valid": true,
+        "use_receipt_valid": true,
+        "compensation_rule_defined": true,
+        "revocation_rule_defined": true,
+        "evidence_only": true,
+        "creates_entitlement": false,
+        "chain_intact": true,
+        "recoverability_delta": 0.65,
+        "recoverability_minimum": 0.4
+      },
+      "consequence_mass": 0.41,
+      "legitimacy_capacity_required": 0.82,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.74,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "authority-transfer",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "BC": "ALLOW",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "ALLOW",
+        "Triad": "ALLOW"
+      },
+      "basis": "FinCo receipt chain intact; consent valid; evidence_only true; creates_entitlement false; recoverability_delta above minimum; IW contained; RE within bound",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "ALLOW",
+      "expected_decision": "ALLOW",
+      "validated_decision": null,
+      "validation_status": null
+    },
+    {
+      "transition_id": "T-AE-UNIFIED-FINCO-CHAIN-BREAK-001",
+      "transition_name": "ae_unified_gate_finco_chain_broken",
+      "transition_family": "ae_unified_gate",
+      "theorem_basis": "Admissible Existence Unified Gate — FinCo Chain Failure",
+      "role": "finco_chain_failure_governor",
+      "periodic_table_coordinates": {
+        "D": "FIN",
+        "A": "A0",
+        "R": "R3",
+        "I": "high",
+        "E": [
+          "P_CONSENT_VALID",
+          "P_FAIL_CLOSED"
+        ],
+        "C": "ungoverned_value_transfer",
+        "V": "finco_chain",
+        "H": "private_state_consumed_without_attribution"
+      },
+      "iw_containment": {
+        "inference_window": [
+          0.05,
+          0.55
+        ],
+        "a_total": [
+          0.0,
+          1.0
+        ],
+        "contained": true,
+        "iw_width": 0.5,
+        "iw_minimum": 0.05
+      },
+      "re_bound": {
+        "re_score": 0.34,
+        "re_max": 0.5,
+        "within_bound": true
+      },
+      "finco_chain": {
+        "consent_receipt_valid": false,
+        "access_receipt_valid": false,
+        "use_receipt_valid": true,
+        "compensation_rule_defined": false,
+        "revocation_rule_defined": false,
+        "evidence_only": false,
+        "creates_entitlement": true,
+        "chain_intact": false,
+        "chain_failure_reason": "consent missing; compensation undefined; entitlement created without authority",
+        "recoverability_delta": 0.18,
+        "recoverability_minimum": 0.4
+      },
+      "consequence_mass": 0.58,
+      "legitimacy_capacity_required": 0.88,
+      "recoverability_floor": 0.4,
+      "recoverability_score": 0.43,
+      "commit_time_state_required": true,
+      "replay_semantics": "reconstruct_only",
+      "boundary_behavior": "unified_gate_check",
+      "multi_body_coupling_class": "authority-transfer",
+      "component_gate_results": {
+        "AE": "FAIL_CLOSED",
+        "BC": "ALLOW",
+        "CHF": "ALLOW",
+        "DC": "ALLOW",
+        "DaCo": "FAIL_CLOSED",
+        "Triad": "FAIL_CLOSED"
+      },
+      "basis": "FinCo chain broken; consent missing; compensation undefined; creates_entitlement true without authority; recoverability_delta below minimum; private state consumed as free exhaust",
+      "family_allowed_outcomes": [
+        "ALLOW",
+        "FAIL_CLOSED"
+      ],
+      "candidate_expected_outcome": "FAIL_CLOSED",
+      "expected_decision": "FAIL_CLOSED",
+      "validated_decision": null,
+      "validation_status": null
+    }
+  ],
+  "schema_refinement": {
+    "from": "verified_decision",
+    "to": "expected_decision",
+    "reason": "Candidate files declare expected outcomes; validator output should populate validated_decision and validation_status after replay."
+  }
+}
