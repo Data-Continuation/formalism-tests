@@ -1,10 +1,10 @@
 {
   "schema": "stegverse.bundle_manifest.v1",
-  "bundle_id": "formalism-tests-site-mirror-wire-v1",
+  "bundle_id": "formalism-tests-stage7-stage8-v1",
   "bundle_type": "formalism-tools-update",
-  "title": "Formalism-Tests Site Mirror Auto-Update",
-  "description": "Adds run_site_mirror_update.py \u2014 reads reports/current/ after tests pass, writes Site/data/formalism-tests/ automatically. Updates formalism_tests_tasks.json with site_mirror_update task (depends on stage6, mirror integrity, current preservation). Includes workflow step for auto-commit to Site on test pass. Authority: formalism-tests produces. Site publishes.",
-  "created_at": "2026-05-20T00:00:00Z",
+  "title": "Stage 7 Element Dependency Closure + Stage 8 AI Domain Transition Classes",
+  "description": "Stage 7: element_dependency_closure_policy.json (13 elements, 6 CSIs) + run_element_dependency_closure_tests.py (105 assertions, PASS). Stage 8: stage8_candidates.json (8 candidates, 3 agent types) + run_stage8_ai_domain_tests.py (64 assertions, PASS). After Stage 8: AI entities may propose candidates within AI_BLOCK scope with dependency closure + quorum of Rige + Beta_Orionis required.",
+  "created_at": "2026-05-20T01:00:00Z",
   "classification": {
     "risk_level": "low",
     "contains_executable_code": true,
@@ -13,20 +13,41 @@
   },
   "files": [
     {
-      "path": "tools/run_site_mirror_update.py",
-      "sha256": "0f7df8041ab8b45a90ac00ee515a20fc7d1f4752348eccdf2fb67b6b3e9964c2",
-      "size_bytes": 16959
+      "path": "tests/fixtures/element_dependency_closure_policy.json",
+      "sha256": "2a5c9636c91b99cc63ec9048b7979f50e33a429ad5a0231677fc4ca36365d888",
+      "size_bytes": 14425
     },
     {
-      "path": "tools/tasks/formalism_tests_tasks.json",
-      "sha256": "52a21aa6504f45d30c36b4ddb02fac8c9c0ae761b4f03f8d776c958f5f589ca6",
-      "size_bytes": 4086
+      "path": "tests/fixtures/stage8_candidates.json",
+      "sha256": "2aba46f1ae67909d4081e21ea6191274f5519e8de1c3af1f6af2836b5adfb39a",
+      "size_bytes": 18771
     },
     {
-      "path": "workflow-site-mirror-step.yml",
-      "sha256": "2dedd56e5ffaf681e5f36b65d829831e15cdefe337ecba9c131cfbdf71ff3bf6",
-      "size_bytes": 1754
+      "path": "tools/run_element_dependency_closure_tests.py",
+      "sha256": "e6f238fe18dbf8cf77ee23b5cc68087c7d55648ecea4c94f81101a3413a02283",
+      "size_bytes": 14559
+    },
+    {
+      "path": "tools/run_stage8_ai_domain_tests.py",
+      "sha256": "e2fe7b2dc3769a031b1757f95986cd07afa30847b16a0a96f50fe95af3c649ae",
+      "size_bytes": 14378
     }
   ],
-  "next_target": "element_dependency_closure_tests"
+  "test_results": {
+    "stage7": {
+      "assertions": 105,
+      "passed": 105,
+      "result": "PASS"
+    },
+    "stage8": {
+      "candidates": 8,
+      "assertions": 64,
+      "passed_assertions": 57,
+      "result": "PASS",
+      "decisions": {
+        "ALLOW": 4,
+        "FAIL_CLOSED": 4
+      }
+    }
+  }
 }
