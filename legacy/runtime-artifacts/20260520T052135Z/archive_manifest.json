@@ -1,0 +1,38 @@
+{
+  "archive_dir": "legacy/runtime-artifacts/20260520T052135Z",
+  "generated_at": "2026-05-20T05:21:35.133198+00:00",
+  "moved": [
+    {
+      "from": "reports/boundary_transition_receipts.jsonl",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/boundary_transition_receipts.jsonl"
+    },
+    {
+      "from": "reports/representation_non_consequence_receipts.jsonl",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/representation_non_consequence_receipts.jsonl"
+    },
+    {
+      "from": "reports/representation_non_consequence_report.json",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/representation_non_consequence_report.json"
+    },
+    {
+      "from": "reports/site_mirror_integrity_report.json",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/site_mirror_integrity_report.json"
+    },
+    {
+      "from": "reports/theorem_map_consistency_report.json",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/theorem_map_consistency_report.json"
+    },
+    {
+      "from": "reports/transition_table_public_surface_report.json",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/transition_table_public_surface_report.json"
+    },
+    {
+      "from": "reports/transition_table_receipts.jsonl",
+      "to": "legacy/runtime-artifacts/20260520T052135Z/reports/transition_table_receipts.jsonl"
+    }
+  ],
+  "moved_count": 7,
+  "rule_file": "tools/rules/runtime_artifact_rules.json",
+  "rule_id": "archive-root-runtime-artifacts",
+  "schema": "stegverse_runtime_archive_manifest.v1"
+}
