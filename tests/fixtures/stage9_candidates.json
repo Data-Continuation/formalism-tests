@@ -1,0 +1,556 @@
+{
+  "schema": "stegverse_stage9_candidates.v1",
+  "stage": "Stage 9",
+  "theorem_basis": "Multi-Body Coupling Closure",
+  "proof_claim": "In coupled entity-boundary systems, admissibility cannot be evaluated in isolation. A transition is admissible only if the coupled entity-boundary system remains recoverably convergent and system-coherent across all interacting entities, authorities, attractors, and consequence surfaces.",
+  "canonical_claim": "Local admissibility does not compose into global admissibility when bodies are coupled.",
+  "coupling_classes_covered": [
+    "isolated",
+    "paired-boundary",
+    "shared-resource",
+    "authority-transfer",
+    "trust-field",
+    "coherence-coupled",
+    "irreversible-consequence",
+    "multi-agent-cascade",
+    "distributed-node"
+  ],
+  "note": "Stage 9 closes the multi-body coupling gap. After verification, multi-agent AI participation is formally governed. Without Stage 9, two AI entities could each pass their individual blocks while their coupled interaction exceeds any single block's scope.",
+
+  "candidates": [
+
+    {
+      "transition_id": "T-MB-ISOLATED-ALLOW-001",
+      "transition_name": "multi_body_isolated_transition_positive_control",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Isolated Transition",
+      "role": "isolated_coupling_positive_control",
+      "coupling_class": "isolated",
+      "entities": [
+        {"entity_id": "AI_A", "block": "BLOCK-AI-GOV-V1", "local_decision": "ALLOW"},
+        {"entity_id": "AI_B", "block": "BLOCK-AI-VERIF-V1", "local_decision": "ALLOW"}
+      ],
+      "coupling_analysis": {
+        "shared_consequence_surface": false,
+        "authority_interaction": false,
+        "field_deformation": false,
+        "coupled": false
+      },
+      "iw_containment": {
+        "entity_A": {"contained": true, "iw_width": 0.28},
+        "entity_B": {"contained": true, "iw_width": 0.22},
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "entity_A": {"re_score": 0.09, "within_bound": true},
+        "entity_B": {"re_score": 0.07, "within_bound": true},
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.40,
+      "recoverability_scores": {"entity_A": 0.91, "entity_B": 0.94},
+      "global_coherence": {"score": 0.88, "minimum": 0.40, "satisfied": true},
+      "convergence": {"score": 0.82, "minimum": 0.30, "satisfied": true},
+      "multi_body_gate_result": "ALLOW",
+      "component_gate_results": {
+        "AE": "ALLOW", "AI_BLOCK_A": "ALLOW", "AI_BLOCK_B": "ALLOW",
+        "COUPLING": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "Entities operate in isolation; no shared consequence surface; no field deformation; individual blocks pass; global coherence satisfied"
+    },
+
+    {
+      "transition_id": "T-MB-LOCAL-ALLOW-COMPOSITE-FAIL-001",
+      "transition_name": "multi_body_local_allow_composite_fail",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Local Allow Does Not Imply Composite Allow",
+      "role": "composite_admissibility_failure_governor",
+      "coupling_class": "shared-resource",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-DERIV-V1",
+          "local_decision": "ALLOW",
+          "local_consequence_mass": 0.38,
+          "local_legitimacy_capacity": 0.88
+        },
+        {
+          "entity_id": "AI_B",
+          "block": "BLOCK-AI-DERIV-V1",
+          "local_decision": "ALLOW",
+          "local_consequence_mass": 0.41,
+          "local_legitimacy_capacity": 0.85
+        }
+      ],
+      "coupling_analysis": {
+        "shared_consequence_surface": true,
+        "shared_resource": "transition_table_write_surface",
+        "composite_consequence_mass": 0.79,
+        "composite_legitimacy_capacity": 0.88,
+        "composite_exceeds_capacity": true,
+        "field_deformation": true
+      },
+      "iw_containment": {
+        "entity_A": {"contained": true, "iw_width": 0.32},
+        "entity_B": {"contained": true, "iw_width": 0.35},
+        "composite_iw_width": 0.67,
+        "a_total": [0.0, 1.0],
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "entity_A": {"re_score": 0.14, "within_bound": true},
+        "entity_B": {"re_score": 0.17, "within_bound": true},
+        "composite_re_score": 0.31,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.40,
+      "recoverability_scores": {"entity_A": 0.82, "entity_B": 0.79},
+      "global_coherence": {"score": 0.44, "minimum": 0.40, "satisfied": true},
+      "convergence": {"score": 0.51, "minimum": 0.30, "satisfied": true},
+      "multi_body_gate_result": "FAIL_CLOSED",
+      "component_gate_results": {
+        "AE_A": "ALLOW", "AE_B": "ALLOW",
+        "AI_BLOCK_A": "ALLOW", "AI_BLOCK_B": "ALLOW",
+        "COMPOSITE_COUPLING": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "Both entities ALLOW locally; composite consequence mass 0.79 exceeds legitimacy capacity 0.88 on shared resource; local ALLOW + local ALLOW does not imply composite ALLOW when bodies share a consequence surface"
+    },
+
+    {
+      "transition_id": "T-MB-AUTH-GRADIENT-DRIFT-001",
+      "transition_name": "multi_body_authority_gradient_drift",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Authority Gradient Drift",
+      "role": "authority_gradient_drift_governor",
+      "coupling_class": "authority-transfer",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-GOV-V1",
+          "authority_class": "A7",
+          "local_decision": "ALLOW"
+        },
+        {
+          "entity_id": "AI_B",
+          "block": "BLOCK-AI-DERIV-V1",
+          "authority_class": "A7",
+          "local_decision": "ALLOW"
+        }
+      ],
+      "coupling_analysis": {
+        "interaction_type": "sequential_composition",
+        "AI_A_output_feeds_AI_B_input": true,
+        "effective_authority_class": "A4",
+        "declared_authority_class": "A7",
+        "authority_class_exceeded": true,
+        "drift_mechanism": "sequential composition of A7 outputs creates de-facto A4 multi-party authority without quorum"
+      },
+      "iw_containment": {
+        "composite_iw_width": 0.58,
+        "a_total": [0.0, 1.0],
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "composite_re_score": 0.24,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.40,
+      "global_coherence": {"score": 0.61, "minimum": 0.40, "satisfied": true},
+      "convergence": {"score": 0.58, "minimum": 0.30, "satisfied": true},
+      "multi_body_gate_result": "FAIL_CLOSED",
+      "component_gate_results": {
+        "AE_A": "ALLOW", "AE_B": "ALLOW",
+        "AI_BLOCK_A": "ALLOW", "AI_BLOCK_B": "ALLOW",
+        "AUTHORITY_GRADIENT": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "Sequential AI-to-AI composition creates de-facto A4 authority without quorum; effective authority exceeds declared A7 class; authority gradient drift detected; quorum required before this composition is admissible"
+    },
+
+    {
+      "transition_id": "T-MB-COHERENCE-PROPAGATION-001",
+      "transition_name": "multi_body_coherence_failure_propagation",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Coherence Failure Propagation",
+      "role": "coherence_failure_propagation_governor",
+      "coupling_class": "coherence-coupled",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-GOV-V1",
+          "local_decision": "ALLOW",
+          "coherence_score": 0.21,
+          "coherence_minimum": 0.40,
+          "coherence_failure": true
+        },
+        {
+          "entity_id": "AI_B",
+          "block": "BLOCK-AI-VERIF-V1",
+          "local_decision": "ALLOW",
+          "coherence_score": 0.72,
+          "coherence_minimum": 0.40,
+          "coherence_failure": false
+        }
+      ],
+      "coupling_analysis": {
+        "coherence_coupled": true,
+        "ai_a_coherence_failure_propagates_to_ai_b": true,
+        "propagation_mechanism": "shared boundary field — AI_A incoherence deforms AI_B reachable state space",
+        "composite_coherence_score": 0.31,
+        "composite_coherence_minimum": 0.40,
+        "composite_coherence_satisfied": false
+      },
+      "iw_containment": {
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "composite_re_score": 0.28,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "multi_body_gate_result": "EVOLVE_BOUNDARY",
+      "component_gate_results": {
+        "AE_A": "EVOLVE_BOUNDARY",
+        "AE_B": "ALLOW",
+        "COHERENCE_COUPLING": "EVOLVE_BOUNDARY"
+      },
+      "allowed_outcomes": ["ALLOW", "EVOLVE_BOUNDARY", "FAIL_CLOSED"],
+      "verified_decision": "EVOLVE_BOUNDARY",
+      "basis": "AI_A coherence failure propagates through shared boundary field to AI_B; composite coherence 0.31 below minimum 0.40; AI_B individually passes but cannot be evaluated in isolation; governed boundary evolution required before resuming coupled operation"
+    },
+
+    {
+      "transition_id": "T-MB-SPLIT-BRAIN-AI-001",
+      "transition_name": "multi_body_ai_split_brain",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — AI Split-Brain Coherence",
+      "role": "ai_split_brain_governor",
+      "coupling_class": "distributed-node",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-GOV-V1",
+          "local_coherent_state": "candidate_T_X_is_ALLOW",
+          "local_decision": "ALLOW"
+        },
+        {
+          "entity_id": "AI_B",
+          "block": "BLOCK-AI-VERIF-V1",
+          "local_coherent_state": "candidate_T_X_is_FAIL_CLOSED",
+          "local_decision": "ALLOW"
+        }
+      ],
+      "coupling_analysis": {
+        "mutually_incompatible_coherent_states": true,
+        "state_A": "candidate_T_X_is_ALLOW",
+        "state_B": "candidate_T_X_is_FAIL_CLOSED",
+        "reconciliation_required": true,
+        "reconciliation_path": "human quorum review before either state is committed"
+      },
+      "iw_containment": {
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "composite_re_score": 0.33,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.50,
+      "recoverability_scores": {"entity_A": 0.71, "entity_B": 0.68},
+      "multi_body_gate_result": "QUARANTINE",
+      "component_gate_results": {
+        "AE_A": "ALLOW", "AE_B": "ALLOW",
+        "SPLIT_BRAIN": "QUARANTINE"
+      },
+      "allowed_outcomes": ["QUARANTINE", "FAIL_CLOSED"],
+      "verified_decision": "QUARANTINE",
+      "basis": "AI_A and AI_B hold mutually incompatible coherent states about same candidate; neither state is committable without reconciliation; QUARANTINE pending human quorum review — not DENY because both local states may be valid given different information"
+    },
+
+    {
+      "transition_id": "T-MB-CASCADE-FAIL-001",
+      "transition_name": "multi_body_cascade_failure",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Multi-Agent Cascade",
+      "role": "multi_agent_cascade_governor",
+      "coupling_class": "multi-agent-cascade",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-DERIV-V1",
+          "local_decision": "ALLOW",
+          "action": "propose_candidate"
+        },
+        {
+          "entity_id": "AI_B",
+          "block": "BLOCK-AI-VERIF-V1",
+          "local_decision": "ALLOW",
+          "action": "verify_candidate"
+        },
+        {
+          "entity_id": "AI_C",
+          "block": "BLOCK-AI-GOV-V1",
+          "local_decision": "ALLOW",
+          "action": "governance_review"
+        }
+      ],
+      "coupling_analysis": {
+        "cascade_detected": true,
+        "cascade_mechanism": "AI_A proposes, AI_B verifies, AI_C governs — all ALLOW without human in loop",
+        "effective_outcome": "transition table entry without quorum",
+        "quorum_bypassed": true,
+        "cascade_consequence_mass": 0.94,
+        "legitimacy_capacity": 0.88,
+        "cascade_exceeds_capacity": true
+      },
+      "iw_containment": {
+        "composite_iw_width": 1.21,
+        "a_total": [0.0, 1.0],
+        "composite_iw_contained": false,
+        "breach_margin": 0.21
+      },
+      "re_bound": {
+        "composite_re_score": 0.68,
+        "re_max": 0.50,
+        "composite_re_within_bound": false,
+        "breach_amount": 0.18
+      },
+      "recoverability_floor": 0.50,
+      "recoverability_scores": {
+        "entity_A": 0.82, "entity_B": 0.88, "entity_C": 0.91
+      },
+      "global_recoverability": 0.11,
+      "multi_body_gate_result": "FAIL_CLOSED",
+      "component_gate_results": {
+        "AE_A": "ALLOW", "AE_B": "ALLOW", "AE_C": "ALLOW",
+        "CASCADE_GATE": "FAIL_CLOSED",
+        "QUORUM_CHECK": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "Three AI entities each ALLOW locally; cascade produces table entry without human quorum; composite IW breaches A_total; composite RE exceeds max; cascade consequence mass exceeds legitimacy capacity; quorum gate FAIL_CLOSED; multi-agent consensus is not a substitute for human quorum"
+    },
+
+    {
+      "transition_id": "T-MB-TRUST-FIELD-ALLOW-001",
+      "transition_name": "multi_body_trust_field_governed",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Trust Field Transition",
+      "role": "trust_field_positive_control",
+      "coupling_class": "trust-field",
+      "entities": [
+        {
+          "entity_id": "Rige",
+          "type": "human",
+          "authority_class": "A3",
+          "local_decision": "ALLOW",
+          "trust_score": 1.0
+        },
+        {
+          "entity_id": "Beta_Orionis",
+          "type": "AI",
+          "block": "BLOCK-AI-DERIV-V1",
+          "authority_class": "A7",
+          "local_decision": "ALLOW",
+          "trust_score": 0.88
+        }
+      ],
+      "coupling_analysis": {
+        "human_ai_coupling": true,
+        "quorum_structure": "Rige + Beta_Orionis",
+        "quorum_satisfied": true,
+        "trust_field_coherent": true,
+        "authority_gradient_stable": true,
+        "human_authority_preserved": true
+      },
+      "iw_containment": {
+        "composite_iw_width": 0.44,
+        "a_total": [0.0, 1.0],
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "composite_re_score": 0.19,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.40,
+      "recoverability_scores": {"Rige": 1.0, "Beta_Orionis": 0.88},
+      "global_coherence": {"score": 0.91, "minimum": 0.40, "satisfied": true},
+      "convergence": {"score": 0.87, "minimum": 0.30, "satisfied": true},
+      "multi_body_gate_result": "ALLOW",
+      "component_gate_results": {
+        "AE": "ALLOW",
+        "AI_BLOCK": "ALLOW",
+        "QUORUM": "ALLOW",
+        "TRUST_FIELD": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "Human-AI quorum satisfied; trust field coherent; human authority preserved; authority gradient stable; IW contained; RE within bound; this is the formally verified path for governed AI participation"
+    },
+
+    {
+      "transition_id": "T-MB-IRREVERSIBLE-PROPAGATION-001",
+      "transition_name": "multi_body_irreversible_consequence_propagation",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Irreversible Consequence Propagation",
+      "role": "irreversible_consequence_propagation_governor",
+      "coupling_class": "irreversible-consequence",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-DERIV-V1",
+          "local_decision": "ALLOW",
+          "local_reversibility": "R2"
+        },
+        {
+          "entity_id": "AI_B",
+          "block": "BLOCK-AI-GOV-V1",
+          "local_decision": "ALLOW",
+          "local_reversibility": "R3"
+        }
+      ],
+      "coupling_analysis": {
+        "composite_reversibility": "R5",
+        "cascade_irreversibility": true,
+        "downstream_effects_outside_direct_control": true,
+        "composite_consequence_mass": 0.88,
+        "legitimacy_capacity": 0.91
+      },
+      "iw_containment": {
+        "composite_iw_width": 0.92,
+        "a_total": [0.0, 1.0],
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "composite_re_score": 0.64,
+        "re_max": 0.50,
+        "composite_re_within_bound": false,
+        "breach_amount": 0.14
+      },
+      "recoverability_floor": 0.50,
+      "composite_recoverability": 0.17,
+      "multi_body_gate_result": "FAIL_CLOSED",
+      "component_gate_results": {
+        "AE_A": "ALLOW", "AE_B": "ALLOW",
+        "REVERSIBILITY": "FAIL_CLOSED",
+        "RE_BOUND": "FAIL_CLOSED"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "FAIL_CLOSED",
+      "basis": "Individual reversibility R2 + R3 compose to cascade irreversible R5; composite RE exceeds max; composite recoverability 0.17 below floor 0.50; irreversible consequence propagation across coupled boundary fields fails closed"
+    },
+
+    {
+      "transition_id": "T-MB-QUORUM-HUMAN-AI-RESET-001",
+      "transition_name": "multi_body_human_ai_boundary_reset",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Human-AI Governed Boundary Reset",
+      "role": "human_ai_boundary_reset_governor",
+      "coupling_class": "authority-transfer",
+      "entities": [
+        {
+          "entity_id": "Rige",
+          "type": "human",
+          "authority_class": "A3",
+          "local_decision": "RESET_BOUNDARY"
+        },
+        {
+          "entity_id": "Beta_Orionis",
+          "type": "AI",
+          "block": "BLOCK-AI-GOV-V1",
+          "authority_class": "A7",
+          "local_decision": "RESET_BOUNDARY"
+        }
+      ],
+      "coupling_analysis": {
+        "quorum_structure": "Rige + Beta_Orionis",
+        "quorum_satisfied": true,
+        "convergence_failure_evidence": true,
+        "convergence_score": 0.14,
+        "convergence_minimum": 0.30,
+        "reset_recoverable": true,
+        "reset_scope_bounded": true
+      },
+      "iw_containment": {
+        "composite_iw_contained": true,
+        "composite_iw_width": 0.48
+      },
+      "re_bound": {
+        "composite_re_score": 0.36,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.50,
+      "recoverability_scores": {"Rige": 1.0, "Beta_Orionis": 0.71},
+      "global_coherence": {"score": 0.44, "minimum": 0.40, "satisfied": true},
+      "multi_body_gate_result": "RESET_BOUNDARY",
+      "component_gate_results": {
+        "AE": "RESET_BOUNDARY",
+        "QUORUM": "ALLOW",
+        "CONVERGENCE_FAILURE": "RESET_BOUNDARY"
+      },
+      "allowed_outcomes": ["ALLOW", "RESET_BOUNDARY", "FAIL_CLOSED"],
+      "verified_decision": "RESET_BOUNDARY",
+      "basis": "Human-AI quorum satisfied; convergence failure evidence present; reset is recoverable and bounded; IW contained; RE within bound; governed boundary reset under quorum is admissible"
+    },
+
+    {
+      "transition_id": "T-MB-PAIRED-BOUNDARY-ALLOW-001",
+      "transition_name": "multi_body_paired_boundary_stable",
+      "transition_family": "multi_body_coupling",
+      "theorem_basis": "Multi-Body Admissibility — Paired Boundary Stable",
+      "role": "paired_boundary_positive_control",
+      "coupling_class": "paired-boundary",
+      "entities": [
+        {
+          "entity_id": "AI_A",
+          "block": "BLOCK-AI-GOV-V1",
+          "local_decision": "ALLOW"
+        },
+        {
+          "entity_id": "Rige",
+          "type": "human",
+          "authority_class": "A3",
+          "local_decision": "ALLOW"
+        }
+      ],
+      "coupling_analysis": {
+        "paired_boundaries_coherent": true,
+        "authority_gradient_stable": true,
+        "human_authority_preserved": true,
+        "composite_consequence_mass": 0.31,
+        "legitimacy_capacity": 0.82,
+        "within_capacity": true
+      },
+      "iw_containment": {
+        "composite_iw_width": 0.38,
+        "a_total": [0.0, 1.0],
+        "composite_iw_contained": true
+      },
+      "re_bound": {
+        "composite_re_score": 0.16,
+        "re_max": 0.50,
+        "composite_re_within_bound": true
+      },
+      "recoverability_floor": 0.40,
+      "recoverability_scores": {"AI_A": 0.89, "Rige": 1.0},
+      "global_coherence": {"score": 0.88, "minimum": 0.40, "satisfied": true},
+      "convergence": {"score": 0.84, "minimum": 0.30, "satisfied": true},
+      "multi_body_gate_result": "ALLOW",
+      "component_gate_results": {
+        "AE": "ALLOW", "AI_BLOCK": "ALLOW",
+        "PAIRED_BOUNDARY": "ALLOW"
+      },
+      "allowed_outcomes": ["ALLOW", "FAIL_CLOSED"],
+      "verified_decision": "ALLOW",
+      "basis": "Human-AI paired boundary stable; authority gradient preserved; composite consequence mass within capacity; global coherence and convergence satisfied; IW contained; RE within bound"
+    }
+  ]
+}
