@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "0.8.0",
+  "manifest_version": "0.9.0",
   "tasks": [
     {
       "task_id": "archive_runtime_artifacts",
@@ -99,6 +99,18 @@
         "reports/representation_non_consequence_report.json",
         "reports/representation_non_consequence_report.md",
         "reports/representation_non_consequence_receipts.jsonl"
+      ]
+    },
+    {
+      "task_id": "site_mirror_integrity_tests",
+      "description": "Validate that the Site public mirror matches the latest formalism-tests proof surface and does not drift.",
+      "enabled": true,
+      "command": [
+        "python",
+        "tools/run_site_mirror_integrity_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/site_mirror_integrity_report.json"
       ]
     }
   ]
