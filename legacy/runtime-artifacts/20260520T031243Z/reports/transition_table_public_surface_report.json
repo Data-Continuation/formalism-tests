@@ -1,0 +1,28 @@
+{
+  "assertion_count": 297,
+  "current_stage": "Stage 6",
+  "element_count": 16,
+  "message": "Transition Table public proof-surface validation passed.",
+  "schema": "stegverse_transition_table_public_surface_report.v1",
+  "single_status_source": "data/formalism-tests/transition-proof-surface.json",
+  "stage6_result": {
+    "assertion_count": 320,
+    "candidate_count": 10,
+    "decision_counts": {
+      "ALLOW": 3,
+      "EVOLVE_BOUNDARY": 1,
+      "FAIL_CLOSED": 5,
+      "RESET_BOUNDARY": 1
+    },
+    "fixture": "tests/fixtures/stage6_candidates.json",
+    "public_page": "stage6-unified-gate-results.html",
+    "runner": "tools/run_stage6_unified_gate_tests.py",
+    "success": true,
+    "task_id": "stage6_unified_gate_tests",
+    "workflow": "Data Continuation Tests"
+  },
+  "stage6_status": "Stage 6 verified through existing declared-task workflow",
+  "success": true,
+  "transition_class_count": 10,
+  "unlocked_level_5_count": 12
+}
