@@ -1,0 +1,53 @@
+{
+  "schema": "stegverse_site_mirror_page_contract.v1",
+  "single_status_source": "data/formalism-tests/transition-proof-surface.json",
+  "shared_renderer": "assets/transition-site-status.js",
+  "required_pages": [
+    "transition-proof-surface.html",
+    "transition-discovery.html",
+    "transition-table.html",
+    "transition-table-classes.html",
+    "transition-elements/index.html",
+    "transition-release-index.html",
+    "transition-development-status.html",
+    "transition-verification-guide.html",
+    "transition-replay-packet.html",
+    "stage6-unified-gate-results.html"
+  ],
+  "required_stage6_pages": [
+    "stage6-unified-gate-results.html"
+  ],
+  "required_element_pages": [
+    "transition-elements/ae.html",
+    "transition-elements/bc.html",
+    "transition-elements/chf.html",
+    "transition-elements/dc.html",
+    "transition-elements/daco.html",
+    "transition-elements/triad.html",
+    "transition-elements/iw.html",
+    "transition-elements/re.html",
+    "transition-elements/reset-boundary.html",
+    "transition-elements/evolve-boundary.html",
+    "transition-elements/ai-block.html",
+    "transition-elements/finco-chain.html",
+    "transition-elements/role-non-transfer.html",
+    "transition-elements/local-composite.html",
+    "transition-elements/replay-non-reversal.html",
+    "transition-elements/representation-non-consequence.html"
+  ],
+  "required_mobile_markers": [
+    "mobile-grid",
+    "transition-tile",
+    "renderMobile",
+    "renderDesktop"
+  ],
+  "required_authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts.",
+  "canonical_receipt_files": [
+    "reports/sample_receipts.jsonl",
+    "reports/transition_table_receipts.jsonl",
+    "reports/representation_non_consequence_receipts.jsonl"
+  ],
+  "noncanonical_duplicates": [
+    "reports/transition_table_receipts 2.jsonl"
+  ]
+}

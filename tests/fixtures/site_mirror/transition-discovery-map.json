@@ -1,0 +1,307 @@
+{
+  "schema": "stegverse_transition_discovery_map.v2",
+  "title": "Transition Discovery Map",
+  "source_repo": "formalism-tests",
+  "publication_repo": "StegVerse-Labs/Site",
+  "scale": {
+    "minimum": 0,
+    "maximum": 5,
+    "levels": [
+      {
+        "level": 0,
+        "name": "Unobserved",
+        "status": "unobserved",
+        "color_token": "level-0"
+      },
+      {
+        "level": 1,
+        "name": "Observed",
+        "status": "observed",
+        "color_token": "level-1"
+      },
+      {
+        "level": 2,
+        "name": "Partitioned",
+        "status": "partitioned",
+        "color_token": "level-2"
+      },
+      {
+        "level": 3,
+        "name": "Tested",
+        "status": "tested",
+        "color_token": "level-3"
+      },
+      {
+        "level": 4,
+        "name": "Integrated",
+        "status": "integrated",
+        "color_token": "level-4"
+      },
+      {
+        "level": 5,
+        "name": "Unified",
+        "status": "unified",
+        "color_token": "level-5"
+      }
+    ]
+  },
+  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts.",
+  "elements": [
+    {
+      "element_id": "AE",
+      "name": "Admissible Existence",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Admissible Existence is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/ae.html",
+      "details": [
+        "Admissible Existence participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "BC",
+      "name": "Boundary Coherence",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Boundary Coherence is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/bc.html",
+      "details": [
+        "Boundary Coherence participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "CHF",
+      "name": "Consequence Horizon Formalism",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Consequence Horizon Formalism is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/chf.html",
+      "details": [
+        "Consequence Horizon Formalism participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "DC",
+      "name": "Distributed Coherence",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Distributed Coherence is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/dc.html",
+      "details": [
+        "Distributed Coherence participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "DaCo",
+      "name": "Data Continuity",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Data Continuity is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/daco.html",
+      "details": [
+        "Data Continuity participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "Triad",
+      "name": "Triad",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Triad is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/triad.html",
+      "details": [
+        "Triad participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "IW",
+      "name": "Inference Window",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Inference Window is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/iw.html",
+      "details": [
+        "Inference Window participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "RE",
+      "name": "Reverse Entropy Bound",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Reverse Entropy Bound is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/re.html",
+      "details": [
+        "Reverse Entropy Bound participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "RESET_BOUNDARY",
+      "name": "Governed Boundary Reset",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Governed Boundary Reset is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/reset-boundary.html",
+      "details": [
+        "Governed Boundary Reset participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "EVOLVE_BOUNDARY",
+      "name": "Governed Boundary Evolution",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Governed Boundary Evolution is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/evolve-boundary.html",
+      "details": [
+        "Governed Boundary Evolution participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "AI_BLOCK",
+      "name": "AI Block Scope",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "AI Block Scope is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/ai-block.html",
+      "details": [
+        "AI Block Scope participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "FINCO_CHAIN",
+      "name": "FinCo Chain",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "FinCo Chain is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/finco-chain.html",
+      "details": [
+        "FinCo Chain participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "ROLE_NON_TRANSFER",
+      "name": "Role Non-Transfer",
+      "completion_level": 4,
+      "family": "compound_continuation",
+      "status": "integrated",
+      "summary": "Role Non-Transfer is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "compound_continuation"
+      ],
+      "detail_page": "transition-elements/role-non-transfer.html",
+      "details": [
+        "Role Non-Transfer participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "LOCAL_COMPOSITE",
+      "name": "Local-Composite Non-Equivalence",
+      "completion_level": 4,
+      "family": "compound_continuation",
+      "status": "integrated",
+      "summary": "Local-Composite Non-Equivalence is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "compound_continuation"
+      ],
+      "detail_page": "transition-elements/local-composite.html",
+      "details": [
+        "Local-Composite Non-Equivalence participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "REPLAY_NON_REVERSAL",
+      "name": "Replay Non-Reversal",
+      "completion_level": 4,
+      "family": "compound_continuation",
+      "status": "integrated",
+      "summary": "Replay Non-Reversal is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "compound_continuation"
+      ],
+      "detail_page": "transition-elements/replay-non-reversal.html",
+      "details": [
+        "Replay Non-Reversal participates in the current public proof surface."
+      ]
+    },
+    {
+      "element_id": "REPRESENTATION_NON_CONSEQUENCE",
+      "name": "Representation Non-Consequence",
+      "completion_level": 5,
+      "family": "unified_gate_component",
+      "status": "unified",
+      "summary": "Representation Non-Consequence is mapped in the Transition Discovery proof surface.",
+      "linked_transition_families": [
+        "ae_unified_gate"
+      ],
+      "detail_page": "transition-elements/representation-non-consequence.html",
+      "details": [
+        "Representation Non-Consequence participates in the current public proof surface."
+      ]
+    }
+  ],
+  "classification_family_levels": {
+    "ae_unified_gate": 5,
+    "data_continuation": 4,
+    "compound_continuation": 4,
+    "transition_table": 4,
+    "boundary_transition": 4
+  },
+  "transition_decision_levels": {
+    "ALLOW": 5,
+    "FAIL_CLOSED": 5,
+    "RESET_BOUNDARY": 5,
+    "EVOLVE_BOUNDARY": 5,
+    "DENY": 3,
+    "ALLOW_WITH_SIGNOFF": 3,
+    "NO_CONSEQUENCE": 5
+  }
+}

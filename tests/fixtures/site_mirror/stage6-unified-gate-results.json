@@ -1,0 +1,32 @@
+{
+  "schema": "stegverse_stage6_unified_gate_public_result.v1",
+  "stage": "Stage 6",
+  "title": "Stage 6 Unified Gate Results",
+  "source_repo": "formalism-tests",
+  "publication_repo": "StegVerse-Labs/Site",
+  "workflow": "Data Continuation Tests",
+  "task_id": "stage6_unified_gate_tests",
+  "runner": "tools/run_stage6_unified_gate_tests.py",
+  "fixture": "tests/fixtures/stage6_candidates.json",
+  "theorem_basis": "Admissible Existence Unified Gate",
+  "gate_formula": "ALLOW(u) iff IW_tau(S,u) subset A_total AND RE(S -> Phi(S,u)) <= RE_max",
+  "components_covered": [
+    "AE",
+    "BC",
+    "CHF",
+    "DC",
+    "DaCo",
+    "Triad"
+  ],
+  "success": true,
+  "candidate_count": 10,
+  "assertion_count": 320,
+  "decision_counts": {
+    "ALLOW": 3,
+    "FAIL_CLOSED": 5,
+    "RESET_BOUNDARY": 1,
+    "EVOLVE_BOUNDARY": 1
+  },
+  "message": "Stage 6 unified gate checks passed for 10 candidates.",
+  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
+}

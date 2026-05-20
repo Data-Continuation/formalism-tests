@@ -1,0 +1,20 @@
+{
+  "schema": "stegverse_theorem_coverage_summary.v1",
+  "covered": [
+    "Representation Non-Consequence",
+    "Role Non-Transfer",
+    "Continuation Capacity",
+    "Fail-Closed Basis Requirement",
+    "Local-Composite Non-Equivalence",
+    "Commit-Time Sufficiency",
+    "Replay Non-Reversal",
+    "Inference-Window Collapse",
+    "Recoverability Floor",
+    "Role-Transition Dependence",
+    "Compound Continuation Positive Control",
+    "Stage 6 Unified Gate",
+    "Transition Table Public Surface"
+  ],
+  "partially_covered": [],
+  "not_covered": []
+}

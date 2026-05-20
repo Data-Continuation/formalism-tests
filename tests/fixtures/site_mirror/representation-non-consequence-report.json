@@ -1,0 +1,19 @@
+{
+  "schema": "stegverse_representation_non_consequence_report.v1",
+  "success": true,
+  "theorem": "Representation Non-Consequence",
+  "claim": "Representation alone has no consequence-bearing status until it is bound to a transition role and continuation path.",
+  "case_count": 7,
+  "receipt_count": 7,
+  "assertion_count": 18,
+  "decision_counts": {
+    "NO_CONSEQUENCE": 3,
+    "ALLOW": 1,
+    "ALLOW_WITH_SIGNOFF": 1,
+    "FAIL_CLOSED": 2
+  },
+  "failures": [],
+  "receipts_path": "reports/representation_non_consequence_receipts.jsonl",
+  "report_markdown_path": "reports/representation_non_consequence_report.md",
+  "message": "Representation Non-Consequence direct proof passed."
+}
