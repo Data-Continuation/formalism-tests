@@ -1,0 +1,76 @@
+{
+  "schema": "stegverse_current_report_preservation_policy.v1",
+  "purpose": "Preserve latest successful proof outputs under stable reports/current paths while allowing runtime artifacts to archive older outputs.",
+  "current_dir": "reports/current",
+  "required_sources": [
+    {
+      "source": "reports/continuation_report.md",
+      "current": "reports/current/continuation_report.md",
+      "kind": "markdown_report",
+      "required_markers": [
+        "same data \u2260 same continuation admissibility"
+      ]
+    },
+    {
+      "source": "reports/compound_continuation_report.md",
+      "current": "reports/current/compound_continuation_report.md",
+      "kind": "markdown_report",
+      "required_markers": [
+        "local allow + local allow does not imply composite allow"
+      ]
+    },
+    {
+      "source": "reports/representation_non_consequence_report.json",
+      "current": "reports/current/representation_non_consequence_report.json",
+      "kind": "json_report",
+      "required_json": {
+        "success": true,
+        "theorem": "Representation Non-Consequence"
+      }
+    },
+    {
+      "source": "reports/representation_non_consequence_report.md",
+      "current": "reports/current/representation_non_consequence_report.md",
+      "kind": "markdown_report",
+      "required_markers": [
+        "Representation alone has no consequence-bearing status"
+      ]
+    },
+    {
+      "source": "reports/transition_table_public_surface_report.json",
+      "current": "reports/current/transition_table_public_surface_report.json",
+      "kind": "json_report",
+      "required_json": {
+        "success": true,
+        "current_stage": "Stage 6"
+      }
+    },
+    {
+      "source": "reports/site_mirror_integrity_report.json",
+      "current": "reports/current/site_mirror_integrity_report.json",
+      "kind": "json_report",
+      "required_json": {
+        "success": true,
+        "representation_non_consequence_status": "Covered"
+      }
+    },
+    {
+      "source": "THEOREM_PROOF_MAP.md",
+      "current": "reports/current/THEOREM_PROOF_MAP.md",
+      "kind": "markdown_report",
+      "required_markers": [
+        "Representation Non-Consequence | Direct representation-only receipts",
+        "| Representation Non-Consequence |"
+      ]
+    }
+  ],
+  "noncanonical_duplicates": [
+    "reports/transition_table_receipts 2.jsonl"
+  ],
+  "canonical_receipts": [
+    "reports/sample_receipts.jsonl",
+    "reports/transition_table_receipts.jsonl",
+    "reports/representation_non_consequence_receipts.jsonl"
+  ],
+  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
+}
