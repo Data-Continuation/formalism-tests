@@ -69,6 +69,8 @@ reports/stage12_candidate_promotion_queue_report.json
 reports/stage12_candidate_promotion_queue_receipts.jsonl
 reports/stage13_active_work_entity_release_delta_report.json
 reports/stage13_active_work_entity_release_delta_receipts.jsonl
+reports/stage14_ai_transition_binding_report.json
+reports/stage14_ai_transition_binding_receipts.jsonl
 dist/transition-table-v1-rc1/canonical_transition_table_release.json
 dist/transition-table-v1-rc1/canonical_transition_table_release.sha256
 dist/transition-table-v1-rc1/replay_packet.json
@@ -98,6 +100,7 @@ dist/transition-table-v1-rc1/release_receipt.json
 | Stage 10 Canonical Transition Table Release | Stage 10 emits a deterministic canonical release candidate, hash, replay packet, and release receipt. | Covered |
 | Stage 11 Candidate Expansion Governance | Stage 11 validates that `StegVerse-001 / Beta_Orionis` may propose, draft, sandbox-test, reject, supersede, and queue candidates without self-promoting into canonical authority. | Covered |
 | Stage 12 Governed Candidate Promotion and Release Queue | Stage 12 validates that accepted Stage 11 candidates may enter a governed release queue only through formalism-tests authority, accepted review, closed dependencies, receipts, manifest validation, hash validation, lineage validation, and queue ledger recording. | Covered |
+| Stage 14 Active AI Transition Table Binding | Stage 14 validates that `StegVerse-001 / Beta_Orionis` is bound to all applicable AI-governance Transition Table classes under formalism-tests authority and declared policy scope. | Covered |
 | Stage 13 Active Work-Entity Release Candidate Delta | Stage 13 validates that active `StegVerse-001 / Beta_Orionis` may propose release-candidate deltas from `transition-table-v1-rc1` toward `transition-table-v1-rc2` only while formalism-tests retains canonical upgrade authority, lineage continuity, receipts, delta hashes, replay packets, and Site mirror boundaries. | Covered |
 | Transition Table Public Surface | Public surface runner validates transition classes, elements, single-source status, and mobile/public presentation contracts. | Covered |
 | Site Mirror Integrity | Site mirror runner validates that Site mirrors proof data without becoming proof authority. | Covered |
@@ -274,6 +277,46 @@ FAIL_CLOSED: 9
 LEDGER_CANONICAL_UPGRADE: 1
 ```
 
+## Stage 14 Active AI Transition Table Binding
+
+Stage 14 validates that `StegVerse-001 / Beta_Orionis` is not merely active as a work-entity, but bound to the Transition Table as a governed AI participant.
+
+Binding requires:
+
+```text
+active work-entity status
+Transition Table binding present
+formalism-tests binding authority
+all applicable AI-governance transition classes selected
+declared policy source and policy version
+policy decision ALLOW
+closed dependency closure
+accepted review
+receipt emission
+valid release-queue lineage
+Site remaining public mirror only
+no work-entity canonical authority claim
+no unrecognized transition classes
+```
+
+Stage 14 decision coverage:
+
+```text
+ALLOW_TRANSITION_TABLE_BINDING
+FAIL_CLOSED
+LEDGER_ENTITY_BINDING
+```
+
+Validated Stage 14 target result:
+
+```text
+case_count: 12
+receipt_count: 12
+ALLOW_TRANSITION_TABLE_BINDING: 1
+FAIL_CLOSED: 10
+LEDGER_ENTITY_BINDING: 1
+```
+
 ## Current Interpretation
 
 The proof surface now spans:
@@ -304,8 +347,8 @@ current-report preservation
 theorem-map consistency
 ```
 
-The next proof layer should validate how the Stage 13 release-candidate delta becomes a fully reconstructed canonical upgrade packet, likely:
+The next proof layer should validate how the Stage 14 AI-governed binding remains intact during canonical upgrade replay, likely:
 
 ```text
-Stage 14 - Canonical Upgrade Replay and Continuity Receipt
+Stage 15 - Canonical Upgrade Replay and Continuity Receipt
 ```
