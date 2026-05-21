@@ -1,6 +1,6 @@
 {
-  "assertion_count": 24,
-  "generated_at": "2026-05-21T12:49:52.083405+00:00",
+  "assertion_count": 27,
+  "generated_at": "2026-05-21T13:04:17.814455+00:00",
   "message": "Stage 9 reconciliation validation passed.",
   "next_stage": "Stage 10 - Canonical Transition Table Release",
   "reconciled_stages": [
