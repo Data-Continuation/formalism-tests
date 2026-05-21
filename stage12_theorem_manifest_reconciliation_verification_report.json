@@ -1,0 +1,20 @@
+{
+  "active_manifest_contains": [
+    "stage10_canonical_release_tests",
+    "stage11_candidate_expansion_governance_tests",
+    "stage12_candidate_promotion_queue_tests"
+  ],
+  "forbidden_markers_absent": [
+    "Partially covered",
+    "Representation Non-Consequence remains partially covered"
+  ],
+  "schema": "stegverse_stage12_theorem_manifest_reconciliation_verification.v1",
+  "success": true,
+  "theorem_map_markers": [
+    "Representation Non-Consequence | Direct representation-only receipts",
+    "Stage 12 Governed Candidate Promotion and Release Queue",
+    "stage12_candidate_promotion_queue_tests",
+    "ALLOW_QUEUE_ENTRY",
+    "LEDGER_QUEUE_ENTRY"
+  ]
+}

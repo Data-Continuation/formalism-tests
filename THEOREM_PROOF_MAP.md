@@ -14,7 +14,7 @@ Site must not become the authority for receipts.
 
 ## Current Workflow Evidence
 
-The declared-task workflow now supports the validated transition proof chain through Stage 11:
+The declared-task workflow now supports the validated transition proof chain through Stage 12:
 
 ```text
 archive_runtime_artifacts
@@ -29,6 +29,7 @@ stage9_multi_body_coupling_tests
 stage9_reconciliation_tests
 stage10_canonical_release_tests
 stage11_candidate_expansion_governance_tests
+stage12_candidate_promotion_queue_tests
 transition_table_public_surface_tests
 representation_non_consequence_tests
 site_mirror_integrity_tests
@@ -62,6 +63,8 @@ reports/stage9_reconciliation_report.json
 reports/stage10_canonical_release_report.json
 reports/stage11_candidate_expansion_governance_report.json
 reports/stage11_candidate_expansion_governance_receipts.jsonl
+reports/stage12_candidate_promotion_queue_report.json
+reports/stage12_candidate_promotion_queue_receipts.jsonl
 dist/transition-table-v1-rc1/canonical_transition_table_release.json
 dist/transition-table-v1-rc1/canonical_transition_table_release.sha256
 dist/transition-table-v1-rc1/replay_packet.json
@@ -90,6 +93,7 @@ dist/transition-table-v1-rc1/release_receipt.json
 | Stage 9 Reconciliation | Stage 9 reconciliation validates documentation, theorem map, policies, and declared-task state through Stage 10. | Covered |
 | Stage 10 Canonical Transition Table Release | Stage 10 emits a deterministic canonical release candidate, hash, replay packet, and release receipt. | Covered |
 | Stage 11 Candidate Expansion Governance | Stage 11 validates that `StegVerse-001 / Beta_Orionis` may propose, draft, sandbox-test, reject, supersede, and queue candidates without self-promoting into canonical authority. | Covered |
+| Stage 12 Governed Candidate Promotion and Release Queue | Stage 12 validates that accepted Stage 11 candidates may enter a governed release queue only through formalism-tests authority, accepted review, closed dependencies, receipts, manifest validation, hash validation, lineage validation, and queue ledger recording. | Covered |
 | Transition Table Public Surface | Public surface runner validates transition classes, elements, single-source status, and mobile/public presentation contracts. | Covered |
 | Site Mirror Integrity | Site mirror runner validates that Site mirrors proof data without becoming proof authority. | Covered |
 | Current Report Preservation | Current-report runner preserves latest successful proof reports under stable `reports/current/` paths. | Covered |
@@ -165,16 +169,6 @@ coupling_classes: 9
 next_release_state: transition-table-v1
 ```
 
-Release artifacts:
-
-```text
-dist/transition-table-v1-rc1/canonical_transition_table_release.json
-dist/transition-table-v1-rc1/canonical_transition_table_release.sha256
-dist/transition-table-v1-rc1/replay_packet.json
-dist/transition-table-v1-rc1/release_receipt.json
-reports/stage10_canonical_release_report.json
-```
-
 ## Stage 11 Candidate Expansion Governance
 
 Stage 11 validates the governance model for allowing an AI work-entity to help expand the Transition Table without becoming canonical authority.
@@ -185,27 +179,7 @@ entity_alias: Beta_Orionis
 entity_type: governed_ai_work_entity
 ```
 
-Allowed roles:
-
-```text
-candidate_proposer
-fixture_drafter
-sandbox_tester
-adversarial_case_generator
-mirror_packet_preparer
-```
-
-Forbidden roles:
-
-```text
-canonical_authority
-workflow_mutator_without_review
-credential_acquirer
-site_proof_authority
-self_promotion_authority
-```
-
-Validated Stage 11 decision coverage:
+Stage 11 decision coverage:
 
 ```text
 ALLOW_SANDBOX
@@ -215,13 +189,41 @@ LEDGER_REJECTION
 LEDGER_SUPERSESSION
 ```
 
-The key governance claim is:
+## Stage 12 Governed Candidate Promotion and Release Queue
+
+Stage 12 validates that candidates cannot move from proposal or review into a release queue merely because they exist, passed sandbox checks, or were produced by an AI work-entity.
+
+Promotion into the governed release queue requires:
 
 ```text
-StegVerse-001 may propose candidates.
-formalism-tests validates candidates.
-Site mirrors validated proof data.
-No AI work-entity may self-promote candidate status into canonical authority.
+formalism-tests authority
+accepted review
+closed dependency closure
+receipt emission
+release manifest presence
+release hash validation
+supersession lineage validation
+queue ledger recording
+Site remaining public mirror only
+```
+
+Stage 12 decision coverage:
+
+```text
+ALLOW_QUEUE_ENTRY
+FAIL_CLOSED
+LEDGER_QUEUE_ENTRY
+```
+
+Validated Stage 12 result:
+
+```text
+case_count: 11
+receipt_count: 11
+assertion_count: 59
+ALLOW_QUEUE_ENTRY: 2
+FAIL_CLOSED: 8
+LEDGER_QUEUE_ENTRY: 1
 ```
 
 ## Current Interpretation
@@ -244,13 +246,15 @@ AI-domain participation
 multi-body coupling closure
 canonical release-candidate generation
 candidate expansion governance
+governed candidate promotion
+release queue ledgering
 public mirror integrity
 current-report preservation
 theorem-map consistency
 ```
 
-The next proof layer should validate candidate promotion from Stage 11 governance into a controlled next release candidate, likely:
+The next proof layer should validate how queued candidates become a new canonical release candidate without breaking continuity from `transition-table-v1-rc1`, likely:
 
 ```text
-Stage 12 - Governed Candidate Promotion and Release Queue
+Stage 13 - Release Candidate Delta and Canonical Upgrade
 ```

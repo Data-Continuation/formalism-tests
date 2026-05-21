@@ -1,22 +1,14 @@
 {
-  "bundle_id": "formalism-tests-stage12-candidate-promotion-queue",
+  "bundle_id": "formalism-tests-stage12-theorem-manifest-reconciliation",
   "declared_task": "stage12_candidate_promotion_queue_tests",
   "files": [
     {
-      "action": "create",
-      "path": "tests/fixtures/stage12_candidate_promotion_queue_cases.json"
+      "action": "replace",
+      "path": "THEOREM_PROOF_MAP.md"
     },
     {
-      "action": "create",
-      "path": "tools/run_stage12_candidate_promotion_queue_tests.py"
-    },
-    {
-      "action": "create",
-      "path": "tools/tasks/formalism_tests_tasks.stage12.additive.json"
-    },
-    {
-      "action": "create",
-      "path": "docs/STAGE_12_CANDIDATE_PROMOTION_QUEUE.md"
+      "action": "replace",
+      "path": "tools/tasks/formalism_tests_tasks.json"
     },
     {
       "action": "include",
@@ -28,7 +20,7 @@
     }
   ],
   "no_workflows": true,
-  "purpose": "Add Stage 12 governed candidate promotion and release queue validation.",
+  "purpose": "Update theorem map through Stage 12 and merge Stage 12 into the active declared-task manifest.",
   "schema": "stegverse_bundle_manifest.v1",
   "target_repo": "Data-Continuation/formalism-tests"
 }
