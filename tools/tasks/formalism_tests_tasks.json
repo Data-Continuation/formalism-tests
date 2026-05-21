@@ -1,6 +1,6 @@
 {
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "1.6.0",
+  "manifest_version": "1.7.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -156,6 +156,19 @@
         "reports/stage11_candidate_expansion_governance_receipts.jsonl"
       ],
       "task_id": "stage11_candidate_expansion_governance_tests"
+    },
+    {
+      "command": [
+        "python",
+        "tools/run_stage12_candidate_promotion_queue_tests.py"
+      ],
+      "description": "Stage 12 - validate governed candidate promotion into a release queue.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/stage12_candidate_promotion_queue_report.json",
+        "reports/stage12_candidate_promotion_queue_receipts.jsonl"
+      ],
+      "task_id": "stage12_candidate_promotion_queue_tests"
     },
     {
       "command": [
