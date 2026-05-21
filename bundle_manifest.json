@@ -1,9 +1,22 @@
 {
-  "bundle_id": "formalism-tests-theorem-map-stage11-fix",
+  "bundle_id": "formalism-tests-stage12-candidate-promotion-queue",
+  "declared_task": "stage12_candidate_promotion_queue_tests",
   "files": [
     {
-      "action": "replace",
-      "path": "THEOREM_PROOF_MAP.md"
+      "action": "create",
+      "path": "tests/fixtures/stage12_candidate_promotion_queue_cases.json"
+    },
+    {
+      "action": "create",
+      "path": "tools/run_stage12_candidate_promotion_queue_tests.py"
+    },
+    {
+      "action": "create",
+      "path": "tools/tasks/formalism_tests_tasks.stage12.additive.json"
+    },
+    {
+      "action": "create",
+      "path": "docs/STAGE_12_CANDIDATE_PROMOTION_QUEUE.md"
     },
     {
       "action": "include",
@@ -14,18 +27,8 @@
       "path": "bundle_manifest.json"
     }
   ],
-  "forbidden_markers": [
-    "Partially covered",
-    "Representation Non-Consequence remains partially covered"
-  ],
   "no_workflows": true,
-  "purpose": "Replace stale THEOREM_PROOF_MAP.md with a Stage 11-current theorem map.",
+  "purpose": "Add Stage 12 governed candidate promotion and release queue validation.",
   "schema": "stegverse_bundle_manifest.v1",
-  "target_repo": "Data-Continuation/formalism-tests",
-  "verified_markers": [
-    "Representation Non-Consequence | Direct representation-only receipts",
-    "Stage 10 Canonical Transition Table Release",
-    "Stage 11 Candidate Expansion Governance",
-    "StegVerse-001 / Beta_Orionis"
-  ]
+  "target_repo": "Data-Continuation/formalism-tests"
 }
