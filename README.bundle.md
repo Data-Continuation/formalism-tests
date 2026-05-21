@@ -1,21 +1,18 @@
-# Stage 9 Reconciliation Bundle
+# Stage 9 Reconciliation Fix 1 Bundle
 
 ## Assumptions
 
-1. This bundle belongs in formalism-tests.
-2. Stage 7, Stage 8, and Stage 9 task outputs exist as proof evidence.
-3. Repo documentation and policies need to catch up to those outputs.
+1. This bundle belongs in `formalism-tests`.
+2. The previous failure happened because the runner expected the exact string `Stage 7 - Element Dependency Closure`.
+3. The README may contain equivalent wording such as `Stage 7 Element Dependency Closure`.
 4. No workflow files are added or changed.
 
 ## Done Definition
 
-1. THEOREM_PROOF_MAP.md includes Stage 7, Stage 8, and Stage 9 as covered.
-2. README.md includes Stage 7, Stage 8, Stage 9, and Stage 10 as next.
-3. Current-report preservation policy includes Stage 7, Stage 8, and Stage 9 reports.
-4. Theorem-map consistency policy requires Stage 9 coverage.
-5. tools/tasks/formalism_tests_tasks.json includes stage9_reconciliation_tests.
-6. tools/run_stage9_reconciliation_tests.py validates the reconciled state.
-7. No workflow files are included.
+1. `tools/run_stage9_reconciliation_tests.py` validates grouped semantic markers.
+2. `tests/fixtures/stage9_reconciliation_policy.json` uses marker groups.
+3. `stage9_reconciliation_tests` can run without failing on harmless README punctuation differences.
+4. The task remains `stage9_reconciliation_tests`.
 
 ## Run
 

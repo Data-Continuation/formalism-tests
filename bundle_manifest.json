@@ -1,48 +1,16 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "formalism-tests-stage9-reconciliation",
+  "bundle_id": "stage9-reconciliation-fix1",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Reconcile theorem map, README, policies, and declared tasks through Stage 9 Multi-Body Coupling Closure.",
+  "purpose": "Fix Stage 9 reconciliation marker validation so README wording does not require fragile exact punctuation.",
   "files": [
     {
-      "path": "THEOREM_PROOF_MAP.md",
-      "action": "replace"
-    },
-    {
-      "path": "README.md",
-      "action": "replace"
-    },
-    {
-      "path": "tests/fixtures/current_report_preservation_policy.json",
-      "action": "replace"
-    },
-    {
-      "path": "tests/fixtures/theorem_map_consistency_policy.json",
+      "path": "tools/run_stage9_reconciliation_tests.py",
       "action": "replace"
     },
     {
       "path": "tests/fixtures/stage9_reconciliation_policy.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/stage9_reconciliation_reports/element_dependency_closure_report.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/stage9_reconciliation_reports/stage8_ai_domain_report.json",
-      "action": "create"
-    },
-    {
-      "path": "tests/fixtures/stage9_reconciliation_reports/stage9_multi_body_coupling_report.json",
-      "action": "create"
-    },
-    {
-      "path": "tools/run_stage9_reconciliation_tests.py",
-      "action": "create"
-    },
-    {
-      "path": "tools/tasks/formalism_tests_tasks.json",
       "action": "replace"
     },
     {
