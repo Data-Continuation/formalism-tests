@@ -1,0 +1,16 @@
+{
+  "forbidden_markers_absent": [
+    "Partially covered",
+    "Representation Non-Consequence remains partially covered"
+  ],
+  "required_markers": [
+    "Representation Non-Consequence | Direct representation-only receipts",
+    "Stage 10 Canonical Transition Table Release",
+    "Stage 11 Candidate Expansion Governance",
+    "StegVerse-001 / Beta_Orionis",
+    "No AI work-entity may self-promote candidate status into canonical authority."
+  ],
+  "schema": "stegverse_theorem_map_stage11_fix_verification.v1",
+  "success": true,
+  "updated_file": "THEOREM_PROOF_MAP.md"
+}

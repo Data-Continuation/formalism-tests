@@ -1,18 +1,9 @@
 {
-  "bundle_id": "formalism-tests-stage11-active-manifest-fix",
-  "declared_task": "stage11_candidate_expansion_governance_tests",
+  "bundle_id": "formalism-tests-theorem-map-stage11-fix",
   "files": [
     {
       "action": "replace",
-      "path": "tools/tasks/formalism_tests_tasks.json"
-    },
-    {
-      "action": "create_or_replace",
-      "path": "tests/fixtures/stage11_candidate_expansion_cases.json"
-    },
-    {
-      "action": "create_or_replace",
-      "path": "tools/run_stage11_candidate_expansion_governance_tests.py"
+      "path": "THEOREM_PROOF_MAP.md"
     },
     {
       "action": "include",
@@ -23,8 +14,18 @@
       "path": "bundle_manifest.json"
     }
   ],
+  "forbidden_markers": [
+    "Partially covered",
+    "Representation Non-Consequence remains partially covered"
+  ],
   "no_workflows": true,
-  "purpose": "Add Stage 11 candidate expansion governance test to the active declared-task manifest.",
+  "purpose": "Replace stale THEOREM_PROOF_MAP.md with a Stage 11-current theorem map.",
   "schema": "stegverse_bundle_manifest.v1",
-  "target_repo": "Data-Continuation/formalism-tests"
+  "target_repo": "Data-Continuation/formalism-tests",
+  "verified_markers": [
+    "Representation Non-Consequence | Direct representation-only receipts",
+    "Stage 10 Canonical Transition Table Release",
+    "Stage 11 Candidate Expansion Governance",
+    "StegVerse-001 / Beta_Orionis"
+  ]
 }
