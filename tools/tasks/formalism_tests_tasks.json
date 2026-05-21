@@ -11,37 +11,56 @@
       "task_id": "archive_runtime_artifacts",
       "enabled": true,
       "description": "Archive old runtime outputs to legacy/runtime-artifacts/.",
-      "command": ["python", "tools/apply_runtime_artifact_rules.py", "tools/rules/runtime_artifact_rules.json"]
+      "command": [
+        "python",
+        "tools/apply_runtime_artifact_rules.py",
+        "tools/rules/runtime_artifact_rules.json"
+      ]
     },
     {
       "task_id": "continuation_gate",
       "enabled": true,
       "description": "Stage 2 data continuation gate.",
-      "command": ["python", "src/validate_expected_outcomes.py"]
+      "command": [
+        "python",
+        "src/validate_expected_outcomes.py"
+      ]
     },
     {
       "task_id": "compound_continuation_gate",
       "enabled": true,
       "description": "Stage 3 compound continuation gate.",
-      "command": ["python", "src/compound_continuation_gate.py"]
+      "command": [
+        "python",
+        "src/compound_continuation_gate.py"
+      ]
     },
     {
       "task_id": "transition_table_gate",
       "enabled": true,
       "description": "Stage 4 transition table gate.",
-      "command": ["python", "src/transition_table_gate.py"]
+      "command": [
+        "python",
+        "src/transition_table_gate.py"
+      ]
     },
     {
       "task_id": "boundary_transition_gate",
       "enabled": true,
       "description": "Stage 5 boundary transition gate.",
-      "command": ["python", "src/boundary_transition_gate.py"]
+      "command": [
+        "python",
+        "src/boundary_transition_gate.py"
+      ]
     },
     {
       "task_id": "stage6_unified_gate_tests",
       "enabled": true,
-      "description": "Stage 6 unified AE gate — 10 candidates, 320 assertions.",
-      "command": ["python", "tools/run_stage6_unified_gate_tests.py"],
+      "description": "Stage 6 unified AE gate \u2014 10 candidates, 320 assertions.",
+      "command": [
+        "python",
+        "tools/run_stage6_unified_gate_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage6_unified_gate_report.json",
         "reports/stage6_unified_gate_receipts.jsonl"
@@ -51,37 +70,55 @@
       "task_id": "transition_table_public_surface_tests",
       "enabled": true,
       "description": "Validate transition table as public proof surface.",
-      "command": ["python", "tools/run_transition_table_public_surface_tests.py"]
+      "command": [
+        "python",
+        "tools/run_transition_table_public_surface_tests.py"
+      ]
     },
     {
       "task_id": "representation_non_consequence_tests",
       "enabled": true,
       "description": "Representation Non-Consequence direct coverage.",
-      "command": ["python", "tools/run_representation_non_consequence_tests.py"]
+      "command": [
+        "python",
+        "tools/run_representation_non_consequence_tests.py"
+      ]
     },
     {
       "task_id": "site_mirror_integrity_tests",
       "enabled": true,
       "description": "Validate Site mirror alignment with proof authority.",
-      "command": ["python", "tools/run_site_mirror_integrity_tests.py"]
+      "command": [
+        "python",
+        "tools/run_site_mirror_integrity_tests.py"
+      ]
     },
     {
       "task_id": "current_report_preservation_tests",
       "enabled": true,
       "description": "Validate stable reports/current/ preservation.",
-      "command": ["python", "tools/run_current_report_preservation_tests.py"]
+      "command": [
+        "python",
+        "tools/run_current_report_preservation_tests.py"
+      ]
     },
     {
       "task_id": "theorem_map_consistency_tests",
       "enabled": true,
       "description": "Validate root and current theorem maps agree with latest reports.",
-      "command": ["python", "tools/run_theorem_map_consistency_tests.py"]
+      "command": [
+        "python",
+        "tools/run_theorem_map_consistency_tests.py"
+      ]
     },
     {
       "task_id": "site_mirror_update",
       "enabled": true,
       "description": "Read verified proof outputs from reports/current/ and write updated data files to Site/data/formalism-tests/. This is the only path by which Site data files are updated.",
-      "command": ["python", "tools/run_site_mirror_update.py"],
+      "command": [
+        "python",
+        "tools/run_site_mirror_update.py"
+      ],
       "expected_outputs": [
         "reports/site_mirror_update_receipt.json"
       ]
@@ -89,8 +126,11 @@
     {
       "task_id": "element_dependency_closure_tests",
       "enabled": true,
-      "description": "Stage 7 — Validate that every unlocked transition element has declared dependencies and no Level 5 element depends on an uncovered element without an explicit boundary. Enables formal AI Block composition verification.",
-      "command": ["python", "tools/run_element_dependency_closure_tests.py"],
+      "description": "Stage 7 \u2014 Validate that every unlocked transition element has declared dependencies and no Level 5 element depends on an uncovered element without an explicit boundary. Enables formal AI Block composition verification.",
+      "command": [
+        "python",
+        "tools/run_element_dependency_closure_tests.py"
+      ],
       "expected_outputs": [
         "reports/element_dependency_closure_report.json",
         "reports/element_dependency_closure_receipts.jsonl"
@@ -99,11 +139,27 @@
     {
       "task_id": "stage8_ai_domain_tests",
       "enabled": true,
-      "description": "Stage 8 — Validate AI governance, derivation, and verification agent participation as formally tested transition classes. After passing: AI entities may propose candidates within AI_BLOCK scope with dependency closure + quorum required.",
-      "command": ["python", "tools/run_stage8_ai_domain_tests.py"],
+      "description": "Stage 8 \u2014 Validate AI governance, derivation, and verification agent participation as formally tested transition classes. After passing: AI entities may propose candidates within AI_BLOCK scope with dependency closure + quorum required.",
+      "command": [
+        "python",
+        "tools/run_stage8_ai_domain_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage8_ai_domain_report.json",
         "reports/stage8_ai_domain_receipts.jsonl"
+      ]
+    },
+    {
+      "task_id": "stage9_multi_body_coupling_tests",
+      "enabled": true,
+      "description": "Stage 9 \u2014 Multi-Body Coupling Closure. Validates admissibility cannot be evaluated in isolation when entities are coupled. Covers all 9 coupling classes. After passing: multi-agent AI participation is formally governed.",
+      "command": [
+        "python",
+        "tools/run_stage9_multi_body_coupling_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/stage9_multi_body_coupling_report.json",
+        "reports/stage9_multi_body_coupling_receipts.jsonl"
       ]
     }
   ]
