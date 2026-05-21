@@ -3,19 +3,40 @@
   "required_markdown": [
     {
       "path": "README.md",
-      "markers": [
-        "Stage 7 - Element Dependency Closure",
-        "Stage 8 - AI Domain Transition Classes",
-        "Stage 9 - Multi-Body Coupling Closure",
-        "Stage 10 - Canonical Transition Table Release"
+      "marker_groups": [
+        [
+          "Stage 7",
+          "Element Dependency Closure"
+        ],
+        [
+          "Stage 8",
+          "AI Domain Transition"
+        ],
+        [
+          "Stage 9",
+          "Multi-Body Coupling"
+        ],
+        [
+          "Stage 10",
+          "Canonical Transition Table Release"
+        ]
       ]
     },
     {
       "path": "THEOREM_PROOF_MAP.md",
-      "markers": [
-        "Stage 7 Element Dependency Closure",
-        "Stage 8 AI Domain Transition Classes",
-        "Stage 9 Multi-Body Coupling Closure"
+      "marker_groups": [
+        [
+          "Stage 7",
+          "Element Dependency Closure"
+        ],
+        [
+          "Stage 8",
+          "AI Domain Transition"
+        ],
+        [
+          "Stage 9",
+          "Multi-Body Coupling"
+        ]
       ]
     }
   ],
