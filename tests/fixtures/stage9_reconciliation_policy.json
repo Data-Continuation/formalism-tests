@@ -1,5 +1,5 @@
 {
-  "schema": "stegverse_stage9_reconciliation_policy.v1",
+  "schema": "stegverse_stage9_reconciliation_policy.v2",
   "required_markdown": [
     {
       "path": "README.md",
@@ -36,6 +36,41 @@
         [
           "Stage 9",
           "Multi-Body Coupling"
+        ],
+        [
+          "Stage 10",
+          "Canonical Transition Table Release"
+        ]
+      ]
+    },
+    {
+      "path": "docs/STAGE_10_CANONICAL_RELEASE.md",
+      "marker_groups": [
+        [
+          "Stage 10",
+          "Canonical Transition Table Release"
+        ],
+        [
+          "release_id",
+          "transition-table-v1-rc1"
+        ]
+      ]
+    },
+    {
+      "path": "docs/TRANSITION_TABLE_STATUS.md",
+      "marker_groups": [
+        [
+          "Stage 10",
+          "RELEASE_CANDIDATE"
+        ]
+      ]
+    },
+    {
+      "path": "docs/VALIDATION_ROADMAP.md",
+      "marker_groups": [
+        [
+          "Stage 10",
+          "Canonical Transition Table Release"
         ]
       ]
     }
@@ -67,7 +102,8 @@
     "element_dependency_closure_tests",
     "stage8_ai_domain_tests",
     "stage9_multi_body_coupling_tests",
-    "stage9_reconciliation_tests"
+    "stage9_reconciliation_tests",
+    "stage10_canonical_release_tests"
   ],
   "fixture_report_dir": "tests/fixtures/stage9_reconciliation_reports",
   "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."

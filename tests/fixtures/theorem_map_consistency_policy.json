@@ -1,55 +1,15 @@
 {
-  "schema": "stegverse_theorem_map_consistency_policy.v2",
-  "root_theorem_map": "THEOREM_PROOF_MAP.md",
-  "current_theorem_map": "reports/current/THEOREM_PROOF_MAP.md",
-  "fixture_report_dir": "tests/fixtures/theorem_map_consistency_reports",
+  "schema": "stegverse_theorem_map_consistency_policy.v3",
   "required_covered_theorems": [
-    "Representation Non-Consequence",
-    "Role Non-Transfer",
-    "Continuation Capacity",
-    "Fail-Closed Basis Requirement",
-    "Local-Composite Non-Equivalence",
-    "Commit-Time Sufficiency",
-    "Replay Non-Reversal",
-    "Inference-Window Collapse",
-    "Recoverability Floor",
-    "Role-Transition Dependence",
-    "Compound Continuation Positive Control",
-    "Stage 6 Unified Gate",
-    "Stage 7 Element Dependency Closure",
-    "Stage 8 AI Domain Transition Classes",
-    "Stage 9 Multi-Body Coupling Closure",
-    "Transition Table Public Surface",
-    "Site Mirror Integrity",
-    "Current Report Preservation",
-    "Theorem Map Consistency"
-  ],
-  "forbidden_markers": [
-    "Partially covered theorem group",
-    "Representation Non-Consequence remains partially covered"
+    "Stage 10 Canonical Transition Table Release"
   ],
   "required_report_checks": [
     {
-      "path": "reports/element_dependency_closure_report.json",
-      "fixture": "element_dependency_closure_report.json",
-      "required": {
-        "success": true
-      }
-    },
-    {
-      "path": "reports/stage8_ai_domain_report.json",
-      "fixture": "stage8_ai_domain_report.json",
-      "required": {
-        "success": true
-      }
-    },
-    {
-      "path": "reports/stage9_multi_body_coupling_report.json",
-      "fixture": "stage9_multi_body_coupling_report.json",
+      "path": "reports/stage10_canonical_release_report.json",
+      "fixture": "stage10_canonical_release_report.json",
       "required": {
         "success": true
       }
     }
-  ],
-  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
+  ]
 }

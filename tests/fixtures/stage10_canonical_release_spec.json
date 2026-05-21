@@ -1,0 +1,108 @@
+{
+  "schema": "stegverse_stage10_canonical_release_spec.v2",
+  "release_id": "transition-table-v1-rc1",
+  "release_created_at": "2026-05-21T00:00:00Z",
+  "release_stage": "Stage 10",
+  "release_name": "Canonical Transition Table Release Candidate 1",
+  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts.",
+  "canonical_status": "release_candidate",
+  "required_prior_stages": [
+    "Stage 6 Unified Gate",
+    "Stage 7 Element Dependency Closure",
+    "Stage 8 AI Domain Transition Classes",
+    "Stage 9 Multi-Body Coupling Closure",
+    "Stage 9 Reconciliation"
+  ],
+  "required_reports": [
+    {
+      "stage": "Stage 6",
+      "path": "reports/stage6_unified_gate_report.json",
+      "fixture": "stage6_unified_gate_report.json",
+      "required": {
+        "success": true,
+        "candidate_count": 10,
+        "assertion_count": 320
+      }
+    },
+    {
+      "stage": "Stage 7",
+      "path": "reports/element_dependency_closure_report.json",
+      "fixture": "element_dependency_closure_report.json",
+      "required": {
+        "success": true,
+        "element_count": 13,
+        "assertion_count": 105
+      }
+    },
+    {
+      "stage": "Stage 8",
+      "path": "reports/stage8_ai_domain_report.json",
+      "fixture": "stage8_ai_domain_report.json",
+      "required": {
+        "success": true,
+        "candidate_count": 8,
+        "assertion_count": 64
+      }
+    },
+    {
+      "stage": "Stage 9",
+      "path": "reports/stage9_multi_body_coupling_report.json",
+      "fixture": "stage9_multi_body_coupling_report.json",
+      "required": {
+        "success": true,
+        "candidate_count": 10,
+        "assertion_count": 80
+      }
+    },
+    {
+      "stage": "Stage 9 Reconciliation",
+      "path": "reports/stage9_reconciliation_report.json",
+      "fixture": "stage9_reconciliation_report.json",
+      "required": {
+        "success": true
+      }
+    }
+  ],
+  "canonical_artifacts": [
+    "dist/transition-table-v1-rc1/canonical_transition_table_release.json",
+    "dist/transition-table-v1-rc1/canonical_transition_table_release.sha256",
+    "dist/transition-table-v1-rc1/replay_packet.json",
+    "dist/transition-table-v1-rc1/release_receipt.json"
+  ],
+  "canonical_elements": [
+    "AE",
+    "BC",
+    "CHF",
+    "DC",
+    "DaCo",
+    "Triad",
+    "IW",
+    "RE",
+    "RESET_BOUNDARY",
+    "EVOLVE_BOUNDARY",
+    "AI_BLOCK",
+    "FINCO_CHAIN",
+    "REPRESENTATION_NON_CONSEQUENCE"
+  ],
+  "coupling_classes": [
+    "authority-transfer",
+    "coherence-coupled",
+    "distributed-node",
+    "irreversible-consequence",
+    "isolated",
+    "multi-agent-cascade",
+    "paired-boundary",
+    "shared-resource",
+    "trust-field"
+  ],
+  "release_guards": [
+    "no_uncovered_level5_dependencies",
+    "no_hidden_authority",
+    "no_unscoped_ai_participation",
+    "no_public_site_authority",
+    "canonical_hash_required",
+    "replay_packet_required",
+    "current_report_snapshot_required"
+  ],
+  "next_release_state": "transition-table-v1"
+}
