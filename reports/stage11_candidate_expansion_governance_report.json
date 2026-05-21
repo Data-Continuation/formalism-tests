@@ -1,0 +1,21 @@
+{
+  "assertion_count": 55,
+  "case_count": 10,
+  "decision_counts": {
+    "ALLOW_RELEASE_QUEUE": 1,
+    "ALLOW_SANDBOX": 1,
+    "FAIL_CLOSED": 6,
+    "LEDGER_REJECTION": 1,
+    "LEDGER_SUPERSESSION": 1
+  },
+  "generated_at": "2026-05-21T18:39:50.063641+00:00",
+  "message": "Stage 11 candidate expansion governance validation passed.",
+  "receipt_count": 10,
+  "receipts": "reports/stage11_candidate_expansion_governance_receipts.jsonl",
+  "report": "reports/stage11_candidate_expansion_governance_report.json",
+  "schema": "stegverse_stage11_candidate_expansion_governance_report.v1",
+  "stage": "Stage 11",
+  "success": true,
+  "theorem_basis": "Candidate Expansion Governance",
+  "work_entity": "StegVerse-001 / Beta_Orionis"
+}
