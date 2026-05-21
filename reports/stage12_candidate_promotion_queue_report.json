@@ -1,0 +1,19 @@
+{
+  "assertion_count": 59,
+  "case_count": 11,
+  "decision_counts": {
+    "ALLOW_QUEUE_ENTRY": 2,
+    "FAIL_CLOSED": 8,
+    "LEDGER_QUEUE_ENTRY": 1
+  },
+  "generated_at": "2026-05-21T19:27:47.789965+00:00",
+  "message": "Stage 12 governed candidate promotion and release queue validation passed.",
+  "receipt_count": 11,
+  "receipts": "reports/stage12_candidate_promotion_queue_receipts.jsonl",
+  "report": "reports/stage12_candidate_promotion_queue_report.json",
+  "schema": "stegverse_stage12_candidate_promotion_queue_report.v1",
+  "stage": "Stage 12",
+  "success": true,
+  "theorem_basis": "Governed Candidate Promotion and Release Queue",
+  "work_entity": "StegVerse-001 / Beta_Orionis"
+}
