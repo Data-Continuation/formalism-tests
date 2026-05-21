@@ -1,18 +1,19 @@
 {
-  "assertion_count": 27,
-  "generated_at": "2026-05-21T13:04:17.814455+00:00",
-  "message": "Stage 9 reconciliation validation passed.",
+  "assertion_count": 35,
+  "generated_at": "2026-05-21T15:44:19.088644+00:00",
+  "message": "Stage 9 and Stage 10 documentation reconciliation validation passed.",
   "next_stage": "Stage 10 - Canonical Transition Table Release",
   "reconciled_stages": [
     "Stage 7",
     "Stage 8",
-    "Stage 9"
+    "Stage 9",
+    "Stage 10"
   ],
   "report_sources": [
     "tests/fixtures/stage9_reconciliation_reports/element_dependency_closure_report.json",
     "tests/fixtures/stage9_reconciliation_reports/stage8_ai_domain_report.json",
     "tests/fixtures/stage9_reconciliation_reports/stage9_multi_body_coupling_report.json"
   ],
-  "schema": "stegverse_stage9_reconciliation_report.v1",
+  "schema": "stegverse_stage9_reconciliation_report.v2",
   "success": true
 }
