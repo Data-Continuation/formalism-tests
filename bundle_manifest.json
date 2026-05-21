@@ -1,27 +1,10 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "stage9-reconciliation-fix1",
+  "bundle_id": "formalism-tests-stage9-stage10-docs-manifest-reconciliation",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Fix Stage 9 reconciliation marker validation so README wording does not require fragile exact punctuation.",
-  "files": [
-    {
-      "path": "tools/run_stage9_reconciliation_tests.py",
-      "action": "replace"
-    },
-    {
-      "path": "tests/fixtures/stage9_reconciliation_policy.json",
-      "action": "replace"
-    },
-    {
-      "path": "README.bundle.md",
-      "action": "include"
-    },
-    {
-      "path": "bundle_manifest.json",
-      "action": "include"
-    }
-  ],
-  "declared_task": "stage9_reconciliation_tests",
-  "expected_output": "reports/stage9_reconciliation_report.json"
+  "declared_tasks": [
+    "stage9_reconciliation_tests",
+    "stage10_canonical_release_tests"
+  ]
 }

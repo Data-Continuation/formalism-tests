@@ -1,30 +1,19 @@
-# Stage 9 Reconciliation Fix 1 Bundle
+# Combined Stage 9 + Stage 10 Docs/Manifest Reconciliation Bundle
 
-## Assumptions
+This bundle updates README.md, THEOREM_PROOF_MAP.md, docs/, the active task manifest, Stage 9 reconciliation runner/policy, and Stage 10 canonical release runner/spec.
 
-1. This bundle belongs in `formalism-tests`.
-2. The previous failure happened because the runner expected the exact string `Stage 7 - Element Dependency Closure`.
-3. The README may contain equivalent wording such as `Stage 7 Element Dependency Closure`.
-4. No workflow files are added or changed.
+No workflow files are included.
 
-## Done Definition
-
-1. `tools/run_stage9_reconciliation_tests.py` validates grouped semantic markers.
-2. `tests/fixtures/stage9_reconciliation_policy.json` uses marker groups.
-3. `stage9_reconciliation_tests` can run without failing on harmless README punctuation differences.
-4. The task remains `stage9_reconciliation_tests`.
-
-## Run
-
-```text
-Actions
--> Data Continuation Tests
--> Run workflow
-```
-
-Inputs:
+Run:
 
 ```text
 task_manifest = tools/tasks/formalism_tests_tasks.json
 task_id       = stage9_reconciliation_tests
+```
+
+Then:
+
+```text
+task_manifest = tools/tasks/formalism_tests_tasks.json
+task_id       = stage10_canonical_release_tests
 ```
