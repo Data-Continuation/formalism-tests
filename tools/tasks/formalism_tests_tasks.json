@@ -1,208 +1,223 @@
 {
-  "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "1.4.0",
+  "manifest_version": "1.6.0",
+  "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
-      "task_id": "archive_runtime_artifacts",
-      "description": "archive_runtime_artifacts",
-      "enabled": true,
       "command": [
         "python",
         "tools/apply_runtime_artifact_rules.py",
         "tools/rules/runtime_artifact_rules.json"
       ],
-      "expected_outputs": []
+      "description": "Apply runtime artifact rules.",
+      "enabled": true,
+      "expected_outputs": [],
+      "task_id": "archive_runtime_artifacts"
     },
     {
-      "task_id": "continuation_gate",
-      "description": "continuation_gate",
-      "enabled": true,
       "command": [
         "python",
         "src/continuation_gate.py"
       ],
+      "description": "Run the base continuation gate.",
+      "enabled": true,
       "expected_outputs": [
         "continuation_gate_report.json"
-      ]
+      ],
+      "task_id": "continuation_gate"
     },
     {
-      "task_id": "compound_continuation_gate",
-      "description": "compound_continuation_gate",
-      "enabled": true,
       "command": [
         "python",
         "src/compound_continuation_gate.py"
       ],
+      "description": "Run Stage 3 compound continuation proof cases.",
+      "enabled": true,
       "expected_outputs": [
         "reports/compound_receipts.jsonl",
         "reports/compound_continuation_report.md"
-      ]
+      ],
+      "task_id": "compound_continuation_gate"
     },
     {
-      "task_id": "transition_table_gate",
-      "description": "transition_table_gate",
-      "enabled": true,
       "command": [
         "python",
         "src/transition_table_gate.py"
       ],
+      "description": "Run Stage 4 transition table integration proof cases.",
+      "enabled": true,
       "expected_outputs": [
         "reports/transition_table_receipts.jsonl",
         "reports/transition_table_report.md"
-      ]
+      ],
+      "task_id": "transition_table_gate"
     },
     {
-      "task_id": "boundary_transition_gate",
-      "description": "boundary_transition_gate",
-      "enabled": true,
       "command": [
         "python",
         "src/boundary_transition_gate.py"
       ],
+      "description": "Run Stage 5 boundary transition cases.",
+      "enabled": true,
       "expected_outputs": [
         "reports/boundary_transition_receipts.jsonl",
         "reports/boundary_transition_report.md"
-      ]
+      ],
+      "task_id": "boundary_transition_gate"
     },
     {
-      "task_id": "stage6_unified_gate_tests",
-      "description": "stage6_unified_gate_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_stage6_unified_gate_tests.py"
       ],
+      "description": "Run Stage 6 unified gate tests.",
+      "enabled": true,
       "expected_outputs": [
         "reports/stage6_unified_gate_report.json"
-      ]
+      ],
+      "task_id": "stage6_unified_gate_tests"
     },
     {
-      "task_id": "element_dependency_closure_tests",
-      "description": "element_dependency_closure_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_element_dependency_closure_tests.py"
       ],
+      "description": "Stage 7 - element dependency closure.",
+      "enabled": true,
       "expected_outputs": [
         "reports/element_dependency_closure_report.json",
         "reports/element_dependency_closure_receipts.jsonl"
-      ]
+      ],
+      "task_id": "element_dependency_closure_tests"
     },
     {
-      "task_id": "stage8_ai_domain_tests",
-      "description": "stage8_ai_domain_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_stage8_ai_domain_tests.py"
       ],
+      "description": "Stage 8 - AI domain transition classes.",
+      "enabled": true,
       "expected_outputs": [
         "reports/stage8_ai_domain_report.json",
         "reports/stage8_ai_domain_receipts.jsonl"
-      ]
+      ],
+      "task_id": "stage8_ai_domain_tests"
     },
     {
-      "task_id": "stage9_multi_body_coupling_tests",
-      "description": "stage9_multi_body_coupling_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_stage9_multi_body_coupling_tests.py"
       ],
+      "description": "Stage 9 - multi-body coupling closure.",
+      "enabled": true,
       "expected_outputs": [
         "reports/stage9_multi_body_coupling_report.json",
         "reports/stage9_multi_body_coupling_receipts.jsonl"
-      ]
+      ],
+      "task_id": "stage9_multi_body_coupling_tests"
     },
     {
-      "task_id": "stage9_reconciliation_tests",
-      "description": "stage9_reconciliation_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_stage9_reconciliation_tests.py"
       ],
+      "description": "Reconcile documentation, theorem map, policies, and tasks through Stage 10.",
+      "enabled": true,
       "expected_outputs": [
         "reports/stage9_reconciliation_report.json"
-      ]
+      ],
+      "task_id": "stage9_reconciliation_tests"
     },
     {
-      "task_id": "stage10_canonical_release_tests",
-      "description": "stage10_canonical_release_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_stage10_canonical_release_tests.py"
       ],
+      "description": "Stage 10 - validate and emit canonical transition table release candidate artifacts.",
+      "enabled": true,
       "expected_outputs": [
         "reports/stage10_canonical_release_report.json",
         "dist/transition-table-v1-rc1/canonical_transition_table_release.json",
         "dist/transition-table-v1-rc1/canonical_transition_table_release.sha256",
         "dist/transition-table-v1-rc1/replay_packet.json",
         "dist/transition-table-v1-rc1/release_receipt.json"
-      ]
+      ],
+      "task_id": "stage10_canonical_release_tests"
     },
     {
-      "task_id": "transition_table_public_surface_tests",
-      "description": "transition_table_public_surface_tests",
+      "command": [
+        "python",
+        "tools/run_stage11_candidate_expansion_governance_tests.py"
+      ],
+      "description": "Stage 11 - validate governed AI candidate expansion without canonical self-promotion.",
       "enabled": true,
+      "expected_outputs": [
+        "reports/stage11_candidate_expansion_governance_report.json",
+        "reports/stage11_candidate_expansion_governance_receipts.jsonl"
+      ],
+      "task_id": "stage11_candidate_expansion_governance_tests"
+    },
+    {
       "command": [
         "python",
         "tools/run_transition_table_public_surface_tests.py"
       ],
+      "description": "Validate public proof surface.",
+      "enabled": true,
       "expected_outputs": [
         "reports/transition_table_public_surface_report.json"
-      ]
+      ],
+      "task_id": "transition_table_public_surface_tests"
     },
     {
-      "task_id": "representation_non_consequence_tests",
-      "description": "representation_non_consequence_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_representation_non_consequence_tests.py"
       ],
+      "description": "Validate Representation Non-Consequence.",
+      "enabled": true,
       "expected_outputs": [
-        "reports/representation_non_consequence_report.json"
-      ]
+        "reports/representation_non_consequence_report.json",
+        "reports/representation_non_consequence_report.md",
+        "reports/representation_non_consequence_receipts.jsonl"
+      ],
+      "task_id": "representation_non_consequence_tests"
     },
     {
-      "task_id": "site_mirror_integrity_tests",
-      "description": "site_mirror_integrity_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_site_mirror_integrity_tests.py"
       ],
+      "description": "Validate Site mirror integrity.",
+      "enabled": true,
       "expected_outputs": [
         "reports/site_mirror_integrity_report.json"
-      ]
+      ],
+      "task_id": "site_mirror_integrity_tests"
     },
     {
-      "task_id": "current_report_preservation_tests",
-      "description": "current_report_preservation_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_current_report_preservation_tests.py"
       ],
+      "description": "Preserve current reports.",
+      "enabled": true,
       "expected_outputs": [
         "reports/current_report_preservation_report.json"
-      ]
+      ],
+      "task_id": "current_report_preservation_tests"
     },
     {
-      "task_id": "theorem_map_consistency_tests",
-      "description": "theorem_map_consistency_tests",
-      "enabled": true,
       "command": [
         "python",
         "tools/run_theorem_map_consistency_tests.py"
       ],
+      "description": "Validate theorem map consistency.",
+      "enabled": true,
       "expected_outputs": [
         "reports/theorem_map_consistency_report.json"
-      ]
+      ],
+      "task_id": "theorem_map_consistency_tests"
     }
   ]
 }
