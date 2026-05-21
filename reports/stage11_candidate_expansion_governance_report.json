@@ -8,7 +8,7 @@
     "LEDGER_REJECTION": 1,
     "LEDGER_SUPERSESSION": 1
   },
-  "generated_at": "2026-05-21T19:04:43.554664+00:00",
+  "generated_at": "2026-05-21T19:13:37.376410+00:00",
   "message": "Stage 11 candidate expansion governance validation passed.",
   "receipt_count": 10,
   "receipts": "reports/stage11_candidate_expansion_governance_receipts.jsonl",
