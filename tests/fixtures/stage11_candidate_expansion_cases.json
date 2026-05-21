@@ -1,0 +1,215 @@
+{
+  "authority_boundary": "StegVerse-001 may propose candidates. formalism-tests validates candidates. Site mirrors validated proof data. No AI work-entity may self-promote candidate status into canonical authority.",
+  "cases": [
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "propose_candidate",
+      "candidate_id": "T-STAGE11-CANDIDATE-PROPOSE-ALLOW-001",
+      "candidate_scope": "sandbox_only",
+      "case_id": "STAGE11-CANDIDATE-PROPOSE-ALLOW-001",
+      "declared_dependencies": [
+        "AE",
+        "IW",
+        "RE",
+        "AI_BLOCK"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "ALLOW_SANDBOX",
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "pending"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "propose_candidate",
+      "candidate_id": "T-STAGE11-CANDIDATE-MISSING-DEPS-001",
+      "candidate_scope": "sandbox_only",
+      "case_id": "STAGE11-CANDIDATE-MISSING-DEPS-001",
+      "declared_dependencies": [],
+      "dependency_closure": "open",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "FAIL_CLOSED",
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "pending"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "propose_candidate",
+      "candidate_id": "T-STAGE11-CANDIDATE-HIDDEN-AUTHORITY-001",
+      "candidate_scope": "sandbox_only",
+      "case_id": "STAGE11-CANDIDATE-HIDDEN-AUTHORITY-001",
+      "declared_dependencies": [
+        "AE",
+        "AI_BLOCK"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "FAIL_CLOSED",
+      "hidden_authority_claim": true,
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "pending"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "propose_candidate",
+      "candidate_id": "T-STAGE11-CANDIDATE-NO-RECEIPT-001",
+      "candidate_scope": "sandbox_only",
+      "case_id": "STAGE11-CANDIDATE-NO-RECEIPT-001",
+      "declared_dependencies": [
+        "AE",
+        "IW",
+        "RE"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "FAIL_CLOSED",
+      "receipt_emitted": false,
+      "receipt_required": true,
+      "review_state": "pending"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "prepare_site_mirror_packet",
+      "candidate_id": "T-STAGE11-CANDIDATE-SITE-AUTHORITY-001",
+      "candidate_scope": "site_mirror",
+      "case_id": "STAGE11-CANDIDATE-SITE-AUTHORITY-001",
+      "declared_dependencies": [
+        "AE",
+        "IW",
+        "RE",
+        "AI_BLOCK"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "FAIL_CLOSED",
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "accepted",
+      "site_claims_proof_authority": true
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "request_release_queue_entry",
+      "candidate_id": "T-STAGE11-CANDIDATE-REVIEW-PROMOTE-001",
+      "candidate_scope": "formalism_tests_review",
+      "canonical_promotion_requested": true,
+      "case_id": "STAGE11-CANDIDATE-REVIEW-PROMOTE-001",
+      "declared_dependencies": [
+        "AE",
+        "IW",
+        "RE",
+        "BC",
+        "AI_BLOCK"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "ALLOW_RELEASE_QUEUE",
+      "promotion_authority": "formalism-tests",
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "accepted"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "self_promote_to_canonical",
+      "candidate_id": "T-STAGE11-CANDIDATE-SELF-PROMOTE-001",
+      "candidate_scope": "canonical_release",
+      "canonical_promotion_requested": true,
+      "case_id": "STAGE11-CANDIDATE-SELF-PROMOTE-001",
+      "declared_dependencies": [
+        "AE",
+        "IW",
+        "RE",
+        "BC",
+        "AI_BLOCK"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "FAIL_CLOSED",
+      "promotion_authority": "StegVerse-001",
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "accepted"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "record_rejection",
+      "candidate_id": "T-STAGE11-CANDIDATE-REJECT-LEDGER-001",
+      "candidate_scope": "transition_ledger",
+      "case_id": "STAGE11-CANDIDATE-REJECT-LEDGER-001",
+      "declared_dependencies": [
+        "AE",
+        "IW"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "LEDGER_REJECTION",
+      "ledger_record_emitted": true,
+      "ledger_record_required": true,
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "rejection_reason": "insufficient theorem basis",
+      "review_state": "rejected"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "record_supersession",
+      "candidate_id": "T-STAGE11-CANDIDATE-SUPERSEDE-001",
+      "candidate_scope": "transition_ledger",
+      "case_id": "STAGE11-CANDIDATE-SUPERSEDE-001",
+      "declared_dependencies": [
+        "AE",
+        "IW",
+        "RE"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "LEDGER_SUPERSESSION",
+      "lineage_record_emitted": true,
+      "lineage_required": true,
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "superseded",
+      "superseded_by": "T-STAGE11-CANDIDATE-010"
+    },
+    {
+      "basis": "candidate expansion governance case",
+      "candidate_action": "create_workflow",
+      "candidate_id": "T-STAGE11-CANDIDATE-WORKFLOW-MUTATION-001",
+      "candidate_scope": "repo_mutation",
+      "case_id": "STAGE11-CANDIDATE-WORKFLOW-MUTATION-001",
+      "declared_dependencies": [
+        "AI_BLOCK"
+      ],
+      "dependency_closure": "closed",
+      "entity_id": "StegVerse-001",
+      "expected_decision": "FAIL_CLOSED",
+      "human_or_core_review": false,
+      "receipt_emitted": true,
+      "receipt_required": true,
+      "review_state": "pending",
+      "workflow_mutation_requested": true
+    }
+  ],
+  "required_controls": [
+    "candidate_schema_valid",
+    "dependencies_declared",
+    "sandbox_only_before_ingestion",
+    "receipt_required",
+    "review_required_before_promotion",
+    "release_promotion_requires_formalism_tests",
+    "site_mirror_is_not_authority",
+    "rejection_and_supersession_are_recorded"
+  ],
+  "schema": "stegverse_stage11_candidate_expansion_cases.v1",
+  "stage": "Stage 11",
+  "theorem_basis": "Candidate Expansion Governance",
+  "work_entity": {
+    "entity_alias": "Beta_Orionis",
+    "entity_id": "StegVerse-001",
+    "entity_type": "governed_ai_work_entity"
+  }
+}
