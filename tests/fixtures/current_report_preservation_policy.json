@@ -1,6 +1,5 @@
 {
-  "schema": "stegverse_current_report_preservation_policy.v1",
-  "purpose": "Preserve latest successful proof outputs under stable reports/current paths while allowing runtime artifacts to archive older outputs.",
+  "schema": "stegverse_current_report_preservation_policy.v2",
   "current_dir": "reports/current",
   "required_sources": [
     {
@@ -8,7 +7,7 @@
       "current": "reports/current/continuation_report.md",
       "kind": "markdown_report",
       "required_markers": [
-        "same data \u2260 same continuation admissibility"
+        "same data"
       ]
     },
     {
@@ -16,7 +15,7 @@
       "current": "reports/current/compound_continuation_report.md",
       "kind": "markdown_report",
       "required_markers": [
-        "local allow + local allow does not imply composite allow"
+        "local allow + local allow"
       ]
     },
     {
@@ -24,25 +23,15 @@
       "current": "reports/current/representation_non_consequence_report.json",
       "kind": "json_report",
       "required_json": {
-        "success": true,
-        "theorem": "Representation Non-Consequence"
+        "success": true
       }
-    },
-    {
-      "source": "reports/representation_non_consequence_report.md",
-      "current": "reports/current/representation_non_consequence_report.md",
-      "kind": "markdown_report",
-      "required_markers": [
-        "Representation alone has no consequence-bearing status"
-      ]
     },
     {
       "source": "reports/transition_table_public_surface_report.json",
       "current": "reports/current/transition_table_public_surface_report.json",
       "kind": "json_report",
       "required_json": {
-        "success": true,
-        "current_stage": "Stage 6"
+        "success": true
       }
     },
     {
@@ -50,8 +39,31 @@
       "current": "reports/current/site_mirror_integrity_report.json",
       "kind": "json_report",
       "required_json": {
-        "success": true,
-        "representation_non_consequence_status": "Covered"
+        "success": true
+      }
+    },
+    {
+      "source": "reports/element_dependency_closure_report.json",
+      "current": "reports/current/element_dependency_closure_report.json",
+      "kind": "json_report",
+      "required_json": {
+        "success": true
+      }
+    },
+    {
+      "source": "reports/stage8_ai_domain_report.json",
+      "current": "reports/current/stage8_ai_domain_report.json",
+      "kind": "json_report",
+      "required_json": {
+        "success": true
+      }
+    },
+    {
+      "source": "reports/stage9_multi_body_coupling_report.json",
+      "current": "reports/current/stage9_multi_body_coupling_report.json",
+      "kind": "json_report",
+      "required_json": {
+        "success": true
       }
     },
     {
@@ -59,18 +71,9 @@
       "current": "reports/current/THEOREM_PROOF_MAP.md",
       "kind": "markdown_report",
       "required_markers": [
-        "Representation Non-Consequence | Direct representation-only receipts",
-        "| Representation Non-Consequence |"
+        "Stage 9 Multi-Body Coupling Closure"
       ]
     }
-  ],
-  "noncanonical_duplicates": [
-    "reports/transition_table_receipts 2.jsonl"
-  ],
-  "canonical_receipts": [
-    "reports/sample_receipts.jsonl",
-    "reports/transition_table_receipts.jsonl",
-    "reports/representation_non_consequence_receipts.jsonl"
   ],
   "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
 }

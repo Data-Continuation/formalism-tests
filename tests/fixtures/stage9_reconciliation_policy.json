@@ -1,0 +1,53 @@
+{
+  "schema": "stegverse_stage9_reconciliation_policy.v1",
+  "required_markdown": [
+    {
+      "path": "README.md",
+      "markers": [
+        "Stage 7 - Element Dependency Closure",
+        "Stage 8 - AI Domain Transition Classes",
+        "Stage 9 - Multi-Body Coupling Closure",
+        "Stage 10 - Canonical Transition Table Release"
+      ]
+    },
+    {
+      "path": "THEOREM_PROOF_MAP.md",
+      "markers": [
+        "Stage 7 Element Dependency Closure",
+        "Stage 8 AI Domain Transition Classes",
+        "Stage 9 Multi-Body Coupling Closure"
+      ]
+    }
+  ],
+  "required_reports": [
+    {
+      "path": "reports/element_dependency_closure_report.json",
+      "fixture": "element_dependency_closure_report.json",
+      "required": {
+        "success": true
+      }
+    },
+    {
+      "path": "reports/stage8_ai_domain_report.json",
+      "fixture": "stage8_ai_domain_report.json",
+      "required": {
+        "success": true
+      }
+    },
+    {
+      "path": "reports/stage9_multi_body_coupling_report.json",
+      "fixture": "stage9_multi_body_coupling_report.json",
+      "required": {
+        "success": true
+      }
+    }
+  ],
+  "required_tasks": [
+    "element_dependency_closure_tests",
+    "stage8_ai_domain_tests",
+    "stage9_multi_body_coupling_tests",
+    "stage9_reconciliation_tests"
+  ],
+  "fixture_report_dir": "tests/fixtures/stage9_reconciliation_reports",
+  "authority_boundary": "formalism-tests produces receipts. Site publishes receipts. Site must not become the authority for receipts."
+}
