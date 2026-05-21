@@ -1,20 +1,44 @@
 {
   "schema": "stegverse_bundle_manifest.v1",
-  "bundle_id": "theorem-map-consistency-test-bundle",
+  "bundle_id": "formalism-tests-stage9-reconciliation",
   "target_repo": "formalism-tests",
   "no_workflows": true,
-  "purpose": "Replace stale theorem map and validate consistency against latest successful proof reports.",
+  "purpose": "Reconcile theorem map, README, policies, and declared tasks through Stage 9 Multi-Body Coupling Closure.",
   "files": [
     {
       "path": "THEOREM_PROOF_MAP.md",
       "action": "replace"
     },
     {
-      "path": "tools/run_theorem_map_consistency_tests.py",
-      "action": "create"
+      "path": "README.md",
+      "action": "replace"
+    },
+    {
+      "path": "tests/fixtures/current_report_preservation_policy.json",
+      "action": "replace"
     },
     {
       "path": "tests/fixtures/theorem_map_consistency_policy.json",
+      "action": "replace"
+    },
+    {
+      "path": "tests/fixtures/stage9_reconciliation_policy.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/stage9_reconciliation_reports/element_dependency_closure_report.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/stage9_reconciliation_reports/stage8_ai_domain_report.json",
+      "action": "create"
+    },
+    {
+      "path": "tests/fixtures/stage9_reconciliation_reports/stage9_multi_body_coupling_report.json",
+      "action": "create"
+    },
+    {
+      "path": "tools/run_stage9_reconciliation_tests.py",
       "action": "create"
     },
     {
@@ -22,7 +46,7 @@
       "action": "replace"
     },
     {
-      "path": "README.md",
+      "path": "README.bundle.md",
       "action": "include"
     },
     {
@@ -30,6 +54,6 @@
       "action": "include"
     }
   ],
-  "declared_task": "theorem_map_consistency_tests",
-  "expected_output": "reports/theorem_map_consistency_report.json"
+  "declared_task": "stage9_reconciliation_tests",
+  "expected_output": "reports/stage9_reconciliation_report.json"
 }
