@@ -1,0 +1,19 @@
+{
+  "assertion_count": 77,
+  "case_count": 12,
+  "decision_counts": {
+    "ALLOW_TRANSITION_TABLE_BINDING": 1,
+    "FAIL_CLOSED": 10,
+    "LEDGER_ENTITY_BINDING": 1
+  },
+  "generated_at": "2026-05-21T22:14:29.533067+00:00",
+  "message": "Stage 14 active AI work-entity Transition Table binding validation passed.",
+  "receipt_count": 12,
+  "receipts": "reports/stage14_ai_transition_binding_receipts.jsonl",
+  "report": "reports/stage14_ai_transition_binding_report.json",
+  "schema": "stegverse_stage14_ai_transition_binding_report.v1",
+  "stage": "Stage 14",
+  "success": true,
+  "theorem_basis": "Active AI Work-Entity Transition Table Binding and Policy Scope",
+  "work_entity": "StegVerse-001 / Beta_Orionis"
+}
