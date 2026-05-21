@@ -1,0 +1,20 @@
+{
+  "manifest_name": "formalism-tests declared tasks",
+  "manifest_version": "1.5.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/run_stage11_candidate_expansion_governance_tests.py"
+      ],
+      "description": "Stage 11 - validate governed AI candidate expansion without canonical self-promotion.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/stage11_candidate_expansion_governance_report.json",
+        "reports/stage11_candidate_expansion_governance_receipts.jsonl"
+      ],
+      "task_id": "stage11_candidate_expansion_governance_tests"
+    }
+  ]
+}
