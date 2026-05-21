@@ -10,11 +10,12 @@ This file maps DCF and transition-table theorem candidates to executable proof a
 formalism-tests produces receipts.
 Site publishes receipts.
 Site must not become the authority for receipts.
+StegVerse-001 / Beta_Orionis may be active as a governed work-entity, but must not become canonical authority.
 ```
 
 ## Current Workflow Evidence
 
-The declared-task workflow now supports the validated transition proof chain through Stage 12:
+The declared-task workflow now supports the validated transition proof chain through Stage 13:
 
 ```text
 archive_runtime_artifacts
@@ -30,6 +31,7 @@ stage9_reconciliation_tests
 stage10_canonical_release_tests
 stage11_candidate_expansion_governance_tests
 stage12_candidate_promotion_queue_tests
+stage13_active_work_entity_release_delta_tests
 transition_table_public_surface_tests
 representation_non_consequence_tests
 site_mirror_integrity_tests
@@ -65,6 +67,8 @@ reports/stage11_candidate_expansion_governance_report.json
 reports/stage11_candidate_expansion_governance_receipts.jsonl
 reports/stage12_candidate_promotion_queue_report.json
 reports/stage12_candidate_promotion_queue_receipts.jsonl
+reports/stage13_active_work_entity_release_delta_report.json
+reports/stage13_active_work_entity_release_delta_receipts.jsonl
 dist/transition-table-v1-rc1/canonical_transition_table_release.json
 dist/transition-table-v1-rc1/canonical_transition_table_release.sha256
 dist/transition-table-v1-rc1/replay_packet.json
@@ -94,6 +98,7 @@ dist/transition-table-v1-rc1/release_receipt.json
 | Stage 10 Canonical Transition Table Release | Stage 10 emits a deterministic canonical release candidate, hash, replay packet, and release receipt. | Covered |
 | Stage 11 Candidate Expansion Governance | Stage 11 validates that `StegVerse-001 / Beta_Orionis` may propose, draft, sandbox-test, reject, supersede, and queue candidates without self-promoting into canonical authority. | Covered |
 | Stage 12 Governed Candidate Promotion and Release Queue | Stage 12 validates that accepted Stage 11 candidates may enter a governed release queue only through formalism-tests authority, accepted review, closed dependencies, receipts, manifest validation, hash validation, lineage validation, and queue ledger recording. | Covered |
+| Stage 13 Active Work-Entity Release Candidate Delta | Stage 13 validates that active `StegVerse-001 / Beta_Orionis` may propose release-candidate deltas from `transition-table-v1-rc1` toward `transition-table-v1-rc2` only while formalism-tests retains canonical upgrade authority, lineage continuity, receipts, delta hashes, replay packets, and Site mirror boundaries. | Covered |
 | Transition Table Public Surface | Public surface runner validates transition classes, elements, single-source status, and mobile/public presentation contracts. | Covered |
 | Site Mirror Integrity | Site mirror runner validates that Site mirrors proof data without becoming proof authority. | Covered |
 | Current Report Preservation | Current-report runner preserves latest successful proof reports under stable `reports/current/` paths. | Covered |
@@ -226,6 +231,49 @@ FAIL_CLOSED: 8
 LEDGER_QUEUE_ENTRY: 1
 ```
 
+## Stage 13 Active Work-Entity Release Candidate Delta
+
+Stage 13 validates that `StegVerse-001 / Beta_Orionis` is active, but bounded.
+
+Active status means the work-entity may participate in release-candidate delta formation. It does not mean the work-entity may become canonical authority, self-promote, bypass formalism-tests authority, or cause Site to become proof authority.
+
+Stage 13 requires:
+
+```text
+active work-entity status
+formalism-tests canonical upgrade authority
+source release hash presence
+accepted queue entry state
+accepted review
+closed dependency closure
+valid receipt chain
+delta manifest presence
+delta manifest hash validation
+replay packet presence
+lineage continuity from transition-table-v1-rc1 to transition-table-v1-rc2
+canonical upgrade ledger recording for ledger actions
+Site remaining public mirror only
+```
+
+Stage 13 decision coverage:
+
+```text
+ALLOW_RELEASE_CANDIDATE_DELTA
+FAIL_CLOSED
+LEDGER_CANONICAL_UPGRADE
+```
+
+Validated Stage 13 target result:
+
+```text
+case_count: 11
+receipt_count: 11
+assertion_count: 70+
+ALLOW_RELEASE_CANDIDATE_DELTA: 1
+FAIL_CLOSED: 9
+LEDGER_CANONICAL_UPGRADE: 1
+```
+
 ## Current Interpretation
 
 The proof surface now spans:
@@ -248,13 +296,16 @@ canonical release-candidate generation
 candidate expansion governance
 governed candidate promotion
 release queue ledgering
+active governed work-entity participation
+release-candidate delta continuity
+canonical upgrade boundary preservation
 public mirror integrity
 current-report preservation
 theorem-map consistency
 ```
 
-The next proof layer should validate how queued candidates become a new canonical release candidate without breaking continuity from `transition-table-v1-rc1`, likely:
+The next proof layer should validate how the Stage 13 release-candidate delta becomes a fully reconstructed canonical upgrade packet, likely:
 
 ```text
-Stage 13 - Release Candidate Delta and Canonical Upgrade
+Stage 14 - Canonical Upgrade Replay and Continuity Receipt
 ```
