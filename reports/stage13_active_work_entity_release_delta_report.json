@@ -1,0 +1,21 @@
+{
+  "assertion_count": 79,
+  "case_count": 11,
+  "decision_counts": {
+    "ALLOW_RELEASE_CANDIDATE_DELTA": 1,
+    "FAIL_CLOSED": 9,
+    "LEDGER_CANONICAL_UPGRADE": 1
+  },
+  "generated_at": "2026-05-21T22:06:28.753713+00:00",
+  "message": "Stage 13 active work-entity release-candidate delta validation passed.",
+  "receipt_count": 11,
+  "receipts": "reports/stage13_active_work_entity_release_delta_receipts.jsonl",
+  "report": "reports/stage13_active_work_entity_release_delta_report.json",
+  "schema": "stegverse_stage13_active_work_entity_release_delta_report.v1",
+  "source_release_id": "transition-table-v1-rc1",
+  "stage": "Stage 13",
+  "success": true,
+  "target_release_id": "transition-table-v1-rc2",
+  "theorem_basis": "Active Work-Entity Release Candidate Delta and Canonical Upgrade",
+  "work_entity": "StegVerse-001 / Beta_Orionis"
+}
