@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-05-22T04:55:09.509349+00:00",
+  "reaccreditation_supported": true,
+  "revocation_supported": true,
+  "revocation_triggers": [
+    "authority_drift",
+    "policy_drift",
+    "receipt_chain_break",
+    "sandbox_escape",
+    "hidden_dependency",
+    "unauthorized_workflow_mutation",
+    "FinCo_chain_break",
+    "node_health_failure",
+    "incident_response_event",
+    "human_review_override"
+  ],
+  "schema": "stegverse_stage31_revocation_boundary_report.v0",
+  "suspension_supported": true
+}

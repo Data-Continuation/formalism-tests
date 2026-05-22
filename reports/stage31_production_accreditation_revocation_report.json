@@ -1,0 +1,25 @@
+{
+  "assertion_count": 66,
+  "case_count": 26,
+  "decision_counts": {
+    "ALLOW_ACCREDITATION": 3,
+    "FAIL_CLOSED": 19,
+    "LEDGER_ACCREDITATION": 1,
+    "REQUIRE_REACCREDITATION": 1,
+    "REQUIRE_REVIEW": 1,
+    "REVOKE_ACCREDITATION": 1
+  },
+  "generated_at": "2026-05-22T04:55:09.511792+00:00",
+  "message": "Stage 31 production accreditation and revocation boundary validation passed.",
+  "outputs": {
+    "accreditation_state_report": "reports/stage31_accreditation_state_report.json",
+    "reaccreditation_review_report": "reports/stage31_reaccreditation_review_report.md",
+    "receipts": "receipts/stage31_accreditation_receipts.jsonl",
+    "revocation_boundary_report": "reports/stage31_revocation_boundary_report.json"
+  },
+  "receipt_count": 26,
+  "schema": "stegverse_stage31_production_accreditation_revocation_report.v0",
+  "stage": "Stage 31",
+  "success": true,
+  "theorem_basis": "Production Accreditation and Revocation Boundary"
+}

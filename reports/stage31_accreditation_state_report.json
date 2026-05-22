@@ -1,0 +1,21 @@
+{
+  "allowed_accreditation_states": [
+    "NOT_ACCREDITED",
+    "ACCREDITATION_PENDING",
+    "ACCREDITED_LIMITED",
+    "ACCREDITED_ACTIVE",
+    "REACCREDITATION_REQUIRED",
+    "SUSPENDED",
+    "REVOKED",
+    "RETIRED"
+  ],
+  "default_accreditation_state": "NOT_ACCREDITED",
+  "generated_at": "2026-05-22T04:55:09.509322+00:00",
+  "production_meaning": "accredited_participation_not_sovereign_authority",
+  "requires_external_authority": true,
+  "requires_periodic_review": true,
+  "requires_reaccreditation_after_drift": true,
+  "schema": "stegverse_stage31_accreditation_state_report.v0",
+  "self_accreditation_allowed": false,
+  "sovereign_authority_allowed": false
+}
