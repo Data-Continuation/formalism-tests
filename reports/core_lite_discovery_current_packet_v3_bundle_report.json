@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-05-22T18:53:44.450176+00:00",
+  "reason": "Combines discovery and routing in the same run so current artifacts exist when routing executes.",
+  "schema": "stegverse_core_lite_discovery_current_packet_v3_bundle_report.v1",
+  "success": true,
+  "task_id": "discover_and_route_core_lite_current"
+}
