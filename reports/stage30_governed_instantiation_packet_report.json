@@ -1,0 +1,27 @@
+{
+  "assertion_count": 81,
+  "case_count": 22,
+  "decision_counts": {
+    "ALLOW_PACKET": 1,
+    "FAIL_CLOSED": 19,
+    "LEDGER_PACKET": 1,
+    "REQUIRE_REVIEW": 1
+  },
+  "generated_at": "2026-05-22T04:28:11.417134+00:00",
+  "message": "Stage 30 governed instantiation packet validation passed.",
+  "packet_outputs": {
+    "manifest": "dist/stage30/stegverse-core-instantiation.manifest.json",
+    "receipt": "dist/stage30/stegverse-core-instantiation.receipt.json",
+    "receipts": "receipts/stage30_instantiation_packet_receipts.jsonl",
+    "replay": "dist/stage30/stegverse-core-instantiation.replay.json",
+    "sha256": "dist/stage30/stegverse-core-instantiation.sha256",
+    "tar_gz": "dist/stage30/stegverse-core-instantiation.tar.gz",
+    "validation_report": "reports/stage30_packet_manifest_validation_report.json"
+  },
+  "packet_sha256": "e3b4bb94ea3a184feeaf8e872ec2869733c9ee84ad7707b81b552c2f706a388f",
+  "receipt_count": 22,
+  "schema": "stegverse_stage30_governed_instantiation_packet_report.v0",
+  "stage": "Stage 30",
+  "success": true,
+  "theorem_basis": "Governed Instantiation Packet"
+}
