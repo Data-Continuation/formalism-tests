@@ -1,0 +1,28 @@
+{
+  "detected_capabilities": [
+    "cge",
+    "ingestion",
+    "receipt_emission",
+    "declared_tasks",
+    "schemas"
+  ],
+  "discovered_files": [
+    "core_lite/cge.py",
+    "core_lite/ingest.py",
+    "core_lite/receipts.py",
+    "tools/tasks/core_lite_tasks.json",
+    "schemas/ingest_manifest.schema.json"
+  ],
+  "finco_participation": {
+    "finco_participation_allowed": false,
+    "finco_participation_requested": false
+  },
+  "generated_at": "2026-05-22T03:22:18.772670+00:00",
+  "node_participation": {
+    "node_participation_opt_in": false,
+    "node_status": "NOT_A_NODE"
+  },
+  "schema": "stegverse_discovered_state.v0",
+  "target_scale_profile": "repo_core",
+  "target_unit": "core-lite"
+}

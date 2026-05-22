@@ -1,0 +1,24 @@
+{
+  "required_capabilities": [
+    "identity",
+    "policy_scope",
+    "declared_tasks",
+    "ingestion",
+    "sandbox",
+    "cge",
+    "receipt_emission",
+    "quarantine",
+    "reports",
+    "reconstruction_path"
+  ],
+  "required_finco_default": {
+    "finco_participation_allowed": false,
+    "finco_participation_requested": false
+  },
+  "required_node_default": {
+    "node_participation_opt_in": false,
+    "node_status": "NOT_A_NODE"
+  },
+  "schema": "stegverse_canonical_state_expectation.v0",
+  "target_unit": "core-lite"
+}

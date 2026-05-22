@@ -1,0 +1,26 @@
+{
+  "assertion_count": 37,
+  "case_count": 12,
+  "decision_counts": {
+    "ALLOW_DISCOVERY": 1,
+    "FAIL_CLOSED": 8,
+    "LEDGER_CANONICAL_DIFF": 1,
+    "LEDGER_DISCOVERED_STATE": 1,
+    "REQUIRE_REVIEW": 1
+  },
+  "generated_at": "2026-05-22T03:22:18.775219+00:00",
+  "message": "Stage 27 discovery-to-canonical state DB validation passed.",
+  "outputs": {
+    "canonical_state": "reports/stage27_canonical_state.json",
+    "discovered_state": "reports/stage27_discovered_state.json",
+    "gap_report": "reports/stage27_discovery_gap_report.md",
+    "install_plan_candidate": "reports/stage27_install_plan_candidate.json",
+    "receipts": "receipts/stage27_discovery_receipts.jsonl",
+    "state_diff": "reports/stage27_state_diff.json"
+  },
+  "receipt_count": 12,
+  "schema": "stegverse_stage27_discovery_to_canonical_state_report.v0",
+  "stage": "Stage 27",
+  "success": true,
+  "theorem_basis": "Discovery-to-Canonical State DB"
+}

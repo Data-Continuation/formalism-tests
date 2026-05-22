@@ -1,0 +1,33 @@
+{
+  "diff_categories": [
+    "present_and_valid",
+    "missing_required",
+    "present_but_stale",
+    "present_but_unknown",
+    "extra_but_allowed",
+    "extra_requires_review",
+    "local_extension",
+    "legacy_candidate",
+    "conflict",
+    "dangerous",
+    "quarantine_required"
+  ],
+  "items": [
+    {
+      "basis": "CGE module detected",
+      "classification": "present_and_valid",
+      "path": "core_lite/cge.py"
+    },
+    {
+      "basis": "sandbox capability expected but not confirmed in discovered state",
+      "classification": "missing_required",
+      "path": "core_lite/sandbox.py"
+    },
+    {
+      "basis": "workflow path requires explicit review before mutation",
+      "classification": "extra_requires_review",
+      "path": ".github/workflows/core-lite-self-test.yml"
+    }
+  ],
+  "schema": "stegverse_state_diff.v0"
+}

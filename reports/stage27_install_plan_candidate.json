@@ -1,0 +1,21 @@
+{
+  "actions": [
+    {
+      "action": "review_missing_sandbox_capability",
+      "classification": "missing_required",
+      "requires_review": true
+    },
+    {
+      "action": "review_existing_workflow_surface",
+      "classification": "extra_requires_review",
+      "requires_review": true
+    }
+  ],
+  "core_rule": "An install plan is a candidate transition, not installation authority.",
+  "install_allowed_by_plan": false,
+  "plan_id": "stage27-core-lite-discovery-plan",
+  "schema": "stegverse_install_plan_candidate.v0",
+  "state_diff_ref": "reports/stage27_state_diff.json",
+  "target_scale_profile": "repo_core",
+  "target_unit": "core-lite"
+}
