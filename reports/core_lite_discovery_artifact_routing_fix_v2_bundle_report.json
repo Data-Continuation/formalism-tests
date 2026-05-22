@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-05-22T12:21:29.461956+00:00",
+  "reason": "v1 treated optional context artifacts as fatal. v2 only fails if required decision files are missing.",
+  "schema": "stegverse_core_lite_discovery_artifact_routing_fix_v2_bundle_report.v1",
+  "success": true,
+  "task_id": "route_core_lite_discovery_artifacts"
+}
