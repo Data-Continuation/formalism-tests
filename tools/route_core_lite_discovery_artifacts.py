@@ -16,13 +16,18 @@ RECEIPT_PATH = Path("receipts/core_lite_discovery_artifact_routing_receipts.json
 INDEX_PATH = OUT_DIR / "CORE_LITE_DISCOVERY_ARTIFACT_INDEX.md"
 ZIP_PATH = Path("dist/current/core-lite-discovery-artifacts.zip")
 
-EXPECTED = [
-    "reports/core_lite_remote_discovery_report.json",
-    "reports/core_lite_discovery_report.json",
-    "reports/core_lite_discovered_state.json",
+# Required for the next decision step.
+REQUIRED = [
     "reports/core_lite_discovery_gap_report.md",
     "reports/core_lite_state_diff.json",
     "reports/core_lite_install_plan_candidate.json",
+]
+
+# Useful context. Missing optional files should warn, not fail the routing task.
+OPTIONAL = [
+    "reports/core_lite_remote_discovery_report.json",
+    "reports/core_lite_discovery_report.json",
+    "reports/core_lite_discovered_state.json",
     "receipts/core_lite_remote_discovery_receipts.jsonl",
     "receipts/core_lite_discovery_receipts.jsonl",
     "receipts/core_lite_remote_discovery_bundle_receipts.jsonl",
@@ -40,37 +45,48 @@ def sha256_file(path: Path) -> str | None:
 
 
 def digest(obj: Dict[str, Any]) -> str:
-    return hashlib.sha256(json.dumps(obj, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return hashlib.sha256(
+        json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("utf-8")
+    ).hexdigest()
 
 
-def copy_expected() -> List[Dict[str, Any]]:
+def copy_one(source_text: str, required: bool) -> Dict[str, Any]:
+    source = Path(source_text)
+    target = OUT_DIR / source.name
+    exists = source.exists() and source.is_file()
+
+    entry: Dict[str, Any] = {
+        "source": source_text,
+        "target": target.as_posix(),
+        "required": required,
+        "exists": exists,
+        "copied": False,
+        "sha256": None,
+    }
+
+    if exists:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        entry["copied"] = True
+        entry["sha256"] = sha256_file(target)
+
+    return entry
+
+
+def copy_artifacts() -> List[Dict[str, Any]]:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     entries: List[Dict[str, Any]] = []
 
-    for source_text in EXPECTED:
-        source = Path(source_text)
-        target = OUT_DIR / source.name
-        exists = source.exists() and source.is_file()
+    for source_text in REQUIRED:
+        entries.append(copy_one(source_text, required=True))
 
-        entry: Dict[str, Any] = {
-            "source": source_text,
-            "target": target.as_posix(),
-            "exists": exists,
-            "copied": False,
-            "sha256": None,
-        }
-
-        if exists:
-            shutil.copy2(source, target)
-            entry["copied"] = True
-            entry["sha256"] = sha256_file(target)
-
-        entries.append(entry)
+    for source_text in OPTIONAL:
+        entries.append(copy_one(source_text, required=False))
 
     return entries
 
 
-def write_index(entries: List[Dict[str, Any]]) -> None:
+def write_index(entries: List[Dict[str, Any]], missing_required: List[str], missing_optional: List[str]) -> None:
     lines = [
         "# Core-Lite Discovery Artifact Index",
         "",
@@ -78,29 +94,37 @@ def write_index(entries: List[Dict[str, Any]]) -> None:
         "",
         "This folder collects the current core-lite discovery outputs in one place so the owner does not need to search through historical runtime artifact folders.",
         "",
+        "## Routing Status",
+        "",
+        "```text",
+        f"required_missing: {len(missing_required)}",
+        f"optional_missing: {len(missing_optional)}",
+        "```",
+        "",
         "## Boundary",
         "",
         "```text",
         "Discovery observes.",
         "Discovery does not install.",
         "Install plans are candidates, not authority.",
+        "Historical artifacts are for audit.",
+        "dist/current/ is for action.",
         "```",
         "",
         "## Files",
         "",
-        "| File | Present | Source |",
-        "|---|---:|---|",
+        "| File | Required | Present | Source |",
+        "|---|---:|---:|---|",
     ]
 
     for entry in entries:
         present = "yes" if entry["copied"] else "no"
-        lines.append(f"| `{Path(entry['target']).name}` | {present} | `{entry['source']}` |")
+        required = "yes" if entry["required"] else "no"
+        lines.append(f"| `{Path(entry['target']).name}` | {required} | {present} | `{entry['source']}` |")
 
     lines.extend([
         "",
-        "## Next Review Files",
-        "",
-        "Read these first:",
+        "## Review These First",
         "",
         "```text",
         "core_lite_discovery_gap_report.md",
@@ -108,6 +132,16 @@ def write_index(entries: List[Dict[str, Any]]) -> None:
         "core_lite_install_plan_candidate.json",
         "```",
     ])
+
+    if missing_required:
+        lines.extend(["", "## Missing Required Files", ""])
+        for item in missing_required:
+            lines.append(f"- `{item}`")
+
+    if missing_optional:
+        lines.extend(["", "## Missing Optional Files", ""])
+        for item in missing_optional:
+            lines.append(f"- `{item}`")
 
     INDEX_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -129,40 +163,45 @@ def main() -> int:
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     RECEIPT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-    entries = copy_expected()
-    write_index(entries)
+    entries = copy_artifacts()
+    missing_required = [entry["source"] for entry in entries if entry["required"] and not entry["copied"]]
+    missing_optional = [entry["source"] for entry in entries if not entry["required"] and not entry["copied"]]
+
+    write_index(entries, missing_required, missing_optional)
     zip_hash = write_zip()
 
-    missing = [entry["source"] for entry in entries if not entry["copied"]]
+    success = len(missing_required) == 0
 
     report = {
-        "schema": "stegverse_core_lite_discovery_artifact_routing_report.v1",
+        "schema": "stegverse_core_lite_discovery_artifact_routing_report.v2",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "success": len(missing) == 0,
+        "success": success,
         "out_dir": OUT_DIR.as_posix(),
         "zip": ZIP_PATH.as_posix(),
         "zip_sha256": zip_hash,
-        "missing": missing,
+        "missing_required": missing_required,
+        "missing_optional": missing_optional,
         "entries": entries,
-        "note": "This task collects current discovery outputs into one folder and zip for review."
+        "note": "Required current review artifacts must exist. Optional context artifacts warn but do not fail routing."
     }
     REPORT_PATH.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     receipt = {
-        "schema": "stegverse_core_lite_discovery_artifact_routing_receipt.v1",
+        "schema": "stegverse_core_lite_discovery_artifact_routing_receipt.v2",
         "generated_at": report["generated_at"],
-        "decision": "ALLOW_DISCOVERY_ARTIFACT_ROUTING" if len(missing) == 0 else "REQUIRE_DISCOVERY_ARTIFACT_REVIEW",
+        "decision": "ALLOW_DISCOVERY_ARTIFACT_ROUTING" if success else "REQUIRE_DISCOVERY_ARTIFACT_REVIEW",
         "basis": "Core-lite discovery outputs were routed into a single current review folder and zip.",
-        "success": report["success"],
+        "success": success,
         "zip": ZIP_PATH.as_posix(),
         "zip_sha256": zip_hash,
-        "missing_count": len(missing)
+        "missing_required_count": len(missing_required),
+        "missing_optional_count": len(missing_optional)
     }
     receipt["receipt_hash"] = digest(receipt)
     RECEIPT_PATH.write_text(json.dumps(receipt, sort_keys=True) + "\n", encoding="utf-8")
 
     print(json.dumps(report, indent=2, sort_keys=True))
-    return 0 if report["success"] else 1
+    return 0 if success else 1
 
 
 if __name__ == "__main__":
