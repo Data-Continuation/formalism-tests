@@ -1,0 +1,29 @@
+{
+  "boundary": "Cleanup and policy enforcement may report and propose moves. It may not delete files without explicit review.",
+  "generated_at": "2026-05-22T10:22:20.039327+00:00",
+  "policy_id": "build_stage_docs_to_docs_policy",
+  "required_doc_locations": {
+    "indexes": "docs/indexes/",
+    "legacy_docs": "docs/legacy/",
+    "policy_docs": "docs/policies/",
+    "roadmaps": "docs/roadmaps/",
+    "site_docs": "docs/site/",
+    "stage_readmes": "docs/stages/",
+    "theorem_maps": "docs/theorem/"
+  },
+  "root_markdown_allowed": [
+    "README.md"
+  ],
+  "root_markdown_deprecated": [
+    "THEOREM_PROOF_MAP.md",
+    "THEOREM_PROOF_MAP.stage*.md",
+    "THEOREM_PROOF_MAP_STAGE*.md",
+    "STAGE*.md",
+    "STAGE*_*.md",
+    "stage*_*.md",
+    "*_README.md"
+  ],
+  "rule": "Build-stage processes must place generated documentation under docs/, not at repository root.",
+  "schema": "stegverse_build_stage_output_policy.v1",
+  "status": "active"
+}
