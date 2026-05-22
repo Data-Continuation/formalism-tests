@@ -1,73 +1,68 @@
-# Representation Non-Consequence Test Bundle
+# Post-Stage-31 Integration Bundle
 
 ## Assumptions
 
-1. This bundle belongs in `formalism-tests`.
-2. The existing `Data Continuation Tests` workflow remains the execution surface.
-3. No new workflow files are added.
-4. This closes the direct proof gap for Representation Non-Consequence.
+1. Stages 1–31 have passed.
+2. The next major items are documentation refresh, indexes, core-lite discovery, production-candidate review packet, and master-record export hardening.
+3. Discovery may observe, classify, and propose. It may not install.
+4. Packets are evidence, not installation authority.
+5. Production means accredited participation, not sovereign authority.
 
-## Done Definition
+## Done
 
-This bundle is done when:
-
-1. `tests/fixtures/representation_non_consequence_cases.json` exists.
-2. `tools/run_representation_non_consequence_tests.py` exists.
-3. `tools/tasks/formalism_tests_tasks.json` includes `representation_non_consequence_tests`.
-4. The runner emits:
-   - `reports/representation_non_consequence_report.json`
-   - `reports/representation_non_consequence_report.md`
-   - `reports/representation_non_consequence_receipts.jsonl`
-5. `THEOREM_PROOF_MAP.md` marks Representation Non-Consequence as covered.
-6. No workflow files are included.
-
-## Run Through Existing Workflow
-
-Use:
+This bundle is done when the repo contains:
 
 ```text
-Actions
-→ Data Continuation Tests
-→ Run workflow
+THEOREM_PROOF_MAP.md
+docs/TASK_ID_INDEX.md
+docs/ARTIFACT_INDEX.md
+tools/discover_core_lite_state.py
+tools/build_production_candidate_review_packet.py
+tools/export_master_record_candidate.py
+tools/tasks/post_stage31_integration_tasks.json
 ```
 
-Inputs:
+Optional workflow path:
 
 ```text
-task_manifest = tools/tasks/formalism_tests_tasks.json
-task_id       = representation_non_consequence_tests
+.github/workflows/post-stage31-integration.yml
 ```
 
-The existing workflow runs:
+Displayed without leading dot:
+
+```text
+github/workflows/post-stage31-integration.yml
+```
+
+## Task IDs
+
+```text
+discover_core_lite_state
+build_production_candidate_review_packet
+export_master_record_candidate
+```
+
+## Run
 
 ```bash
-python tools/run_declared_tasks.py tools/tasks/formalism_tests_tasks.json --task-id representation_non_consequence_tests
+python tools/run_declared_tasks.py tools/tasks/post_stage31_integration_tasks.json --task-id discover_core_lite_state
+python tools/run_declared_tasks.py tools/tasks/post_stage31_integration_tasks.json --task-id build_production_candidate_review_packet
+python tools/run_declared_tasks.py tools/tasks/post_stage31_integration_tasks.json --task-id export_master_record_candidate
 ```
 
-The declared task runs:
+## Core-Lite Discovery
+
+To scan a separate checkout:
 
 ```bash
-python tools/run_representation_non_consequence_tests.py
+CORE_LITE_ROOT=/path/to/core-lite python tools/discover_core_lite_state.py
 ```
 
-## Expected Outputs
+## Boundary
 
 ```text
-reports/representation_non_consequence_report.json
-reports/representation_non_consequence_report.md
-reports/representation_non_consequence_receipts.jsonl
-```
-
-## Theorem Claim
-
-```text
-Representation alone has no consequence-bearing status until it is bound to a transition role and continuation path.
-```
-
-## Authority Boundary
-
-```text
-formalism-tests produces receipts.
-Site publishes receipts.
-Site must not become the authority for receipts.
+Discovery observes. Discovery does not install.
+Install plans are candidates, not authority.
+Packets are evidence, not installation authority.
+Production means accredited participation, not sovereign authority.
 ```

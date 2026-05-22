@@ -1,0 +1,5 @@
+{
+  "mappings": {
+    ".github/workflows/post-stage31-integration.yml": "iosnoperiod/github/workflows/post-stage31-integration.yml"
+  }
+}
