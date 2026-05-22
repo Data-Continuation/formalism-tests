@@ -6,7 +6,7 @@
     "FAIL_CLOSED": 10,
     "LEDGER_TEST_EXECUTION": 1
   },
-  "generated_at": "2026-05-22T00:40:49.364722+00:00",
+  "generated_at": "2026-05-22T01:35:02.336310+00:00",
   "message": "Stage 15 active work-entity next-stage test execution validation passed.",
   "receipt_count": 12,
   "receipts": "reports/stage15_active_work_entity_test_execution_receipts.jsonl",
