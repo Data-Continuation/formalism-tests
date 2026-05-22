@@ -6,7 +6,7 @@
     "finco_participation_allowed": false,
     "finco_participation_requested": false
   },
-  "generated_at": "2026-05-22T04:28:11.395557+00:00",
+  "generated_at": "2026-05-22T04:51:38.480883+00:00",
   "install_allowed_by_packet": false,
   "install_plan_ref": "state/install_plan_candidate.json",
   "node_participation": {

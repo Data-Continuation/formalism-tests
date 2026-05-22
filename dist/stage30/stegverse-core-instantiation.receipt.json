@@ -2,9 +2,9 @@
   "basis": "packet generated as governed transition evidence; not installation authority",
   "core_rule": "The packet is portable evidence of a proposed governed transition, not installation authority.",
   "decision": "ALLOW_PACKET",
-  "generated_at": "2026-05-22T04:28:11.395557+00:00",
+  "generated_at": "2026-05-22T04:51:38.480883+00:00",
   "packet_path": "dist/stage30/stegverse-core-instantiation.tar.gz",
-  "packet_sha256": "e3b4bb94ea3a184feeaf8e872ec2869733c9ee84ad7707b81b552c2f706a388f",
-  "receipt_hash": "7b7d3341cbca982de94ece497be0379d8e0bdb11454e9a43449a8389bdf6d9d6",
+  "packet_sha256": "c08c78089791b3d6f14fec0f820f44446b0a719f483396b6ca947a4d2a97b9cf",
+  "receipt_hash": "9114ca2f6e269c02a5d79ef1b0a0dcf2e408dfd89354adab5399e01773026f8c",
   "schema": "stegverse_stage30_packet_receipt.v0"
 }
