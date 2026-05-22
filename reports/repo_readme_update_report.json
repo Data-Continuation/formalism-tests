@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-05-22T10:49:29.583358+00:00",
+  "readme_sha256": "777e6f63373432e966e97f15a814555183e84a32acc71e2b6c149cd12f71406f",
+  "rule": "README.md is the canonical public repository entry point.",
+  "schema": "stegverse_repo_readme_update_report.v1",
+  "success": true,
+  "updated": [
+    "README.md",
+    "docs/bundles/repo-readme-update-README.md"
+  ]
+}
