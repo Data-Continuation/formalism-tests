@@ -1,0 +1,28 @@
+{
+  "authority_boundary_ref": "manifest/authority_boundary.json",
+  "canonical_state_ref": "state/canonical_state.json",
+  "discovered_state_ref": "state/discovered_state.json",
+  "finco_participation": {
+    "finco_participation_allowed": false,
+    "finco_participation_requested": false
+  },
+  "generated_at": "2026-05-22T04:28:11.395557+00:00",
+  "install_allowed_by_packet": false,
+  "install_plan_ref": "state/install_plan_candidate.json",
+  "node_participation": {
+    "node_participation_opt_in": false,
+    "node_status": "NOT_A_NODE"
+  },
+  "packet_id": "stegverse-core-instantiation-stage30",
+  "packet_version": "0.1.0",
+  "path_mappings_ref": "manifest/path_mappings.json",
+  "payload_file_count": 18,
+  "policy_scope_ref": "manifest/policy_scope.json",
+  "production_authority": false,
+  "scale_profile": "repo_core",
+  "schema": "stegverse_instantiation_manifest.v0",
+  "source_canonical_version": "transition-table-v1-rc2",
+  "state_diff_ref": "state/state_diff.json",
+  "target_repo": "Data-Continuation/core-lite",
+  "target_unit": "core-lite"
+}

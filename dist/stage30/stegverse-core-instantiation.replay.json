@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-22T04:28:11.395557+00:00",
+  "packet_sha256": "e3b4bb94ea3a184feeaf8e872ec2869733c9ee84ad7707b81b552c2f706a388f",
+  "replay_steps": [
+    "verify sha256",
+    "read instantiation manifest",
+    "verify install_allowed_by_packet is false",
+    "verify install_plan_candidate install_allowed_by_plan is false",
+    "verify node status default is NOT_A_NODE",
+    "verify FinCo default is disabled",
+    "route to sandbox",
+    "route to CGE",
+    "route to ingestion only if admitted"
+  ],
+  "schema": "stegverse_stage30_packet_replay.v0"
+}
