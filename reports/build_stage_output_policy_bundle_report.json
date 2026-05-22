@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-05-22T10:22:20.039327+00:00",
+  "rule": "Build-stage processes must place generated documentation under docs/, not at repository root.",
+  "schema": "stegverse_build_stage_output_policy_bundle_report.v1",
+  "success": true,
+  "task_id": "enforce_build_stage_output_paths"
+}
