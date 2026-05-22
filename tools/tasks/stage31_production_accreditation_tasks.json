@@ -1,0 +1,23 @@
+{
+  "manifest_name": "stage31 production accreditation tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/run_stage31_production_accreditation_revocation_tests.py"
+      ],
+      "description": "Stage 31 - validate production accreditation, revocation, reaccreditation, and no-sovereign-authority boundary.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/stage31_production_accreditation_revocation_report.json",
+        "reports/stage31_accreditation_state_report.json",
+        "reports/stage31_revocation_boundary_report.json",
+        "reports/stage31_reaccreditation_review_report.md",
+        "receipts/stage31_accreditation_receipts.jsonl"
+      ],
+      "task_id": "stage31_production_accreditation_revocation_tests"
+    }
+  ]
+}
