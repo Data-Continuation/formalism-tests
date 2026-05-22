@@ -1,0 +1,11 @@
+{
+  "bundle_readme_destination": "docs/bundles/",
+  "generated_at": "2026-05-22T10:46:21.823879+00:00",
+  "reason": "README-Plus.md is owner-created bundle-intake shield and should be protected at root unless explicitly moved by owner.",
+  "root_keep": [
+    "README.md",
+    "README-Plus.md"
+  ],
+  "rule": "Bundle-specific README files must not overwrite README.md or README-Plus.md.",
+  "schema": "stegverse_root_docs_canonicalization_policy_patch.v1"
+}
