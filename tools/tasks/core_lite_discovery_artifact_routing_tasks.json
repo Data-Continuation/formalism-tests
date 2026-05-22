@@ -1,0 +1,25 @@
+{
+  "manifest_name": "core lite discovery artifact routing tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/route_core_lite_discovery_artifacts.py"
+      ],
+      "description": "Collect current core-lite discovery outputs into one review folder and one zip artifact.",
+      "enabled": true,
+      "expected_outputs": [
+        "dist/current/core-lite-discovery/CORE_LITE_DISCOVERY_ARTIFACT_INDEX.md",
+        "dist/current/core-lite-discovery/core_lite_discovery_gap_report.md",
+        "dist/current/core-lite-discovery/core_lite_state_diff.json",
+        "dist/current/core-lite-discovery/core_lite_install_plan_candidate.json",
+        "dist/current/core-lite-discovery-artifacts.zip",
+        "reports/core_lite_discovery_artifact_routing_report.json",
+        "receipts/core_lite_discovery_artifact_routing_receipts.jsonl"
+      ],
+      "task_id": "route_core_lite_discovery_artifacts"
+    }
+  ]
+}
