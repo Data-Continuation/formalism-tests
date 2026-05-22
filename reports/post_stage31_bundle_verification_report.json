@@ -1,0 +1,25 @@
+{
+  "files_present": {
+    ".github/workflows/post-stage31-integration.yml": true,
+    "README.md": true,
+    "THEOREM_PROOF_MAP.md": true,
+    "docs/ARTIFACT_INDEX.md": true,
+    "docs/TASK_ID_INDEX.md": true,
+    "iosnoperiod.md": true,
+    "iosnoperiod/github/workflows/post-stage31-integration.yml": true,
+    "path_mappings.json": true,
+    "tools/build_production_candidate_review_packet.py": true,
+    "tools/discover_core_lite_state.py": true,
+    "tools/export_master_record_candidate.py": true,
+    "tools/tasks/post_stage31_integration_tasks.json": true
+  },
+  "generated_at": "2026-05-22T00:00:00Z",
+  "note": "Scripts are included and syntactically generated; actual core-lite discovery should be run in the target repo checkout.",
+  "schema": "post_stage31_bundle_verification.v1",
+  "success": true,
+  "task_ids": [
+    "discover_core_lite_state",
+    "build_production_candidate_review_packet",
+    "export_master_record_candidate"
+  ]
+}
