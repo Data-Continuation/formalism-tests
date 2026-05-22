@@ -1,0 +1,17 @@
+{
+  "admissible_node_statuses": [
+    "NODE_ACTIVE",
+    "NODE_LIMITED"
+  ],
+  "default_finco_participation_allowed": false,
+  "default_finco_participation_requested": false,
+  "entitlement_requires_authority": true,
+  "generated_at": "2026-05-22T04:04:38.254658+00:00",
+  "requires_access_receipt": true,
+  "requires_chain_intact": true,
+  "requires_compensation_rule": true,
+  "requires_consent_receipt": true,
+  "requires_revocation_rule": true,
+  "requires_use_receipt": true,
+  "schema": "stegverse_stage29_finco_eligibility_report.v0"
+}

@@ -1,0 +1,25 @@
+{
+  "assertion_count": 60,
+  "case_count": 24,
+  "decision_counts": {
+    "ALLOW_FINCO_ELIGIBILITY": 2,
+    "ALLOW_NODE_STATUS": 3,
+    "FAIL_CLOSED": 16,
+    "LEDGER_FINCO_ELIGIBILITY": 1,
+    "LEDGER_NODE_STATUS": 1,
+    "REQUIRE_REVIEW": 1
+  },
+  "generated_at": "2026-05-22T04:04:38.256479+00:00",
+  "message": "Stage 29 optional node status and FinCo eligibility validation passed.",
+  "outputs": {
+    "finco_eligibility_report": "reports/stage29_finco_eligibility_report.json",
+    "node_status_report": "reports/stage29_node_status_report.json",
+    "receipts": "receipts/stage29_node_finco_receipts.jsonl",
+    "review_report": "reports/stage29_node_status_review_report.md"
+  },
+  "receipt_count": 24,
+  "schema": "stegverse_stage29_node_status_finco_eligibility_report.v0",
+  "stage": "Stage 29",
+  "success": true,
+  "theorem_basis": "Optional Node Status and FinCo Eligibility"
+}
