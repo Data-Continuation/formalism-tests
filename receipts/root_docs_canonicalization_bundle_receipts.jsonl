@@ -1,0 +1,1 @@
+{"basis": "Bundle corrects prior root-level generated documentation placement by providing a bulk, non-destructive mover.", "decision": "ALLOW_BULK_CANONICALIZATION_BUNDLE", "generated_at": "2026-05-22T10:34:11.179651+00:00", "receipt_hash": "64c730abae4eb5b8ad7100ba6916901c2f5c0d6565eb3112d69e9be92316b365", "schema": "stegverse_root_docs_canonicalization_bundle_receipt.v1"}
