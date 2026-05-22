@@ -1,0 +1,25 @@
+{
+  "manifest_name": "core lite discovery current reports tasks",
+  "manifest_version": "0.4.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/discover_core_lite_current_reports.py"
+      ],
+      "description": "Run remote core-lite discovery and route current review artifacts into reports/current_* for stable dispatcher persistence.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/current_core_lite_discovery_artifact_index.md",
+        "reports/current_core_lite_discovery_gap_report.md",
+        "reports/current_core_lite_state_diff.json",
+        "reports/current_core_lite_install_plan_candidate.json",
+        "reports/current_core_lite_discovery_packet_manifest.json",
+        "reports/current_core_lite_discovery_packet_report.json",
+        "receipts/current_core_lite_discovery_receipts.jsonl"
+      ],
+      "task_id": "discover_core_lite_current_reports"
+    }
+  ]
+}
