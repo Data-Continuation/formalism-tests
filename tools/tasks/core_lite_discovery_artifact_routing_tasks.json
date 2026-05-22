@@ -1,6 +1,6 @@
 {
   "manifest_name": "core lite discovery artifact routing tasks",
-  "manifest_version": "0.1.0",
+  "manifest_version": "0.2.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -8,7 +8,7 @@
         "python",
         "tools/route_core_lite_discovery_artifacts.py"
       ],
-      "description": "Collect current core-lite discovery outputs into one review folder and one zip artifact.",
+      "description": "Collect current core-lite discovery decision artifacts into one review folder and one zip artifact.",
       "enabled": true,
       "expected_outputs": [
         "dist/current/core-lite-discovery/CORE_LITE_DISCOVERY_ARTIFACT_INDEX.md",
