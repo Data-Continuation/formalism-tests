@@ -1,0 +1,19 @@
+{
+  "assertion_count": 71,
+  "case_count": 12,
+  "decision_counts": {
+    "ALLOW_TEST_EXECUTION": 1,
+    "FAIL_CLOSED": 10,
+    "LEDGER_TEST_EXECUTION": 1
+  },
+  "generated_at": "2026-05-22T00:40:49.364722+00:00",
+  "message": "Stage 15 active work-entity next-stage test execution validation passed.",
+  "receipt_count": 12,
+  "receipts": "reports/stage15_active_work_entity_test_execution_receipts.jsonl",
+  "report": "reports/stage15_active_work_entity_test_execution_report.json",
+  "schema": "stegverse_stage15_active_work_entity_test_execution_report.v1",
+  "stage": "Stage 15",
+  "success": true,
+  "theorem_basis": "Active Work-Entity Next-Stage Test Execution",
+  "work_entity": "StegVerse-001 / Beta_Orionis"
+}
