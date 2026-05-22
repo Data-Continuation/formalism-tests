@@ -1,0 +1,26 @@
+{
+  "manifest_name": "core-lite remote discovery tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/discover_core_lite_remote_state.py"
+      ],
+      "description": "Clone core-lite into a temporary workspace and run core-lite discovery without installing or mutating the target repo.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/core_lite_remote_discovery_report.json",
+        "reports/core_lite_discovery_report.json",
+        "reports/core_lite_discovered_state.json",
+        "reports/core_lite_discovery_gap_report.md",
+        "reports/core_lite_state_diff.json",
+        "reports/core_lite_install_plan_candidate.json",
+        "receipts/core_lite_remote_discovery_receipts.jsonl",
+        "receipts/core_lite_discovery_receipts.jsonl"
+      ],
+      "task_id": "discover_core_lite_remote_state"
+    }
+  ]
+}
