@@ -1,0 +1,23 @@
+{
+  "canonical_locations": {
+    "canonical_theorem": "docs/theorem/",
+    "indexes": "docs/indexes/",
+    "legacy_bundles": "docs/legacy/bundles/",
+    "legacy_root_markdown": "docs/legacy/root-markdown/",
+    "legacy_theorem": "docs/legacy/theorem/",
+    "roadmaps": "docs/roadmaps/",
+    "stage_docs": "docs/stages/"
+  },
+  "collision_strategy": "append .legacy-N before suffix",
+  "delete_files": false,
+  "generated_at": "2026-05-22T10:34:11.179651+00:00",
+  "overwrite_files": false,
+  "root_keep": [
+    "README.md",
+    "README-Plus.md",
+    "ARCHITECTURE.md",
+    "PRODUCT.md"
+  ],
+  "rule": "Build-stage processes must place generated documentation under docs/, not at repository root.",
+  "schema": "stegverse_root_docs_canonicalization_policy.v1"
+}
