@@ -1,144 +1,404 @@
-# Theorem Proof Map
+# THEOREM_PROOF_MAP
 
-## Purpose
-
-This file maps DCF theorem candidates to executable proof artifacts.
-
-## Current artifacts
+## Status
 
 ```text
-reports/sample_receipts.jsonl
-reports/continuation_report.md
-tests/expected_outcomes.json
-src/validate_expected_outcomes.py
-tests/compound_cases.json
-src/compound_continuation_gate.py
-reports/compound_receipts.jsonl
-reports/compound_continuation_report.md
-tools/tasks/formalism_tests_tasks.json
-tools/rules/runtime_artifact_rules.json
-tools/apply_runtime_artifact_rules.py
-tools/run_declared_tasks.py
+repository: Data-Continuation/formalism-tests
+document_type: theorem_proof_map
+status: Stage 1–31 roadmap complete
+updated_on: 2026-05-22
+primary_work_entity: StegVerse-001 / Beta_Orionis
+proof_authority: formalism-tests
+site_role: public mirror only
 ```
 
-## Current workflow evidence
+## Assumptions
 
-The declared-task workflow now runs:
+1. Stages 1 through 31 have passed in `formalism-tests`.
+2. The declared-task runner is the authoritative execution surface for this repository.
+3. Site mirrors proof surfaces but does not become proof authority.
+4. Production means accredited participation, not sovereign authority.
+5. This file supersedes the older Stage 2–3 / Stage 10 proof map as the current roadmap-level proof map.
+6. Historical Stage 2–3 proof surfaces remain valid and are preserved as the foundation for later stages.
+
+## Done Definition
+
+This theorem proof map is current when it records:
 
 ```text
-archive_runtime_artifacts
-continuation_gate
-compound_continuation_gate
+Stage 1–31 roadmap status
+major theorem claims
+task IDs
+artifact families
+proof authority boundaries
+Site mirror boundaries
+discovery/install/packet/node/FinCo/production boundaries
+next integration sequence
 ```
 
-The Stage 3 compound continuation gate generated:
+---
+
+# 1. Roadmap Completion
 
 ```text
-reports/compound_receipts.jsonl
-reports/compound_continuation_report.md
+Stages 1–31: PASSED
+Initial 31-stage roadmap: COMPLETE
+StegVerse-001 / Beta_Orionis: ACTIVE as governed work-entity
 ```
 
-## Mapping
+The completed roadmap proves a chain from role-dependent data continuation through production accreditation and revocation.
 
-| Theorem | Current evidence | Status |
-|---|---|---|
-| Representation Non-Consequence | Indirect; same datum remains role-dependent until continuation. Stage 2 demonstrates that content alone does not determine continuation admissibility. | Partially covered |
-| Role Non-Transfer | Same patient-risk datum produces ALLOW, ALLOW_WITH_SIGNOFF, and FAIL_CLOSED across roles. | Covered |
-| Continuation Capacity | Insufficient capacity cases fail closed. | Covered |
-| Fail-Closed Basis Requirement | Missing required block basis fails closed. | Covered |
-| Local-Composite Non-Equivalence | Stage 3 compound-local-001: local ALLOW + local ALLOW fails closed because composite consequence mass exceeds legitimacy capacity. | Covered |
-| Commit-Time Sufficiency | Stage 3 drift-commit-001: pre-commit state differs from commit state, producing FAIL_CLOSED due to commit-time state drift. | Covered |
-| Replay Non-Reversal | Stage 3 replay-non-reversal-001: replay may reconstruct receipt state but may not reverse consequence. | Covered |
-| Inference-Window Collapse | Stage 3 inference-collapse-001: inference window collapsed below continuation threshold, producing FAIL_CLOSED. | Covered |
-| Recoverability Floor | Stage 3 recoverability-floor-001: recoverability score below required floor, producing FAIL_CLOSED. | Covered |
-| Role-Transition Dependence | Covered by role comparison and same-data continuation decisions. | Covered |
-| Compound Continuation Positive Control | Stage 3 compound-allow-001: compound continuation remains within capacity and recoverability bounds, producing ALLOW. | Covered |
+The roadmap does not grant StegVerse-001 sovereign authority.
 
-## Stage 2 proof surface
+---
+
+# 2. Authority Boundary
 
 ```text
-same data ≠ same continuation admissibility
+formalism-tests produces proof artifacts and receipts.
+Site publishes proof mirrors.
+Site must not become proof authority.
+StegVerse-001 participates as a governed work-entity.
+StegVerse-001 cannot self-accredit.
+Production means accredited participation, not sovereign authority.
 ```
 
-Stage 2 demonstrates that a datum can be safe as an informational note, conditional as a clinician recommendation, and inadmissible as autonomous actuation.
+---
 
-The governance claim is that continuation admissibility cannot attach only to data content. It must attach to the role and transition through which the data seeks continuation into consequence.
+# 3. Core Theorem Claims
 
-## Stage 3 proof surface
+## 3.1 Role Non-Transfer
+
+```text
+same data does not imply same continuation admissibility
+```
+
+The same data can be admissible as information, conditional as a recommendation, and fail-closed as autonomous actuation.
+
+## 3.2 Local-Composite Non-Equivalence
 
 ```text
 local allow + local allow does not imply composite allow
+```
+
+Composite transitions require composite evaluation.
+
+## 3.3 Commit-Time Sufficiency
+
+```text
 pre-commit allow does not imply commit-time allow after state drift
-replay can reconstruct consequence state but cannot reverse consequence
+```
+
+Admissibility must be resolved at the binding moment.
+
+## 3.4 Replay Non-Reversal
+
+```text
+replay reconstructs consequence state but cannot reverse consequence
+```
+
+Replay is reconstruction, not reversal.
+
+## 3.5 Inference-Window and Recoverability Conditions
+
+```text
 recoverability and inference-window floors are admissibility conditions
 ```
 
-Stage 3 extends continuation testing beyond role comparison into compound and temporal admissibility.
+A transition can fail closed even if other local gates pass.
 
-The new receipt set demonstrates that local admissibility does not compose automatically into global admissibility. A transition may fail closed because:
+## 3.6 Admissible Existence Unified Gate
 
 ```text
-composite consequence mass exceeds legitimacy capacity
-commit-time state drift occurred
-the inference window collapsed
-recoverability fell below the required floor
-replay was incorrectly treated as reversal
+ALLOW(u) iff IW_tau(S,u) subset A_total AND RE(S -> Phi(S,u)) <= RE_max
 ```
 
-## Covered theorem group
+IW containment and reverse-entropy bound are both required.
+
+## 3.7 Discovery Boundary
 
 ```text
-Role Non-Transfer
-Continuation Capacity
-Fail-Closed Basis Requirement
-Local-Composite Non-Equivalence
-Commit-Time Sufficiency
-Replay Non-Reversal
-Inference-Window Collapse
-Recoverability Floor
-Role-Transition Dependence
-Compound Continuation Positive Control
+Discovery observes, models, compares, classifies, and proposes.
+Discovery does not install.
 ```
 
-## Partially covered theorem group
+## 3.8 Install Plan Boundary
 
 ```text
-Representation Non-Consequence
+An install plan is a candidate transition, not installation authority.
 ```
 
-Representation Non-Consequence remains partially covered because current evidence still reaches it indirectly through role-dependent continuation. A direct proof should show that representation alone has no consequence-bearing status until it is bound to a transition role and continuation path.
-
-## Next proof upgrades
+## 3.9 Node and FinCo Boundary
 
 ```text
-direct representation non-consequence receipts
-multi-body boundary-dynamics receipts
-system-coherence failure receipts
-purpose-convergence failure receipts
-governed boundary reset receipts
-governed boundary evolution receipts
+Core installation does not imply node participation.
+Node participation does not imply FinCo eligibility.
 ```
 
-## Next integration target
-
-The next proof layer should connect DCF Stage 3 to:
+## 3.10 Instantiation Packet Boundary
 
 ```text
-Multi-Body Admissibility
-System-Coherent Boundary Dynamics
-Purpose-Convergence Test
-Degraded-Authority Recoverability Test
-Governed Boundary Reset
-Governed Boundary Evolution
+The packet is portable evidence of a proposed governed transition, not installation authority.
 ```
 
-## Current interpretation
-
-The DCF proof surface has now moved from same-data role dependence into compound and temporal admissibility.
-
-This supports the broader StegVerse claim:
+## 3.11 Production Boundary
 
 ```text
-Admissibility is not local boundary compliance.
-Admissibility is recoverable convergence across coherent, evolving, coupled boundary fields.
+Production means accredited participation, not sovereign authority.
+```
+
+---
+
+# 4. Stage Index
+
+## Stage 1 — Initial Continuation Grounding
+
+```text
+status: PASSED
+```
+
+## Stage 2 — Same Data, Different Role
+
+```text
+status: PASSED
+core_claim: same data does not imply same continuation admissibility
+```
+
+## Stage 3 — Compound Continuation
+
+```text
+status: PASSED
+core_claim: local allow plus local allow does not imply composite allow
+```
+
+## Stage 4 — Representation and Consequence Boundary
+
+```text
+status: PASSED
+```
+
+## Stage 5 — Transition Elements and AI Block Basis
+
+```text
+status: PASSED
+```
+
+## Stage 6 — Admissible Existence Unified Gate
+
+```text
+status: PASSED
+core_claim: ALLOW(u) iff IW_tau(S,u) subset A_total AND RE(S -> Phi(S,u)) <= RE_max
+```
+
+## Stage 7 — Boundary Reset and Evolution
+
+```text
+status: PASSED
+```
+
+## Stage 8 — AI Block Scope and Escape Control
+
+```text
+status: PASSED
+```
+
+## Stage 9 — FinCo Chain Admissibility
+
+```text
+status: PASSED
+```
+
+## Stage 10 — Transition Table Binding
+
+```text
+status: PASSED
+```
+
+## Stage 11 — Active Work-Entity Preparation
+
+```text
+status: PASSED
+```
+
+## Stage 12 — AI-Governance Scope Readiness
+
+```text
+status: PASSED
+```
+
+## Stage 13 — Active Work-Entity Release Delta
+
+```text
+status: PASSED
+```
+
+## Stage 14 — Transition Table AI Governance Binding
+
+```text
+status: PASSED
+```
+
+## Stage 15 — Work-Entity Policy Scope
+
+```text
+status: PASSED
+```
+
+## Stage 16 — Work-Entity Release/Queue Integration
+
+```text
+status: PASSED
+```
+
+## Stage 17 — Self-Audit and Drift Detection
+
+```text
+status: PASSED
+task_id: stage17_self_audit_tests
+```
+
+## Stage 18 — Sandbox Candidate Generation
+
+```text
+status: PASSED
+task_id: stage18_sandbox_candidate_generation_tests
+```
+
+## Stage 19 — Candidate Review Loop
+
+```text
+status: PASSED
+task_id: stage19_candidate_review_loop_tests
+```
+
+## Stage 20 — Release Candidate Assembly
+
+```text
+status: PASSED
+task_id: stage20_release_candidate_assembly_tests
+```
+
+## Stage 21 — Canonical Upgrade Replay
+
+```text
+status: PASSED
+task_id: stage21_canonical_upgrade_replay_tests
+```
+
+## Stage 22 — Public Mirror Propagation
+
+```text
+status: PASSED
+task_id: stage22_public_mirror_propagation_tests
+```
+
+## Stage 23 — Ingestible Bundle Custody
+
+```text
+status: PASSED
+task_id: stage23_ingestible_bundle_tests
+```
+
+## Stage 24 — Autonomous Test Planning
+
+```text
+status: PASSED
+task_id: stage24_test_plan_tests
+```
+
+## Stage 25 — Entity Operating Charter
+
+```text
+status: PASSED
+task_id: stage25_entity_charter_tests
+```
+
+## Stage 26 — StegVerse-001 Declared Testing Loop
+
+```text
+status: PASSED
+task_id: stage26_stegverse001_testing_loop_tests
+core_claim: StegVerse-001 can invoke declared tests through governed routing
+```
+
+## Stage 27 — Discovery-to-Canonical State DB
+
+```text
+status: PASSED
+task_id: stage27_discovery_to_canonical_state_tests
+core_claim: Discovery observes, models, compares, classifies, and proposes. Discovery does not install.
+```
+
+## Stage 28 — Canonical Diff and Install Plan Candidate
+
+```text
+status: PASSED
+task_id: stage28_canonical_diff_install_plan_tests
+core_claim: An install plan is a candidate transition, not installation authority.
+```
+
+## Stage 29 — Optional Node Status and FinCo Eligibility
+
+```text
+status: PASSED
+task_id: stage29_node_status_finco_eligibility_tests
+core_claim: Core installation does not imply node participation. Node participation does not imply FinCo eligibility.
+```
+
+## Stage 30 — Governed Instantiation Packet
+
+```text
+status: PASSED
+task_id: stage30_governed_instantiation_packet_tests
+core_claim: The packet is portable evidence of a proposed governed transition, not installation authority.
+```
+
+## Stage 31 — Production Accreditation and Revocation Boundary
+
+```text
+status: PASSED
+task_id: stage31_production_accreditation_revocation_tests
+core_claim: Production means accredited participation, not sovereign authority.
+```
+
+---
+
+# 5. Stage 26–31 Proof Surface
+
+```text
+stage26_stegverse001_testing_loop_tests
+stage27_discovery_to_canonical_state_tests
+stage28_canonical_diff_install_plan_tests
+stage29_node_status_finco_eligibility_tests
+stage30_governed_instantiation_packet_tests
+stage31_production_accreditation_revocation_tests
+```
+
+# 6. Artifact Families
+
+```text
+reports/
+receipts/
+dist/
+docs/
+schemas/
+tests/fixtures/
+tools/tasks/
+```
+
+Stage-specific artifacts are indexed in:
+
+```text
+docs/ARTIFACT_INDEX.md
+docs/TASK_ID_INDEX.md
+```
+
+# 7. Next Integration Sequence
+
+```text
+1. Run core-lite discovery.
+2. Build production-candidate review packet.
+3. Harden master-record export.
+4. Produce controlled integration plan.
+5. Require sandbox, CGE, ingestion, receipts, and review before binding.
 ```
