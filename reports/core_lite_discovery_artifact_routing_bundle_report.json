@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-05-22T12:01:36.488594+00:00",
+  "reason": "Avoid forcing owner to search through many historical artifact folders.",
+  "schema": "stegverse_core_lite_discovery_artifact_routing_bundle_report.v1",
+  "success": true,
+  "task_id": "route_core_lite_discovery_artifacts"
+}
