@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-05-22T10:34:11.179651+00:00",
+  "rule": "Build-stage processes must place generated documentation under docs/, not at repository root.",
+  "schema": "stegverse_root_docs_canonicalization_bundle_report.v1",
+  "success": true,
+  "task_id": "canonicalize_root_docs_to_docs"
+}
