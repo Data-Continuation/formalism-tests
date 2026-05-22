@@ -1,0 +1,20 @@
+{
+  "manifest_name": "stage26 StegVerse-001 test loop task",
+  "manifest_version": "1.0.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/run_stage26_stegverse001_testing_loop_tests.py"
+      ],
+      "description": "Stage 26 - validate StegVerse-001 handling Stage 17 through Stage 25 tests via declared-task routing.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/stage26_stegverse001_testing_loop_report.json",
+        "reports/stage26_stegverse001_testing_loop_receipts.jsonl"
+      ],
+      "task_id": "stage26_stegverse001_testing_loop_tests"
+    }
+  ]
+}
