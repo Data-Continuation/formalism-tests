@@ -11,7 +11,7 @@
   "core_rule": "Core installation does not imply node participation. Node participation does not imply FinCo eligibility.",
   "default_node_participation_opt_in": false,
   "default_node_status": "NOT_A_NODE",
-  "generated_at": "2026-05-22T04:04:38.254635+00:00",
+  "generated_at": "2026-05-22T04:24:36.979224+00:00",
   "revocation_supported": true,
   "schema": "stegverse_stage29_node_status_report.v0",
   "suspension_supported": true
