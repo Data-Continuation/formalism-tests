@@ -1,0 +1,22 @@
+{
+  "assertion_count": 74,
+  "case_count": 13,
+  "decision_counts": {
+    "ALLOW_POLICY_SCOPE_EVOLUTION": 2,
+    "FAIL_CLOSED": 9,
+    "LEDGER_POLICY_SCOPE_UPDATE": 1,
+    "REQUIRE_APPLICABILITY_REVIEW": 1
+  },
+  "generated_at": "2026-05-22T01:26:37.136623+00:00",
+  "message": "Stage 16 AI policy scope evolution and transition applicability reconciliation passed.",
+  "receipt_count": 13,
+  "receipts": "reports/stage16_policy_scope_evolution_receipts.jsonl",
+  "report": "reports/stage16_policy_scope_evolution_report.json",
+  "schema": "stegverse_stage16_policy_scope_evolution_report.v1",
+  "source_policy_version": "stage14.v1",
+  "stage": "Stage 16",
+  "success": true,
+  "target_policy_version": "stage16.v1",
+  "theorem_basis": "AI Policy Scope Evolution and Transition Applicability Reconciliation",
+  "work_entity": "StegVerse-001 / Beta_Orionis"
+}
