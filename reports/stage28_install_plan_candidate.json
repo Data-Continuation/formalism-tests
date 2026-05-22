@@ -1,0 +1,50 @@
+{
+  "actions": [
+    {
+      "action": "preserve",
+      "action_id": "preserve_existing_cge",
+      "classification": "present_and_valid",
+      "path": "core_lite/cge.py",
+      "requires_review": false
+    },
+    {
+      "action": "propose_candidate",
+      "action_id": "propose_sandbox_candidate",
+      "classification": "missing_required",
+      "path": "core_lite/sandbox.py",
+      "requires_review": true
+    },
+    {
+      "action": "review_only",
+      "action_id": "review_workflow_surface",
+      "classification": "extra_requires_review",
+      "path": ".github/workflows/core-lite-self-test.yml",
+      "requires_review": true
+    },
+    {
+      "action": "quarantine_only",
+      "action_id": "quarantine_secret_like_path",
+      "classification": "quarantine_required",
+      "path": "secrets/example-token.txt",
+      "requires_review": true
+    }
+  ],
+  "cge_required": true,
+  "core_rule": "An install plan is a candidate transition, not installation authority.",
+  "finco_participation": {
+    "finco_participation_allowed": false,
+    "finco_participation_requested": false
+  },
+  "install_allowed_by_plan": false,
+  "node_participation": {
+    "node_participation_opt_in": false,
+    "node_status": "NOT_A_NODE"
+  },
+  "plan_id": "stage28-core-lite-install-plan-candidate",
+  "receipts_required": true,
+  "sandbox_required": true,
+  "scale_profile": "repo_core",
+  "schema": "stegverse_stage28_install_plan_candidate.v0",
+  "source_stage": "Stage 28",
+  "target_unit": "core-lite"
+}

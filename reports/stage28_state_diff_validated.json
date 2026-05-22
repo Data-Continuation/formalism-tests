@@ -1,0 +1,43 @@
+{
+  "allowed_diff_categories": [
+    "present_and_valid",
+    "missing_required",
+    "present_but_stale",
+    "present_but_unknown",
+    "extra_but_allowed",
+    "extra_requires_review",
+    "local_extension",
+    "legacy_candidate",
+    "conflict",
+    "dangerous",
+    "quarantine_required"
+  ],
+  "generated_at": "2026-05-22T03:47:24.364008+00:00",
+  "schema": "stegverse_stage28_state_diff_validated.v0",
+  "validated_items": [
+    {
+      "basis": "existing CGE module should not be overwritten without review",
+      "classification": "present_and_valid",
+      "path": "core_lite/cge.py",
+      "plan_action": "preserve"
+    },
+    {
+      "basis": "sandbox capability is expected by Governed Core Unit principle",
+      "classification": "missing_required",
+      "path": "core_lite/sandbox.py",
+      "plan_action": "propose_candidate"
+    },
+    {
+      "basis": "workflow path is protected and requires explicit review",
+      "classification": "extra_requires_review",
+      "path": ".github/workflows/core-lite-self-test.yml",
+      "plan_action": "review_only"
+    },
+    {
+      "basis": "secret-like path cannot be installed",
+      "classification": "quarantine_required",
+      "path": "secrets/example-token.txt",
+      "plan_action": "quarantine_only"
+    }
+  ]
+}

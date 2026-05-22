@@ -1,0 +1,24 @@
+{
+  "assertion_count": 42,
+  "case_count": 14,
+  "decision_counts": {
+    "ALLOW_INSTALL_PLAN_CANDIDATE": 1,
+    "FAIL_CLOSED": 10,
+    "LEDGER_INSTALL_PLAN": 1,
+    "QUARANTINE_PLAN": 1,
+    "REQUIRE_REVIEW": 1
+  },
+  "generated_at": "2026-05-22T03:47:24.365842+00:00",
+  "message": "Stage 28 canonical diff and install-plan candidate validation passed.",
+  "outputs": {
+    "install_plan_candidate": "reports/stage28_install_plan_candidate.json",
+    "receipts": "receipts/stage28_install_plan_receipts.jsonl",
+    "review_report": "reports/stage28_install_plan_review_report.md",
+    "validated_diff": "reports/stage28_state_diff_validated.json"
+  },
+  "receipt_count": 14,
+  "schema": "stegverse_stage28_canonical_diff_install_plan_report.v0",
+  "stage": "Stage 28",
+  "success": true,
+  "theorem_basis": "Canonical Diff and Install Plan Candidate"
+}
