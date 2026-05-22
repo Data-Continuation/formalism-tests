@@ -1,0 +1,52 @@
+[
+  {
+    "id": "20-001",
+    "description": "Release candidate assembled from accepted candidates and closed dependencies",
+    "expected_decision": "ALLOW_RELEASE_CANDIDATE_ASSEMBLY"
+  },
+  {
+    "id": "20-002",
+    "description": "Assembly fails due to missing candidate receipts",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-003",
+    "description": "Assembly fails due to incomplete dependency closure",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-004",
+    "description": "Assembly fails due to invalid release manifest",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-005",
+    "description": "Assembly fails because a candidate is stale",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-006",
+    "description": "Assembly fails due to mismatched source release hash",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-007",
+    "description": "Assembly fails due to unauthorized authority in candidate",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-008",
+    "description": "Assembly fails due to missing lineage receipt",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-009",
+    "description": "Assembly fails due to manifest hash mismatch",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "20-010",
+    "description": "Release candidate assembly is recorded on ledger",
+    "expected_decision": "LEDGER_RELEASE_CANDIDATE_ASSEMBLY"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "23-001",
+    "description": "Ingestible bundle with valid manifest and hashes passes",
+    "expected_decision": "ALLOW_INGESTIBLE_BUNDLE"
+  },
+  {
+    "id": "23-002",
+    "description": "Bundle custody is recorded",
+    "expected_decision": "LEDGER_BUNDLE_CUSTODY"
+  },
+  {
+    "id": "23-003",
+    "description": "Bundle quarantined due to missing policy scope",
+    "expected_decision": "QUARANTINE_BUNDLE"
+  },
+  {
+    "id": "23-004",
+    "description": "Bundle quarantined due to unauthorized files",
+    "expected_decision": "QUARANTINE_BUNDLE"
+  },
+  {
+    "id": "23-005",
+    "description": "Bundle fails due to missing manifest",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-006",
+    "description": "Bundle fails due to missing hash",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-007",
+    "description": "Bundle fails due to mismatched hash",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-008",
+    "description": "Bundle fails due to missing lineage receipts",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-009",
+    "description": "Bundle fails due to missing custody signature",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-010",
+    "description": "Bundle fails due to unauthorized canonical claim",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-011",
+    "description": "Bundle fails due to missing record of quarantine",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "23-012",
+    "description": "Bundle fails due to manifest referencing unknown transition",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

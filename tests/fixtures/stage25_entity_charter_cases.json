@@ -1,0 +1,57 @@
+[
+  {
+    "id": "25-001",
+    "description": "Entity charter defined with correct boundaries and authority",
+    "expected_decision": "ALLOW_ENTITY_CHARTER"
+  },
+  {
+    "id": "25-002",
+    "description": "Entity charter fails due to missing identity declaration",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-003",
+    "description": "Entity charter fails due to missing authority boundaries",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-004",
+    "description": "Entity charter fails due to missing policy scope",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-005",
+    "description": "Entity charter fails due to missing receipt requirements",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-006",
+    "description": "Entity charter fails due to missing fail-closed conditions",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-007",
+    "description": "Entity charter fails due to unauthorized canonical claim",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-008",
+    "description": "Entity charter fails due to missing transition table binding",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-009",
+    "description": "Entity charter fails due to missing scope description",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "25-010",
+    "description": "Entity charter is recorded on ledger",
+    "expected_decision": "LEDGER_ENTITY_CHARTER"
+  },
+  {
+    "id": "25-011",
+    "description": "Entity charter fails due to missing review requirements",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

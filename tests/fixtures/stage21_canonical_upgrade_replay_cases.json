@@ -1,0 +1,57 @@
+[
+  {
+    "id": "21-001",
+    "description": "Successful canonical upgrade replay demonstrating continuity",
+    "expected_decision": "ALLOW_CANONICAL_UPGRADE_REPLAY"
+  },
+  {
+    "id": "21-002",
+    "description": "Replay fails due to missing source release",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-003",
+    "description": "Replay fails due to missing target release",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-004",
+    "description": "Replay fails due to missing delta manifest",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-005",
+    "description": "Replay fails due to mismatched replay hash",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-006",
+    "description": "Replay fails due to unauthorized authority in upgrade",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-007",
+    "description": "Replay fails due to missing receipts",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-008",
+    "description": "Replay fails due to missing lineage continuity",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-009",
+    "description": "Replay fails due to unauthorized canonical claim",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "21-010",
+    "description": "Replay records continuity on ledger",
+    "expected_decision": "LEDGER_REPLAY_CONTINUITY"
+  },
+  {
+    "id": "21-011",
+    "description": "Replay fails due to missing evidence of delta",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

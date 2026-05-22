@@ -1,0 +1,62 @@
+[
+  {
+    "id": "17-001",
+    "description": "Valid self-audit with complete authority and scope evidence passes",
+    "expected_decision": "ALLOW_SELF_AUDIT"
+  },
+  {
+    "id": "17-002",
+    "description": "Drift detected in release lineage triggers ledger event",
+    "expected_decision": "LEDGER_DRIFT_EVENT"
+  },
+  {
+    "id": "17-003",
+    "description": "Missing audit evidence results in failure",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-004",
+    "description": "Unauthorized authority detected during audit",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-005",
+    "description": "Dependency closure mismatch found",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-006",
+    "description": "Policy version drift without review",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-007",
+    "description": "Release lineage missing",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-008",
+    "description": "Scope not bound to declared policy",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-009",
+    "description": "Self-audit attempts to claim canonical authority",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-010",
+    "description": "Audit evidences require review",
+    "expected_decision": "REQUIRE_REVIEW"
+  },
+  {
+    "id": "17-011",
+    "description": "Hidden drift in dependency closure",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "17-012",
+    "description": "Multiple drift events require fail closed",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

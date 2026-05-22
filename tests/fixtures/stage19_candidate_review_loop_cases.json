@@ -1,0 +1,62 @@
+[
+  {
+    "id": "19-001",
+    "description": "Candidate enters review with all receipts and closed dependencies",
+    "expected_decision": "ALLOW_REVIEW_ENTRY"
+  },
+  {
+    "id": "19-002",
+    "description": "Review rejects candidate due to missing receipts",
+    "expected_decision": "LEDGER_REJECTION"
+  },
+  {
+    "id": "19-003",
+    "description": "Review rejects candidate due to dependency violation",
+    "expected_decision": "LEDGER_REJECTION"
+  },
+  {
+    "id": "19-004",
+    "description": "Review rejects candidate due to unauthorized scope",
+    "expected_decision": "LEDGER_REJECTION"
+  },
+  {
+    "id": "19-005",
+    "description": "Review supersedes candidate with newer version",
+    "expected_decision": "LEDGER_SUPERSESSION"
+  },
+  {
+    "id": "19-006",
+    "description": "Supersession due to updated policy requirements",
+    "expected_decision": "LEDGER_SUPERSESSION"
+  },
+  {
+    "id": "19-007",
+    "description": "Supersession due to merging multiple candidates",
+    "expected_decision": "LEDGER_SUPERSESSION"
+  },
+  {
+    "id": "19-008",
+    "description": "Candidate lacks quorum approval",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "19-009",
+    "description": "Candidate review fails due to hidden authority",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "19-010",
+    "description": "Candidate review fails due to inconsistent release lineage",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "19-011",
+    "description": "Candidate is missing consent from policy holder",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "19-012",
+    "description": "Candidate review fails due to ambiguous purpose",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

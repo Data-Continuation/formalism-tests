@@ -1,0 +1,62 @@
+[
+  {
+    "id": "24-001",
+    "description": "Autonomous test plan generated with clear scope and authority",
+    "expected_decision": "ALLOW_TEST_PLAN"
+  },
+  {
+    "id": "24-002",
+    "description": "Test plan requires review due to potential policy impact",
+    "expected_decision": "REQUIRE_REVIEW"
+  },
+  {
+    "id": "24-003",
+    "description": "Test plan logged on ledger",
+    "expected_decision": "LEDGER_TEST_PLAN"
+  },
+  {
+    "id": "24-004",
+    "description": "Test plan fails due to missing scope declaration",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-005",
+    "description": "Test plan fails due to unauthorized authority",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-006",
+    "description": "Test plan fails due to missing policy version",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-007",
+    "description": "Test plan fails due to hidden authority injection",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-008",
+    "description": "Test plan fails due to unknown transition class",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-009",
+    "description": "Test plan fails due to missing receipts",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-010",
+    "description": "Test plan fails due to direct execution without approval",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-011",
+    "description": "Test plan fails due to missing target stage references",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "24-012",
+    "description": "Test plan fails due to unauthorized canonical claim",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

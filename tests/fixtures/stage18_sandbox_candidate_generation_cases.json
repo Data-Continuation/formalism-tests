@@ -1,0 +1,57 @@
+[
+  {
+    "id": "18-001",
+    "description": "Sandbox candidate generation with all controls passes",
+    "expected_decision": "ALLOW_SANDBOX_CANDIDATE_GENERATION"
+  },
+  {
+    "id": "18-002",
+    "description": "Candidate generation attempts to bypass sandbox",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-003",
+    "description": "Missing dependency closure during candidate generation",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-004",
+    "description": "Candidate writes directly to release files",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-005",
+    "description": "Self-promoting candidate detected",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-006",
+    "description": "Candidate generation without receipts",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-007",
+    "description": "Sandbox candidate missing lineage references",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-008",
+    "description": "Candidate contains unknown transition class",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-009",
+    "description": "Candidate defines unauthorized scope",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "18-010",
+    "description": "Draft candidate stored for review",
+    "expected_decision": "LEDGER_CANDIDATE_DRAFT"
+  },
+  {
+    "id": "18-011",
+    "description": "Candidate missing manifest triggers failure",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]

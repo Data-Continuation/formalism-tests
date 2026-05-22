@@ -1,0 +1,57 @@
+[
+  {
+    "id": "22-001",
+    "description": "Public mirror propagation with correct checks passes",
+    "expected_decision": "ALLOW_PUBLIC_MIRROR_PROPAGATION"
+  },
+  {
+    "id": "22-002",
+    "description": "Propagation fails due to missing hash validation",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-003",
+    "description": "Propagation fails due to unauthorized authority claim",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-004",
+    "description": "Propagation fails due to content mismatch",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-005",
+    "description": "Propagation fails due to missing receipts",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-006",
+    "description": "Propagation fails due to missing public manifest",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-007",
+    "description": "Propagation fails due to unauthorized canonical claim at Site",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-008",
+    "description": "Propagation fails due to missing lineage continuity",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-009",
+    "description": "Propagation fails due to missing mirror sync evidence",
+    "expected_decision": "FAIL_CLOSED"
+  },
+  {
+    "id": "22-010",
+    "description": "Mirror sync recorded on ledger",
+    "expected_decision": "LEDGER_MIRROR_SYNC"
+  },
+  {
+    "id": "22-011",
+    "description": "Propagation fails due to unauthorized content change at Site",
+    "expected_decision": "FAIL_CLOSED"
+  }
+]
