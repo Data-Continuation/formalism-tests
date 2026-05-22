@@ -1,6 +1,6 @@
 {
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "1.9.0",
+  "manifest_version": "2.0.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -195,6 +195,19 @@
         "reports/stage14_ai_transition_binding_receipts.jsonl"
       ],
       "task_id": "stage14_ai_transition_binding_tests"
+    },
+    {
+      "command": [
+        "python",
+        "tools/run_stage15_active_work_entity_test_execution_tests.py"
+      ],
+      "description": "Stage 15 - validate StegVerse-001 running next-stage tests only through declared-task authority, Transition Table binding, and policy scope.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/stage15_active_work_entity_test_execution_report.json",
+        "reports/stage15_active_work_entity_test_execution_receipts.jsonl"
+      ],
+      "task_id": "stage15_active_work_entity_test_execution_tests"
     },
     {
       "command": [
