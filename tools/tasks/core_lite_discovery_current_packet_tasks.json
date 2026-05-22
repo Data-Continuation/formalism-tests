@@ -1,0 +1,25 @@
+{
+  "manifest_name": "core lite discovery current packet tasks",
+  "manifest_version": "0.3.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/discover_and_route_core_lite_current.py"
+      ],
+      "description": "Run remote core-lite discovery and immediately route current decision artifacts into dist/current in the same workflow run.",
+      "enabled": true,
+      "expected_outputs": [
+        "dist/current/core-lite-discovery/CORE_LITE_DISCOVERY_ARTIFACT_INDEX.md",
+        "dist/current/core-lite-discovery/core_lite_discovery_gap_report.md",
+        "dist/current/core-lite-discovery/core_lite_state_diff.json",
+        "dist/current/core-lite-discovery/core_lite_install_plan_candidate.json",
+        "dist/current/core-lite-discovery-artifacts.zip",
+        "reports/core_lite_discovery_current_packet_report.json",
+        "receipts/core_lite_discovery_current_packet_receipts.jsonl"
+      ],
+      "task_id": "discover_and_route_core_lite_current"
+    }
+  ]
+}
