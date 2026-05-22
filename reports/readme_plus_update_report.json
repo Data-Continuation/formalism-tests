@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-05-22T10:46:21.823879+00:00",
+  "readme_plus_role": "owner-created supplemental status and bundle-intake shield",
+  "rule": "Bundle-specific README files must not overwrite README.md or README-Plus.md.",
+  "schema": "stegverse_readme_plus_update_report.v1",
+  "success": true,
+  "updated": [
+    "README-Plus.md",
+    "docs/policies/bundle-readme-handling-policy.md",
+    "data/root_docs_canonicalization_policy_patch.json"
+  ]
+}
