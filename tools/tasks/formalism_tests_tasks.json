@@ -1,6 +1,6 @@
 {
   "manifest_name": "formalism-tests declared tasks",
-  "manifest_version": "2.0.0",
+  "manifest_version": "2.1.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -133,7 +133,7 @@
         "python",
         "tools/run_stage10_canonical_release_tests.py"
       ],
-      "description": "Stage 10 - validate and emit canonical transition table release candidate artifacts.",
+      "description": "Stage 10 - validate canonical transition table release candidate artifacts.",
       "enabled": true,
       "expected_outputs": [
         "reports/stage10_canonical_release_report.json",
@@ -175,7 +175,7 @@
         "python",
         "tools/run_stage13_active_work_entity_release_delta_tests.py"
       ],
-      "description": "Stage 13 - validate active work-entity release-candidate deltas from transition-table-v1-rc1 to transition-table-v1-rc2.",
+      "description": "Stage 13 - validate active work-entity release-candidate deltas.",
       "enabled": true,
       "expected_outputs": [
         "reports/stage13_active_work_entity_release_delta_report.json",
@@ -188,7 +188,7 @@
         "python",
         "tools/run_stage14_ai_transition_binding_tests.py"
       ],
-      "description": "Stage 14 - bind active StegVerse-001 work-entity to all applicable AI-governance Transition Table classes under declared policy scope.",
+      "description": "Stage 14 - bind active StegVerse-001 work-entity to applicable AI-governance classes.",
       "enabled": true,
       "expected_outputs": [
         "reports/stage14_ai_transition_binding_report.json",
@@ -201,13 +201,26 @@
         "python",
         "tools/run_stage15_active_work_entity_test_execution_tests.py"
       ],
-      "description": "Stage 15 - validate StegVerse-001 running next-stage tests only through declared-task authority, Transition Table binding, and policy scope.",
+      "description": "Stage 15 - validate StegVerse-001 running next-stage tests through declared-task authority.",
       "enabled": true,
       "expected_outputs": [
         "reports/stage15_active_work_entity_test_execution_report.json",
         "reports/stage15_active_work_entity_test_execution_receipts.jsonl"
       ],
       "task_id": "stage15_active_work_entity_test_execution_tests"
+    },
+    {
+      "command": [
+        "python",
+        "tools/run_stage16_policy_scope_evolution_tests.py"
+      ],
+      "description": "Stage 16 - validate AI policy scope evolution and transition applicability reconciliation.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/stage16_policy_scope_evolution_report.json",
+        "reports/stage16_policy_scope_evolution_receipts.jsonl"
+      ],
+      "task_id": "stage16_policy_scope_evolution_tests"
     },
     {
       "command": [
