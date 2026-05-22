@@ -1,0 +1,20 @@
+{
+  "manifest_name": "root docs bulk canonicalization tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/canonicalize_root_docs_to_docs.py"
+      ],
+      "description": "Move generated root-level documentation into docs/ locations without deleting or overwriting files.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/root_docs_bulk_canonicalization_report.json",
+        "receipts/root_docs_bulk_canonicalization_receipts.jsonl"
+      ],
+      "task_id": "canonicalize_root_docs_to_docs"
+    }
+  ]
+}
