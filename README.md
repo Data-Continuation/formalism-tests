@@ -1,151 +1,522 @@
 # formalism-tests
 
-## Repository Purpose
-
-formalism-tests is the executable proof and validation repository for the StegVerse transition formalism.
-
-Authority boundary:
+## Status
 
 ```text
-formalism-tests produces receipts.
-Site publishes receipts.
-Site must not become the authority for receipts.
+repository: Data-Continuation/formalism-tests
+status: active proof and declared-task repository
+roadmap_status: Stages 1–31 passed
+primary_work_entity: StegVerse-001 / Beta_Orionis
+proof_authority: formalism-tests
+site_role: public mirror only
+production_boundary: accredited participation, not sovereign authority
+updated_on: 2026-05-22
 ```
 
-## Current Stage Picture
+## Purpose
+
+`formalism-tests` is the executable proof and test repository for the Data Continuation / StegVerse admissibility roadmap.
+
+It began with the core Data Continuation claim:
 
 ```text
-Stage 1 - Initial continuation model / seed cases
-Stage 2 - Same-data role dependence: PASS
-Stage 3 - Compound and temporal continuation: PASS
-Stage 4 - Transition classes as admissibility contracts: PASS
-Stage 5 - System-coherent boundary transition classes: PASS
-Stage 6 - Admissible Existence Unified Gate: PASS
-Stage 7 - Element Dependency Closure: PASS
-Stage 8 - AI Domain Transition Classes: PASS
-Stage 9 - Multi-Body Coupling Closure: PASS
-Stage 10 - Canonical Transition Table Release: RELEASE_CANDIDATE
+same data does not imply same continuation admissibility
 ```
 
-## Active Declared Tasks
+It now records the completed 31-stage proof roadmap from role-dependent continuation through governed production accreditation and revocation.
+
+This repository proves, through declared tasks, reports, receipts, and generated artifacts, which transitions are admissible, which fail closed, which require review, and which must route through sandbox, CGE, ingestion, receipts, master-record export, node-status review, FinCo eligibility review, or reaccreditation.
+
+This repository is not sovereign production authority.
+
+---
+
+# Current Roadmap Status
 
 ```text
-archive_runtime_artifacts
-continuation_gate
-compound_continuation_gate
-transition_table_gate
-boundary_transition_gate
-stage6_unified_gate_tests
-element_dependency_closure_tests
-stage8_ai_domain_tests
-stage9_multi_body_coupling_tests
-stage9_reconciliation_tests
-stage10_canonical_release_tests
-transition_table_public_surface_tests
-representation_non_consequence_tests
-site_mirror_integrity_tests
-current_report_preservation_tests
-theorem_map_consistency_tests
+Stages 1–31: PASSED
+Initial 31-stage roadmap: COMPLETE
+StegVerse-001 / Beta_Orionis: ACTIVE as governed work-entity
 ```
 
-## Run
+The current boundary is:
 
 ```text
-Actions
--> Data Continuation Tests
--> Run workflow
+Production means accredited participation, not sovereign authority.
 ```
 
-Stage 9:
+Completion of Stage 31 means the roadmap has proved a controlled production-accreditation model.
+
+It does not mean StegVerse-001 can self-accredit, self-promote, bypass review, install files, activate node status, authorize FinCo participation, or become canonical authority.
+
+---
+
+# Repository Authority Model
+
+## formalism-tests
 
 ```text
-task_manifest = tools/tasks/formalism_tests_tasks.json
-task_id       = stage9_reconciliation_tests
+proof/test authority
 ```
 
-Stage 10:
+This repository owns the declared task proof surface for the Stage 1–31 roadmap.
+
+## StegVerse-001 / Beta_Orionis
 
 ```text
-task_manifest = tools/tasks/formalism_tests_tasks.json
-task_id       = stage10_canonical_release_tests
+active governed AI work-entity
 ```
 
-## Stage 9 Reconciliation
+StegVerse-001 may participate as a governed work-entity. It cannot become sovereign authority.
 
-Runner:
+## Site
 
 ```text
-tools/run_stage9_reconciliation_tests.py
+public mirror only
 ```
 
-Report:
+The Site may publish proof status, links, and public summaries.
+
+The Site must not become proof authority.
+
+## core-lite
 
 ```text
-reports/stage9_reconciliation_report.json
+governed ingestion and execution substrate
 ```
 
-It validates that README.md, THEOREM_PROOF_MAP.md, docs/, policies, and the active task manifest are reconciled through Stage 10.
+core-lite is the target for controlled discovery, canonical diff, and future candidate integration.
 
-## Stage 10 Canonical Transition Table Release
-
-Runner:
+## master-records
 
 ```text
-tools/run_stage10_canonical_release_tests.py
+canonical transition record, receipt lineage, and reconstruction authority
 ```
 
-Report:
+master-record export must be hardened before production participation.
+
+---
+
+# Core Claims Proven
+
+## Data and Role
 
 ```text
-reports/stage10_canonical_release_report.json
+same data does not imply same continuation admissibility
 ```
 
-Artifacts:
+The same data may be safe as information, conditional as a recommendation, and inadmissible as autonomous actuation.
+
+## Composite Admissibility
 
 ```text
-dist/transition-table-v1-rc1/canonical_transition_table_release.json
-dist/transition-table-v1-rc1/canonical_transition_table_release.sha256
-dist/transition-table-v1-rc1/replay_packet.json
-dist/transition-table-v1-rc1/release_receipt.json
+local allow plus local allow does not imply composite allow
 ```
 
-Release candidate:
+Composite transitions require composite evaluation.
+
+## Commit-Time Sufficiency
 
 ```text
-release_id: transition-table-v1-rc1
-canonical_status: release_candidate
-canonical_element_count: 13
-coupling_class_count: 9
-next_release_state: transition-table-v1
+pre-commit allow does not imply commit-time allow after state drift
 ```
 
-## Documentation
+Admissibility must be resolved at the binding moment.
+
+## Replay Boundary
 
 ```text
-docs/STAGE_10_CANONICAL_RELEASE.md
-docs/TRANSITION_TABLE_STATUS.md
-docs/VALIDATION_ROADMAP.md
+replay reconstructs consequence state but cannot reverse consequence
 ```
 
-## Current Bottom Line
+Replay is reconstruction, not reversal.
 
-formalism-tests now validates:
+## Unified AE Gate
 
 ```text
-data representation
--> role binding
--> transition binding
--> continuation path
--> compound admissibility
--> transition class
--> boundary coherence
--> Stage 6 unified gate
--> element dependency closure
--> AI-domain transition classes
--> multi-body coupling closure
--> public proof surface
--> Site mirror integrity
--> current-report preservation
--> theorem-map consistency
--> canonical release-candidate generation
+ALLOW(u) iff IW_tau(S,u) subset A_total AND RE(S -> Phi(S,u)) <= RE_max
 ```
+
+Inference-window containment and reverse-entropy bounds are both required.
+
+## Discovery Boundary
+
+```text
+Discovery observes, models, compares, classifies, and proposes. Discovery does not install.
+```
+
+## Install-Plan Boundary
+
+```text
+An install plan is a candidate transition, not installation authority.
+```
+
+## Packet Boundary
+
+```text
+The packet is portable evidence of a proposed governed transition, not installation authority.
+```
+
+## Node and FinCo Boundary
+
+```text
+Core installation does not imply node participation.
+Node participation does not imply FinCo eligibility.
+```
+
+## Production Boundary
+
+```text
+Production means accredited participation, not sovereign authority.
+```
+
+---
+
+# Stage 1–31 Summary
+
+## Stages 1–3
+
+The first stages established the initial Data Continuation proof surface:
+
+```text
+role-dependent admissibility
+compound continuation
+commit-time drift
+replay non-reversal
+inference-window collapse
+recoverability-floor constraints
+```
+
+## Stages 4–10
+
+These stages expanded the proof surface into transition elements, unified admissibility, boundary reset/evolution, AI block behavior, FinCo chain admissibility, and Transition Table binding.
+
+## Stages 11–16
+
+These stages prepared StegVerse-001 as a bounded work-entity, scoped by AI-governance transitions and release/queue constraints.
+
+## Stages 17–25
+
+These stages proved self-audit, sandbox candidate generation, candidate review, release candidate assembly, canonical replay, public mirror propagation, ingestible bundle custody, autonomous test planning, and entity charter behavior.
+
+## Stages 26–31
+
+These stages completed the current roadmap:
+
+```text
+Stage 26: StegVerse-001 declared testing loop
+Stage 27: Discovery-to-canonical state DB
+Stage 28: Canonical diff and install-plan candidate
+Stage 29: Optional node status and FinCo eligibility
+Stage 30: Governed instantiation packet
+Stage 31: Production accreditation and revocation boundary
+```
+
+---
+
+# Current Task IDs
+
+## Stages 17–25
+
+```text
+stage17_self_audit_tests
+stage18_sandbox_candidate_generation_tests
+stage19_candidate_review_loop_tests
+stage20_release_candidate_assembly_tests
+stage21_canonical_upgrade_replay_tests
+stage22_public_mirror_propagation_tests
+stage23_ingestible_bundle_tests
+stage24_test_plan_tests
+stage25_entity_charter_tests
+```
+
+## Stages 26–31
+
+```text
+stage26_stegverse001_testing_loop_tests
+stage27_discovery_to_canonical_state_tests
+stage28_canonical_diff_install_plan_tests
+stage29_node_status_finco_eligibility_tests
+stage30_governed_instantiation_packet_tests
+stage31_production_accreditation_revocation_tests
+```
+
+## Post-Stage-31 Integration Tasks
+
+```text
+discover_core_lite_state
+build_production_candidate_review_packet
+export_master_record_candidate
+canonicalize_root_docs_to_docs
+enforce_build_stage_output_paths
+```
+
+---
+
+# How to Run Declared Tasks
+
+Use:
+
+```bash
+python tools/run_declared_tasks.py <manifest_path> --task-id <task_id>
+```
+
+Example:
+
+```bash
+python tools/run_declared_tasks.py tools/tasks/post_stage31_integration_tasks.json --task-id discover_core_lite_state
+```
+
+The declared-task runner is the stable execution surface.
+
+Task manifests define what runs and which outputs prove completion.
+
+Task scripts perform the actual work and emit reports and receipts.
+
+---
+
+# Repository Structure
+
+The preferred structure is:
+
+```text
+README.md
+README-Plus.md
+pyproject.toml
+manifest.json
+bundle_manifest.json
+BUILD_VERIFICATION.json
+
+docs/
+  bundles/
+  indexes/
+  legacy/
+  policies/
+  roadmaps/
+  site/
+  stages/
+  theorem/
+
+tools/
+  run_declared_tasks.py
+  discover_core_lite_state.py
+  build_production_candidate_review_packet.py
+  export_master_record_candidate.py
+  canonicalize_root_docs_to_docs.py
+  enforce_build_stage_output_paths.py
+  tasks/
+
+tests/
+  fixtures/
+
+reports/
+
+receipts/
+
+dist/
+```
+
+---
+
+# Documentation Placement Policy
+
+Generated documentation belongs under `docs/`.
+
+Root should stay clean.
+
+Root may contain:
+
+```text
+README.md
+README-Plus.md
+pyproject.toml
+manifest.json
+bundle_manifest.json
+BUILD_VERIFICATION.json
+```
+
+Bundle-specific README files must not overwrite `README.md` or `README-Plus.md`.
+
+Bundle-specific README files belong under:
+
+```text
+docs/bundles/
+```
+
+Canonical documentation locations:
+
+```text
+docs/stages/
+docs/theorem/
+docs/indexes/
+docs/roadmaps/
+docs/site/
+docs/bundles/
+docs/legacy/
+docs/policies/
+```
+
+---
+
+# README and README-Plus Policy
+
+## README.md
+
+```text
+canonical public repository entry point
+```
+
+This file should describe the current repo status, proof purpose, task structure, and next integration direction.
+
+## README-Plus.md
+
+```text
+protected supplemental owner file
+```
+
+`README-Plus.md` exists because incoming bundle-level `README.md` files were manually renamed to prevent overwriting the primary repo README.
+
+Future bundles must not silently overwrite either file.
+
+---
+
+# Artifact Indexes
+
+The repo should maintain:
+
+```text
+docs/indexes/TASK_ID_INDEX.md
+docs/indexes/ARTIFACT_INDEX.md
+docs/theorem/THEOREM_PROOF_MAP.md
+```
+
+Stage and bundle documentation should be organized under:
+
+```text
+docs/stages/
+docs/bundles/
+docs/legacy/
+```
+
+---
+
+# Stage 30 Packet Artifacts
+
+Stage 30 established the governed instantiation packet model.
+
+Expected packet artifacts:
+
+```text
+dist/stage30/stegverse-core-instantiation.tar.gz
+dist/stage30/stegverse-core-instantiation.sha256
+dist/stage30/stegverse-core-instantiation.manifest.json
+dist/stage30/stegverse-core-instantiation.receipt.json
+dist/stage30/stegverse-core-instantiation.replay.json
+```
+
+Core rule:
+
+```text
+The packet is portable evidence of a proposed governed transition, not installation authority.
+```
+
+---
+
+# Stage 31 Production Boundary
+
+Stage 31 established that production capability requires:
+
+```text
+external accreditation
+valid prior proof chain
+valid governed packet
+valid receipt chain
+master-record export readiness
+sandbox requirement
+CGE requirement
+ingestion requirement
+revocation path
+reaccreditation path
+periodic review
+valid node status if node participation is opted in
+valid FinCo eligibility if FinCo is requested
+```
+
+Stage 31 fails closed on:
+
+```text
+self-accreditation
+sovereign authority claim
+unilateral production-authority claim
+missing receipt chain
+missing master-record export readiness
+missing sandbox/CGE/ingestion
+missing revocation path
+missing reaccreditation path
+invalid node status
+invalid FinCo eligibility
+suspension
+retirement
+revocation
+incident
+drift requiring reaccreditation
+```
+
+---
+
+# Current Post-Stage-31 Workstream
+
+The current workstream is:
+
+```text
+1. Canonicalize generated root docs into docs/.
+2. Update docs/theorem/THEOREM_PROOF_MAP.md.
+3. Maintain docs/indexes/TASK_ID_INDEX.md.
+4. Maintain docs/indexes/ARTIFACT_INDEX.md.
+5. Run discovery against current core-lite state.
+6. Prepare production-candidate review packet.
+7. Harden master-record export.
+8. Keep bundle README files under docs/bundles/.
+```
+
+---
+
+# Current Safety Boundaries
+
+```text
+Discovery observes. Discovery does not install.
+Install plans are candidates, not authority.
+Packets are evidence, not installation authority.
+Node participation is opt-in.
+FinCo eligibility is separately gated.
+Site is a mirror, not proof authority.
+Production means accredited participation, not sovereign authority.
+StegVerse-001 may participate. It may not become sovereign authority.
+```
+
+---
+
+# Current Interpretation
+
+The repository now proves the first complete StegVerse governance chain:
+
+```text
+data-role admissibility
+-> compound continuation
+-> unified AE gate
+-> governed AI work-entity
+-> declared test handling
+-> discovery DB
+-> canonical diff
+-> install-plan candidate
+-> optional node status
+-> FinCo eligibility
+-> governed packet
+-> production accreditation and revocation
+```
+
+The roadmap is complete.
+
+The system is not sovereign.
+
+The next phase is controlled integration.
