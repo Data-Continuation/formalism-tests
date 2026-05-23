@@ -18,10 +18,27 @@
         }
       ],
       "type": "internal_contractual_inclusion"
+    },
+    {
+      "basis": "Internal core_lite import/export contract mismatch detected.",
+      "items": [
+        {
+          "required_by": [
+            "core_lite.cli"
+          ],
+          "required_exports": [
+            "append_receipt"
+          ],
+          "target_module": "core_lite.receipts",
+          "target_path": "core_lite/receipts.py",
+          "type": "internal_contractual_inclusion"
+        }
+      ],
+      "type": "internal_contractual_inclusion"
     }
   ],
   "decision": "RETURN_PLAN_ONLY",
-  "generated_at": "2026-05-23T07:15:59.646592+00:00",
+  "generated_at": "2026-05-23T07:25:12.196360+00:00",
   "incoming_submission_authority": false,
   "install_authority": false,
   "next_admissible_change": {

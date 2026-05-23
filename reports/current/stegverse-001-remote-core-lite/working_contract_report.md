@@ -8,7 +8,7 @@ mode: initialization
 schema: stegverse_001_remote_core_lite_working_contract_report.v3
 active_transition: Core-Lite Recorded Ingestion + CGE + Sandbox Result Return
 decision: PLAN_RETURNED
-blocker_count: 1
+blocker_count: 2
 ```
 
 ## Missing Internal Contracts
@@ -19,6 +19,15 @@ blocker_count: 1
 type: internal_contractual_inclusion
 target_path: core_lite/ingest.py
 required_exports: ingest_incoming, load_core_policy
+required_by: core_lite.cli
+```
+
+### core_lite.receipts
+
+```text
+type: internal_contractual_inclusion
+target_path: core_lite/receipts.py
+required_exports: append_receipt
 required_by: core_lite.cli
 ```
 
