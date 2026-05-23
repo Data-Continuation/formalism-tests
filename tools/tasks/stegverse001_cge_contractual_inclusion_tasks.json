@@ -1,0 +1,24 @@
+{
+  "manifest_name": "stegverse 001 cge contractual inclusion candidate tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/stegverse001_prepare_cge_contractual_inclusion_candidate.py"
+      ],
+      "description": "Prepare a candidate patch for core_lite/cge.py that adds generate_cge_fingerprint while preserving existing CGE surfaces; emit report and receipt; stop.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/current/stegverse-001-cge-contractual-inclusion/candidate_report.json",
+        "reports/current/stegverse-001-cge-contractual-inclusion/candidate_report.md",
+        "dist/current/stegverse-001-cge-contractual-inclusion/candidate_manifest.json",
+        "dist/current/stegverse-001-cge-contractual-inclusion/core_lite/cge.py",
+        "dist/current/stegverse-001-cge-contractual-inclusion/core_lite_cge_contractual_inclusion.patch",
+        "receipts/current/stegverse-001-cge-contractual-inclusion/receipts.jsonl"
+      ],
+      "task_id": "stegverse001_prepare_cge_contractual_inclusion_candidate"
+    }
+  ]
+}
