@@ -9,7 +9,7 @@
     "STOP after report, candidates, patch, manifest, and receipt."
   ],
   "decision": "CANDIDATE_PREPARED",
-  "generated_at": "2026-05-23T07:31:57.442293+00:00",
+  "generated_at": "2026-05-23T17:36:33.888342+00:00",
   "missing_preserved_exports": {},
   "mutation_to_target_performed": false,
   "outputs": {
@@ -22,9 +22,14 @@
   "success": true,
   "target_access": {
     "branch": "main",
-    "mode": "local",
+    "mode": "clone",
     "repo": "Data-Continuation/core-lite",
-    "root": "/mnt/data/stegverse001_cli_dependency_contract_candidate_builder_bundle/mock_core_lite",
+    "returncode": 0,
+    "root": "/tmp/stegverse-001-cli-dependency-contract/core-lite",
+    "runtime_committed_path": false,
+    "runtime_work_dir": "/tmp/stegverse-001-cli-dependency-contract",
+    "stderr_tail": "Cloning into '/tmp/stegverse-001-cli-dependency-contract/core-lite'...\n",
+    "stdout_tail": "",
     "success": true
   },
   "targets": {
@@ -34,15 +39,21 @@
         "load_core_policy"
       ],
       "candidate_exports": [
+        "canonical_json",
+        "hash_dict",
         "ingest_incoming",
         "load_core_policy",
         "load_manifest",
+        "main",
         "run_ingestion",
         "write_markdown_report"
       ],
       "missing_required_exports": [],
       "original_exports": [
+        "canonical_json",
+        "hash_dict",
         "load_manifest",
+        "main",
         "run_ingestion",
         "write_markdown_report"
       ],
@@ -58,13 +69,19 @@
       "candidate_exports": [
         "ReceiptRecorder",
         "__init__",
+        "_last_hash",
         "append_receipt",
+        "canonical_json",
+        "hash_value",
         "record"
       ],
       "missing_required_exports": [],
       "original_exports": [
         "ReceiptRecorder",
         "__init__",
+        "_last_hash",
+        "canonical_json",
+        "hash_value",
         "record"
       ],
       "required_exports": [

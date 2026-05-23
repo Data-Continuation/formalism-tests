@@ -1,17 +1,17 @@
 {
   "actor": "StegVerse-001",
-  "generated_at": "2026-05-23T07:31:57.441641+00:00",
+  "generated_at": "2026-05-23T17:36:33.888094+00:00",
   "incoming_submission_authority": false,
   "mutation_to_target_performed": false,
-  "patch_sha256": "9bef620c8e4843f88ef62bf6ca460492a2b0e4a532736ba8e8813140af4e3bf8",
+  "patch_sha256": "15652f5082e184b1e93ab809d0d0c9c51d7ca6064246812457763e0afc721d1b",
   "push_authority": false,
   "schema": "stegverse_001_cli_dependency_contract_candidate_manifest.v1",
   "stop_condition": "Candidate prepared. Report and receipt returned. STOP.",
   "target_repo": "Data-Continuation/core-lite",
   "targets": {
     "core_lite/ingest.py": {
-      "candidate_sha256": "e1f1d7da9739cd420c36ac2843be2b5cfa831037e4033150c52bdbed199861c4",
-      "original_sha256": "e7b1173b93dafb669d1751cad11a6521ecb3228858e040bc66964aa851202ea5",
+      "candidate_sha256": "3fca9d849fe4cd4ddf6323920079d3f24ccbf0023e9bf4b5c1ea20f61d8c95ab",
+      "original_sha256": "00dd70290a9e953be418af4bbafdf50cdbac85907298588ae7ad0ff1b4b93766",
       "preserve_exports": [
         "load_manifest",
         "run_ingestion",
@@ -23,8 +23,8 @@
       ]
     },
     "core_lite/receipts.py": {
-      "candidate_sha256": "06283b35228a707696afec58e432f695776196285f04fbd7fe2270836c2306eb",
-      "original_sha256": "c813223bd46fa4984b143fa23598de9d5bb7f13758a65e275eddacc3d7201553",
+      "candidate_sha256": "bc12027352f5a7878f9a6b012fce04a65e5031848a59eae940580139d47b2e52",
+      "original_sha256": "020d05bede12acd057cf85b4c3d9cfa65a4db4e193a8dba4ce9134c9aa8b2eae",
       "preserve_exports": [
         "ReceiptRecorder"
       ],
