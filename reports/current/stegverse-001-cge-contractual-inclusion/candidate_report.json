@@ -19,13 +19,15 @@
     "to_dict"
   ],
   "decision": "CANDIDATE_PREPARED",
-  "generated_at": "2026-05-23T06:34:38.304113+00:00",
+  "generated_at": "2026-05-23T06:53:02.725531+00:00",
   "missing_preserved_exports": [],
   "mutation_to_target_performed": false,
   "original_exports": [
     "CGEDecision",
     "_declared_paths",
+    "_safe",
     "classify_sandbox_result",
+    "generate_cge_fingerprint",
     "precheck_manifest",
     "to_dict"
   ],
