@@ -1,9 +1,9 @@
 --- core_lite/cge.py
 +++ core_lite/cge.py
-@@ -23,3 +23,41 @@
- 
- def classify_sandbox_result(result: dict[str, Any]) -> CGEDecision:
-     return CGEDecision("REVIEW_REQUIRED", "mock")
+@@ -130,3 +130,41 @@
+             "install_authority": False,
+         },
+     )
 +
 +
 +def generate_cge_fingerprint(*args: Any, **kwargs: Any) -> dict[str, Any]:

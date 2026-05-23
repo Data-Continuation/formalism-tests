@@ -19,7 +19,7 @@
     "to_dict"
   ],
   "decision": "CANDIDATE_PREPARED",
-  "generated_at": "2026-05-23T06:05:26.752506+00:00",
+  "generated_at": "2026-05-23T06:34:38.304113+00:00",
   "missing_preserved_exports": [],
   "mutation_to_target_performed": false,
   "original_exports": [
@@ -44,9 +44,14 @@
   "success": true,
   "target_access": {
     "branch": "main",
-    "mode": "local",
+    "mode": "clone",
     "repo": "Data-Continuation/core-lite",
-    "root": "/mnt/data/stegverse001_cge_contractual_inclusion_candidate_builder_bundle/mock_core_lite",
+    "returncode": 0,
+    "root": "/tmp/stegverse-001-cge-contractual-inclusion/core-lite",
+    "runtime_committed_path": false,
+    "runtime_work_dir": "/tmp/stegverse-001-cge-contractual-inclusion",
+    "stderr_tail": "Cloning into '/tmp/stegverse-001-cge-contractual-inclusion/core-lite'...\n",
+    "stdout_tail": "",
     "success": true
   },
   "target_path": "core_lite/cge.py",

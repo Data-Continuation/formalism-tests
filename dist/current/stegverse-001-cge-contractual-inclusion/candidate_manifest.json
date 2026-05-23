@@ -1,11 +1,11 @@
 {
   "actor": "StegVerse-001",
-  "candidate_sha256": "48c20328bd5804321a53363e69341cb00758132b161543c9cfd5069b4168c4eb",
-  "generated_at": "2026-05-23T06:05:26.752249+00:00",
+  "candidate_sha256": "16810f2e6265679dac5490578f37c2f405c71a6db38c6d1de6e58e38047babcb",
+  "generated_at": "2026-05-23T06:34:38.303939+00:00",
   "incoming_submission_authority": false,
   "mutation_to_target_performed": false,
-  "original_sha256": "0109a752a1726122d744eb2d047f29ba7eb0e43dd6258c981f6ab575db9d4f1c",
-  "patch_sha256": "dc90d6130cca5aa49d05a7a012062fdd76b2e6414a20de6240a02d2e4c6628a5",
+  "original_sha256": "16c253d9cbb3a18a2216f0453c32329126b41286f110760dbe9bbed10fca7321",
+  "patch_sha256": "8c66f26fa13dcd522d30475e64ee444cb748f8942b7a00761ea1ddba20331af6",
   "preserve_exports": [
     "CGEDecision",
     "classify_sandbox_result",
