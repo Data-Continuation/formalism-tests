@@ -1,0 +1,8 @@
+{
+  "active_gate": "Core-Lite CGE Contractual Inclusion Candidate",
+  "generated_at": "2026-05-23T06:05:21.511873+00:00",
+  "mutation_authority": false,
+  "schema": "stegverse_001_cge_contractual_inclusion_candidate_builder_bundle_report.v1",
+  "success": true,
+  "task_id": "stegverse001_prepare_cge_contractual_inclusion_candidate"
+}
