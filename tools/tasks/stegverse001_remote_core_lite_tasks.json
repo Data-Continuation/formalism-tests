@@ -1,6 +1,6 @@
 {
   "manifest_name": "stegverse 001 remote core lite tasks",
-  "manifest_version": "0.2.0",
+  "manifest_version": "0.3.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -8,7 +8,7 @@
         "python",
         "tools/stegverse001_remote_core_lite_operator.py"
       ],
-      "description": "Run StegVerse-001 from formalism-tests as a remote operator that detects both package and local CGE import contracts, returns the working plan, emits receipt, and stops.",
+      "description": "Run StegVerse-001 from formalism-tests as a remote operator that detects all core_lite internal import/export contract mismatches, returns the working plan, emits receipt, and stops.",
       "enabled": true,
       "expected_outputs": [
         "reports/current/stegverse-001-remote-core-lite/working_contract_report.json",
