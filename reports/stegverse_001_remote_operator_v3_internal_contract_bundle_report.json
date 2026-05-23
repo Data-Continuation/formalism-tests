@@ -1,0 +1,8 @@
+{
+  "active_gate": "Core-Lite Intake blocked by internal import/export contract mismatch",
+  "generated_at": "2026-05-23T07:14:53.703979+00:00",
+  "mutation_authority": false,
+  "schema": "stegverse_001_remote_operator_v3_internal_contract_bundle_report.v1",
+  "success": true,
+  "task_id": "stegverse001_determine_core_lite_remote_contract"
+}

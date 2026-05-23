@@ -1,0 +1,27 @@
+{
+  "detected_next_change": {
+    "basis": "Observed internal import contract requires these exports before Intake can run.",
+    "classification": "internal_contractual_inclusion",
+    "preserve_existing_exports": true,
+    "required_by": [
+      "core_lite.cli"
+    ],
+    "required_exports": [
+      "ingest_incoming",
+      "load_core_policy"
+    ],
+    "target": "core_lite/ingest.py",
+    "target_module": "core_lite.ingest"
+  },
+  "expected_outputs": {
+    "receipts/current/stegverse-001-remote-core-lite/receipts.jsonl": true,
+    "reports/current/stegverse-001-remote-core-lite/remediation_plan.json": true,
+    "reports/current/stegverse-001-remote-core-lite/working_contract_report.json": true,
+    "reports/current/stegverse-001-remote-core-lite/working_contract_report.md": true
+  },
+  "returncode": 0,
+  "schema": "stegverse_001_remote_operator_v3_local_verification.v1",
+  "stderr_tail": "",
+  "stdout_tail": "\"mentions_cli\": false,\n        \"mentions_incoming\": false,\n        \"mentions_intake\": true,\n        \"mentions_reports_current\": false,\n        \"path\": \".github/workflows/core-lite-intake.yml\",\n        \"python_commands\": [],\n        \"sha256\": \"42f122d5c889796296b1940165179c2cc3c393d08623034f0318c54b1fc73b7e\",\n        \"workflow_dispatch\": true\n      }\n    ]\n  },\n  \"target_access\": {\n    \"branch\": \"main\",\n    \"mode\": \"local\",\n    \"repo\": \"Data-Continuation/core-lite\",\n    \"root\": \"/mnt/data/stegverse001_remote_operator_v3_internal_contract_bundle/mock_core_lite\",\n    \"success\": true\n  },\n  \"target_repo_root\": \"/mnt/data/stegverse001_remote_operator_v3_internal_contract_bundle/mock_core_lite\",\n  \"transition_requirements\": {\n    \"core_lite.cge_surface\": true,\n    \"core_lite.cli_surface\": true,\n    \"core_lite.ingest_surface\": true,\n    \"core_lite.receipts_surface\": true,\n    \"core_lite.sandbox_surface\": true,\n    \"incoming_bundle_detected\": true,\n    \"workflow_execution_surface\": true\n  }\n}\n",
+  "success": true
+}
