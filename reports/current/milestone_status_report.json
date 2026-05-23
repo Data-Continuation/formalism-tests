@@ -1,0 +1,179 @@
+{
+  "active_gate": "Core-Lite CGE Contractual Inclusion Candidate",
+  "actor": "StegVerse-001",
+  "generated_at": "2026-05-23T05:44:57.978765+00:00",
+  "milestone_count": 11,
+  "milestones": [
+    {
+      "done": [
+        "Remote operator ran from formalism-tests",
+        "core-lite cloned as remote target",
+        "working contract inspected",
+        "remediation plan returned",
+        "receipt emitted",
+        "target not mutated"
+      ],
+      "evidence": [
+        "reports/current/stegverse-001-remote-core-lite/working_contract_report.json",
+        "reports/current/stegverse-001-remote-core-lite/remediation_plan.json",
+        "receipts/current/stegverse-001-remote-core-lite/receipts.jsonl"
+      ],
+      "id": "SV001-M0",
+      "name": "Proven remote operator baseline",
+      "status": "COMPLETE",
+      "transition": "REMOTE_CONTRACT_DISCOVERY"
+    },
+    {
+      "done": [
+        "Candidate preserves existing CGE surfaces",
+        "Candidate adds generate_cge_fingerprint",
+        "Report returned",
+        "Receipt emitted",
+        "STOP"
+      ],
+      "evidence": [],
+      "id": "SV001-M1",
+      "name": "Contractual inclusion candidate",
+      "status": "READY",
+      "transition": "CONTRACTUAL_INCLUSION_CANDIDATE"
+    },
+    {
+      "done": [
+        "Remote operator rerun after candidate application",
+        "No blockers returned",
+        "Next admissible change is run_existing_intake",
+        "Receipt emitted"
+      ],
+      "evidence": [],
+      "id": "SV001-M2",
+      "name": "Remote contract recheck",
+      "status": "PENDING",
+      "transition": "REMOTE_CONTRACT_RECHECK"
+    },
+    {
+      "done": [
+        "Core-Lite Intake runs through existing workflow",
+        "CGE fingerprint available",
+        "Report emitted",
+        "Receipt emitted"
+      ],
+      "evidence": [],
+      "id": "SV001-M3",
+      "name": "Existing Intake gate",
+      "status": "PENDING",
+      "transition": "RUN_EXISTING_INTAKE"
+    },
+    {
+      "done": [
+        "Bundle detected",
+        "Manifest validated",
+        "CGE precheck completed",
+        "Sandbox experiment completed",
+        "CGE result classification emitted",
+        "Report and receipt returned",
+        "No install performed"
+      ],
+      "evidence": [],
+      "id": "SV001-M4",
+      "name": "Recorded ingestion/CGE/sandbox loop",
+      "status": "PENDING",
+      "transition": "RECORDED_INGESTION_CGE_SANDBOX_LOOP"
+    },
+    {
+      "done": [
+        "Instruction schema exists",
+        "One active transition selected",
+        "Forbidden actions declared",
+        "Stop condition declared",
+        "Receipt emitted"
+      ],
+      "evidence": [],
+      "id": "SV001-M5",
+      "name": "Transition instruction block",
+      "status": "PENDING",
+      "transition": "TRANSITION_INSTRUCTION_BLOCK"
+    },
+    {
+      "done": [
+        "Transition registry exists",
+        "Tracker recognizes transition IDs",
+        "Report emitted",
+        "Receipt emitted"
+      ],
+      "evidence": [],
+      "id": "SV001-M6",
+      "name": "Transition class registry",
+      "status": "PENDING",
+      "transition": "TRANSITION_CLASS_REGISTRY"
+    },
+    {
+      "done": [
+        "Roadmap milestones file exists",
+        "Tracker script exists",
+        "Current status report emitted",
+        "Receipt emitted"
+      ],
+      "evidence": [
+        "tracking/stegverse-001/roadmap_milestones.json",
+        "tools/stegverse001_roadmap_tracker.py"
+      ],
+      "id": "SV001-M7",
+      "name": "Milestone tracker",
+      "status": "STARTED",
+      "transition": "MILESTONE_TRACKING"
+    },
+    {
+      "done": [
+        "Public case study exists",
+        "Roadmap documentation exists",
+        "Public explanation updated as transition evidence grows"
+      ],
+      "evidence": [
+        "docs/roadmaps/stegverse-001-full-transition-table-ai-block-roadmap.md",
+        "docs/public/stegverse-001-transition-table-ai-block-build.md"
+      ],
+      "id": "SV001-M8",
+      "name": "Public documentation track",
+      "status": "STARTED",
+      "transition": "PUBLIC_DOCUMENTATION"
+    },
+    {
+      "done": [
+        "Identity defined",
+        "Instruction channel defined",
+        "Transition registry defined",
+        "Contract inspector defined",
+        "Candidate generator defined",
+        "Receipt chain defined",
+        "Stop enforcement defined"
+      ],
+      "evidence": [],
+      "id": "SV001-M9",
+      "name": "Full AI Block candidate",
+      "status": "PENDING",
+      "transition": "FULL_AI_BLOCK_CANDIDATE"
+    },
+    {
+      "done": [
+        "Review packet returned",
+        "Decision emitted",
+        "Receipt emitted"
+      ],
+      "evidence": [],
+      "id": "SV001-M10",
+      "name": "AI Block review gate",
+      "status": "PENDING",
+      "transition": "AI_BLOCK_REVIEW_GATE"
+    }
+  ],
+  "operating_rule": "Transition Table in. One transition out. Receipt. Stop.",
+  "roadmap": "Full Transition Table AI Block Build",
+  "schema": "stegverse_001_roadmap_status_report.v1",
+  "status_counts": {
+    "COMPLETE": 1,
+    "PENDING": 7,
+    "READY": 1,
+    "STARTED": 2
+  },
+  "success": true
+}
