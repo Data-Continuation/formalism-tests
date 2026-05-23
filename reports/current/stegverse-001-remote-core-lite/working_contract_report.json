@@ -1,371 +1,135 @@
 {
   "active_transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
   "actor": "StegVerse-001",
-  "blockers": [],
+  "blockers": [
+    {
+      "basis": "Target modules import symbols from cge/core_lite.cge that are not exported by the current cge.py.",
+      "items": [
+        {
+          "name": "generate_cge_fingerprint",
+          "required_by": "cli"
+        }
+      ],
+      "type": "cge_contractual_inclusion"
+    }
+  ],
   "boundary": [
     "formalism-tests is the proof and command backdrop.",
     "core-lite is the remote target.",
     "This task does not patch, push, submit incoming bundles, or change workflows.",
+    "Runtime clone is outside the repo working tree by default.",
     "STOP after report, plan, and receipt."
   ],
   "cge_exports": [
-    "CGEDecision",
-    "_declared_paths",
-    "classify_sandbox_result",
-    "precheck_manifest",
-    "to_dict"
+    "precheck_manifest"
   ],
   "decision": "PLAN_RETURNED",
-  "generated_at": "2026-05-23T00:27:37.227993+00:00",
-  "missing_cge_exports": [],
+  "generated_at": "2026-05-23T00:38:21.208920+00:00",
+  "missing_cge_exports": [
+    {
+      "name": "generate_cge_fingerprint",
+      "required_by": "cli"
+    }
+  ],
   "mode": "initialization",
   "observed_cge_imports": [
     {
+      "from_module": "cge",
+      "importing_module": "cli",
+      "level": 0,
+      "names": [
+        "generate_cge_fingerprint"
+      ]
+    },
+    {
       "from_module": "core_lite.cge",
       "importing_module": "ingest",
+      "level": 0,
       "names": [
-        "classify_sandbox_result",
         "precheck_manifest"
       ]
     }
   ],
   "python_contracts": {
     "cge": {
-      "classes": [
-        "CGEDecision"
-      ],
+      "classes": [],
       "exists": true,
       "functions": [
-        "_declared_paths",
-        "classify_sandbox_result",
-        "precheck_manifest",
-        "to_dict"
+        "precheck_manifest"
       ],
+      "import_from": [],
+      "imports": [],
+      "parse_error": null,
+      "path": "core_lite/cge.py",
+      "sha256": "48b83685f05e8a7008c8724100984a35c96e6b0b58ac272a585b9d2daba032e4"
+    },
+    "cli": {
+      "classes": [],
+      "exists": true,
+      "functions": [],
       "import_from": [
         {
-          "module": "__future__",
+          "level": 0,
+          "module": "cge",
           "names": [
-            "annotations"
-          ]
-        },
-        {
-          "module": "dataclasses",
-          "names": [
-            "dataclass"
-          ]
-        },
-        {
-          "module": "pathlib",
-          "names": [
-            "Path"
-          ]
-        },
-        {
-          "module": "typing",
-          "names": [
-            "Any"
+            "generate_cge_fingerprint"
           ]
         }
       ],
       "imports": [],
       "parse_error": null,
-      "path": "core_lite/cge.py",
-      "sha256": "16c253d9cbb3a18a2216f0453c32329126b41286f110760dbe9bbed10fca7321"
-    },
-    "cli": {
-      "classes": [],
-      "exists": true,
-      "functions": [
-        "main",
-        "parse_args",
-        "run"
-      ],
-      "import_from": [
-        {
-          "module": "__future__",
-          "names": [
-            "annotations"
-          ]
-        },
-        {
-          "module": "pathlib",
-          "names": [
-            "Path"
-          ]
-        },
-        {
-          "module": "cge",
-          "names": [
-            "generate_cge_fingerprint"
-          ]
-        },
-        {
-          "module": "context",
-          "names": [
-            "detect_context"
-          ]
-        },
-        {
-          "module": "ingest",
-          "names": [
-            "ingest_incoming",
-            "load_core_policy"
-          ]
-        },
-        {
-          "module": "receipts",
-          "names": [
-            "append_receipt"
-          ]
-        },
-        {
-          "module": "registry",
-          "names": [
-            "refresh_registry"
-          ]
-        },
-        {
-          "module": "shims",
-          "names": [
-            "generate_shim_coverage_report"
-          ]
-        },
-        {
-          "module": "source_state_index",
-          "names": [
-            "generate_source_state_index"
-          ]
-        },
-        {
-          "module": "tasks",
-          "names": [
-            "run_declared_tasks"
-          ]
-        },
-        {
-          "module": "topology",
-          "names": [
-            "generate_topology_registry"
-          ]
-        },
-        {
-          "module": "cge",
-          "names": [
-            "generate_cge_fingerprint"
-          ]
-        },
-        {
-          "module": "context",
-          "names": [
-            "detect_context"
-          ]
-        },
-        {
-          "module": "ingest",
-          "names": [
-            "ingest_incoming",
-            "load_core_policy"
-          ]
-        },
-        {
-          "module": "receipts",
-          "names": [
-            "append_receipt"
-          ]
-        },
-        {
-          "module": "registry",
-          "names": [
-            "refresh_registry"
-          ]
-        },
-        {
-          "module": "shims",
-          "names": [
-            "generate_shim_coverage_report"
-          ]
-        },
-        {
-          "module": "source_state_index",
-          "names": [
-            "generate_source_state_index"
-          ]
-        },
-        {
-          "module": "tasks",
-          "names": [
-            "run_declared_tasks"
-          ]
-        },
-        {
-          "module": "topology",
-          "names": [
-            "generate_topology_registry"
-          ]
-        }
-      ],
-      "imports": [
-        "argparse",
-        "json"
-      ],
-      "parse_error": null,
       "path": "core_lite/cli.py",
-      "sha256": "bf0f21e433ec854cf295ffc2a2b5beff5e8af61bbceb364728d5b218bf8db983"
+      "sha256": "c0a06278aa8d6719da01897466a07016a9bb3a066d1bcd39e2f0d8746c487d10"
     },
     "ingest": {
       "classes": [],
       "exists": true,
-      "functions": [
-        "canonical_json",
-        "hash_dict",
-        "load_manifest",
-        "main",
-        "run_ingestion",
-        "write_markdown_report"
-      ],
+      "functions": [],
       "import_from": [
         {
-          "module": "__future__",
-          "names": [
-            "annotations"
-          ]
-        },
-        {
-          "module": "datetime",
-          "names": [
-            "datetime",
-            "timezone"
-          ]
-        },
-        {
-          "module": "pathlib",
-          "names": [
-            "Path"
-          ]
-        },
-        {
-          "module": "typing",
-          "names": [
-            "Any"
-          ]
-        },
-        {
+          "level": 0,
           "module": "core_lite.cge",
           "names": [
-            "classify_sandbox_result",
             "precheck_manifest"
-          ]
-        },
-        {
-          "module": "core_lite.receipts",
-          "names": [
-            "ReceiptRecorder"
-          ]
-        },
-        {
-          "module": "core_lite.sandbox",
-          "names": [
-            "run_sandbox"
           ]
         }
       ],
-      "imports": [
-        "argparse",
-        "hashlib",
-        "json"
-      ],
+      "imports": [],
       "parse_error": null,
       "path": "core_lite/ingest.py",
-      "sha256": "00dd70290a9e953be418af4bbafdf50cdbac85907298588ae7ad0ff1b4b93766"
+      "sha256": "289fcda876059b07039335956a7256f2340332014195e303d5d99d5ebc766d27"
     },
     "receipts": {
       "classes": [
         "ReceiptRecorder"
       ],
       "exists": true,
-      "functions": [
-        "__init__",
-        "_last_hash",
-        "canonical_json",
-        "hash_value",
-        "record"
-      ],
-      "import_from": [
-        {
-          "module": "__future__",
-          "names": [
-            "annotations"
-          ]
-        },
-        {
-          "module": "datetime",
-          "names": [
-            "datetime",
-            "timezone"
-          ]
-        },
-        {
-          "module": "pathlib",
-          "names": [
-            "Path"
-          ]
-        },
-        {
-          "module": "typing",
-          "names": [
-            "Any"
-          ]
-        }
-      ],
-      "imports": [
-        "hashlib",
-        "json"
-      ],
+      "functions": [],
+      "import_from": [],
+      "imports": [],
       "parse_error": null,
       "path": "core_lite/receipts.py",
-      "sha256": "020d05bede12acd057cf85b4c3d9cfa65a4db4e193a8dba4ce9134c9aa8b2eae"
+      "sha256": "51334702d588d145bfe3a8812a127682b6fb1a94556764e6f015ac539718bb0f"
     },
     "sandbox": {
       "classes": [],
       "exists": true,
       "functions": [
-        "run_sandbox",
-        "sha256_file"
+        "run_sandbox"
       ],
-      "import_from": [
-        {
-          "module": "__future__",
-          "names": [
-            "annotations"
-          ]
-        },
-        {
-          "module": "pathlib",
-          "names": [
-            "Path"
-          ]
-        },
-        {
-          "module": "typing",
-          "names": [
-            "Any"
-          ]
-        }
-      ],
-      "imports": [
-        "hashlib"
-      ],
+      "import_from": [],
+      "imports": [],
       "parse_error": null,
       "path": "core_lite/sandbox.py",
-      "sha256": "6ba6f99646dba8bedbe90119bcad194bad3d0d9a0f9a028a46742be4efc06cb2"
+      "sha256": "3b51601cdc5cc4dff582a16fa73063c5fee49d23b6e7ce3227d13af20153c317"
     }
   },
-  "schema": "stegverse_001_remote_core_lite_working_contract_report.v1",
+  "schema": "stegverse_001_remote_core_lite_working_contract_report.v2",
   "success": true,
   "surfaces": {
     "incoming": {
       "exists": true,
-      "file_count": 2,
+      "file_count": 0,
       "path": "incoming/"
     },
     "receipts_current": {
@@ -376,207 +140,31 @@
       "exists": true,
       "path": "reports/current/"
     },
-    "task_manifests": [
-      {
-        "commands": [
-          [
-            "python",
-            "-m",
-            "core_lite.ingest",
-            "--bundle",
-            "tests/fixtures/sample_ingest_bundle"
-          ]
-        ],
-        "parse_error": null,
-        "path": "tools/tasks/core_lite_tasks.json",
-        "sha256": "5ec6de0f53f0796f482cf6b97c04a5d770c85d146f9aa7d726b2bafdb5eacb11",
-        "task_ids": [
-          "core_lite_recorded_ingestion_sandbox_loop"
-        ]
-      }
-    ],
+    "task_manifests": [],
     "workflows": [
       {
         "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/auto-fix-eligibility.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python -m pip install pyyaml",
-          "python tools/validate_workstreams.py",
-          "python tools/ecosystem_maintainer.py --root .",
-          "python tools/auto_fix_eligibility.py --root ."
-        ],
-        "sha256": "c994cba75bd85d6006b56430d7f4ca70975cc3edf3890b64c1969372a65e97a9",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/bundle-registry.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python -m pip install pyyaml",
-          "python tools/validate_workstreams.py",
-          "python tools/bundle_registry_report.py --root ."
-        ],
-        "sha256": "bf0b49d183cea3940304064a7bd84a99a90adb22b7bf219077f8b96bd2061deb",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": true,
         "mentions_cli": true,
         "mentions_incoming": false,
         "mentions_intake": true,
         "mentions_reports_current": false,
         "path": ".github/workflows/core-lite-intake.yml",
         "python_commands": [
-          "python@v5",
-          "python-version: \"3.11\"",
-          "python core_lite/cli.py run --repo-root .\""
+          "python core_lite/cli.py run --repo-root ."
         ],
-        "sha256": "5357f2db66ad56add9a2c750acee9a4d71ee5babc6db23dcd9b04317fd17a8fd",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": true,
-        "mentions_cli": true,
-        "mentions_incoming": true,
-        "mentions_intake": true,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/core-lite-self-test.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: \"3.11\"",
-          "python core_lite/cli.py run --repo-root /tmp/core-lite-target --skip-tasks",
-          "python - <<'PY'"
-        ],
-        "sha256": "d3e0daf8fdc07a225bd78d286e70c770e2f6b2d0b2c7d3c38b02b9dc87062f7f",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/ecosystem-maintainer-scan.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python tools/validate_workstreams.py",
-          "python tools/ecosystem_maintainer.py --root ."
-        ],
-        "sha256": "4c7875ad9748bd8c4584a77c33cf3c37fe7c82a8c32153cf5e6683dd98bbf617",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/friction-avoided.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python -m pip install pyyaml",
-          "python tools/validate_workstreams.py",
-          "python tools/measure_friction.py --root ."
-        ],
-        "sha256": "80b7396549c0d661c514f4af666ea2c808793f15ab17529d96f550866753b93c",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/install-iosnoperiod.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: \"3.11\"",
-          "python _core_lite/core_lite/iosnoperiod.py --repo-root . --overwrite",
-          "python _core_lite/core_lite/iosnoperiod.py --repo-root ."
-        ],
-        "sha256": "a51d793b1b300e333f788af79807f27579ac8ca591ce908aba5dd2219fa2a5ae",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/target-capability-gap.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python -m pip install pyyaml",
-          "python tools/validate_workstreams.py",
-          "python tools/ecosystem_maintainer.py --root ../scan-target",
-          "python tools/auto_fix_eligibility.py --root ../scan-target",
-          "python tools/capability_gap_plan.py --root ../scan-target"
-        ],
-        "sha256": "7d46ca4787582b8169c84870446331c660c83c7f53044c013e04c4717949dbd7",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/target-repo-scan.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python -m pip install pyyaml",
-          "python tools/validate_workstreams.py",
-          "python tools/ecosystem_maintainer.py --root ../scan-target",
-          "python tools/auto_fix_eligibility.py --root ../scan-target"
-        ],
-        "sha256": "fec77a56251912157c5894eb1acc8db084ca47ddafa3ff6b2a2e4658e591b298",
-        "workflow_dispatch": true
-      },
-      {
-        "mentions_cge": false,
-        "mentions_cli": false,
-        "mentions_incoming": false,
-        "mentions_intake": false,
-        "mentions_reports_current": false,
-        "path": ".github/workflows/workstream-status.yml",
-        "python_commands": [
-          "python@v5",
-          "python-version: '3.12'",
-          "python -m pip install pyyaml",
-          "python tools/validate_workstreams.py"
-        ],
-        "sha256": "77af6467b246b1c55b09f88801a3d3258681b720265094891f9b5e2de66cfd2f",
+        "sha256": "5dd49c4c767664d1a46a0abf7de671a3f08874c0e725a7b2af85128db5fc49eb",
         "workflow_dispatch": true
       }
     ]
   },
   "target_access": {
     "branch": "main",
-    "mode": "clone",
+    "mode": "local",
     "repo": "Data-Continuation/core-lite",
-    "returncode": 0,
-    "root": ".tmp/stegverse-001-remote-core-lite/core-lite",
-    "stderr_tail": "Cloning into '.tmp/stegverse-001-remote-core-lite/core-lite'...\n",
-    "stdout_tail": "",
+    "root": "/mnt/data/stegverse001_remote_operator_v2_contract_detection_bundle/mock_core_lite",
     "success": true
   },
-  "target_repo_root": "/home/runner/work/formalism-tests/formalism-tests/.tmp/stegverse-001-remote-core-lite/core-lite",
+  "target_repo_root": "/mnt/data/stegverse001_remote_operator_v2_contract_detection_bundle/mock_core_lite",
   "transition_requirements": {
     "cge_surface": true,
     "incoming_bundle_detected": true,

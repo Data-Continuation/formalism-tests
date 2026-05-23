@@ -1,18 +1,33 @@
 {
   "actor": "StegVerse-001",
-  "blockers": [],
+  "blockers": [
+    {
+      "basis": "Target modules import symbols from cge/core_lite.cge that are not exported by the current cge.py.",
+      "items": [
+        {
+          "name": "generate_cge_fingerprint",
+          "required_by": "cli"
+        }
+      ],
+      "type": "cge_contractual_inclusion"
+    }
+  ],
   "decision": "RETURN_PLAN_ONLY",
-  "generated_at": "2026-05-23T00:27:37.227993+00:00",
+  "generated_at": "2026-05-23T00:38:21.208920+00:00",
   "incoming_submission_authority": false,
   "install_authority": false,
   "next_admissible_change": {
-    "basis": "No structural blocker observed for the active transition.",
-    "classification": "run_existing_intake",
-    "target": "existing Core-Lite Intake workflow"
+    "basis": "Observed import contract requires these exports before existing intake/self-test surfaces can run.",
+    "classification": "contractual_inclusion",
+    "preserve_existing_exports": true,
+    "required_exports": [
+      "generate_cge_fingerprint"
+    ],
+    "target": "core_lite/cge.py"
   },
   "production_authority": false,
   "push_authority": false,
-  "schema": "stegverse_001_remote_core_lite_remediation_plan.v1",
+  "schema": "stegverse_001_remote_core_lite_remediation_plan.v2",
   "stop_condition": "Return plan and receipt. Do not mutate target repo.",
   "transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
   "workflow_change_authority": false
