@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-05-23T00:13:30.398979+00:00",
+  "mutation_authority": false,
+  "schema": "stegverse_001_remote_core_lite_operator_bundle_report.v1",
+  "success": true,
+  "target_repo": "Data-Continuation/core-lite",
+  "task_id": "stegverse001_determine_core_lite_remote_contract"
+}
