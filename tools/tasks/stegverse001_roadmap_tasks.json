@@ -1,0 +1,21 @@
+{
+  "manifest_name": "stegverse 001 roadmap tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/stegverse001_roadmap_tracker.py"
+      ],
+      "description": "Track StegVerse-001 full Transition Table AI Block roadmap milestones and emit report and receipt.",
+      "enabled": true,
+      "expected_outputs": [
+        "reports/current/stegverse-001-roadmap/milestone_status_report.json",
+        "reports/current/stegverse-001-roadmap/milestone_status_report.md",
+        "receipts/current/stegverse-001-roadmap/receipts.jsonl"
+      ],
+      "task_id": "stegverse001_track_roadmap_milestones"
+    }
+  ]
+}
