@@ -1,33 +1,14 @@
 {
   "actor": "StegVerse-001",
-  "blockers": [
-    {
-      "basis": "Target modules import symbols from cge/core_lite.cge that are not exported by the current cge.py.",
-      "items": [
-        {
-          "name": "generate_cge_fingerprint",
-          "required_by": "cli"
-        },
-        {
-          "name": "generate_cge_fingerprint",
-          "required_by": "cli"
-        }
-      ],
-      "type": "cge_contractual_inclusion"
-    }
-  ],
+  "blockers": [],
   "decision": "RETURN_PLAN_ONLY",
-  "generated_at": "2026-05-23T05:30:55.208159+00:00",
+  "generated_at": "2026-05-23T06:56:14.105218+00:00",
   "incoming_submission_authority": false,
   "install_authority": false,
   "next_admissible_change": {
-    "basis": "Observed import contract requires these exports before existing intake/self-test surfaces can run.",
-    "classification": "contractual_inclusion",
-    "preserve_existing_exports": true,
-    "required_exports": [
-      "generate_cge_fingerprint"
-    ],
-    "target": "core_lite/cge.py"
+    "basis": "No structural blocker observed for the active transition.",
+    "classification": "run_existing_intake",
+    "target": "existing Core-Lite Intake workflow"
   },
   "production_authority": false,
   "push_authority": false,
