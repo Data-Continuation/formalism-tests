@@ -1,0 +1,76 @@
+{
+  "actor": "StegVerse-001",
+  "basis": "Prepared additive CLI dependency contractual inclusion candidate.",
+  "boundary": [
+    "formalism-tests is the command backdrop.",
+    "core-lite is the remote target.",
+    "This task prepares candidates only.",
+    "This task does not patch, push, submit incoming bundles, or change workflows.",
+    "STOP after report, candidates, patch, manifest, and receipt."
+  ],
+  "decision": "CANDIDATE_PREPARED",
+  "generated_at": "2026-05-23T07:31:57.442293+00:00",
+  "missing_preserved_exports": {},
+  "mutation_to_target_performed": false,
+  "outputs": {
+    "candidate_ingest": "dist/current/stegverse-001-cli-dependency-contract/core_lite/ingest.py",
+    "candidate_manifest": "dist/current/stegverse-001-cli-dependency-contract/candidate_manifest.json",
+    "candidate_receipts": "dist/current/stegverse-001-cli-dependency-contract/core_lite/receipts.py",
+    "patch_file": "dist/current/stegverse-001-cli-dependency-contract/cli_dependency_contractual_inclusion.patch"
+  },
+  "schema": "stegverse_001_cli_dependency_contract_candidate_report.v1",
+  "success": true,
+  "target_access": {
+    "branch": "main",
+    "mode": "local",
+    "repo": "Data-Continuation/core-lite",
+    "root": "/mnt/data/stegverse001_cli_dependency_contract_candidate_builder_bundle/mock_core_lite",
+    "success": true
+  },
+  "targets": {
+    "core_lite/ingest.py": {
+      "added_exports_present": [
+        "ingest_incoming",
+        "load_core_policy"
+      ],
+      "candidate_exports": [
+        "ingest_incoming",
+        "load_core_policy",
+        "load_manifest",
+        "run_ingestion",
+        "write_markdown_report"
+      ],
+      "missing_required_exports": [],
+      "original_exports": [
+        "load_manifest",
+        "run_ingestion",
+        "write_markdown_report"
+      ],
+      "required_exports": [
+        "ingest_incoming",
+        "load_core_policy"
+      ]
+    },
+    "core_lite/receipts.py": {
+      "added_exports_present": [
+        "append_receipt"
+      ],
+      "candidate_exports": [
+        "ReceiptRecorder",
+        "__init__",
+        "append_receipt",
+        "record"
+      ],
+      "missing_required_exports": [],
+      "original_exports": [
+        "ReceiptRecorder",
+        "__init__",
+        "record"
+      ],
+      "required_exports": [
+        "append_receipt"
+      ]
+    }
+  },
+  "transition": "Core-Lite CLI Dependency Contractual Inclusion Candidate"
+}
