@@ -1,0 +1,38 @@
+{
+  "actor": "StegVerse-001",
+  "generated_at": "2026-05-23T07:31:57.441641+00:00",
+  "incoming_submission_authority": false,
+  "mutation_to_target_performed": false,
+  "patch_sha256": "9bef620c8e4843f88ef62bf6ca460492a2b0e4a532736ba8e8813140af4e3bf8",
+  "push_authority": false,
+  "schema": "stegverse_001_cli_dependency_contract_candidate_manifest.v1",
+  "stop_condition": "Candidate prepared. Report and receipt returned. STOP.",
+  "target_repo": "Data-Continuation/core-lite",
+  "targets": {
+    "core_lite/ingest.py": {
+      "candidate_sha256": "e1f1d7da9739cd420c36ac2843be2b5cfa831037e4033150c52bdbed199861c4",
+      "original_sha256": "e7b1173b93dafb669d1751cad11a6521ecb3228858e040bc66964aa851202ea5",
+      "preserve_exports": [
+        "load_manifest",
+        "run_ingestion",
+        "write_markdown_report"
+      ],
+      "required_exports": [
+        "ingest_incoming",
+        "load_core_policy"
+      ]
+    },
+    "core_lite/receipts.py": {
+      "candidate_sha256": "06283b35228a707696afec58e432f695776196285f04fbd7fe2270836c2306eb",
+      "original_sha256": "c813223bd46fa4984b143fa23598de9d5bb7f13758a65e275eddacc3d7201553",
+      "preserve_exports": [
+        "ReceiptRecorder"
+      ],
+      "required_exports": [
+        "append_receipt"
+      ]
+    }
+  },
+  "transition": "CLI_DEPENDENCY_CONTRACTUAL_INCLUSION_CANDIDATE",
+  "workflow_change_authority": false
+}
