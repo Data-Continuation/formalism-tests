@@ -1,59 +1,14 @@
 {
   "actor": "StegVerse-001",
-  "blockers": [
-    {
-      "basis": "Internal core_lite import/export contract mismatch detected.",
-      "items": [
-        {
-          "required_by": [
-            "core_lite.cli"
-          ],
-          "required_exports": [
-            "ingest_incoming",
-            "load_core_policy"
-          ],
-          "target_module": "core_lite.ingest",
-          "target_path": "core_lite/ingest.py",
-          "type": "internal_contractual_inclusion"
-        }
-      ],
-      "type": "internal_contractual_inclusion"
-    },
-    {
-      "basis": "Internal core_lite import/export contract mismatch detected.",
-      "items": [
-        {
-          "required_by": [
-            "core_lite.cli"
-          ],
-          "required_exports": [
-            "append_receipt"
-          ],
-          "target_module": "core_lite.receipts",
-          "target_path": "core_lite/receipts.py",
-          "type": "internal_contractual_inclusion"
-        }
-      ],
-      "type": "internal_contractual_inclusion"
-    }
-  ],
+  "blockers": [],
   "decision": "RETURN_PLAN_ONLY",
-  "generated_at": "2026-05-23T07:25:12.196360+00:00",
+  "generated_at": "2026-05-23T17:40:47.124801+00:00",
   "incoming_submission_authority": false,
   "install_authority": false,
   "next_admissible_change": {
-    "basis": "Observed internal import contract requires these exports before Intake can run.",
-    "classification": "internal_contractual_inclusion",
-    "preserve_existing_exports": true,
-    "required_by": [
-      "core_lite.cli"
-    ],
-    "required_exports": [
-      "ingest_incoming",
-      "load_core_policy"
-    ],
-    "target": "core_lite/ingest.py",
-    "target_module": "core_lite.ingest"
+    "basis": "No internal import/export blockers observed for the active transition.",
+    "classification": "run_existing_intake",
+    "target": "existing Core-Lite Intake workflow"
   },
   "production_authority": false,
   "push_authority": false,

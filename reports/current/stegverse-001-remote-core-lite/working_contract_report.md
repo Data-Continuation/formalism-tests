@@ -8,45 +8,20 @@ mode: initialization
 schema: stegverse_001_remote_core_lite_working_contract_report.v3
 active_transition: Core-Lite Recorded Ingestion + CGE + Sandbox Result Return
 decision: PLAN_RETURNED
-blocker_count: 2
+blocker_count: 0
 ```
 
 ## Missing Internal Contracts
 
-### core_lite.ingest
-
-```text
-type: internal_contractual_inclusion
-target_path: core_lite/ingest.py
-required_exports: ingest_incoming, load_core_policy
-required_by: core_lite.cli
-```
-
-### core_lite.receipts
-
-```text
-type: internal_contractual_inclusion
-target_path: core_lite/receipts.py
-required_exports: append_receipt
-required_by: core_lite.cli
-```
+No missing internal import/export contracts observed.
 
 ## Next Admissible Change
 
 ```json
 {
-  "basis": "Observed internal import contract requires these exports before Intake can run.",
-  "classification": "internal_contractual_inclusion",
-  "preserve_existing_exports": true,
-  "required_by": [
-    "core_lite.cli"
-  ],
-  "required_exports": [
-    "ingest_incoming",
-    "load_core_policy"
-  ],
-  "target": "core_lite/ingest.py",
-  "target_module": "core_lite.ingest"
+  "basis": "No internal import/export blockers observed for the active transition.",
+  "classification": "run_existing_intake",
+  "target": "existing Core-Lite Intake workflow"
 }
 ```
 

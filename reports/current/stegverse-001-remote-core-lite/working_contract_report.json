@@ -1,43 +1,7 @@
 {
   "active_transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
   "actor": "StegVerse-001",
-  "blockers": [
-    {
-      "basis": "Internal core_lite import/export contract mismatch detected.",
-      "items": [
-        {
-          "required_by": [
-            "core_lite.cli"
-          ],
-          "required_exports": [
-            "ingest_incoming",
-            "load_core_policy"
-          ],
-          "target_module": "core_lite.ingest",
-          "target_path": "core_lite/ingest.py",
-          "type": "internal_contractual_inclusion"
-        }
-      ],
-      "type": "internal_contractual_inclusion"
-    },
-    {
-      "basis": "Internal core_lite import/export contract mismatch detected.",
-      "items": [
-        {
-          "required_by": [
-            "core_lite.cli"
-          ],
-          "required_exports": [
-            "append_receipt"
-          ],
-          "target_module": "core_lite.receipts",
-          "target_path": "core_lite/receipts.py",
-          "type": "internal_contractual_inclusion"
-        }
-      ],
-      "type": "internal_contractual_inclusion"
-    }
-  ],
+  "blockers": [],
   "boundary": [
     "formalism-tests is the proof and command backdrop.",
     "core-lite is the remote target.",
@@ -47,76 +11,9 @@
   ],
   "core_package": "core_lite",
   "decision": "PLAN_RETURNED",
-  "generated_at": "2026-05-23T07:25:12.196360+00:00",
-  "grouped_missing_internal_contracts": [
-    {
-      "required_by": [
-        "core_lite.cli"
-      ],
-      "required_exports": [
-        "ingest_incoming",
-        "load_core_policy"
-      ],
-      "target_module": "core_lite.ingest",
-      "target_path": "core_lite/ingest.py",
-      "type": "internal_contractual_inclusion"
-    },
-    {
-      "required_by": [
-        "core_lite.cli"
-      ],
-      "required_exports": [
-        "append_receipt"
-      ],
-      "target_module": "core_lite.receipts",
-      "target_path": "core_lite/receipts.py",
-      "type": "internal_contractual_inclusion"
-    }
-  ],
-  "missing_internal_contracts": [
-    {
-      "importing_module": "core_lite.cli",
-      "required_export": "ingest_incoming",
-      "required_module": "core_lite.ingest",
-      "target_path": "core_lite/ingest.py",
-      "type": "missing_internal_export"
-    },
-    {
-      "importing_module": "core_lite.cli",
-      "required_export": "load_core_policy",
-      "required_module": "core_lite.ingest",
-      "target_path": "core_lite/ingest.py",
-      "type": "missing_internal_export"
-    },
-    {
-      "importing_module": "core_lite.cli",
-      "required_export": "append_receipt",
-      "required_module": "core_lite.receipts",
-      "target_path": "core_lite/receipts.py",
-      "type": "missing_internal_export"
-    },
-    {
-      "importing_module": "core_lite.cli",
-      "required_export": "ingest_incoming",
-      "required_module": "core_lite.ingest",
-      "target_path": "core_lite/ingest.py",
-      "type": "missing_internal_export"
-    },
-    {
-      "importing_module": "core_lite.cli",
-      "required_export": "load_core_policy",
-      "required_module": "core_lite.ingest",
-      "target_path": "core_lite/ingest.py",
-      "type": "missing_internal_export"
-    },
-    {
-      "importing_module": "core_lite.cli",
-      "required_export": "append_receipt",
-      "required_module": "core_lite.receipts",
-      "target_path": "core_lite/receipts.py",
-      "type": "missing_internal_export"
-    }
-  ],
+  "generated_at": "2026-05-23T17:40:47.124801+00:00",
+  "grouped_missing_internal_contracts": [],
+  "missing_internal_contracts": [],
   "mode": "initialization",
   "observed_internal_imports": [
     {
@@ -762,6 +659,8 @@
       "exports": [
         "canonical_json",
         "hash_dict",
+        "ingest_incoming",
+        "load_core_policy",
         "load_manifest",
         "main",
         "run_ingestion",
@@ -770,6 +669,8 @@
       "functions": [
         "canonical_json",
         "hash_dict",
+        "ingest_incoming",
+        "load_core_policy",
         "load_manifest",
         "main",
         "run_ingestion",
@@ -836,7 +737,7 @@
       "module": "core_lite.ingest",
       "parse_error": null,
       "path": "core_lite/ingest.py",
-      "sha256": "00dd70290a9e953be418af4bbafdf50cdbac85907298588ae7ad0ff1b4b93766"
+      "sha256": "3fca9d849fe4cd4ddf6323920079d3f24ccbf0023e9bf4b5c1ea20f61d8c95ab"
     },
     "core_lite.ingestion_transition_table": {
       "classes": [],
@@ -1268,6 +1169,7 @@
         "ReceiptRecorder",
         "__init__",
         "_last_hash",
+        "append_receipt",
         "canonical_json",
         "hash_value",
         "record"
@@ -1275,6 +1177,7 @@
       "functions": [
         "__init__",
         "_last_hash",
+        "append_receipt",
         "canonical_json",
         "hash_value",
         "record"
@@ -1317,7 +1220,7 @@
       "module": "core_lite.receipts",
       "parse_error": null,
       "path": "core_lite/receipts.py",
-      "sha256": "020d05bede12acd057cf85b4c3d9cfa65a4db4e193a8dba4ce9134c9aa8b2eae"
+      "sha256": "bc12027352f5a7878f9a6b012fce04a65e5031848a59eae940580139d47b2e52"
     },
     "core_lite.registry": {
       "classes": [],
