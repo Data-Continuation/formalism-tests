@@ -1,0 +1,34 @@
+{
+  "actor": "StegVerse-001",
+  "blockers": [
+    {
+      "basis": "Target modules import symbols from core_lite.cge that are not exported by current cge.py.",
+      "items": [
+        {
+          "name": "generate_cge_fingerprint",
+          "required_by": "cli"
+        }
+      ],
+      "type": "cge_contractual_inclusion"
+    }
+  ],
+  "decision": "RETURN_PLAN_ONLY",
+  "generated_at": "2026-05-23T00:13:35.094480+00:00",
+  "incoming_submission_authority": false,
+  "install_authority": false,
+  "next_admissible_change": {
+    "basis": "Observed import contract requires these exports before existing intake/self-test surfaces can run.",
+    "classification": "contractual_inclusion",
+    "preserve_existing_exports": true,
+    "required_exports": [
+      "generate_cge_fingerprint"
+    ],
+    "target": "core_lite/cge.py"
+  },
+  "production_authority": false,
+  "push_authority": false,
+  "schema": "stegverse_001_remote_core_lite_remediation_plan.v1",
+  "stop_condition": "Return plan and receipt. Do not mutate target repo.",
+  "transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
+  "workflow_change_authority": false
+}

@@ -1,0 +1,159 @@
+{
+  "active_transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
+  "actor": "StegVerse-001",
+  "blockers": [
+    {
+      "basis": "Target modules import symbols from core_lite.cge that are not exported by current cge.py.",
+      "items": [
+        {
+          "name": "generate_cge_fingerprint",
+          "required_by": "cli"
+        }
+      ],
+      "type": "cge_contractual_inclusion"
+    }
+  ],
+  "boundary": [
+    "formalism-tests is the proof and command backdrop.",
+    "core-lite is the remote target.",
+    "This task does not patch, push, submit incoming bundles, or change workflows.",
+    "STOP after report, plan, and receipt."
+  ],
+  "cge_exports": [
+    "precheck_manifest"
+  ],
+  "decision": "PLAN_RETURNED",
+  "generated_at": "2026-05-23T00:13:35.094480+00:00",
+  "missing_cge_exports": [
+    {
+      "name": "generate_cge_fingerprint",
+      "required_by": "cli"
+    }
+  ],
+  "mode": "initialization",
+  "observed_cge_imports": [
+    {
+      "from_module": "core_lite.cge",
+      "importing_module": "cli",
+      "names": [
+        "generate_cge_fingerprint"
+      ]
+    }
+  ],
+  "python_contracts": {
+    "cge": {
+      "classes": [],
+      "exists": true,
+      "functions": [
+        "precheck_manifest"
+      ],
+      "import_from": [],
+      "imports": [],
+      "parse_error": null,
+      "path": "core_lite/cge.py",
+      "sha256": "48b83685f05e8a7008c8724100984a35c96e6b0b58ac272a585b9d2daba032e4"
+    },
+    "cli": {
+      "classes": [],
+      "exists": true,
+      "functions": [],
+      "import_from": [
+        {
+          "module": "core_lite.cge",
+          "names": [
+            "generate_cge_fingerprint"
+          ]
+        }
+      ],
+      "imports": [],
+      "parse_error": null,
+      "path": "core_lite/cli.py",
+      "sha256": "1f51c1b5ae145408bda449b18dc86d2019ed433d536497a8c48e881220dc3bb5"
+    },
+    "ingest": {
+      "classes": [],
+      "exists": true,
+      "functions": [
+        "main"
+      ],
+      "import_from": [],
+      "imports": [],
+      "parse_error": null,
+      "path": "core_lite/ingest.py",
+      "sha256": "cde0429ba5478089419b8a36797f74089554914623c732054e04dd6eb2e49afd"
+    },
+    "receipts": {
+      "classes": [
+        "ReceiptRecorder"
+      ],
+      "exists": true,
+      "functions": [],
+      "import_from": [],
+      "imports": [],
+      "parse_error": null,
+      "path": "core_lite/receipts.py",
+      "sha256": "51334702d588d145bfe3a8812a127682b6fb1a94556764e6f015ac539718bb0f"
+    },
+    "sandbox": {
+      "classes": [],
+      "exists": true,
+      "functions": [
+        "run_sandbox"
+      ],
+      "import_from": [],
+      "imports": [],
+      "parse_error": null,
+      "path": "core_lite/sandbox.py",
+      "sha256": "3b51601cdc5cc4dff582a16fa73063c5fee49d23b6e7ce3227d13af20153c317"
+    }
+  },
+  "schema": "stegverse_001_remote_core_lite_working_contract_report.v1",
+  "success": true,
+  "surfaces": {
+    "incoming": {
+      "exists": true,
+      "file_count": 0,
+      "path": "incoming/"
+    },
+    "receipts_current": {
+      "exists": true,
+      "path": "receipts/current/"
+    },
+    "reports_current": {
+      "exists": true,
+      "path": "reports/current/"
+    },
+    "task_manifests": [],
+    "workflows": [
+      {
+        "mentions_cge": false,
+        "mentions_cli": true,
+        "mentions_incoming": false,
+        "mentions_intake": true,
+        "mentions_reports_current": false,
+        "path": ".github/workflows/core-lite-intake.yml",
+        "python_commands": [
+          "python -m core_lite.cli"
+        ],
+        "sha256": "15a865a1f6c76829f615d8ae19d4cb743ca30491789230306446b98a79523cf3",
+        "workflow_dispatch": true
+      }
+    ]
+  },
+  "target_access": {
+    "branch": "main",
+    "mode": "local",
+    "repo": "Data-Continuation/core-lite",
+    "root": "/mnt/data/stegverse001_remote_core_lite_operator_bundle/mock_core_lite",
+    "success": true
+  },
+  "target_repo_root": "/mnt/data/stegverse001_remote_core_lite_operator_bundle/mock_core_lite",
+  "transition_requirements": {
+    "cge_surface": true,
+    "incoming_bundle_detected": true,
+    "manifest_validation_surface": true,
+    "receipt_surface": true,
+    "sandbox_surface": true,
+    "workflow_execution_surface": true
+  }
+}
