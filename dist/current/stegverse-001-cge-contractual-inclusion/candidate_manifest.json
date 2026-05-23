@@ -1,0 +1,22 @@
+{
+  "actor": "StegVerse-001",
+  "candidate_sha256": "48c20328bd5804321a53363e69341cb00758132b161543c9cfd5069b4168c4eb",
+  "generated_at": "2026-05-23T06:05:26.752249+00:00",
+  "incoming_submission_authority": false,
+  "mutation_to_target_performed": false,
+  "original_sha256": "0109a752a1726122d744eb2d047f29ba7eb0e43dd6258c981f6ab575db9d4f1c",
+  "patch_sha256": "dc90d6130cca5aa49d05a7a012062fdd76b2e6414a20de6240a02d2e4c6628a5",
+  "preserve_exports": [
+    "CGEDecision",
+    "classify_sandbox_result",
+    "precheck_manifest"
+  ],
+  "push_authority": false,
+  "required_export": "generate_cge_fingerprint",
+  "schema": "stegverse_001_cge_contractual_inclusion_candidate_manifest.v1",
+  "stop_condition": "Candidate prepared. Report and receipt returned. STOP.",
+  "target_path": "core_lite/cge.py",
+  "target_repo": "Data-Continuation/core-lite",
+  "transition": "CONTRACTUAL_INCLUSION_CANDIDATE",
+  "workflow_change_authority": false
+}
