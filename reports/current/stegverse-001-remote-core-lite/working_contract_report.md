@@ -5,47 +5,39 @@
 ```text
 actor: StegVerse-001
 mode: initialization
+schema: stegverse_001_remote_core_lite_working_contract_report.v3
 active_transition: Core-Lite Recorded Ingestion + CGE + Sandbox Result Return
 decision: PLAN_RETURNED
-blocker_count: 0
+blocker_count: 1
 ```
 
-## Role Separation
+## Missing Internal Contracts
+
+### core_lite.ingest
 
 ```text
-formalism-tests = proof and command backdrop
-core-lite = remote target
-StegVerse-001 = initialization-state remote operator
-```
-
-## Observed CGE Import Contract
-
-- `cli` imports `generate_cge_fingerprint` from `cge`
-- `cli` imports `generate_cge_fingerprint` from `cge`
-- `ingest` imports `classify_sandbox_result, precheck_manifest` from `core_lite.cge`
-
-## Missing CGE Exports
-
-No missing CGE exports observed.
-
-## Transition Requirements
-
-```text
-incoming_bundle_detected: True
-manifest_validation_surface: True
-cge_surface: True
-sandbox_surface: True
-receipt_surface: True
-workflow_execution_surface: True
+type: internal_contractual_inclusion
+target_path: core_lite/ingest.py
+required_exports: ingest_incoming, load_core_policy
+required_by: core_lite.cli
 ```
 
 ## Next Admissible Change
 
 ```json
 {
-  "basis": "No structural blocker observed for the active transition.",
-  "classification": "run_existing_intake",
-  "target": "existing Core-Lite Intake workflow"
+  "basis": "Observed internal import contract requires these exports before Intake can run.",
+  "classification": "internal_contractual_inclusion",
+  "preserve_existing_exports": true,
+  "required_by": [
+    "core_lite.cli"
+  ],
+  "required_exports": [
+    "ingest_incoming",
+    "load_core_policy"
+  ],
+  "target": "core_lite/ingest.py",
+  "target_module": "core_lite.ingest"
 }
 ```
 
@@ -57,7 +49,6 @@ No push.
 No workflow widening.
 No incoming bundle submission.
 No production.
-Runtime clone remains outside repo working tree by default.
 Return plan and receipt.
 STOP.
 ```

@@ -1,18 +1,46 @@
 {
   "actor": "StegVerse-001",
-  "blockers": [],
+  "blockers": [
+    {
+      "basis": "Internal core_lite import/export contract mismatch detected.",
+      "items": [
+        {
+          "required_by": [
+            "core_lite.cli"
+          ],
+          "required_exports": [
+            "ingest_incoming",
+            "load_core_policy"
+          ],
+          "target_module": "core_lite.ingest",
+          "target_path": "core_lite/ingest.py",
+          "type": "internal_contractual_inclusion"
+        }
+      ],
+      "type": "internal_contractual_inclusion"
+    }
+  ],
   "decision": "RETURN_PLAN_ONLY",
-  "generated_at": "2026-05-23T06:56:14.105218+00:00",
+  "generated_at": "2026-05-23T07:15:59.646592+00:00",
   "incoming_submission_authority": false,
   "install_authority": false,
   "next_admissible_change": {
-    "basis": "No structural blocker observed for the active transition.",
-    "classification": "run_existing_intake",
-    "target": "existing Core-Lite Intake workflow"
+    "basis": "Observed internal import contract requires these exports before Intake can run.",
+    "classification": "internal_contractual_inclusion",
+    "preserve_existing_exports": true,
+    "required_by": [
+      "core_lite.cli"
+    ],
+    "required_exports": [
+      "ingest_incoming",
+      "load_core_policy"
+    ],
+    "target": "core_lite/ingest.py",
+    "target_module": "core_lite.ingest"
   },
   "production_authority": false,
   "push_authority": false,
-  "schema": "stegverse_001_remote_core_lite_remediation_plan.v2",
+  "schema": "stegverse_001_remote_core_lite_remediation_plan.v3",
   "stop_condition": "Return plan and receipt. Do not mutate target repo.",
   "transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
   "workflow_change_authority": false
