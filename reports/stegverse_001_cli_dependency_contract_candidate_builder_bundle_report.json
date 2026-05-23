@@ -1,0 +1,8 @@
+{
+  "active_gate": "Core-Lite CLI Dependency Contractual Inclusion Candidate",
+  "generated_at": "2026-05-23T07:31:45.097617+00:00",
+  "mutation_authority": false,
+  "schema": "stegverse_001_cli_dependency_contract_candidate_builder_bundle_report.v1",
+  "success": true,
+  "task_id": "stegverse001_prepare_cli_dependency_contract_candidate"
+}
