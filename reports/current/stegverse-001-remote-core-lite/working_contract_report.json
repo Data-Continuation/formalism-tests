@@ -1,11 +1,27 @@
 {
   "active_transition": "Core-Lite Recorded Ingestion + CGE + Sandbox Result Return",
   "actor": "StegVerse-001",
-  "blockers": [],
+  "blockers": [
+    {
+      "basis": "Target modules import symbols from cge/core_lite.cge that are not exported by the current cge.py.",
+      "items": [
+        {
+          "name": "generate_cge_fingerprint",
+          "required_by": "cli"
+        },
+        {
+          "name": "generate_cge_fingerprint",
+          "required_by": "cli"
+        }
+      ],
+      "type": "cge_contractual_inclusion"
+    }
+  ],
   "boundary": [
     "formalism-tests is the proof and command backdrop.",
     "core-lite is the remote target.",
     "This task does not patch, push, submit incoming bundles, or change workflows.",
+    "Runtime clone is outside the repo working tree by default.",
     "STOP after report, plan, and receipt."
   ],
   "cge_exports": [
@@ -16,13 +32,39 @@
     "to_dict"
   ],
   "decision": "PLAN_RETURNED",
-  "generated_at": "2026-05-23T00:50:55.201262+00:00",
-  "missing_cge_exports": [],
+  "generated_at": "2026-05-23T05:30:55.208159+00:00",
+  "missing_cge_exports": [
+    {
+      "name": "generate_cge_fingerprint",
+      "required_by": "cli"
+    },
+    {
+      "name": "generate_cge_fingerprint",
+      "required_by": "cli"
+    }
+  ],
   "mode": "initialization",
   "observed_cge_imports": [
     {
+      "from_module": "cge",
+      "importing_module": "cli",
+      "level": 1,
+      "names": [
+        "generate_cge_fingerprint"
+      ]
+    },
+    {
+      "from_module": "cge",
+      "importing_module": "cli",
+      "level": 0,
+      "names": [
+        "generate_cge_fingerprint"
+      ]
+    },
+    {
       "from_module": "core_lite.cge",
       "importing_module": "ingest",
+      "level": 0,
       "names": [
         "classify_sandbox_result",
         "precheck_manifest"
@@ -43,24 +85,28 @@
       ],
       "import_from": [
         {
+          "level": 0,
           "module": "__future__",
           "names": [
             "annotations"
           ]
         },
         {
+          "level": 0,
           "module": "dataclasses",
           "names": [
             "dataclass"
           ]
         },
         {
+          "level": 0,
           "module": "pathlib",
           "names": [
             "Path"
           ]
         },
         {
+          "level": 0,
           "module": "typing",
           "names": [
             "Any"
@@ -82,30 +128,35 @@
       ],
       "import_from": [
         {
+          "level": 0,
           "module": "__future__",
           "names": [
             "annotations"
           ]
         },
         {
+          "level": 0,
           "module": "pathlib",
           "names": [
             "Path"
           ]
         },
         {
+          "level": 1,
           "module": "cge",
           "names": [
             "generate_cge_fingerprint"
           ]
         },
         {
+          "level": 1,
           "module": "context",
           "names": [
             "detect_context"
           ]
         },
         {
+          "level": 1,
           "module": "ingest",
           "names": [
             "ingest_incoming",
@@ -113,54 +164,63 @@
           ]
         },
         {
+          "level": 1,
           "module": "receipts",
           "names": [
             "append_receipt"
           ]
         },
         {
+          "level": 1,
           "module": "registry",
           "names": [
             "refresh_registry"
           ]
         },
         {
+          "level": 1,
           "module": "shims",
           "names": [
             "generate_shim_coverage_report"
           ]
         },
         {
+          "level": 1,
           "module": "source_state_index",
           "names": [
             "generate_source_state_index"
           ]
         },
         {
+          "level": 1,
           "module": "tasks",
           "names": [
             "run_declared_tasks"
           ]
         },
         {
+          "level": 1,
           "module": "topology",
           "names": [
             "generate_topology_registry"
           ]
         },
         {
+          "level": 0,
           "module": "cge",
           "names": [
             "generate_cge_fingerprint"
           ]
         },
         {
+          "level": 0,
           "module": "context",
           "names": [
             "detect_context"
           ]
         },
         {
+          "level": 0,
           "module": "ingest",
           "names": [
             "ingest_incoming",
@@ -168,36 +228,42 @@
           ]
         },
         {
+          "level": 0,
           "module": "receipts",
           "names": [
             "append_receipt"
           ]
         },
         {
+          "level": 0,
           "module": "registry",
           "names": [
             "refresh_registry"
           ]
         },
         {
+          "level": 0,
           "module": "shims",
           "names": [
             "generate_shim_coverage_report"
           ]
         },
         {
+          "level": 0,
           "module": "source_state_index",
           "names": [
             "generate_source_state_index"
           ]
         },
         {
+          "level": 0,
           "module": "tasks",
           "names": [
             "run_declared_tasks"
           ]
         },
         {
+          "level": 0,
           "module": "topology",
           "names": [
             "generate_topology_registry"
@@ -225,12 +291,14 @@
       ],
       "import_from": [
         {
+          "level": 0,
           "module": "__future__",
           "names": [
             "annotations"
           ]
         },
         {
+          "level": 0,
           "module": "datetime",
           "names": [
             "datetime",
@@ -238,18 +306,21 @@
           ]
         },
         {
+          "level": 0,
           "module": "pathlib",
           "names": [
             "Path"
           ]
         },
         {
+          "level": 0,
           "module": "typing",
           "names": [
             "Any"
           ]
         },
         {
+          "level": 0,
           "module": "core_lite.cge",
           "names": [
             "classify_sandbox_result",
@@ -257,12 +328,14 @@
           ]
         },
         {
+          "level": 0,
           "module": "core_lite.receipts",
           "names": [
             "ReceiptRecorder"
           ]
         },
         {
+          "level": 0,
           "module": "core_lite.sandbox",
           "names": [
             "run_sandbox"
@@ -292,12 +365,14 @@
       ],
       "import_from": [
         {
+          "level": 0,
           "module": "__future__",
           "names": [
             "annotations"
           ]
         },
         {
+          "level": 0,
           "module": "datetime",
           "names": [
             "datetime",
@@ -305,12 +380,14 @@
           ]
         },
         {
+          "level": 0,
           "module": "pathlib",
           "names": [
             "Path"
           ]
         },
         {
+          "level": 0,
           "module": "typing",
           "names": [
             "Any"
@@ -334,18 +411,21 @@
       ],
       "import_from": [
         {
+          "level": 0,
           "module": "__future__",
           "names": [
             "annotations"
           ]
         },
         {
+          "level": 0,
           "module": "pathlib",
           "names": [
             "Path"
           ]
         },
         {
+          "level": 0,
           "module": "typing",
           "names": [
             "Any"
@@ -360,7 +440,7 @@
       "sha256": "6ba6f99646dba8bedbe90119bcad194bad3d0d9a0f9a028a46742be4efc06cb2"
     }
   },
-  "schema": "stegverse_001_remote_core_lite_working_contract_report.v1",
+  "schema": "stegverse_001_remote_core_lite_working_contract_report.v2",
   "success": true,
   "surfaces": {
     "incoming": {
@@ -571,12 +651,14 @@
     "mode": "clone",
     "repo": "Data-Continuation/core-lite",
     "returncode": 0,
-    "root": ".tmp/stegverse-001-remote-core-lite/core-lite",
-    "stderr_tail": "Cloning into '.tmp/stegverse-001-remote-core-lite/core-lite'...\n",
+    "root": "/tmp/stegverse-001-remote-core-lite/core-lite",
+    "runtime_committed_path": false,
+    "runtime_work_dir": "/tmp/stegverse-001-remote-core-lite",
+    "stderr_tail": "Cloning into '/tmp/stegverse-001-remote-core-lite/core-lite'...\n",
     "stdout_tail": "",
     "success": true
   },
-  "target_repo_root": "/home/runner/work/formalism-tests/formalism-tests/.tmp/stegverse-001-remote-core-lite/core-lite",
+  "target_repo_root": "/tmp/stegverse-001-remote-core-lite/core-lite",
   "transition_requirements": {
     "cge_surface": true,
     "incoming_bundle_detected": true,
