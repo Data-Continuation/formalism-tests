@@ -1,0 +1,8 @@
+{
+  "fix": "Detect local cge imports and avoid repo-local .tmp runtime clone path.",
+  "generated_at": "2026-05-23T00:38:16.501352+00:00",
+  "mutation_authority": false,
+  "schema": "stegverse_001_remote_operator_v2_contract_detection_bundle_report.v1",
+  "success": true,
+  "task_id": "stegverse001_determine_core_lite_remote_contract"
+}
