@@ -31,8 +31,8 @@ def main():
             ("reports/core_lite_discovery_gap_report.md","reports/core_lite_discovery_gap_report.md"),
             ("receipts/core_lite_discovery_receipts.jsonl","receipts/core_lite_discovery_receipts.jsonl"),
             ("THEOREM_PROOF_MAP.md","docs/THEOREM_PROOF_MAP.md"),
-            ("docs/TASK_ID_INDEX.md","docs/TASK_ID_INDEX.md"),
-            ("docs/ARTIFACT_INDEX.md","docs/ARTIFACT_INDEX.md"),
+            ("docs/indexes/TASK_ID_INDEX.md","docs/TASK_ID_INDEX.md"),
+            ("docs/indexes/ARTIFACT_INDEX.md","docs/ARTIFACT_INDEX.md"),
         ]: add_bytes(tar, arc, read_optional(src))
     packet_hash = sha256_file(PACKET)
     SHA.write_text(packet_hash+"  production-candidate-review-packet.tar.gz\n")
