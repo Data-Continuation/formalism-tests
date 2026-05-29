@@ -14,10 +14,21 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "declared_task_report.json"
+      - "continuation_gate_report.json"
+      - "boundary_dynamics_report.json"
+      - "reports/**"
+      - "legacy/runtime-artifacts/**"
   pull_request:
 
 permissions:
   contents: write
+  actions: read
+
+concurrency:
+  group: data-continuation-tests-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   continuation-tests:
@@ -36,6 +47,8 @@ jobs:
 
       - name: Run declared tasks
         run: |
+          set -euo pipefail
+
           TASK_MANIFEST="${{ github.event.inputs.task_manifest || 'tools/tasks/formalism_tests_tasks.json' }}"
           TASK_ID="${{ github.event.inputs.task_id || '' }}"
 
@@ -48,7 +61,9 @@ jobs:
       - name: Commit artifact routing changes
         if: github.event_name != 'pull_request'
         run: |
-          if git diff --quiet --cached && git diff --quiet; then
+          set -euo pipefail
+
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No artifact routing changes to commit."
             exit 0
           fi
@@ -57,7 +72,13 @@ jobs:
           git config user.email "builder@stegverse.org"
 
           git add -A
-          git commit -m "route runtime artifacts through declared rules"
+
+          if git diff --cached --quiet; then
+            echo "No staged artifact routing changes to commit."
+            exit 0
+          fi
+
+          git commit -m "route runtime artifacts through declared rules [skip ci]"
           git push
 
       - name: Upload continuation artifacts
@@ -72,6 +93,13 @@ jobs:
             reports/continuation_report.md
             reports/compound_receipts.jsonl
             reports/compound_continuation_report.md
+            reports/stage_32_admissibility_space_report.json
+            reports/stage_33_transition_graph_report.json
+            reports/stage_34_repair_report.json
+            receipts/stage_32_admissibility_space_receipt.jsonl
+            receipts/stage_33_transition_graph_receipt.jsonl
+            receipts/stage_34_repair_receipt.jsonl
             docs/THEOREM_PROOF_MAP.md
+            docs/STAGE_32_TO_34_ADMISSIBILITY_SPACE.md
             legacy/runtime-artifacts/**
           if-no-files-found: warn
