@@ -5,8 +5,8 @@
 ```text
 repository: Data-Continuation/formalism-tests
 document_type: theorem_proof_map
-status: Stage 1–31 roadmap complete
-updated_on: 2026-05-22
+status: Stage 1–34 roadmap extended
+updated_on: 2026-05-29
 primary_work_entity: StegVerse-001 / Beta_Orionis
 proof_authority: formalism-tests
 site_role: public mirror only
@@ -14,7 +14,7 @@ site_role: public mirror only
 
 ## Assumptions
 
-1. Stages 1 through 31 have passed in `formalism-tests`.
+1. Stages 1 through 34 have passed in `formalism-tests`.
 2. The declared-task runner is the authoritative execution surface for this repository.
 3. Site mirrors proof surfaces but does not become proof authority.
 4. Production means accredited participation, not sovereign authority.
@@ -26,7 +26,7 @@ site_role: public mirror only
 This theorem proof map is current when it records:
 
 ```text
-Stage 1–31 roadmap status
+Stage 1–34 roadmap status
 major theorem claims
 task IDs
 artifact families
@@ -43,6 +43,8 @@ next integration sequence
 ```text
 Stages 1–31: PASSED
 Initial 31-stage roadmap: COMPLETE
+Stages 32–34: PASSED
+Admissibility-space extension: ACTIVE
 StegVerse-001 / Beta_Orionis: ACTIVE as governed work-entity
 ```
 
@@ -145,6 +147,40 @@ The packet is portable evidence of a proposed governed transition, not installat
 
 ```text
 Production means accredited participation, not sovereign authority.
+```
+
+## 3.12 Admissibility-Space Coordinates
+
+```text
+ALLOW, DENY, SANDBOX, REVIEW, FAIL_CLOSED, and QUARANTINE are not merely administrative labels.
+They form measurable regions, shells, collapse states, or preservation states in admissibility-space.
+```
+
+Decision-region interpretation:
+
+```text
+ALLOW        = interior admissible region
+DENY         = coherent exterior boundary crossing
+SANDBOX      = bounded search shell
+REVIEW       = observability-deficit shell
+FAIL_CLOSED  = coherence collapse, not ordinary boundary crossing
+QUARANTINE   = isolated preservation state for future metric computation
+```
+
+## 3.13 Transition Graph Geometry
+
+```text
+The bundle/task/candidate/receipt graph is a directed graph over admissibility-space.
+Edges are admissible, receipt-bound transitions, not arbitrary connections.
+Discovery is constrained shortest-path computation over that graph.
+```
+
+## 3.14 Repair as Nearest-Admissible-Transition
+
+```text
+Repair is the search for the nearest admissible transition that preserves lineage, recoverability, purpose-convergence, and operator authority.
+Sandbox is the bounded search space for repair candidates.
+Quarantine preserves failed states for future metric computation.
 ```
 
 ---
@@ -361,9 +397,39 @@ task_id: stage31_production_accreditation_revocation_tests
 core_claim: Production means accredited participation, not sovereign authority.
 ```
 
+## Stage 32 — Admissibility-Space Coordinates
+
+```text
+status: PASSED
+task_id: stage32_admissibility_space_coordinates_tests
+core_claim: Decision classes form measurable admissibility-space regions, shells, coherence-collapse states, and preservation states.
+report: reports/stage32_admissibility_space_report.json
+receipts: reports/stage32_admissibility_space_receipts.jsonl
+```
+
+## Stage 33 — Transition Graph as Geometric Structure
+
+```text
+status: PASSED
+task_id: stage33_transition_graph_geometry_tests
+core_claim: Transition graphs are directed graphs over admissibility-space; discovery is constrained shortest-path computation over receipt-bound admissible edges.
+report: reports/stage33_transition_graph_geometry_report.json
+receipts: reports/stage33_transition_graph_geometry_receipts.jsonl
+```
+
+## Stage 34 — Repair as Nearest-Admissible-Transition
+
+```text
+status: PASSED
+task_id: stage34_repair_nearest_admissible_transition_tests
+core_claim: Repair is nearest-admissible-transition search; sandbox is bounded repair search; quarantine preserves failed-state metric inputs.
+report: reports/stage34_repair_nearest_admissible_transition_report.json
+receipts: reports/stage34_repair_nearest_admissible_transition_receipts.jsonl
+```
+
 ---
 
-# 5. Stage 26–31 Proof Surface
+# 5. Stage 26–34 Proof Surface
 
 ```text
 stage26_stegverse001_testing_loop_tests
@@ -372,6 +438,9 @@ stage28_canonical_diff_install_plan_tests
 stage29_node_status_finco_eligibility_tests
 stage30_governed_instantiation_packet_tests
 stage31_production_accreditation_revocation_tests
+stage32_admissibility_space_coordinates_tests
+stage33_transition_graph_geometry_tests
+stage34_repair_nearest_admissible_transition_tests
 ```
 
 # 6. Artifact Families
@@ -396,9 +465,29 @@ docs/TASK_ID_INDEX.md
 # 7. Next Integration Sequence
 
 ```text
-1. Run core-lite discovery.
-2. Build production-candidate review packet.
-3. Harden master-record export.
-4. Produce controlled integration plan.
-5. Require sandbox, CGE, ingestion, receipts, and review before binding.
+1. Preserve formalism-tests as proof authority.
+2. Promote Stage 32–34 reports/receipts into the machine-readable formalism reference surface.
+3. Add Transition Table / AE / Triad / Transition Block registries as computational inputs.
+4. Wire core-lite ingestion to load formalism refs computationally, not merely cite them.
+5. Add batch-aware ingestion and transition graph registration.
+6. Use route discovery to compare candidates, synthesize repairs, and identify admissible next transitions.
+7. Require sandbox, CGE, Transition Table, AE/Triad boundary posture, receipts, and review before binding.
+```
+
+# 8. Stage 32–34 Integration Boundary
+
+```text
+formalism-tests proves the admissibility-space mathematics.
+core-lite consumes the reports/receipts as computational formalism inputs.
+master-records later preserves cross-repo provenance and replay continuity.
+```
+
+The Stage 32–34 extension establishes the first formal bridge from governance outcomes to admissibility-space computation:
+
+```text
+decision labels
+→ measurable admissibility regions/shells/collapse/preservation states
+→ directed transition graph
+→ discovery as constrained path search
+→ repair as nearest-admissible-transition search
 ```
