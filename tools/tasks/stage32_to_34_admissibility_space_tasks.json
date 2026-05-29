@@ -5,7 +5,10 @@
     {
       "task_id": "stage32_admissibility_space_coordinates_tests",
       "description": "Define and test decision-region coordinates, boundary shell metrics, fail-closed coherence collapse, and receipt reconstruction.",
-      "command": ["python", "tools/run_stage32_admissibility_space_coordinates_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage32_admissibility_space_coordinates_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage32_admissibility_space_report.json",
         "reports/stage32_admissibility_space_receipts.jsonl"
@@ -15,7 +18,10 @@
     {
       "task_id": "stage33_transition_graph_geometry_tests",
       "description": "Show that transition graphs are directed graphs over admissibility-space and discovery is constrained shortest-path computation.",
-      "command": ["python", "tools/run_stage33_transition_graph_geometry_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage33_transition_graph_geometry_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage33_transition_graph_geometry_report.json",
         "reports/stage33_transition_graph_geometry_receipts.jsonl"
@@ -25,7 +31,10 @@
     {
       "task_id": "stage34_repair_nearest_admissible_transition_tests",
       "description": "Define repair as nearest-admissible-transition search, sandbox as bounded search, and quarantine as metric preservation.",
-      "command": ["python", "tools/run_stage34_repair_nearest_admissible_transition_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage34_repair_nearest_admissible_transition_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage34_repair_nearest_admissible_transition_report.json",
         "reports/stage34_repair_nearest_admissible_transition_receipts.jsonl"
