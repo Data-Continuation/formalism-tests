@@ -5,12 +5,12 @@
 ```text
 repository: Data-Continuation/formalism-tests
 status: active proof and declared-task repository
-roadmap_status: Stages 1–31 passed
+roadmap_status: Stages 1–34 passed
 primary_work_entity: StegVerse-001 / Beta_Orionis
 proof_authority: formalism-tests
 site_role: public mirror only
 production_boundary: accredited participation, not sovereign authority
-updated_on: 2026-05-22
+updated_on: 2026-06-04
 ```
 
 ## Purpose
@@ -23,19 +23,20 @@ It began with the core Data Continuation claim:
 same data does not imply same continuation admissibility
 ```
 
-It now records the completed 31-stage proof roadmap from role-dependent continuation through governed production accreditation and revocation.
+It now records the completed 34-stage proof roadmap, from role-dependent continuation through governed production accreditation and revocation, and extending into the admissibility-space geometry: decision-region coordinates (Stage 32), transition-graph geometry where discovery is constrained shortest-path computation (Stage 33), and repair defined as nearest-admissible-transition search (Stage 34).
 
 This repository proves, through declared tasks, reports, receipts, and generated artifacts, which transitions are admissible, which fail closed, which require review, and which must route through sandbox, CGE, ingestion, receipts, master-record export, node-status review, FinCo eligibility review, or reaccreditation.
 
 This repository is not sovereign production authority.
 
----
+-----
 
 # Current Roadmap Status
 
 ```text
-Stages 1–31: PASSED
-Initial 31-stage roadmap: COMPLETE
+Stages 1–34: PASSED
+34-stage roadmap: COMPLETE
+Admissibility-space geometry layer (32–34): PROVED
 StegVerse-001 / Beta_Orionis: ACTIVE as governed work-entity
 ```
 
@@ -45,11 +46,13 @@ The current boundary is:
 Production means accredited participation, not sovereign authority.
 ```
 
-Completion of Stage 31 means the roadmap has proved a controlled production-accreditation model.
+Completion of Stage 31 proved a controlled production-accreditation model. Stages 32–34 extend the proof surface into the admissibility-space geometry on which transitions, discovery, and repair are defined. Capability claims for any work-entity now reflect the proof surface through Stage 34, not the earlier 31-stage boundary.
+
+Entity numbering (e.g. StegVerse-001, StegVerse-002) is nomenclature only and does not denote authority, rank, or precedence; root entities hold distinct responsibilities, not a hierarchy.
 
 It does not mean StegVerse-001 can self-accredit, self-promote, bypass review, install files, activate node status, authorize FinCo participation, or become canonical authority.
 
----
+-----
 
 # Repository Authority Model
 
@@ -59,7 +62,7 @@ It does not mean StegVerse-001 can self-accredit, self-promote, bypass review, i
 proof/test authority
 ```
 
-This repository owns the declared task proof surface for the Stage 1–31 roadmap.
+This repository owns the declared task proof surface for the Stage 1–34 roadmap.
 
 ## StegVerse-001 / Beta_Orionis
 
@@ -95,7 +98,7 @@ canonical transition record, receipt lineage, and reconstruction authority
 
 master-record export must be hardened before production participation.
 
----
+-----
 
 # Core Claims Proven
 
@@ -170,9 +173,9 @@ Node participation does not imply FinCo eligibility.
 Production means accredited participation, not sovereign authority.
 ```
 
----
+-----
 
-# Stage 1–31 Summary
+# Stage 1–34 Summary
 
 ## Stages 1–3
 
@@ -212,7 +215,22 @@ Stage 30: Governed instantiation packet
 Stage 31: Production accreditation and revocation boundary
 ```
 
----
+## Stages 32–34
+
+These stages extend the proof surface from accreditation into the admissibility-space geometry that underlies every transition:
+
+```text
+Stage 32: Admissibility-space coordinates — decision-region coordinates, boundary
+          shell metrics, fail-closed coherence collapse, and receipt reconstruction.
+Stage 33: Transition-graph geometry — transitions form a directed graph over
+          admissibility-space; discovery is constrained shortest-path computation.
+Stage 34: Repair as nearest-admissible-transition search — sandbox as bounded
+          search, quarantine as metric preservation.
+```
+
+Stage 34 provides the formal basis for governed repair: when an entity or bundle is inadmissible, repair is the search for the nearest admissible transition, conducted as a bounded sandbox search, with quarantine defined as preservation of the admissibility metric rather than mutation. This is the proof surface beneath cross-entity repair requests.
+
+-----
 
 # Current Task IDs
 
@@ -241,6 +259,14 @@ stage30_governed_instantiation_packet_tests
 stage31_production_accreditation_revocation_tests
 ```
 
+## Stages 32–34
+
+```text
+stage32_admissibility_space_coordinates_tests
+stage33_transition_graph_geometry_tests
+stage34_repair_nearest_admissible_transition_tests
+```
+
 ## Post-Stage-31 Integration Tasks
 
 ```text
@@ -251,7 +277,7 @@ canonicalize_root_docs_to_docs
 enforce_build_stage_output_paths
 ```
 
----
+-----
 
 # How to Run Declared Tasks
 
@@ -273,7 +299,7 @@ Task manifests define what runs and which outputs prove completion.
 
 Task scripts perform the actual work and emit reports and receipts.
 
----
+-----
 
 # Repository Structure
 
@@ -316,7 +342,7 @@ receipts/
 dist/
 ```
 
----
+-----
 
 # Documentation Placement Policy
 
@@ -356,7 +382,7 @@ docs/legacy/
 docs/policies/
 ```
 
----
+-----
 
 # README and README-Plus Policy
 
@@ -378,7 +404,7 @@ protected supplemental owner file
 
 Future bundles must not silently overwrite either file.
 
----
+-----
 
 # Artifact Indexes
 
@@ -398,7 +424,7 @@ docs/bundles/
 docs/legacy/
 ```
 
----
+-----
 
 # Stage 30 Packet Artifacts
 
@@ -420,7 +446,7 @@ Core rule:
 The packet is portable evidence of a proposed governed transition, not installation authority.
 ```
 
----
+-----
 
 # Stage 31 Production Boundary
 
@@ -462,7 +488,7 @@ incident
 drift requiring reaccreditation
 ```
 
----
+-----
 
 # Current Post-Stage-31 Workstream
 
@@ -479,7 +505,7 @@ The current workstream is:
 8. Keep bundle README files under docs/bundles/.
 ```
 
----
+-----
 
 # Current Safety Boundaries
 
@@ -494,7 +520,7 @@ Production means accredited participation, not sovereign authority.
 StegVerse-001 may participate. It may not become sovereign authority.
 ```
 
----
+-----
 
 # Current Interpretation
 
