@@ -1,0 +1,38 @@
+name: AI Block Formalism Tests
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'ai-block-formalism-tests/**'
+      - '.github/workflows/ai-block-formalism-tests.yml'
+
+jobs:
+  ai-block-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run AI Block tests
+        run: python ai-block-formalism-tests/test_ai_block_classifier.py
+
+      - name: Write test summary
+        if: always()
+        run: |
+          mkdir -p artifacts
+          echo "AI Block formalism tests completed." > artifacts/ai-block-test-summary.txt
+          echo "Expected pass line: PASS: AI Block formalism seed tests" >> artifacts/ai-block-test-summary.txt
+
+      - name: Upload test artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-block-formalism-tests
+          path: artifacts/
