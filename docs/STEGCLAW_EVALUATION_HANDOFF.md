@@ -35,10 +35,22 @@ The validator writes:
 reports/stegclaw_evaluation_handoff.json
 ```
 
+## Workflow artifact coverage
+
+The workflow path is displayed here without the leading dot: `github/workflows/stegclaw-evaluation-handoff.yml`. The actual path is `.github/workflows/stegclaw-evaluation-handoff.yml`.
+
+The workflow uploads:
+
+```text
+reports/stegclaw_evaluation_handoff.json
+```
+
+inside the `stegclaw-evaluation-handoff` artifact.
+
 ## Boundary
 
 This evaluation handoff is local-only. It validates that the expected StegClaw handoff artifacts are named and that formalism-tests remains proof-only, non-installing, and non-production-authorizing.
 
 ## Next step
 
-Add workflow artifact coverage for the StegClaw evaluation handoff validator.
+Inspect the next visible `stegclaw-evaluation-handoff` workflow artifact and confirm the evaluation report is present.
