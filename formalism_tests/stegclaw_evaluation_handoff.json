@@ -1,0 +1,25 @@
+{
+  "schema": "formalism_tests.stegclaw_evaluation_handoff.v1",
+  "target_repo": "Data-Continuation/formalism-tests",
+  "upstream_repo": "Data-Continuation/StegClaw",
+  "role": [
+    "gcat_bcat_evaluator_target",
+    "proof_only_authority"
+  ],
+  "required_artifacts": [
+    "standing_envelope.json",
+    "standing_receipt.json",
+    "ingestion_candidate.json",
+    "ingestion_candidate_receipt.json",
+    "outbound_envelope.json",
+    "outbound_receipt.json",
+    "live_integration_manifest.json"
+  ],
+  "local_rules": {
+    "proof_only": true,
+    "install_authority": false,
+    "production_authority": false,
+    "requires_declared_task": true
+  },
+  "decision": "EVALUATION_HANDOFF_DECLARED"
+}
