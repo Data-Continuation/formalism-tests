@@ -1,0 +1,28 @@
+name: StegClaw Evaluation Handoff
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'formalism_tests/stegclaw_evaluation_handoff.json'
+      - 'tools/validate_stegclaw_evaluation_handoff.py'
+      - '.github/workflows/stegclaw-evaluation-handoff.yml'
+
+jobs:
+  validate-stegclaw-evaluation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate StegClaw evaluation handoff
+        run: python tools/validate_stegclaw_evaluation_handoff.py
+      - name: Upload StegClaw evaluation handoff artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stegclaw-evaluation-handoff
+          path: reports/stegclaw_evaluation_handoff.json
+          if-no-files-found: error
