@@ -2,21 +2,19 @@
 
 This file is the source of truth for continuing `Data-Continuation/formalism-tests` work across sessions.
 
-## Current goal
-
-Install target-side evaluation handoff support for StegClaw standing and transition artifacts.
-
 ## Current version
 
 ```text
-0.1.0-stegclaw-evaluation-handoff
+0.3.0-stegclaw-evaluation-workflow-covered
 ```
 
 ## Current status
 
 ```text
 MIRROR_HANDOFF_PRESENT
-STEGCLAW_EVALUATION_HANDOFF_PENDING
+STEGCLAW_EVALUATION_HANDOFF_DECLARED
+STEGCLAW_EVALUATION_VALIDATOR_PRESENT
+STEGCLAW_EVALUATION_WORKFLOW_COVERED
 LOCAL_ONLY
 ```
 
@@ -24,36 +22,20 @@ LOCAL_ONLY
 
 ```text
 docs/FORMALISM_TESTS_MIRROR_HANDOFF.md
+docs/STEGCLAW_EVALUATION_HANDOFF.md
 ```
 
-## Bound upstream source
+## Current managed files
 
 ```text
-repo:Data-Continuation:StegClaw
+formalism_tests/stegclaw_evaluation_handoff.json
+tools/validate_stegclaw_evaluation_handoff.py
+docs/STEGCLAW_EVALUATION_HANDOFF.md
+github/workflows/stegclaw-evaluation-handoff.yml
 ```
 
-## Expected upstream artifact names
-
-```text
-standing_envelope.json
-standing_receipt.json
-ingestion_candidate.json
-ingestion_candidate_receipt.json
-outbound_envelope.json
-outbound_receipt.json
-live_integration_manifest.json
-```
-
-## Boundary rules
-
-Formalism-tests evaluates admissibility evidence. It does not install StegClaw output, mutate target repos, or grant production authority.
-
-StegClaw artifacts may enter here only as evaluation candidates.
+Path note: `github/workflows/stegclaw-evaluation-handoff.yml` is displayed without the leading dot. The actual path is `.github/workflows/stegclaw-evaluation-handoff.yml`.
 
 ## Next build candidate
 
-Install a StegClaw evaluation declaration and local validator that confirms the expected upstream artifact contract and preserves proof-only authority.
-
-## Handoff instruction
-
-Continue from this file before relying on prior chat context.
+Inspect a visible `stegclaw-evaluation-handoff` artifact and confirm it contains `reports/stegclaw_evaluation_handoff.json`.
