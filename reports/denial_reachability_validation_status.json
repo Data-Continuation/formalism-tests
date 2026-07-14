@@ -1,0 +1,17 @@
+{
+  "schema": "stegverse.denial_reachability.validation_status.v1",
+  "status": "INTERNAL_ARTIFACT_VERIFICATION_READY",
+  "proof_task": "denial_reachability_commit_boundary_tests",
+  "artifact_verification_task": "verify_denial_reachability_artifacts",
+  "proof_report_status": "PASS",
+  "case_count": 5,
+  "passed_count": 5,
+  "failed_count": 0,
+  "report_sha256": "8c2c460e3d7ae790a4f5fc347e44f9e91615db8b1913ee98c893e3071a5fb284",
+  "latest_commit_checked": "31c8f2af330a501bee3a25d406798689f03e9c6f",
+  "commit_status_contexts": 0,
+  "workflow_runs_found": 0,
+  "canonical_execution_evidence": "PENDING_EXTERNAL_DECLARED_TASK_RUN",
+  "required_completion_event": "Run both declared tasks through the repository runner or an existing CI surface, commit the generated artifact-verification report, and attach durable run evidence.",
+  "new_workflow_required": false
+}
