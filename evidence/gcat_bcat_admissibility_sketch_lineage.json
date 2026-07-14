@@ -1,0 +1,89 @@
+{
+  "schema": "stegverse.artifact-lineage.v1",
+  "record_id": "gcat-bcat-admissibility-sketch-lineage-2026-07-13",
+  "recorded_on": "2026-07-13",
+  "repository": "Data-Continuation/formalism-tests",
+  "artifact": {
+    "name": "GCAT/BCAT admissibility hand-drawn diagram",
+    "classification": "early conceptual formalism artifact",
+    "user_attestation": "uploaded at the beginning of formalizing the GCAT/BCAT admissibility conditions"
+  },
+  "confirmed_events": [
+    {
+      "event_type": "saved_from_chatgpt",
+      "displayed_local_datetime": "2026-03-05T22:39:00",
+      "source_label": "Saved from ChatGPT",
+      "scope": "upper portion recovered copy",
+      "proves": "recovery/export existed by displayed time",
+      "does_not_prove": ["drawing creation", "original camera capture", "first ChatGPT upload", "first discussion"]
+    },
+    {
+      "event_type": "saved_from_chatgpt",
+      "displayed_local_datetime": "2026-03-05T23:18:00",
+      "source_label": "Saved from ChatGPT",
+      "scope": "lower portion recovered copy",
+      "proves": "recovery/export existed by displayed time",
+      "does_not_prove": ["drawing creation", "original camera capture", "first ChatGPT upload", "first discussion"]
+    }
+  ],
+  "chronology": {
+    "physical_drawing_created": null,
+    "original_camera_capture": null,
+    "first_chatgpt_upload": null,
+    "first_chatgpt_discussion": null,
+    "earliest_confirmed_recovered_export": "2026-03-05T22:39:00",
+    "timezone": "unknown; local time as displayed by Apple Photos"
+  },
+  "files": [
+    {
+      "recovery_id": "IMG_E83773BE-CC13-4E8E-AF8D-3160AB405731.jpeg",
+      "width": 3456,
+      "height": 4608,
+      "bytes": 3424855,
+      "sha256": "48b6d18f6a2fbde0bd46194b23fdfc23d9026c5f824485dfd51457995d825ba3",
+      "role": "combined current upload"
+    },
+    {
+      "recovery_id": "CE0854A4-837E-45D8-AB5E-76A22B691FE0.jpeg",
+      "width": 1152,
+      "height": 1536,
+      "bytes": 574783,
+      "sha256": "0c206eb9e28eb22cf0a3790985c8cac45cdbd8c3d0cac938a8c9f76508574847",
+      "role": "upper image"
+    },
+    {
+      "recovery_id": "3296364E-7CB3-45D0-B781-3C54E6C49CC6.jpeg",
+      "width": 1152,
+      "height": 1536,
+      "bytes": 591593,
+      "sha256": "50ea9e2921f1fe3498871c25707f9fb053567aa9448a6fc878a807f84e3c9191",
+      "role": "lower image"
+    },
+    {
+      "recovery_id": "9F2008A5-222C-47F8-9C41-6B5BEB1146D5.jpeg",
+      "width": 706,
+      "height": 1536,
+      "bytes": 231548,
+      "sha256": "661103ce2b418fd3e8a67cb9e3de327d2c19a6e7caf1b641b5a2bced0bb5a433",
+      "role": "Photos metadata screenshot for 22:39 copy"
+    },
+    {
+      "recovery_id": "34D84242-68A2-40CD-9D1C-8E6E9936FB1C.jpeg",
+      "width": 706,
+      "height": 1536,
+      "bytes": 240430,
+      "sha256": "350ce4005073c8b9361aa5b5ffd6c6a82eb63e7a591f053a48cd417714c17029",
+      "role": "Photos metadata screenshot for 23:18 copy"
+    }
+  ],
+  "search_terms": [
+    "min G",
+    "min C",
+    "reflection of A",
+    "recovered with as much coherence needed",
+    "unrecovered data",
+    "GCAT BCAT admissibility"
+  ],
+  "status": "ORIGIN_UNRESOLVED_EARLIEST_RECOVERED_EXPORT_CONFIRMED",
+  "human_record": "docs/evidence/GCAT_BCAT_ADMISSIBILITY_SKETCH_LINEAGE.md"
+}
