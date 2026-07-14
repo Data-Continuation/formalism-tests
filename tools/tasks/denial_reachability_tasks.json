@@ -1,0 +1,20 @@
+{
+  "manifest_name": "denial reachability proof tasks",
+  "manifest_version": "0.1.0",
+  "schema": "stegverse_declared_task_manifest.v1",
+  "tasks": [
+    {
+      "command": [
+        "python",
+        "tools/run_denial_reachability_tests.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/denial_reachability_report.json",
+        "reports/denial_reachability_continuation_report.md",
+        "receipts/denial_reachability_execution_receipts.jsonl"
+      ],
+      "task_id": "denial_reachability_commit_boundary_tests"
+    }
+  ]
+}
