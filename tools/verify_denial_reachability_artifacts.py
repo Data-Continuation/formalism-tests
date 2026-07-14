@@ -11,6 +11,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests/fixtures/denial_reachability_cases.json"
 EXPECTED = ROOT / "tests/fixtures/denial_reachability_expected_outcomes.json"
+BASELINE = ROOT / "tests/fixtures/denial_reachability_artifact_baseline.json"
 REPORT = ROOT / "reports/denial_reachability_report.json"
 RECEIPTS = ROOT / "receipts/denial_reachability_execution_receipts.jsonl"
 STATUS = ROOT / "reports/denial_reachability_artifact_verification.json"
@@ -30,12 +31,13 @@ def fail(message: str) -> None:
 
 
 def main() -> None:
-    for path in (FIXTURES, EXPECTED, REPORT, RECEIPTS):
+    for path in (FIXTURES, EXPECTED, BASELINE, REPORT, RECEIPTS):
         if not path.is_file():
             fail(f"missing artifact: {path.relative_to(ROOT)}")
 
     fixtures_document = json.loads(FIXTURES.read_text(encoding="utf-8"))
     expected_document = json.loads(EXPECTED.read_text(encoding="utf-8"))
+    baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
     report = json.loads(REPORT.read_text(encoding="utf-8"))
 
     if report.get("status") != "PASS":
@@ -49,6 +51,16 @@ def main() -> None:
         fail("fixture canonical hash does not match committed fixture document")
     if report.get("expected_outcomes_sha256") != expected_canonical_hash:
         fail("expected-outcomes canonical hash does not match committed document")
+    if baseline.get("proof_report_canonical_sha256") != report.get("report_sha256"):
+        fail("proof report canonical hash does not match artifact baseline")
+
+    generated_hashes = {
+        "reports/denial_reachability_report.json": file_sha256(REPORT),
+        "receipts/denial_reachability_execution_receipts.jsonl": file_sha256(RECEIPTS),
+    }
+    expected_generated_hashes = baseline.get("generated_file_sha256", {})
+    if generated_hashes != expected_generated_hashes:
+        fail("generated report or receipt bytes differ from artifact baseline")
 
     receipts = [
         json.loads(line)
@@ -95,15 +107,17 @@ def main() -> None:
         "expected_outcomes_canonical_sha256": expected_canonical_hash,
         "fixtures_file_sha256": file_sha256(FIXTURES),
         "expected_outcomes_file_sha256": file_sha256(EXPECTED),
-        "report_file_sha256": file_sha256(REPORT),
-        "receipts_file_sha256": file_sha256(RECEIPTS),
+        "report_file_sha256": generated_hashes["reports/denial_reachability_report.json"],
+        "receipts_file_sha256": generated_hashes["receipts/denial_reachability_execution_receipts.jsonl"],
+        "artifact_baseline_file_sha256": file_sha256(BASELINE),
+        "byte_equivalence_to_baseline": True,
         "receipt_contract_fields": list(receipt_contract_fields),
         "late_refusal_non_prevention_preserved": True,
         "canonical_execution_evidence": "PENDING_EXTERNAL_DECLARED_TASK_RUN",
     }
     STATUS.parent.mkdir(parents=True, exist_ok=True)
     STATUS.write_text(json.dumps(status, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print("PASS: denial-reachability committed artifacts are internally consistent")
+    print("PASS: denial-reachability artifacts match canonical and byte baselines")
 
 
 if __name__ == "__main__":
