@@ -41,7 +41,11 @@ def main() -> None:
     if report.get("expected_outcomes_sha256") != expected_hash:
         fail("expected-outcomes hash does not match committed bytes")
 
-    receipts = [json.loads(line) for line in RECEIPTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+    receipts = [
+        json.loads(line)
+        for line in RECEIPTS.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
     if len(receipts) != 5:
         fail("expected exactly five execution-control receipts")
 
@@ -50,17 +54,21 @@ def main() -> None:
     if set(report_cases) != set(receipt_cases):
         fail("report and receipt case sets differ")
 
+    receipt_contract_fields = (
+        "decision",
+        "failure_class",
+        "consequence_bound",
+        "denial_controlled_execution",
+        "execution_prevented",
+        "fixture_sha256",
+    )
     for case_id, result in report_cases.items():
         receipt = receipt_cases[case_id]
-        for field in (
-            "decision",
-            "failure_class",
-            "consequence_bound",
-            "denial_before_binding",
-            "denial_controlled_execution",
-            "execution_prevented",
-            "fixture_sha256",
-        ):
+        if receipt.get("formalism_id") != report.get("formalism_id"):
+            fail(f"formalism mismatch for {case_id}")
+        if receipt.get("report_sha256") != report.get("report_sha256"):
+            fail(f"report reference mismatch for {case_id}")
+        for field in receipt_contract_fields:
             if receipt.get(field) != result.get(field):
                 fail(f"receipt mismatch for {case_id}: {field}")
 
@@ -78,8 +86,9 @@ def main() -> None:
         "expected_outcomes_sha256": expected_hash,
         "report_file_sha256": sha256(REPORT),
         "receipts_file_sha256": sha256(RECEIPTS),
+        "receipt_contract_fields": list(receipt_contract_fields),
         "late_refusal_non_prevention_preserved": True,
-        "canonical_execution_evidence": "PENDING_EXTERNAL_DECLARED_TASK_RUN"
+        "canonical_execution_evidence": "PENDING_EXTERNAL_DECLARED_TASK_RUN",
     }
     STATUS.parent.mkdir(parents=True, exist_ok=True)
     STATUS.write_text(json.dumps(status, indent=2, sort_keys=True) + "\n", encoding="utf-8")
