@@ -1,0 +1,44 @@
+{
+  "schema": "stegverse.denial_reachability.connector_snapshot_run.v1",
+  "status": "PASS",
+  "execution_surface": "assistant_connector_materialized_snapshot",
+  "execution_date": "2026-07-14",
+  "repository": "Data-Continuation/formalism-tests",
+  "declared_tasks": [
+    {
+      "task_id": "denial_reachability_commit_boundary_tests",
+      "returncode": 0,
+      "success": true
+    },
+    {
+      "task_id": "verify_denial_reachability_artifacts",
+      "returncode": 0,
+      "success": true
+    }
+  ],
+  "source_blob_shas": {
+    "tools/run_declared_tasks.py": "de5ea077fc51be0dff0d71c3bed6ef18f460c764",
+    "tools/run_denial_reachability_tests.py": "03da7a0dea02a2347effc51b533b57ea757c567b",
+    "tools/verify_denial_reachability_artifacts.py": "f375fab5d5735b13df7dad55dcc562b44805fe08",
+    "tools/tasks/denial_reachability_tasks.json": "6c0348064b4256b7ac398fdb9a477a4cf1cc9203"
+  },
+  "verified_results": {
+    "case_count": 5,
+    "passed_count": 5,
+    "failed_count": 0,
+    "proof_report_canonical_sha256": "8c2c460e3d7ae790a4f5fc347e44f9e91615db8b1913ee98c893e3071a5fb284",
+    "generated_report_file_sha256": "f5a07da05497bdd8d85bd60e43ceb5d043eac656bad2f873a6d9aee2d65f95be",
+    "generated_receipts_file_sha256": "9f1c0dc5463dc7396addf7a62147b8beb33f818b67add8f41bc069c96cef2953",
+    "byte_equivalence_to_baseline": true,
+    "late_refusal_non_prevention_preserved": true
+  },
+  "discovered_and_fixed_blocker": {
+    "failure": "artifact verifier compared raw fixture file hashes against canonical JSON hashes stored in the proof report",
+    "resolution_commit": "c37ea88e0af6fb6b3a3a5b31d425d2c7ed2a4783",
+    "baseline_commit": "a9eb029ab09c085d4d91c1ee825216cc3e4a1c4c",
+    "baseline_enforcement_commit": "1f4474fc6cbba0e1bbce272300a9d2adc3c92a54"
+  },
+  "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+  "canonical_execution_evidence": "PENDING_REPOSITORY_OR_EXISTING_CI_RUN",
+  "non_claim": "This receipt proves deterministic reproduction using connector-materialized committed sources. It is not represented as a GitHub Actions or repository-checkout run and does not replace the remaining canonical execution requirement."
+}
