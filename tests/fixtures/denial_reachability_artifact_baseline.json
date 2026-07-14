@@ -1,0 +1,11 @@
+{
+  "schema": "stegverse.denial_reachability.artifact_baseline.v1",
+  "formalism_id": "stegverse.denial-reachability-at-commit.v0.1",
+  "proof_report_canonical_sha256": "8c2c460e3d7ae790a4f5fc347e44f9e91615db8b1913ee98c893e3071a5fb284",
+  "generated_file_sha256": {
+    "reports/denial_reachability_report.json": "f5a07da05497bdd8d85bd60e43ceb5d043eac656bad2f873a6d9aee2d65f95be",
+    "receipts/denial_reachability_execution_receipts.jsonl": "9f1c0dc5463dc7396addf7a62147b8beb33f818b67add8f41bc069c96cef2953"
+  },
+  "purpose": "Allow the canonical declared-task run to prove generated report and receipt byte-equivalence without relying on manual comparison.",
+  "authority_boundary": "This baseline proves deterministic artifact equivalence only. It does not grant execution authority or replace run evidence."
+}
