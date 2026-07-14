@@ -6,15 +6,7 @@ This file is the handoff source of truth for `Data-Continuation/formalism-tests`
 
 ## Completed goal
 
-Executable proof fixtures for denial reachability at the consequence-binding commit boundary are installed and verified.
-
-## Upstream durable source
-
-```text
-StegVerse-Labs/admissibility-wiki
-  docs/formalisms/denial-reachability-at-commit.md
-  static/formalisms/denial-reachability-at-commit.v0.1.json
-```
+Executable proof fixtures for denial reachability at the consequence-binding commit boundary are installed and verified against committed expected outcomes.
 
 ## Installed proof surface
 
@@ -22,22 +14,25 @@ StegVerse-Labs/admissibility-wiki
 tests/fixtures/denial_reachability_cases.json
 tests/fixtures/denial_reachability_expected_outcomes.json
 tools/run_denial_reachability_tests.py
+tools/verify_denial_reachability_artifacts.py
 tools/tasks/denial_reachability_tasks.json
 reports/denial_reachability_report.json
 reports/denial_reachability_continuation_report.md
 receipts/denial_reachability_execution_receipts.jsonl
 ```
 
-Declared task:
+## Declared tasks
 
 ```text
 denial_reachability_commit_boundary_tests
+verify_denial_reachability_artifacts
 ```
 
-Canonical execution command:
+Canonical commands:
 
 ```bash
 python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id denial_reachability_commit_boundary_tests
+python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id verify_denial_reachability_artifacts
 ```
 
 ## Verified proof cases
@@ -83,46 +78,71 @@ failed_count: 0
 report_sha256: 8c2c460e3d7ae790a4f5fc347e44f9e91615db8b1913ee98c893e3071a5fb284
 ```
 
-The deterministic fixture evaluation matched every expected outcome. The repository runtime could not be cloned into the assistant execution environment because outbound DNS resolution was unavailable; therefore the canonical declared-task command remains the required independent repository/CI rerun. This limitation does not alter the committed deterministic report, fixture hashes, or receipt chain, but live runner evidence should replace this observation when available.
+The artifact verifier now checks:
+
+```text
+committed fixture and expected-outcome hashes
+report PASS and 5/0 counts
+report/receipt case-set equality
+receipt contract fields against report results
+formalism and report-hash references
+late-refusal post-binding non-prevention
+```
+
+The verifier writes:
+
+```text
+reports/denial_reachability_artifact_verification.json
+```
+
+with `canonical_execution_evidence: PENDING_EXTERNAL_DECLARED_TASK_RUN` until an actual repository or CI execution record is attached.
 
 ## Authority boundary
 
 ```text
 Data-Continuation/formalism-tests owns executable proof and test authority.
-StegVerse-Labs/admissibility-wiki owns vocabulary and public explanation only.
+StegVerse-Labs/admissibility-wiki owns vocabulary, public explanation, and proof references only.
 StegVerse-Labs/Site and GCAT-BCAT-Engine/Publisher are downstream mirrors and must not infer proof from documentation alone.
 ```
 
-## Next integration goal
-
-Promote the verified proof metadata and report hash into `StegVerse-Labs/admissibility-wiki` as proof-authority evidence without copying proof authority into the wiki.
-
-Required downstream records:
+## Completed downstream integration
 
 ```text
 StegVerse-Labs/admissibility-wiki
-  -> add proof receipt/reference for report SHA-256
-  -> update denial-reachability page from conceptual-only to conceptual formalism with external executable proof evidence
-  -> preserve NON_EXECUTION_AUTHORITY and proof-authority boundary
-
-StegVerse-Labs/Site
-  -> no mirror until admissibility-wiki build/public route verifies
-
-GCAT-BCAT-Engine/Publisher
-  -> no publication until verified wiki artifact exists
-
-StegVerse-002/stegguardian-wiki
-  -> no Guardian interpretation until proof receipt is indexed and boundary language is preserved
+  -> denial-reachability public formalism installed
+  -> proof-reference receipt installed
+  -> executable proof status and report hash recorded
+  -> NON_EXECUTION_AUTHORITY boundary preserved
 ```
 
-## Remaining validation
+## Active goal
+
+Obtain canonical declared-task execution evidence without creating a new workflow solely for this task.
+
+Completion requires:
 
 ```text
-Run the canonical declared-task command in repository or CI.
-Confirm generated outputs are byte-equivalent to committed reports and receipts.
-Record the workflow/run evidence without creating a new workflow solely for this task.
+run both declared tasks in repository or an existing CI execution surface
+confirm generated report and receipt bytes match committed artifacts
+commit reports/denial_reachability_artifact_verification.json
+attach workflow, run, commit, or other durable execution evidence
+replace PENDING_EXTERNAL_DECLARED_TASK_RUN with VERIFIED_CANONICAL_RUN
+```
+
+## Downstream restrictions
+
+```text
+StegVerse-Labs/Site
+  -> check docs/SITE_MIRROR_HANDOFF.md before mutation
+  -> mirror only after admissibility-wiki build and public route verify
+
+GCAT-BCAT-Engine/Publisher
+  -> publish only after verified wiki artifact and canonical-run receipt exist
+
+StegVerse-002/stegguardian-wiki
+  -> interpret denial reachability only after proof receipt is indexed and refusal-capability language preserves the proof boundary
 ```
 
 ## Archive posture
 
-This handoff preserves the completed proof, installed files, hashes, authority boundaries, runtime-observation limitation, remaining independent validation, and next integration goal so the complete thread can be archived without additional context.
+This handoff preserves the completed proof, integrity-verification task, installed files, hashes, authority boundaries, active canonical-run requirement, completion event, and downstream restrictions so the complete thread can be archived without additional context.
