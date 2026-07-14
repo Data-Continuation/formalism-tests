@@ -1,0 +1,36 @@
+{
+  "schema": "stegverse.denial_reachability.expected_outcomes.v1",
+  "formalism_id": "stegverse.denial-reachability-at-commit.v0.1",
+  "expected": {
+    "REACHABLE_DENY": {
+      "decision": "DENY",
+      "failure_class": null,
+      "execution_prevented": true,
+      "denial_controlled_execution": true
+    },
+    "UNREACHABLE_DENY": {
+      "decision": "FAIL_CLOSED",
+      "failure_class": "INHERITED_AUTHORIZATION",
+      "execution_prevented": true,
+      "denial_controlled_execution": false
+    },
+    "COSMETIC_GATING": {
+      "decision": "FAIL_CLOSED",
+      "failure_class": "COSMETIC_GATING",
+      "execution_prevented": true,
+      "denial_controlled_execution": false
+    },
+    "LATE_REFUSAL": {
+      "decision": "FAIL_CLOSED",
+      "failure_class": "LATE_REFUSAL",
+      "execution_prevented": false,
+      "denial_controlled_execution": false
+    },
+    "SPLIT_BOUNDARY_INSUFFICIENCY": {
+      "decision": "FAIL_CLOSED",
+      "failure_class": "SPLIT_BOUNDARY_INSUFFICIENCY",
+      "execution_prevented": true,
+      "denial_controlled_execution": false
+    }
+  }
+}
