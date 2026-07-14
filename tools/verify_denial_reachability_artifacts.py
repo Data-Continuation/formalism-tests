@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests/fixtures/denial_reachability_cases.json"
@@ -15,8 +16,13 @@ RECEIPTS = ROOT / "receipts/denial_reachability_execution_receipts.jsonl"
 STATUS = ROOT / "reports/denial_reachability_artifact_verification.json"
 
 
-def sha256(path: Path) -> str:
+def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def canonical_hash(value: Any) -> str:
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def fail(message: str) -> None:
@@ -28,18 +34,21 @@ def main() -> None:
         if not path.is_file():
             fail(f"missing artifact: {path.relative_to(ROOT)}")
 
+    fixtures_document = json.loads(FIXTURES.read_text(encoding="utf-8"))
+    expected_document = json.loads(EXPECTED.read_text(encoding="utf-8"))
     report = json.loads(REPORT.read_text(encoding="utf-8"))
+
     if report.get("status") != "PASS":
         fail("proof report status is not PASS")
     if report.get("failed_count") != 0 or report.get("passed_count") != 5:
         fail("proof report counts are not 5 passed / 0 failed")
 
-    fixture_hash = sha256(FIXTURES)
-    expected_hash = sha256(EXPECTED)
-    if report.get("fixtures_sha256") != fixture_hash:
-        fail("fixture hash does not match committed fixture bytes")
-    if report.get("expected_outcomes_sha256") != expected_hash:
-        fail("expected-outcomes hash does not match committed bytes")
+    fixture_canonical_hash = canonical_hash(fixtures_document)
+    expected_canonical_hash = canonical_hash(expected_document)
+    if report.get("fixtures_sha256") != fixture_canonical_hash:
+        fail("fixture canonical hash does not match committed fixture document")
+    if report.get("expected_outcomes_sha256") != expected_canonical_hash:
+        fail("expected-outcomes canonical hash does not match committed document")
 
     receipts = [
         json.loads(line)
@@ -82,10 +91,12 @@ def main() -> None:
         "proof_report_status": report["status"],
         "case_count": len(report_cases),
         "receipt_count": len(receipts),
-        "fixtures_sha256": fixture_hash,
-        "expected_outcomes_sha256": expected_hash,
-        "report_file_sha256": sha256(REPORT),
-        "receipts_file_sha256": sha256(RECEIPTS),
+        "fixtures_canonical_sha256": fixture_canonical_hash,
+        "expected_outcomes_canonical_sha256": expected_canonical_hash,
+        "fixtures_file_sha256": file_sha256(FIXTURES),
+        "expected_outcomes_file_sha256": file_sha256(EXPECTED),
+        "report_file_sha256": file_sha256(REPORT),
+        "receipts_file_sha256": file_sha256(RECEIPTS),
         "receipt_contract_fields": list(receipt_contract_fields),
         "late_refusal_non_prevention_preserved": True,
         "canonical_execution_evidence": "PENDING_EXTERNAL_DECLARED_TASK_RUN",
