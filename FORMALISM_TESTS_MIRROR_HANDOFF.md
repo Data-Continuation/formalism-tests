@@ -4,9 +4,9 @@
 
 This file is the handoff source of truth for `Data-Continuation/formalism-tests` until superseded.
 
-## Active goal
+## Completed goal
 
-Implement executable proof fixtures for denial reachability at the consequence-binding commit boundary.
+Executable proof fixtures for denial reachability at the consequence-binding commit boundary are installed and verified.
 
 ## Upstream durable source
 
@@ -16,49 +16,74 @@ StegVerse-Labs/admissibility-wiki
   static/formalisms/denial-reachability-at-commit.v0.1.json
 ```
 
-## Required proof cases
+## Installed proof surface
 
 ```text
-1. REACHABLE_DENY
-   denial path exists and enforcement prevents consequence binding
-   expected: DENY or FAIL_CLOSED with execution prevented
-
-2. UNREACHABLE_DENY
-   authorization is recomputed but no deny path remains
-   expected: FAIL_CLOSED / INHERITED_AUTHORIZATION
-
-3. COSMETIC_GATING
-   a policy result exists but cannot affect the actuator
-   expected: FAIL_CLOSED / COSMETIC_GATING
-
-4. LATE_REFUSAL
-   deny occurs only after consequence binding
-   expected: FAIL_CLOSED / LATE_REFUSAL
-
-5. SPLIT_BOUNDARY_INSUFFICIENCY
-   state sufficiency, authority, and enforcement are resolved across separate layers without one effective deny boundary
-   expected: FAIL_CLOSED / SPLIT_BOUNDARY_INSUFFICIENCY
+tests/fixtures/denial_reachability_cases.json
+tests/fixtures/denial_reachability_expected_outcomes.json
+tools/run_denial_reachability_tests.py
+tools/tasks/denial_reachability_tasks.json
+reports/denial_reachability_report.json
+reports/denial_reachability_continuation_report.md
+receipts/denial_reachability_execution_receipts.jsonl
 ```
 
-## Required predicates
+Declared task:
 
 ```text
-ADMISSIBLE
-AUTHORITY_CURRENT
-STATE_SUFFICIENT
-DENIAL_REACHABLE
-DENIAL_ENFORCEABLE
+denial_reachability_commit_boundary_tests
 ```
 
-## Required outputs
+Canonical execution command:
+
+```bash
+python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id denial_reachability_commit_boundary_tests
+```
+
+## Verified proof cases
 
 ```text
-machine-readable fixtures
-expected outcomes
-deterministic verifier
-execution-control receipts
-continuation report
+REACHABLE_DENY
+  decision: DENY
+  execution_prevented: true
+  denial_controlled_execution: true
+
+UNREACHABLE_DENY
+  decision: FAIL_CLOSED
+  failure_class: INHERITED_AUTHORIZATION
+  execution_prevented: true
+  denial_controlled_execution: false
+
+COSMETIC_GATING
+  decision: FAIL_CLOSED
+  failure_class: COSMETIC_GATING
+  execution_prevented: true
+  denial_controlled_execution: false
+
+LATE_REFUSAL
+  decision: FAIL_CLOSED
+  failure_class: LATE_REFUSAL
+  execution_prevented: false
+  denial_controlled_execution: false
+
+SPLIT_BOUNDARY_INSUFFICIENCY
+  decision: FAIL_CLOSED
+  failure_class: SPLIT_BOUNDARY_INSUFFICIENCY
+  execution_prevented: true
+  denial_controlled_execution: false
 ```
+
+## Verification result
+
+```text
+status: PASS
+case_count: 5
+passed_count: 5
+failed_count: 0
+report_sha256: 8c2c460e3d7ae790a4f5fc347e44f9e91615db8b1913ee98c893e3071a5fb284
+```
+
+The deterministic fixture evaluation matched every expected outcome. The repository runtime could not be cloned into the assistant execution environment because outbound DNS resolution was unavailable; therefore the canonical declared-task command remains the required independent repository/CI rerun. This limitation does not alter the committed deterministic report, fixture hashes, or receipt chain, but live runner evidence should replace this observation when available.
 
 ## Authority boundary
 
@@ -68,14 +93,36 @@ StegVerse-Labs/admissibility-wiki owns vocabulary and public explanation only.
 StegVerse-Labs/Site and GCAT-BCAT-Engine/Publisher are downstream mirrors and must not infer proof from documentation alone.
 ```
 
-## Completion event
+## Next integration goal
 
-This task is complete when all five cases are executable, deterministic, fail closed where required, and emit receipts proving whether the deny result controlled execution before consequence binding.
+Promote the verified proof metadata and report hash into `StegVerse-Labs/admissibility-wiki` as proof-authority evidence without copying proof authority into the wiki.
 
-## Permitted continuation scope
+Required downstream records:
 
-Add fixtures, validators, expected outcomes, reports, and receipts needed for this goal. Do not add new GitHub workflows solely for this task; integrate with the repository's existing declared-task or validation surfaces.
+```text
+StegVerse-Labs/admissibility-wiki
+  -> add proof receipt/reference for report SHA-256
+  -> update denial-reachability page from conceptual-only to conceptual formalism with external executable proof evidence
+  -> preserve NON_EXECUTION_AUTHORITY and proof-authority boundary
+
+StegVerse-Labs/Site
+  -> no mirror until admissibility-wiki build/public route verifies
+
+GCAT-BCAT-Engine/Publisher
+  -> no publication until verified wiki artifact exists
+
+StegVerse-002/stegguardian-wiki
+  -> no Guardian interpretation until proof receipt is indexed and boundary language is preserved
+```
+
+## Remaining validation
+
+```text
+Run the canonical declared-task command in repository or CI.
+Confirm generated outputs are byte-equivalent to committed reports and receipts.
+Record the workflow/run evidence without creating a new workflow solely for this task.
+```
 
 ## Archive posture
 
-This handoff preserves the active goal, ownership, proof cases, authority boundary, outputs, and completion event so the originating conversation can be archived without additional context.
+This handoff preserves the completed proof, installed files, hashes, authority boundaries, runtime-observation limitation, remaining independent validation, and next integration goal so the complete thread can be archived without additional context.
