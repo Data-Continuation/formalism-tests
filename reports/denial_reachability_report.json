@@ -1,0 +1,71 @@
+{
+  "case_count": 5,
+  "expected_outcomes_sha256": "347a4f038f7159be84282844de654fec32c2ee90869fff89628189b984d7d8bd",
+  "failed_count": 0,
+  "fixtures_sha256": "66cb0727409108a0455b398c72db173fc33f1fe90a07a7333181d4bc059c12d9",
+  "formalism_id": "stegverse.denial-reachability-at-commit.v0.1",
+  "mismatches": [],
+  "passed_count": 5,
+  "report_sha256": "8c2c460e3d7ae790a4f5fc347e44f9e91615db8b1913ee98c893e3071a5fb284",
+  "required_predicates": [
+    "ADMISSIBLE",
+    "AUTHORITY_CURRENT",
+    "DENIAL_ENFORCEABLE",
+    "DENIAL_REACHABLE",
+    "STATE_SUFFICIENT"
+  ],
+  "results": [
+    {
+      "case_id": "REACHABLE_DENY",
+      "consequence_bound": false,
+      "decision": "DENY",
+      "denial_before_binding": true,
+      "denial_controlled_execution": true,
+      "execution_prevented": true,
+      "failure_class": null,
+      "fixture_sha256": "41909b53776f842ba9942314d92a13c4661d30ff7caf3349120225fe7deb3b51"
+    },
+    {
+      "case_id": "UNREACHABLE_DENY",
+      "consequence_bound": false,
+      "decision": "FAIL_CLOSED",
+      "denial_before_binding": false,
+      "denial_controlled_execution": false,
+      "execution_prevented": true,
+      "failure_class": "INHERITED_AUTHORIZATION",
+      "fixture_sha256": "1f1f5ea0087f0ed1306fb2aa1442df84cb63f3a8d39b2f7e26d8ca74c4bf4ece"
+    },
+    {
+      "case_id": "COSMETIC_GATING",
+      "consequence_bound": false,
+      "decision": "FAIL_CLOSED",
+      "denial_before_binding": true,
+      "denial_controlled_execution": false,
+      "execution_prevented": true,
+      "failure_class": "COSMETIC_GATING",
+      "fixture_sha256": "fb8208b77ff821e8c107375024029fd50bacbed949df24a46aae047070dad703"
+    },
+    {
+      "case_id": "LATE_REFUSAL",
+      "consequence_bound": true,
+      "decision": "FAIL_CLOSED",
+      "denial_before_binding": false,
+      "denial_controlled_execution": false,
+      "execution_prevented": false,
+      "failure_class": "LATE_REFUSAL",
+      "fixture_sha256": "824d3c6e02c419d82e1ffc0be999145a251a741beba56f5d5d6d01eb0e784b46"
+    },
+    {
+      "case_id": "SPLIT_BOUNDARY_INSUFFICIENCY",
+      "consequence_bound": false,
+      "decision": "FAIL_CLOSED",
+      "denial_before_binding": true,
+      "denial_controlled_execution": false,
+      "execution_prevented": true,
+      "failure_class": "SPLIT_BOUNDARY_INSUFFICIENCY",
+      "fixture_sha256": "1064506893de8dc191c05a94a70b17e68d99d72e0e40db3a271911fa7486dea5"
+    }
+  ],
+  "schema": "stegverse.denial_reachability.report.v1",
+  "status": "PASS"
+}
