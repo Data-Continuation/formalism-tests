@@ -1,0 +1,96 @@
+{
+  "schema": "stegverse.denial_reachability.fixtures.v1",
+  "formalism_id": "stegverse.denial-reachability-at-commit.v0.1",
+  "cases": [
+    {
+      "case_id": "REACHABLE_DENY",
+      "description": "The deny path remains reachable and enforceable before consequence binding.",
+      "predicates": {
+        "ADMISSIBLE": false,
+        "AUTHORITY_CURRENT": true,
+        "STATE_SUFFICIENT": true,
+        "DENIAL_REACHABLE": true,
+        "DENIAL_ENFORCEABLE": true
+      },
+      "boundary": {
+        "consequence_bound": false,
+        "deny_result_time": 40,
+        "consequence_binding_time": 100,
+        "actuator_obeys_gate": true,
+        "single_boundary_resolution": true
+      }
+    },
+    {
+      "case_id": "UNREACHABLE_DENY",
+      "description": "Authorization is recomputed after the state has lost every effective deny path.",
+      "predicates": {
+        "ADMISSIBLE": true,
+        "AUTHORITY_CURRENT": true,
+        "STATE_SUFFICIENT": true,
+        "DENIAL_REACHABLE": false,
+        "DENIAL_ENFORCEABLE": false
+      },
+      "boundary": {
+        "consequence_bound": false,
+        "deny_result_time": null,
+        "consequence_binding_time": 100,
+        "actuator_obeys_gate": false,
+        "single_boundary_resolution": true
+      }
+    },
+    {
+      "case_id": "COSMETIC_GATING",
+      "description": "A policy gate emits a result but the actuator cannot be stopped by that result.",
+      "predicates": {
+        "ADMISSIBLE": false,
+        "AUTHORITY_CURRENT": true,
+        "STATE_SUFFICIENT": true,
+        "DENIAL_REACHABLE": true,
+        "DENIAL_ENFORCEABLE": false
+      },
+      "boundary": {
+        "consequence_bound": false,
+        "deny_result_time": 50,
+        "consequence_binding_time": 100,
+        "actuator_obeys_gate": false,
+        "single_boundary_resolution": true
+      }
+    },
+    {
+      "case_id": "LATE_REFUSAL",
+      "description": "The deny result is produced only after the consequence has already bound.",
+      "predicates": {
+        "ADMISSIBLE": false,
+        "AUTHORITY_CURRENT": true,
+        "STATE_SUFFICIENT": true,
+        "DENIAL_REACHABLE": false,
+        "DENIAL_ENFORCEABLE": false
+      },
+      "boundary": {
+        "consequence_bound": true,
+        "deny_result_time": 120,
+        "consequence_binding_time": 100,
+        "actuator_obeys_gate": false,
+        "single_boundary_resolution": true
+      }
+    },
+    {
+      "case_id": "SPLIT_BOUNDARY_INSUFFICIENCY",
+      "description": "State sufficiency, authority, and enforcement are resolved in separate layers without one effective deny boundary.",
+      "predicates": {
+        "ADMISSIBLE": true,
+        "AUTHORITY_CURRENT": true,
+        "STATE_SUFFICIENT": true,
+        "DENIAL_REACHABLE": true,
+        "DENIAL_ENFORCEABLE": false
+      },
+      "boundary": {
+        "consequence_bound": false,
+        "deny_result_time": 70,
+        "consequence_binding_time": 100,
+        "actuator_obeys_gate": false,
+        "single_boundary_resolution": false
+      }
+    }
+  ]
+}
