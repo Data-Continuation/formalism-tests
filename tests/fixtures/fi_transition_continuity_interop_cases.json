@@ -1,0 +1,57 @@
+{
+  "suite_id": "FI-TRANSITION-CONTINUITY-INTEROP-001",
+  "suite_version": "0.1.0",
+  "source_claim": "Admissible-Existence/FI:FI-TRANSITION-001",
+  "authority_boundary": {
+    "tests_continuity_interoperability_only": true,
+    "creates_execution_authority": false,
+    "claims_cross_domain_support": false,
+    "claims_universal_law": false
+  },
+  "cases": [
+    {
+      "case_id": "CONTINUOUS_IDENTIFIABLE_TRANSITION",
+      "predecessor_state": "candidate_uncommitted",
+      "successor_state": "candidate_reviewable",
+      "difference_detected": true,
+      "subject_identity_preserved": true,
+      "ordered_evidence_chain_present": true,
+      "continuity_score": 0.99,
+      "continuity_min": 0.90,
+      "expected": "INTEROPERABLE"
+    },
+    {
+      "case_id": "BROKEN_ORDERED_EVIDENCE_CHAIN",
+      "predecessor_state": "candidate_uncommitted",
+      "successor_state": "candidate_reviewable",
+      "difference_detected": true,
+      "subject_identity_preserved": true,
+      "ordered_evidence_chain_present": false,
+      "continuity_score": 0.30,
+      "continuity_min": 0.90,
+      "expected": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "UNRELATED_REPLACEMENT_WITH_SAME_LABEL",
+      "predecessor_state": "candidate_uncommitted",
+      "successor_state": "candidate_reviewable",
+      "difference_detected": true,
+      "subject_identity_preserved": false,
+      "ordered_evidence_chain_present": true,
+      "continuity_score": 0.97,
+      "continuity_min": 0.90,
+      "expected": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "NO_DETECTABLE_DIFFERENCE",
+      "predecessor_state": "candidate_reviewable",
+      "successor_state": "candidate_reviewable",
+      "difference_detected": false,
+      "subject_identity_preserved": true,
+      "ordered_evidence_chain_present": true,
+      "continuity_score": 1.0,
+      "continuity_min": 0.90,
+      "expected": "NOT_A_TRANSITION"
+    }
+  ]
+}
