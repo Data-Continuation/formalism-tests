@@ -1,0 +1,21 @@
+{
+  "receipt_id": "FI-TRANSITION-CONTINUITY-INTEROP-CONNECTOR-SNAPSHOT-001",
+  "repository": "Data-Continuation/formalism-tests",
+  "task_id": "fi_transition_continuity_interop_tests",
+  "source_claim": "Admissible-Existence/FI:FI-TRANSITION-001",
+  "execution_surface": "connector_materialized_committed_sources",
+  "canonical_repository_checkout": false,
+  "github_actions_run": false,
+  "status": "PASS",
+  "case_count": 4,
+  "passed_count": 4,
+  "failed_count": 0,
+  "report": "reports/fi_transition_continuity_interop_report.json",
+  "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+  "boundaries": {
+    "creates_execution_authority": false,
+    "claims_cross_domain_support": false,
+    "claims_universal_law": false,
+    "replaces_canonical_declared_task_run": false
+  }
+}
