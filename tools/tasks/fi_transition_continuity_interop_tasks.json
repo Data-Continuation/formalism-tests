@@ -1,6 +1,6 @@
 {
   "manifest_name": "FI transition continuity interoperability tasks",
-  "manifest_version": "0.1.0",
+  "manifest_version": "0.2.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -13,6 +13,17 @@
         "reports/fi_transition_continuity_interop_report.json"
       ],
       "task_id": "fi_transition_continuity_interop_tests"
+    },
+    {
+      "command": [
+        "python",
+        "tools/verify_fi_transition_continuity_interop_artifacts.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/fi_transition_continuity_interop_artifact_verification.json"
+      ],
+      "task_id": "verify_fi_transition_continuity_interop_artifacts"
     }
   ]
 }
