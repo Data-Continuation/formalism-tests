@@ -1,0 +1,35 @@
+{
+  "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
+  "failed": 0,
+  "passed": 4,
+  "results": [
+    {
+      "actual": "INTEROPERABLE",
+      "case_id": "CONTINUOUS_IDENTIFIABLE_TRANSITION",
+      "expected": "INTEROPERABLE",
+      "passed": true
+    },
+    {
+      "actual": "FAIL_CLOSED",
+      "case_id": "BROKEN_ORDERED_EVIDENCE_CHAIN",
+      "expected": "FAIL_CLOSED",
+      "passed": true
+    },
+    {
+      "actual": "FAIL_CLOSED",
+      "case_id": "UNRELATED_REPLACEMENT_WITH_SAME_LABEL",
+      "expected": "FAIL_CLOSED",
+      "passed": true
+    },
+    {
+      "actual": "NOT_A_TRANSITION",
+      "case_id": "NO_DETECTABLE_DIFFERENCE",
+      "expected": "NOT_A_TRANSITION",
+      "passed": true
+    }
+  ],
+  "status": "PASS",
+  "suite_id": "FI-TRANSITION-CONTINUITY-INTEROP-001",
+  "suite_version": "0.1.0",
+  "total": 4
+}
