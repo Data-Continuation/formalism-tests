@@ -39,7 +39,7 @@ python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --
 python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id fi_transition_continuity_interop_tests
 ```
 
-## Verified proof cases
+## Verified denial-reachability cases
 
 ```text
 REACHABLE_DENY
@@ -72,7 +72,7 @@ SPLIT_BOUNDARY_INSUFFICIENCY
   denial_controlled_execution: false
 ```
 
-## Verification result
+## Denial-reachability verification result
 
 ```text
 status: PASS
@@ -86,30 +86,7 @@ generated_receipts_file_sha256: 9f1c0dc5463dc7396addf7a62147b8beb33f818b67add8f4
 
 The artifact verifier checks canonical fixture and expected-outcome hashes, report status and counts, report/receipt case equality, receipt contract fields, formalism and report references, late-refusal non-prevention, and generated report/receipt byte-equivalence to the committed artifact baseline.
 
-## Discovered verifier blocker and correction
-
-The first declared verification run exposed a contract defect:
-
-```text
-proof report stored canonical JSON hashes
-verifier compared raw file-byte hashes
-result: verifier could never pass even when the proof was correct
-```
-
-Corrected by:
-
-```text
-c37ea88e0af6fb6b3a3a5b31d425d2c7ed2a4783
-  -> compare canonical document hashes
-
-a9eb029ab09c085d4d91c1ee825216cc3e4a1c4c
-  -> add deterministic generated-artifact byte baseline
-
-1f4474fc6cbba0e1bbce272300a9d2adc3c92a54
-  -> enforce report and receipt byte-equivalence to baseline
-```
-
-## Connector-materialized reproduction
+## Connector-materialized denial-reachability reproduction
 
 Both denial-reachability declared tasks were executed successfully against a snapshot materialized from the committed GitHub sources through the connector.
 
@@ -133,7 +110,7 @@ This is not represented as GitHub Actions or repository-checkout evidence. It ma
 
 ## FI continuity interoperability slice
 
-The repository now contains a continuity-specific interoperability surface for `Admissible-Existence/FI` claim `FI-TRANSITION-001`.
+The repository contains a continuity-specific interoperability surface for `Admissible-Existence/FI` claim `FI-TRANSITION-001`.
 
 Installed surfaces:
 
@@ -142,9 +119,33 @@ tests/fixtures/fi_transition_continuity_interop_cases.json
 tests/fixtures/fi_transition_continuity_interop_expected_outcomes.json
 tools/run_fi_transition_continuity_interop.py
 tools/tasks/fi_transition_continuity_interop_tasks.json
+reports/fi_transition_continuity_interop_report.json
+receipts/fi_transition_continuity_interop_connector_snapshot_run.json
 ```
 
-The test boundary is deliberately narrow:
+Verified reproduction result:
+
+```text
+status: PASS
+case_count: 4
+passed_count: 4
+failed_count: 0
+authority_posture: CONTINUITY_INTEROPERABILITY_ONLY
+execution_surface: connector_materialized_committed_sources
+canonical_repository_checkout: false
+github_actions_run: false
+```
+
+Verified cases:
+
+```text
+CONTINUOUS_IDENTIFIABLE_TRANSITION -> INTEROPERABLE
+BROKEN_ORDERED_EVIDENCE_CHAIN -> FAIL_CLOSED
+UNRELATED_REPLACEMENT_WITH_SAME_LABEL -> FAIL_CLOSED
+NO_DETECTABLE_DIFFERENCE -> NOT_A_TRANSITION
+```
+
+The test boundary remains:
 
 ```text
 same label != same identity
@@ -155,16 +156,7 @@ continuity interoperability != execution authority
 continuity interoperability != universal law
 ```
 
-Expected cases:
-
-```text
-CONTINUOUS_IDENTIFIABLE_TRANSITION -> INTEROPERABLE
-BROKEN_ORDERED_EVIDENCE_CHAIN -> FAIL_CLOSED
-UNRELATED_REPLACEMENT_WITH_SAME_LABEL -> FAIL_CLOSED
-NO_DETECTABLE_DIFFERENCE -> NOT_A_TRANSITION
-```
-
-Execution evidence for this new declared task remains pending. Its installation does not alter the active denial-reachability canonical-run obligation.
+The committed report and receipt are reproduction evidence only. A repository-checkout or existing-CI declared-task run remains the canonical execution completion condition.
 
 ## Authority boundary
 
@@ -184,6 +176,9 @@ StegVerse-Labs/admissibility-wiki
   -> proof-reference receipt installed
   -> executable proof status and report hash recorded
   -> NON_EXECUTION_AUTHORITY boundary preserved
+
+Admissible-Existence/FI
+  -> continuity interoperability installation and reproduction result recorded
 ```
 
 ## Active goal
@@ -203,8 +198,8 @@ replace PENDING_EXTERNAL_DECLARED_TASK_RUN with VERIFIED_CANONICAL_RUN
 Supplemental FI interoperability completion requires:
 
 ```text
-run fi_transition_continuity_interop_tests through the declared-task runner
-commit reports/fi_transition_continuity_interop_report.json
+run fi_transition_continuity_interop_tests through the declared-task runner in a repository checkout or existing CI surface
+confirm reports/fi_transition_continuity_interop_report.json matches the committed reproduction report
 preserve authority_posture: CONTINUITY_INTEROPERABILITY_ONLY
 ```
 
@@ -227,4 +222,4 @@ Admissible-Existence/Fundamental-Invariants-of-Reality
 
 ## Archive posture
 
-This handoff preserves the completed proof, verifier correction, deterministic byte baseline, connector-materialized reproduction evidence, FI continuity interoperability installation, authority boundaries, active canonical-run requirement, completion events, and downstream restrictions so the complete thread can be archived without additional context.
+This handoff preserves the completed denial-reachability proof, verifier correction, deterministic byte baseline, connector-materialized reproduction evidence, FI continuity interoperability installation and reproduction result, authority boundaries, active canonical-run requirements, completion events, and downstream restrictions so the complete thread can be archived without additional context.
