@@ -1,0 +1,13 @@
+{
+  "suite_id": "FI-TRANSITION-CONTINUITY-INTEROP-001",
+  "suite_version": "0.1.0",
+  "canonical_report_sha256": "6b3b42c93ef8f118e984deb25b8075dbf5f3e9cbb6fd91f66dc772882f4cf170",
+  "report_path": "reports/fi_transition_continuity_interop_report.json",
+  "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
+  "boundary": {
+    "canonical_hash_is_document_hash": true,
+    "creates_execution_authority": false,
+    "claims_cross_domain_support": false,
+    "claims_universal_law": false
+  }
+}
