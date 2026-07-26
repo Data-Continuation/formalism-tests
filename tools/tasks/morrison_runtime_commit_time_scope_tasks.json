@@ -18,6 +18,15 @@
         "reports/morrison_runtime_commit_time_scope_artifact_verification.json"
       ],
       "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
+    },
+    {
+      "task_id": "check_morrison_runtime_canonical_evidence_gate",
+      "description": "Verify that Morrison canonical evidence remains fail-closed while pending and becomes promotion-eligible only when the complete canonical evidence contract is satisfied.",
+      "command": ["python", "tools/check_morrison_runtime_canonical_evidence_gate.py"],
+      "expected_outputs": [
+        "reports/morrison_runtime_canonical_evidence_gate.json"
+      ],
+      "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
     }
   ]
 }
