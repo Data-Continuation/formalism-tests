@@ -6,7 +6,8 @@
       "description": "Run Morrison Runtime commit-time scope displacement and reconstruction fixtures.",
       "command": ["python", "tools/run_morrison_runtime_commit_time_scope.py"],
       "expected_outputs": [
-        "reports/morrison_runtime_commit_time_scope_report.json"
+        "reports/morrison_runtime_commit_time_scope_report.json",
+        "receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl"
       ],
       "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
     },
