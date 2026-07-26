@@ -140,6 +140,42 @@ state: open
 
 Issue #4 owns the repository-checkout or existing-CI run, exact report-equivalence verification, durable execution evidence, and completion conditions for the FI interoperability slice.
 
+## Active Morrison Runtime commit-time scope goal
+
+The repository now owns executable comparative fixtures for the public Resurrection Tech clarification that normal Runtime Governance performs a second pre-execution decision, while full fresh-state reconstruction and evidence binding are separately configurable high-assurance capabilities.
+
+Installed initial surfaces:
+
+```text
+tests/fixtures/morrison_runtime_commit_time_scope_cases.json
+tests/fixtures/morrison_runtime_commit_time_scope_expected_outcomes.json
+tools/run_morrison_runtime_commit_time_scope.py
+```
+
+Required cases:
+
+```text
+MRG-CT-001 ALLOW_TO_BLOCK_CONTRADICTORY_EVIDENCE
+MRG-CT-002 BLOCK_TO_ALLOW_CORRECTIVE_EVIDENCE
+MRG-CT-003 MISSING_REQUIRED_EVIDENCE_FAIL_CLOSED
+MRG-CT-004 UNKNOWN_EVIDENCE_COVERAGE_FAIL_CLOSED
+MRG-CT-005 STALE_CACHED_BINDING_FAIL_CLOSED
+MRG-CT-006 PREVIOUSLY_UNMODELED_PARAMETER_FAIL_CLOSED
+MRG-CT-007 COMPLETE_COMMIT_BOUNDARY_RECONSTRUCTION_ALLOW
+```
+
+Remaining installation:
+
+```text
+tools/verify_morrison_runtime_commit_time_scope_artifacts.py
+tools/tasks/morrison_runtime_commit_time_scope_tasks.json
+reports/morrison_runtime_commit_time_scope_report.json
+receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl
+committed artifact baseline and connector-materialized reproduction receipt
+```
+
+Completion requires deterministic fixture execution, expected-result equality, report and receipt generation, artifact verification, and durable canonical execution evidence. Native Morrison results remain external evidence only and do not become StegVerse execution authority.
+
 ## Authority boundary
 
 ```text
@@ -184,7 +220,7 @@ GCAT-BCAT-Engine/Publisher
   -> publish only after verified wiki artifact and canonical-run receipt exist
 
 StegVerse-002/stegguardian-wiki
-  -> interpret denial reachability only after proof receipt is indexed and refusal-capability language preserves the proof boundary
+  -> interpret denial reachability and Morrison scope only after proof receipts are indexed and refusal-capability language preserves the proof boundary
 
 Admissible-Existence/Fundamental-Invariants-of-Reality
   -> do not treat continuity interoperability as cross-domain validation
@@ -192,4 +228,4 @@ Admissible-Existence/Fundamental-Invariants-of-Reality
 
 ## Archive posture
 
-This handoff preserves the completed proofs, deterministic baselines, connector-materialized reproduction evidence, FI continuity interoperability implementation and report-equivalence contract, authority boundaries, issue-owned canonical-run obligations, completion events, and downstream restrictions so the complete thread can be archived without additional context.
+This handoff preserves the completed proofs, deterministic baselines, connector-materialized reproduction evidence, FI continuity interoperability implementation, active Morrison commit-time scope fixtures, authority boundaries, canonical-run obligations, completion events, and downstream restrictions so the complete thread can be archived without additional context.
