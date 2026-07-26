@@ -1,0 +1,20 @@
+{
+  "schema": "stegverse.morrison-runtime.commit-time-scope.expected.v1",
+  "suite_id": "morrison-runtime-commit-time-scope-v0.1",
+  "expected": {
+    "MRG-CT-001": "DENY",
+    "MRG-CT-002": "ALLOW",
+    "MRG-CT-003": "FAIL_CLOSED",
+    "MRG-CT-004": "FAIL_CLOSED",
+    "MRG-CT-005": "FAIL_CLOSED",
+    "MRG-CT-006": "FAIL_CLOSED",
+    "MRG-CT-007": "ALLOW"
+  },
+  "invariants": [
+    "A repeated pre-execution decision does not prove full fresh-state reconstruction.",
+    "Missing, stale, unknown-coverage, or materially unmodeled evidence fails closed.",
+    "Contradictory live evidence can displace an earlier ALLOW.",
+    "Corrective live evidence can displace an earlier BLOCK only when all required commit-time parameters reconstruct.",
+    "Native Morrison verdicts remain evidence and do not become StegVerse execution authority."
+  ]
+}
