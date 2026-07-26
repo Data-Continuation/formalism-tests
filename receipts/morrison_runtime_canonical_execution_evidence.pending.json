@@ -1,0 +1,25 @@
+{
+  "schema": "stegverse.morrison-runtime.canonical-execution-evidence.pending.v1",
+  "suite_id": "morrison-runtime-commit-time-scope-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "issue": 5,
+  "status": "PENDING_CANONICAL_EXECUTION",
+  "required_schema": "schemas/morrison_runtime_canonical_execution_evidence.schema.json",
+  "required_commands": [
+    "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id morrison_runtime_commit_time_scope_tests",
+    "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id verify_morrison_runtime_commit_time_scope_artifacts"
+  ],
+  "required_evidence": [
+    "40-character commit SHA",
+    "repository checkout, GitHub Actions, or existing CI execution surface",
+    "both declared task results equal PASS",
+    "report SHA-256",
+    "execution receipts SHA-256",
+    "artifact verification SHA-256",
+    "report equivalence true",
+    "receipt equivalence true",
+    "expected-outcome equivalence true"
+  ],
+  "promotion_prohibited_until_complete": true,
+  "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
+}
