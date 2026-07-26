@@ -1,0 +1,62 @@
+{
+  "schema": "stegverse.morrison-runtime.commit-time-scope.orchestration-status.v1",
+  "generated_at": "2026-07-26T19:15:00Z",
+  "repository": "Data-Continuation/formalism-tests",
+  "goal_id": "morrison-runtime-commit-time-scope-v0.1",
+  "current_state": "AWAITING_CANONICAL_EXECUTION",
+  "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
+  "installed_surfaces": {
+    "fixtures": [
+      "tests/fixtures/morrison_runtime_commit_time_scope_cases.json",
+      "tests/fixtures/morrison_runtime_commit_time_scope_expected_outcomes.json",
+      "tests/fixtures/morrison_runtime_commit_time_scope_artifact_baseline.json"
+    ],
+    "tools": [
+      "tools/run_morrison_runtime_commit_time_scope.py",
+      "tools/verify_morrison_runtime_commit_time_scope_artifacts.py",
+      "tools/tasks/morrison_runtime_commit_time_scope_tasks.json"
+    ],
+    "reports": [
+      "reports/morrison_runtime_commit_time_scope_report.json",
+      "reports/morrison_runtime_commit_time_scope_artifact_verification.json",
+      "reports/morrison_runtime_commit_time_scope_continuation_report.md"
+    ],
+    "receipts": [
+      "receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl",
+      "receipts/morrison_runtime_commit_time_scope_connector_snapshot_run.json",
+      "receipts/morrison_runtime_commit_time_scope_canonical_run_request.json",
+      "receipts/morrison_runtime_commit_time_scope_downstream_activation_contract.json"
+    ]
+  },
+  "declared_tasks": [
+    "morrison_runtime_commit_time_scope_tests",
+    "verify_morrison_runtime_commit_time_scope_artifacts"
+  ],
+  "canonical_execution_owner": {
+    "repository": "Data-Continuation/formalism-tests",
+    "issue": 5,
+    "state": "OPEN"
+  },
+  "downstream_promotion_owner": {
+    "repository": "StegVerse-Labs/admissibility-wiki",
+    "issue": 39,
+    "state": "BLOCKED_ON_CANONICAL_EXECUTION"
+  },
+  "activation_preconditions": [
+    "both declared tasks pass in a repository checkout or existing CI execution surface",
+    "generated report equals the committed deterministic baseline",
+    "generated execution receipts equal the committed receipt set",
+    "artifact verification is regenerated as PASS",
+    "durable evidence identifies commit, execution surface, commands, results, and artifact hashes"
+  ],
+  "prohibited_promotions_before_activation": [
+    "VERIFIED_CANONICAL_RUN",
+    "framework certification",
+    "framework endorsement",
+    "execution authority",
+    "default full fresh-state reconstruction capability",
+    "downstream publication as validated proof"
+  ],
+  "next_transition": "CANONICAL_EXECUTION_EVIDENCE_ATTACHED",
+  "fail_closed": true
+}
