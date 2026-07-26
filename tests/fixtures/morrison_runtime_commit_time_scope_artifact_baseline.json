@@ -1,0 +1,25 @@
+{
+  "schema": "stegverse.morrison-runtime.commit-time-scope.artifact-baseline.v1",
+  "suite_id": "morrison-runtime-commit-time-scope-v0.1",
+  "required_status": "PASS",
+  "required_case_count": 7,
+  "required_passed_count": 7,
+  "required_failed_count": 0,
+  "required_authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
+  "required_case_results": {
+    "MRG-CT-001": "DENY",
+    "MRG-CT-002": "ALLOW",
+    "MRG-CT-003": "FAIL_CLOSED",
+    "MRG-CT-004": "FAIL_CLOSED",
+    "MRG-CT-005": "FAIL_CLOSED",
+    "MRG-CT-006": "FAIL_CLOSED",
+    "MRG-CT-007": "ALLOW"
+  },
+  "required_receipt_count": 7,
+  "required_invariants": [
+    "earlier_allow_can_be_displaced_by_contradictory_live_evidence",
+    "earlier_block_can_be_displaced_only_after_complete_corrective_reconstruction",
+    "missing_stale_unknown_coverage_or_unmodeled_material_evidence_fails_closed",
+    "native_runtime_verdict_is_comparative_evidence_not_execution_authority"
+  ]
+}
