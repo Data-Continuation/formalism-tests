@@ -33,10 +33,21 @@ def evaluate(inputs: dict) -> str:
     return "ALLOW"
 
 
+def displacement(initial: str, observed: str, inputs: dict) -> str:
+    if initial == "ALLOW" and observed == "DENY":
+        return "ALLOW_TO_DENY"
+    if initial == "BLOCK" and observed == "ALLOW":
+        return "BLOCK_TO_ALLOW"
+    if initial == "ALLOW" and observed == "FAIL_CLOSED":
+        return "ALLOW_TO_FAIL_CLOSED"
+    if initial == "ALLOW" and observed == "ALLOW" and inputs.get("all_material_parameters_reconstructed", False):
+        return "ALLOW_PRESERVED_AFTER_FULL_RECONSTRUCTION"
+    return f"{initial}_TO_{observed}"
+
+
 def main() -> int:
     fixtures = json.loads(FIXTURES.read_text(encoding="utf-8"))
-    expected_doc = json.loads(EXPECTED.read_text(encoding="utf-8"))
-    expected = expected_doc["expected"]
+    expected = json.loads(EXPECTED.read_text(encoding="utf-8"))["expected"]
     results = []
     receipts = []
     passed = 0
@@ -55,20 +66,14 @@ def main() -> int:
             "pass": ok,
         })
         receipts.append({
-            "schema": "stegverse.morrison-runtime.commit-time-scope.execution-receipt.v1",
+            "schema": "stegverse.morrison-runtime.commit-time-scope.receipt.v1",
             "suite_id": SUITE_ID,
             "case_id": case["case_id"],
-            "framework_id": fixtures["framework_id"],
-            "provider": fixtures["provider"],
             "initial_runtime_result": case["initial_runtime_result"],
             "commit_time_result": observed,
-            "expected_result": wanted,
-            "result_matches_expected": ok,
-            "fresh_state_reconstruction_claimed": bool(
-                case["commit_time_inputs"].get("all_material_parameters_reconstructed", False)
-            ),
+            "displacement": displacement(case["initial_runtime_result"], observed, case["commit_time_inputs"]),
             "authority_posture": AUTHORITY_POSTURE,
-            "execution_authority_granted": False,
+            "pass": ok,
         })
 
     report = {
@@ -85,7 +90,7 @@ def main() -> int:
     RECEIPTS.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     RECEIPTS.write_text(
-        "".join(json.dumps(receipt, sort_keys=True, separators=(",", ":")) + "\n" for receipt in receipts),
+        "".join(json.dumps(receipt, separators=(",", ":")) + "\n" for receipt in receipts),
         encoding="utf-8",
     )
     print(json.dumps(report, indent=2))
