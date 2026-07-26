@@ -1,0 +1,60 @@
+{
+  "schema": "stegverse.morrison-runtime.commit-time-scope.fixtures.v1",
+  "framework_id": "morrison-runtime",
+  "provider": "Resurrection Tech",
+  "clarification_basis": {
+    "default_property": "PRE_EXECUTION_REEVALUATION_UNDER_CONFIGURED_CONSTRAINTS",
+    "additional_high_assurance_property": "FULL_FRESH_STATE_RECONSTRUCTION_AND_EVIDENCE_BINDING_WHERE_CONFIGURED"
+  },
+  "cases": [
+    {
+      "case_id": "MRG-CT-001",
+      "title": "ALLOW_TO_BLOCK_CONTRADICTORY_EVIDENCE",
+      "initial_runtime_result": "ALLOW",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": true, "contradictory_evidence_present": true, "freshness_valid": true, "coverage_known": true, "policy_allows": true},
+      "expected_stegverse_result": "DENY"
+    },
+    {
+      "case_id": "MRG-CT-002",
+      "title": "BLOCK_TO_ALLOW_CORRECTIVE_EVIDENCE",
+      "initial_runtime_result": "BLOCK",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": true, "contradictory_evidence_present": false, "corrective_evidence_resolves_block": true, "freshness_valid": true, "coverage_known": true, "policy_allows": true},
+      "expected_stegverse_result": "ALLOW"
+    },
+    {
+      "case_id": "MRG-CT-003",
+      "title": "MISSING_REQUIRED_EVIDENCE_FAIL_CLOSED",
+      "initial_runtime_result": "ALLOW",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": false, "freshness_valid": true, "coverage_known": true, "policy_allows": true},
+      "expected_stegverse_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "MRG-CT-004",
+      "title": "UNKNOWN_EVIDENCE_COVERAGE_FAIL_CLOSED",
+      "initial_runtime_result": "ALLOW",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": true, "freshness_valid": true, "coverage_known": false, "policy_allows": true},
+      "expected_stegverse_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "MRG-CT-005",
+      "title": "STALE_CACHED_BINDING_FAIL_CLOSED",
+      "initial_runtime_result": "ALLOW",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": true, "freshness_valid": false, "coverage_known": true, "policy_allows": true, "cached_binding_used": true},
+      "expected_stegverse_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "MRG-CT-006",
+      "title": "PREVIOUSLY_UNMODELED_PARAMETER_FAIL_CLOSED",
+      "initial_runtime_result": "ALLOW",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": true, "freshness_valid": true, "coverage_known": true, "policy_allows": true, "unmodeled_material_parameter_present": true},
+      "expected_stegverse_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "MRG-CT-007",
+      "title": "COMPLETE_COMMIT_BOUNDARY_RECONSTRUCTION_ALLOW",
+      "initial_runtime_result": "ALLOW",
+      "commit_time_inputs": {"authority_current": true, "required_evidence_complete": true, "contradictory_evidence_present": false, "freshness_valid": true, "coverage_known": true, "policy_allows": true, "recoverability_valid": true, "all_material_parameters_reconstructed": true},
+      "expected_stegverse_result": "ALLOW"
+    }
+  ]
+}
