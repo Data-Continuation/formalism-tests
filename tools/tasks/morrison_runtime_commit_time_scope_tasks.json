@@ -1,0 +1,12 @@
+{
+  "schema": "stegverse.declared-tasks.v1",
+  "tasks": [
+    {
+      "task_id": "morrison_runtime_commit_time_scope_tests",
+      "description": "Run Morrison Runtime commit-time scope displacement and reconstruction fixtures.",
+      "command": ["python", "tools/run_morrison_runtime_commit_time_scope.py"],
+      "expected_outputs": ["reports/morrison_runtime_commit_time_scope_report.json"],
+      "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
+    }
+  ]
+}
