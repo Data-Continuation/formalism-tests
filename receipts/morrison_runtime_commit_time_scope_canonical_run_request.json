@@ -1,0 +1,24 @@
+{
+  "schema": "stegverse.canonical-run-request.v1",
+  "suite_id": "morrison-runtime-commit-time-scope-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "requested_tasks": [
+    "morrison_runtime_commit_time_scope_tests",
+    "verify_morrison_runtime_commit_time_scope_artifacts"
+  ],
+  "required_result": {
+    "status": "PASS",
+    "case_count": 7,
+    "passed_count": 7,
+    "failed_count": 0,
+    "receipt_count": 7,
+    "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
+  },
+  "acceptable_execution_surfaces": [
+    "repository_checkout",
+    "existing_ci"
+  ],
+  "current_state": "AWAITING_CANONICAL_EXECUTION",
+  "manual_user_task": false,
+  "downstream_effect": "No wiki proof promotion, Site mirror, Publisher publication, StegGuardian interpretation, release, or tag until durable canonical evidence is attached."
+}
