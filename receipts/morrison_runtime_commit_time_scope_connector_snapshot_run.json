@@ -1,0 +1,20 @@
+{
+  "schema": "stegverse.morrison-runtime.commit-time-scope.connector-snapshot-receipt.v1",
+  "suite_id": "morrison-runtime-commit-time-scope-v0.1",
+  "execution_surface": "connector_materialized_committed_sources",
+  "status": "STRUCTURE_MATERIALIZED_EXECUTION_NOT_CLAIMED",
+  "canonical_repository_checkout": false,
+  "github_actions_run": false,
+  "declared_task_runner_used": false,
+  "fixture_count": 7,
+  "report_present": true,
+  "receipt_count": 7,
+  "artifact_verifier_present": true,
+  "artifact_baseline_present": true,
+  "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+  "notes": [
+    "Committed sources were materialized through the GitHub connector.",
+    "No canonical execution or CI pass is claimed by this receipt.",
+    "The repository-owned declared tasks remain responsible for executable verification."
+  ]
+}
