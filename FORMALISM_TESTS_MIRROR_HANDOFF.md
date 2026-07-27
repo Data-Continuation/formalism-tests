@@ -116,7 +116,7 @@ python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scop
 python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id check_morrison_runtime_canonical_evidence_gate
 ```
 
-The Schema, pending record, gate checker, declared-task manifest, and issue #5 completion contract are aligned on:
+The schema, pending record, gate checker, declared-task manifest, and issue #5 completion contract are aligned on:
 
 ```text
 three declared commands
@@ -146,6 +146,68 @@ downstream activation: prohibited
 handoff promotion: prohibited
 ```
 
+### Optimization-target commit boundary
+
+Installed:
+
+```text
+tests/fixtures/optimization_target_commit_boundary_cases.json
+tests/fixtures/optimization_target_commit_boundary_expected_outcomes.json
+tests/fixtures/optimization_target_commit_boundary_artifact_baseline.json
+tools/run_optimization_target_commit_boundary_tests.py
+tools/verify_optimization_target_commit_boundary_artifacts.py
+tools/check_optimization_target_canonical_evidence_gate.py
+tools/tasks/optimization_target_commit_boundary_tasks.json
+receipts/optimization_target_canonical_execution_evidence.pending.json
+```
+
+Required cases:
+
+```text
+OT-CB-001 EXPLICIT_CURRENT_TARGET -> ALLOW
+OT-CB-002 STALE_TARGET_BINDING -> FAIL_CLOSED
+OT-CB-003 UNAUTHORIZED_TARGET_MUTATION -> FAIL_CLOSED
+OT-CB-004 POLICY_DIVERGENCE -> FAIL_CLOSED
+OT-CB-005 DENIAL_UNREACHABLE -> FAIL_CLOSED
+```
+
+Commit-time rule:
+
+```text
+ALLOW only when:
+  target declared
+  target current
+  mutation authorized
+  policy consistent
+  denial reachable
+
+otherwise -> FAIL_CLOSED
+```
+
+Issue #6 owns canonical closure.
+
+Required commands:
+
+```bash
+python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests
+python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts
+python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id check_optimization_target_canonical_evidence_gate
+```
+
+Until canonical repository-checkout, GitHub Actions, or existing-CI evidence exists:
+
+```text
+canonical evidence status: PENDING_CANONICAL_EXECUTION
+promotion eligible: false
+authority posture: FORMALISM_TEST_EVIDENCE_ONLY
+generated report PASS: not claimed
+generated receipt PASS: not claimed
+artifact verification PASS: not claimed
+downstream activation: prohibited
+```
+
+A declared target is not commit-time admissible merely because it existed earlier or was once authorized. Current binding, authorized mutation, policy consistency, and reachable denial must all remain valid until consequence binds.
+
 ## Current active ownership
 
 ```text
@@ -154,6 +216,9 @@ issue #4
 
 issue #5
   -> canonical Morrison commit-time scope execution and evidence-gate satisfaction
+
+issue #6
+  -> canonical optimization-target commit-boundary execution and evidence-gate satisfaction
 
 admissibility-wiki issue #39
   -> bounded downstream compatibility-report promotion only after issue #5 closure
@@ -205,4 +270,4 @@ StegVerse-002/stegguardian-wiki
 
 ## Archive posture
 
-This handoff preserves the installed denial-reachability, FI continuity, and Morrison commit-time scope packages; bounded reproduction results; complete canonical evidence contract; active issue ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the installed denial-reachability, FI continuity, Morrison commit-time scope, and optimization-target commit-boundary packages; bounded reproduction results; canonical evidence contracts; active issue ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
