@@ -139,6 +139,17 @@
       "workload": "canonical optimization-target commit-boundary execution and evidence-gate satisfaction"
     }
   ],
+  "coordination_issue_ownership": [
+    {
+      "issue": 7,
+      "workload": "bind proof-package registry validation to an existing CI workflow",
+      "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
+      "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+      "contract": "status/formalism_proof_package_registry_ci_binding.pending.json",
+      "handoff": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
+      "canonical_proof_issues_satisfied": []
+    }
+  ],
   "policy": {
     "one_active_owner_per_workload": true,
     "duplicate_issue_owned_workloads_prohibited": true,
