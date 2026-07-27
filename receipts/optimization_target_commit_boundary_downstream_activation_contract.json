@@ -1,0 +1,49 @@
+{
+  "schema": "stegverse.formalism-tests.optimization-target.downstream-activation-contract.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+  "canonical_execution_owner": {
+    "repository": "Data-Continuation/formalism-tests",
+    "issue": 6,
+    "state": "OPEN"
+  },
+  "activation_state": "WAITING_FOR_CANONICAL_EXECUTION",
+  "activation_preconditions": [
+    "all three declared optimization-target tasks pass in one approved canonical execution surface",
+    "canonical execution evidence satisfies schemas/optimization_target_canonical_execution_evidence.schema.json",
+    "report, execution receipts, artifact verification, and canonical evidence gate each have durable SHA-256 values",
+    "report, receipts, expected outcomes, and canonical evidence gate each have exact equivalence confirmed",
+    "canonical evidence status equals VERIFIED_CANONICAL_RUN",
+    "authority posture remains FORMALISM_TEST_EVIDENCE_ONLY",
+    "current destination handoff authorizes bounded downstream interpretation"
+  ],
+  "authorized_after_completion": [
+    "submit the canonical proof receipt for bounded admissibility-wiki review",
+    "evaluate a public explanation of optimization-target commit-boundary admissibility",
+    "queue downstream propagation-status review only after wiki validation and public-route verification"
+  ],
+  "not_authorized_by_this_contract": [
+    "installation authority",
+    "production authority",
+    "publication authority",
+    "financial authority",
+    "sovereign authority",
+    "certification",
+    "endorsement",
+    "claim that a declared target is objectively correct or valuable",
+    "Site mutation",
+    "Publisher mutation",
+    "stegguardian-wiki mutation",
+    "release or tag creation"
+  ],
+  "required_downstream_sequence": [
+    "VERIFIED_CANONICAL_RUN",
+    "BOUNDED_WIKI_REVIEW",
+    "WIKI_VALIDATED_AND_PUBLIC_ROUTE_VERIFIED",
+    "DOWNSTREAM_PROPAGATION_REVIEW"
+  ],
+  "failure_behavior": "FAIL_CLOSED_RETAIN_PENDING_CANONICAL_EXECUTION",
+  "manual_user_tasks_required": [],
+  "user_action_required": false
+}
