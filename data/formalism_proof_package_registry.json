@@ -27,11 +27,14 @@
         "tests/fixtures/denial_reachability_artifact_baseline.json",
         "tools/run_denial_reachability_tests.py",
         "tools/verify_denial_reachability_artifacts.py",
+        "tools/check_denial_reachability_canonical_evidence_gate.py",
         "tools/tasks/denial_reachability_tasks.json",
         "reports/denial_reachability_report.json",
         "reports/denial_reachability_continuation_report.md",
         "receipts/denial_reachability_execution_receipts.jsonl",
-        "receipts/denial_reachability_connector_snapshot_run.json"
+        "receipts/denial_reachability_connector_snapshot_run.json",
+        "schemas/denial_reachability_canonical_execution_evidence.schema.json",
+        "receipts/denial_reachability_canonical_execution_evidence.pending.json"
       ]
     },
     {
