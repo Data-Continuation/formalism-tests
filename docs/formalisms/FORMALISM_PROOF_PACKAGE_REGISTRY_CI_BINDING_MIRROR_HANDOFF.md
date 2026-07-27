@@ -22,9 +22,13 @@ reports/formalism_proof_package_registry_verification.json
 
 ```text
 status/formalism_proof_package_registry_ci_binding.pending.json
+schemas/formalism_proof_package_registry_ci_binding.schema.json
 tools/check_formalism_proof_package_registry_ci_binding.py
 tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json
+docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md
 ```
+
+The pending record must retain the exact Schema and handoff references. The checker must fail closed when either reference is missing, substituted, or points to a missing file.
 
 ## Current bounded state
 
@@ -59,7 +63,7 @@ release_state: NOT_AUTHORIZED
 errors: []
 ```
 
-6. Record the exact workflow path, run id, job id, 40-character commit SHA, and report SHA-256 in the CI-binding record.
+6. Record the exact workflow path, positive run id, positive job id, 40-character commit SHA, and report SHA-256 in the CI-binding record.
 7. Change the record to `VERIFIED_EXISTING_WORKFLOW_BINDING` only after all evidence is present.
 8. Run:
 
@@ -87,7 +91,7 @@ It grants no execution, installation, production, release, publication, certific
 While workflow inventory remains unavailable, safe work is limited to:
 
 ```text
-maintaining exact task and output references
+maintaining exact Schema, handoff, task, and output references
 preserving fail-closed pending state
 verifying the CI-binding checker and manifest remain synchronized
 recording newly exposed repository-owned workflow evidence
