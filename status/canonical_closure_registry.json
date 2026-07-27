@@ -1,0 +1,47 @@
+{
+  "schema": "stegverse.formalism-tests.canonical-closure-registry.v1",
+  "repository": "Data-Continuation/formalism-tests",
+  "status": "OPEN_CANONICAL_OBLIGATIONS",
+  "canonical_execution_claimed": false,
+  "promotion_eligible": false,
+  "owners": [
+    {
+      "issue": 3,
+      "proof_family": "denial-reachability",
+      "state": "PENDING_CANONICAL_EXECUTION",
+      "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+      "canonical_evidence_required": true,
+      "duplicate_work_prohibited": true
+    },
+    {
+      "issue": 4,
+      "proof_family": "fi-continuity-interoperability",
+      "state": "PENDING_CANONICAL_EXECUTION",
+      "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
+      "canonical_evidence_required": true,
+      "duplicate_work_prohibited": true
+    },
+    {
+      "issue": 5,
+      "proof_family": "morrison-runtime-commit-time-scope",
+      "state": "PENDING_CANONICAL_EXECUTION",
+      "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
+      "canonical_evidence_required": true,
+      "duplicate_work_prohibited": true
+    },
+    {
+      "issue": 6,
+      "proof_family": "optimization-target-commit-boundary",
+      "state": "PENDING_CANONICAL_EXECUTION",
+      "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+      "canonical_evidence_required": true,
+      "duplicate_work_prohibited": true
+    }
+  ],
+  "registry_invariants": [
+    "Connector-materialized reproduction does not satisfy canonical execution.",
+    "An open canonical owner must remain visible until durable repository-owned evidence exists.",
+    "Issue ownership may not be collapsed into a new competing execution owner.",
+    "No canonical closure grants production, release, certification, sovereign, or cross-repository mutation authority."
+  ]
+}
