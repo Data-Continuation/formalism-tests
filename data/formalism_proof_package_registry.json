@@ -47,6 +47,7 @@
         "issue": 4
       },
       "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "package_handoff": "docs/formalisms/FI_TRANSITION_CONTINUITY_INTEROP_MIRROR_HANDOFF.md",
       "installed_surfaces": [
         "tests/fixtures/fi_transition_continuity_interop_cases.json",
         "tests/fixtures/fi_transition_continuity_interop_expected_outcomes.json",
@@ -58,7 +59,8 @@
         "reports/fi_transition_continuity_interop_report.json",
         "receipts/fi_transition_continuity_interop_connector_snapshot_run.json",
         "schemas/fi_transition_continuity_interop_canonical_execution_evidence.schema.json",
-        "receipts/fi_transition_continuity_interop_canonical_execution_evidence.pending.json"
+        "receipts/fi_transition_continuity_interop_canonical_execution_evidence.pending.json",
+        "docs/formalisms/FI_TRANSITION_CONTINUITY_INTEROP_MIRROR_HANDOFF.md"
       ]
     },
     {
