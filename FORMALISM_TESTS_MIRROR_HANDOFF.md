@@ -150,6 +150,38 @@ MRG-CT-007 complete commit-boundary reconstruction: ALLOW preserved
 
 The connector-materialized reproduction is bounded reproduction evidence only. It is not a native Morrison execution, repository checkout, GitHub Actions run, certification, endorsement, production validation, or StegVerse execution-authority determination.
 
+## Morrison canonical evidence contract alignment
+
+The canonical-evidence checker and pending record are aligned with the committed JSON Schema and declared-task manifest.
+
+```text
+schema contract:
+  artifact_hashes.report_sha256
+  artifact_hashes.receipts_sha256
+  artifact_hashes.verification_sha256
+  artifact_equivalence.report
+  artifact_equivalence.receipts
+  artifact_equivalence.expected_outcomes
+
+canonical evidence task results:
+  morrison_runtime_commit_time_scope_tests -> PASS
+  verify_morrison_runtime_commit_time_scope_artifacts -> PASS
+
+post-install gate task:
+  check_morrison_runtime_canonical_evidence_gate -> PASS
+```
+
+The checker no longer accepts the former schema-incompatible flat fields or `promotion_eligible` inside the canonical evidence record. Promotion eligibility is derived only in the gate result after a schema-compatible canonical record passes validation.
+
+Alignment commits:
+
+```text
+e5d1707c4ec4000cbf15d24758a779cd2882051e
+5cf992b281e0f4dce47ef54b12baeb9ce342e389
+```
+
+This correction is a deterministic contract repair only. It does not claim that canonical execution occurred.
+
 ## Morrison canonical evidence gate
 
 Issue #5 owns canonical closure.
@@ -232,4 +264,4 @@ StegVerse-002/stegguardian-wiki
 
 ## Archive posture
 
-This handoff preserves the installed denial-reachability, FI continuity, and Morrison commit-time scope packages; bounded reproduction results; active issue ownership; canonical evidence gates; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the installed denial-reachability, FI continuity, and Morrison commit-time scope packages; bounded reproduction results; canonical evidence contract alignment; active issue ownership; canonical evidence gates; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
