@@ -6,19 +6,34 @@
   "status": "PENDING_CANONICAL_EXECUTION",
   "required_commands": [
     "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests",
-    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts"
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id check_optimization_target_canonical_evidence_gate"
   ],
   "required_evidence": [
     "40-character commit SHA",
     "repository checkout, GitHub Actions, or existing CI execution surface",
-    "both declared task results equal PASS",
+    "all three declared task results equal PASS",
     "report SHA-256",
     "execution receipts SHA-256",
     "artifact verification SHA-256",
+    "canonical evidence gate SHA-256",
     "report equivalence true",
     "receipt equivalence true",
-    "expected-outcome equivalence true"
+    "expected-outcome equivalence true",
+    "canonical evidence gate equivalence true"
   ],
+  "required_artifact_hashes": {
+    "report_sha256": "PENDING",
+    "receipts_sha256": "PENDING",
+    "artifact_verification_sha256": "PENDING",
+    "canonical_evidence_gate_sha256": "PENDING"
+  },
+  "required_artifact_equivalence": {
+    "report": false,
+    "receipts": false,
+    "expected_outcomes": false,
+    "canonical_evidence_gate": false
+  },
   "promotion_prohibited_until_complete": true,
   "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
   "non_claims": [
