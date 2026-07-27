@@ -53,9 +53,12 @@
         "tests/fixtures/fi_transition_continuity_interop_artifact_baseline.json",
         "tools/run_fi_transition_continuity_interop.py",
         "tools/verify_fi_transition_continuity_interop_artifacts.py",
+        "tools/check_fi_transition_continuity_interop_canonical_evidence_gate.py",
         "tools/tasks/fi_transition_continuity_interop_tasks.json",
         "reports/fi_transition_continuity_interop_report.json",
-        "receipts/fi_transition_continuity_interop_connector_snapshot_run.json"
+        "receipts/fi_transition_continuity_interop_connector_snapshot_run.json",
+        "schemas/fi_transition_continuity_interop_canonical_execution_evidence.schema.json",
+        "receipts/fi_transition_continuity_interop_canonical_execution_evidence.pending.json"
       ]
     },
     {
