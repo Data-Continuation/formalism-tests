@@ -25,8 +25,13 @@
     "commands": {
       "type": "array",
       "minItems": 3,
-      "uniqueItems": true,
-      "items": {"type": "string", "minLength": 1}
+      "maxItems": 3,
+      "prefixItems": [
+        {"const": "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id denial_reachability_commit_boundary_tests"},
+        {"const": "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id verify_denial_reachability_artifacts"},
+        {"const": "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id check_denial_reachability_canonical_evidence_gate"}
+      ],
+      "items": false
     },
     "task_results": {
       "type": "object",
@@ -44,6 +49,7 @@
     },
     "artifact_hashes": {
       "type": "object",
+      "description": "The canonical_evidence_gate_sha256 field is the SHA-256 of tools/check_denial_reachability_canonical_evidence_gate.py, not the generated gate-output report.",
       "required": [
         "report_sha256",
         "receipts_sha256",
