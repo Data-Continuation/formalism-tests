@@ -17,7 +17,13 @@ REQUIRED_PACKAGES = {
     "morrison-runtime-commit-time-scope",
     "optimization-target-commit-boundary",
 }
-REQUIRED_ISSUES = {4, 5, 6}
+REQUIRED_ISSUES = {3, 4, 5, 6}
+EXPECTED_PACKAGE_OWNERS = {
+    "denial-reachability": 3,
+    "fi-transition-continuity-interoperability": 4,
+    "morrison-runtime-commit-time-scope": 5,
+    "optimization-target-commit-boundary": 6,
+}
 FALSE_AUTHORITY_FIELDS = {
     "execution_authority_granted",
     "publication_authority_granted",
@@ -64,6 +70,7 @@ def main() -> int:
     if len(package_ids) != len(set(package_ids)):
         errors.append("duplicate package_id detected")
 
+    package_owner_issues: list[int] = []
     for package in packages:
         if not isinstance(package, dict):
             errors.append("package entry must be an object")
@@ -74,6 +81,21 @@ def main() -> int:
             "VERIFIED_CANONICAL_RUN",
         }:
             errors.append(f"{package_id}: invalid canonical_state")
+
+        owner = package.get("canonical_owner")
+        expected_issue = EXPECTED_PACKAGE_OWNERS.get(package_id)
+        if not isinstance(owner, dict):
+            errors.append(f"{package_id}: canonical_owner must be an object")
+        else:
+            if owner.get("repository") != "Data-Continuation/formalism-tests":
+                errors.append(f"{package_id}: canonical owner repository mismatch")
+            if owner.get("issue") != expected_issue:
+                errors.append(
+                    f"{package_id}: canonical owner issue must equal {expected_issue}"
+                )
+            if isinstance(owner.get("issue"), int):
+                package_owner_issues.append(owner["issue"])
+
         if not str(package.get("downstream_activation", "")).startswith("PROHIBITED_"):
             errors.append(f"{package_id}: downstream activation must remain prohibited")
         surfaces = package.get("installed_surfaces")
@@ -87,6 +109,11 @@ def main() -> int:
             if not path.exists():
                 errors.append(f"{package_id}: missing installed surface {surface}")
 
+    if set(package_owner_issues) != REQUIRED_ISSUES:
+        errors.append("package canonical owner set mismatch")
+    if len(package_owner_issues) != len(set(package_owner_issues)):
+        errors.append("duplicate package canonical owner detected")
+
     ownership = registry.get("active_issue_ownership")
     if not isinstance(ownership, list):
         errors.append("active_issue_ownership must be an array")
@@ -96,6 +123,8 @@ def main() -> int:
         errors.append("active issue ownership set mismatch")
     if len(issues) != len(set(issues)):
         errors.append("duplicate active issue owner detected")
+    if set(issues) != set(package_owner_issues):
+        errors.append("package owners and active issue ownership must match")
 
     policy = registry.get("policy")
     if not isinstance(policy, dict) or any(value is not True for value in policy.values()):
