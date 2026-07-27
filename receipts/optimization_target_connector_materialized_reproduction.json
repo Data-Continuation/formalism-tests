@@ -1,0 +1,38 @@
+{
+  "schema": "stegverse.optimization-target.commit-boundary.connector-reproduction.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "source_blobs": {
+    "cases": "8f2139cdc483b4520594f496aa276221d8837372",
+    "expected_outcomes": "91631a81f243f72c9a3841e8723f9dffc17d7702"
+  },
+  "materialization_surface": "CONNECTED_GITHUB_CONTENT_RECONSTRUCTION",
+  "status": "PASS",
+  "case_count": 5,
+  "passed_count": 5,
+  "failed_count": 0,
+  "results": {
+    "OT-CB-001": "ALLOW",
+    "OT-CB-002": "FAIL_CLOSED",
+    "OT-CB-003": "FAIL_CLOSED",
+    "OT-CB-004": "FAIL_CLOSED",
+    "OT-CB-005": "FAIL_CLOSED"
+  },
+  "expected_outcome_equivalence": true,
+  "semantic_report_equivalence": true,
+  "semantic_receipt_equivalence": true,
+  "byte_equivalence_claimed": false,
+  "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+  "canonical_repository_checkout": false,
+  "github_actions_run": false,
+  "existing_ci_run": false,
+  "canonical_execution_claimed": false,
+  "promotion_eligible": false,
+  "downstream_activation_authorized": false,
+  "non_claims": [
+    "This record is not repository-checkout or CI execution evidence.",
+    "This record does not satisfy issue #6 canonical completion conditions.",
+    "This record does not grant execution, installation, production, publication, financial, or sovereign authority.",
+    "Semantic reproduction does not replace artifact hash and canonical-run evidence."
+  ]
+}
