@@ -9,8 +9,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "status/formalism_proof_package_registry_ci_binding.pending.json"
+SCHEMA = ROOT / "schemas/formalism_proof_package_registry_ci_binding.schema.json"
 OUTPUT = ROOT / "reports/formalism_proof_package_registry_ci_binding_verification.json"
 
+EXPECTED_SCHEMA_PATH = "schemas/formalism_proof_package_registry_ci_binding.schema.json"
 EXPECTED_COMMAND = [
     "python",
     "tools/run_declared_tasks.py",
@@ -22,14 +24,31 @@ EXPECTED_COMMAND = [
 
 def main() -> int:
     errors: list[str] = []
-    record = json.loads(CONTRACT.read_text(encoding="utf-8"))
 
+    try:
+        record = json.loads(CONTRACT.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"unable to read CI-binding record: {exc}")
+        record = {}
+
+    try:
+        schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"unable to read CI-binding schema: {exc}")
+        schema = {}
+
+    if schema.get("$id") != "https://stegverse.org/schemas/formalism-proof-package-registry-ci-binding.schema.json":
+        errors.append("schema $id mismatch")
     if record.get("schema") != "stegverse.formalism-tests.proof-package-registry-ci-binding.v1":
         errors.append("schema mismatch")
+    if record.get("required_schema") != EXPECTED_SCHEMA_PATH:
+        errors.append("required_schema mismatch")
     if record.get("repository") != "Data-Continuation/formalism-tests":
         errors.append("repository mismatch")
     if record.get("issue") != 7:
         errors.append("issue must equal 7")
+    if record.get("declared_task_manifest") != "tools/tasks/formalism_proof_package_registry_tasks.json":
+        errors.append("declared task manifest mismatch")
     if record.get("task_id") != "check_formalism_proof_package_registry":
         errors.append("task_id mismatch")
     if record.get("required_command") != EXPECTED_COMMAND:
@@ -39,7 +58,7 @@ def main() -> int:
     if record.get("authority_posture") != "REGISTRY_CONSISTENCY_ONLY":
         errors.append("authority posture mismatch")
     if record.get("promotion_eligible") is not False:
-        errors.append("promotion_eligible must remain false until verified")
+        errors.append("promotion_eligible must remain false")
     if record.get("canonical_proof_issues_satisfied") != []:
         errors.append("CI binding cannot satisfy canonical proof issues")
 
@@ -61,19 +80,29 @@ def main() -> int:
 
     observed = record.get("observed", {})
     verified = observed.get("binding_verified") is True
+    if observed.get("canonical_execution_claimed") is not False:
+        errors.append("canonical_execution_claimed must remain false")
+
     if record.get("status") == "PENDING_EXISTING_WORKFLOW_BINDING":
         if verified:
             errors.append("pending status cannot claim verified binding")
-        if observed.get("canonical_execution_claimed") is not False:
-            errors.append("canonical_execution_claimed must remain false")
+        for field in ("workflow_path", "workflow_run_id", "job_id", "commit_sha", "report_sha256"):
+            if observed.get(field) is not None:
+                errors.append(f"pending status requires {field}=null")
     elif record.get("status") == "VERIFIED_EXISTING_WORKFLOW_BINDING":
         if not verified:
             errors.append("verified status requires binding_verified=true")
         workflow_path = observed.get("workflow_path")
+        workflow_run_id = observed.get("workflow_run_id")
+        job_id = observed.get("job_id")
         commit_sha = observed.get("commit_sha")
         report_sha = observed.get("report_sha256")
         if not isinstance(workflow_path, str) or not workflow_path.startswith(".github/workflows/"):
             errors.append("verified binding requires an existing workflow path")
+        if not isinstance(workflow_run_id, int) or workflow_run_id < 1:
+            errors.append("verified binding requires a positive workflow run ID")
+        if not isinstance(job_id, int) or job_id < 1:
+            errors.append("verified binding requires a positive job ID")
         if not isinstance(commit_sha, str) or re.fullmatch(r"[0-9a-f]{40}", commit_sha) is None:
             errors.append("verified binding requires a 40-character commit SHA")
         if not isinstance(report_sha, str) or re.fullmatch(r"[0-9a-f]{64}", report_sha) is None:
@@ -86,6 +115,7 @@ def main() -> int:
         "status": "PASS" if not errors else "FAIL",
         "binding_status": record.get("status"),
         "binding_verified": verified,
+        "schema_reference_valid": record.get("required_schema") == EXPECTED_SCHEMA_PATH,
         "promotion_eligible": False,
         "canonical_proof_issues_satisfied": [],
         "errors": errors,
