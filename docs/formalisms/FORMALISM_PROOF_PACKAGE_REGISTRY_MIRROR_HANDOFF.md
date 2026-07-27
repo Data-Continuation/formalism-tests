@@ -6,7 +6,7 @@ This handoff governs the machine-readable proof-package registry in `Data-Contin
 
 ## Active goal
 
-Maintain a fail-closed, machine-readable inventory of formalism proof packages, installed surfaces, canonical execution owners, downstream activation boundaries, and repository authority posture.
+Maintain a fail-closed, machine-readable inventory of formalism proof packages, installed surfaces, canonical execution owners, coordination owners, downstream activation boundaries, and repository authority posture.
 
 The registry is a consistency surface only. It does not grant proof, execution, publication, certification, release, financial, or sovereign authority.
 
@@ -65,7 +65,23 @@ optimization-target-commit-boundary
   -> downstream: PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF
 ```
 
-The Schema and validator require exactly these four packages, owners, authority postures, bounded results, and downstream states. A registered package may not have a null canonical owner. Each issue may own only its mapped package workload.
+The schema and validator require exactly these four packages, owners, authority postures, bounded results, and downstream states. A registered package may not have a null canonical owner. Each issue may own only its mapped package workload.
+
+## Coordination ownership
+
+Issue #7 is registered separately from canonical proof-package ownership:
+
+```text
+issue #7
+  -> workload: bind proof-package registry validation to an existing CI workflow
+  -> authority posture: REGISTRY_CONSISTENCY_ONLY
+  -> status: PENDING_EXISTING_WORKFLOW_BINDING
+  -> contract: status/formalism_proof_package_registry_ci_binding.pending.json
+  -> handoff: docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md
+  -> canonical proof issues satisfied: none
+```
+
+Issue #7 is not a fifth proof package, does not own canonical execution for issues #3-#6, and cannot promote any proof-family state. The validator rejects overlap between coordination ownership and canonical proof ownership.
 
 The schema and validator reject:
 
@@ -82,7 +98,11 @@ missing optimization-target connector-reproduction surface
 duplicate issue ownership
 duplicate package identifiers
 missing issue #3, #4, #5, or #6
-extra registered packages or active issue owners
+extra registered packages or canonical proof owners
+missing issue #7 coordination ownership
+issue #7 mapped as a canonical proof owner
+wrong issue #7 contract, handoff, status, or authority posture
+missing issue #7 contract or handoff surface
 ```
 
 ## Fail-closed invariants
@@ -92,6 +112,8 @@ connector reproduction != canonical execution
 documentation != proof
 canonical PASS != downstream authority
 package registration != release qualification
+coordination registration != canonical proof closure
+CI binding != proof-package execution
 proof evidence != execution authority
 proof evidence != publication authority
 proof evidence != certification authority
@@ -105,6 +127,8 @@ All repository authority flags in the registry must remain `false`, all policy f
 
 The validator checks that every path declared under `installed_surfaces` exists in the repository checkout. Missing surfaces fail the registry check. The schema independently requires the optimization-target connector-materialized reproduction to remain present exactly once in that package's installed-surface inventory.
 
+For issue #7, the validator independently requires the CI-binding contract and dedicated handoff to exist and match the exact coordination record.
+
 This establishes bounded inventory consistency only. File existence does not establish correctness, canonical execution, proof validity, public deployment, or downstream admissibility.
 
 ## Current state
@@ -116,6 +140,9 @@ validator installed: true
 declared task installed: true
 exact package-owner mapping installed: true
 exact package-contract mapping installed: true
+issue #7 coordination ownership installed: true
+issue #7 separated from canonical proof ownership: true
+CI binding verified: false
 canonical proof-package execution inferred: false
 downstream activation inferred: false
 release authorized: false
@@ -128,8 +155,9 @@ manual user tasks required: none
 
 ```text
 Run the registry declared task in a repository checkout or existing CI surface.
+Reuse the existing CI workflow under issue #7; do not create a competing workflow.
 Commit the generated verification report only when authentic execution evidence exists.
-Update the registry whenever a package, installed surface, canonical owner, authority posture, bounded result, or downstream owner changes.
+Update the registry whenever a package, installed surface, canonical owner, coordination owner, authority posture, bounded result, or downstream owner changes.
 Preserve one active owner per issue-owned workload.
 Do not promote package state from pending to verified without the package-specific canonical evidence contract.
 Synchronize the repository-wide handoff when its next safe update occurs.
@@ -161,4 +189,4 @@ After release qualification, queue a propagation-status review for Site, Publish
 
 ## Archive posture
 
-This handoff preserves the registry package, exact package-owner and package-contract mappings, declared validation task, fail-closed invariants, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the registry package, exact package-owner and package-contract mappings, separate issue #7 coordination ownership, declared validation task, fail-closed invariants, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
