@@ -4,7 +4,7 @@
 
 This file is the handoff source of truth for `Data-Continuation/formalism-tests` until superseded.
 
-Incoming sessions must preserve active issue ownership, distinguish connector-materialized reproduction from canonical execution, and avoid promoting documentation or external-framework results into StegVerse execution authority.
+Incoming sessions must preserve active issue ownership, distinguish connector-materialized reproduction from canonical execution, and avoid promoting documentation, registry validation, workflow binding, or external-framework results into StegVerse execution authority.
 
 ## Repository authority boundary
 
@@ -25,7 +25,7 @@ StegVerse-002/stegguardian-wiki
   -> bounded interpretation only after proof receipts are indexed
 ```
 
-No fixture, report, connector reproduction, workflow result, public page, or external-framework verdict independently grants execution, release, certification, publication, or admissibility authority.
+No fixture, report, connector reproduction, registry result, workflow binding, public page, or external-framework verdict independently grants execution, release, certification, publication, or admissibility authority.
 
 ## Installed proof packages
 
@@ -41,15 +41,7 @@ canonical execution: pending
 canonical owner: issue #3
 ```
 
-Issue #3 owns repository-checkout, existing-CI, or GitHub Actions execution; byte-equivalence confirmation; durable run evidence; and promotion from pending to `VERIFIED_CANONICAL_RUN` only after authentic evidence exists.
-
-Installed canonical evidence surfaces:
-
-```text
-schemas/denial_reachability_canonical_execution_evidence.schema.json
-receipts/denial_reachability_canonical_execution_evidence.pending.json
-tools/check_denial_reachability_canonical_evidence_gate.py
-```
+Issue #3 owns the complete three-task canonical evidence contract, including artifact verification, canonical-evidence gating, four required hashes, four equivalence assertions, and Schema-valid promotion evidence.
 
 ### FI continuity interoperability
 
@@ -71,193 +63,15 @@ continuity interoperability != execution authority
 reproduction pass != canonical execution
 ```
 
-Issue #4 owns canonical closure.
-
-Required commands:
-
-```bash
-python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id fi_transition_continuity_interop_tests
-python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id verify_fi_transition_continuity_interop_artifacts
-python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id check_fi_transition_continuity_interop_canonical_evidence_gate
-```
-
-Installed canonical evidence surfaces:
-
-```text
-schemas/fi_transition_continuity_interop_canonical_execution_evidence.schema.json
-receipts/fi_transition_continuity_interop_canonical_execution_evidence.pending.json
-tools/check_fi_transition_continuity_interop_canonical_evidence_gate.py
-```
-
-The FI contract requires three PASS results, three SHA-256 values, three equivalence assertions, an approved canonical execution surface, `VERIFIED_CANONICAL_RUN`, and preservation of `CONTINUITY_INTEROPERABILITY_ONLY`.
-
-Until complete Schema-valid evidence exists:
-
-```text
-canonical evidence status: PENDING_CANONICAL_EXECUTION
-promotion eligible: false
-downstream activation: prohibited
-cross-domain validation claim: prohibited
-execution authority claim: prohibited
-```
+Issue #4 owns the complete three-task canonical evidence contract, including artifact verification, canonical-evidence gating, three required hashes, three equivalence assertions, and Schema-valid promotion evidence.
 
 ### Morrison Runtime commit-time scope
 
-Installed:
-
-```text
-tests/fixtures/morrison_runtime_commit_time_scope_cases.json
-tests/fixtures/morrison_runtime_commit_time_scope_expected_outcomes.json
-tests/fixtures/morrison_runtime_commit_time_scope_artifact_baseline.json
-tools/run_morrison_runtime_commit_time_scope.py
-tools/verify_morrison_runtime_commit_time_scope_artifacts.py
-tools/check_morrison_runtime_canonical_evidence_gate.py
-tools/tasks/morrison_runtime_commit_time_scope_tasks.json
-reports/morrison_runtime_commit_time_scope_report.json
-receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl
-receipts/morrison_runtime_connector_materialized_reproduction.json
-schemas/morrison_runtime_canonical_execution_evidence.schema.json
-receipts/morrison_runtime_canonical_execution_evidence.pending.json
-receipts/morrison_runtime_commit_time_scope_downstream_activation_contract.json
-```
-
-Bounded deterministic result:
-
-```text
-status: PASS
-case_count: 7
-passed_count: 7
-failed_count: 0
-expected-outcome equivalence: true
-committed report semantic equivalence: true
-committed receipt semantic equivalence: true
-authority posture: EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY
-canonical repository checkout: false
-GitHub Actions run: false
-canonical execution claimed: false
-promotion eligible: false
-external framework validation claimed: false
-```
-
-The connector-materialized reproduction is bounded reproduction evidence only. It is not native Morrison execution, repository checkout, GitHub Actions evidence, certification, endorsement, production validation, or StegVerse execution authority.
-
-## Morrison canonical evidence contract
-
-Issue #5 owns canonical closure.
-
-Required commands:
-
-```bash
-python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id morrison_runtime_commit_time_scope_tests
-python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id verify_morrison_runtime_commit_time_scope_artifacts
-python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id check_morrison_runtime_canonical_evidence_gate
-```
-
-The schema, pending record, gate checker, declared-task manifest, issue #5 completion contract, and downstream activation contract are aligned on:
-
-```text
-three declared commands
-three task results equal PASS
-four SHA-256 values:
-  report
-  receipts
-  artifact verification
-  canonical evidence gate
-four equivalence assertions:
-  report
-  receipts
-  expected outcomes
-  canonical evidence gate
-nested artifact_hashes and artifact_equivalence objects
-no legacy flat hash or equivalence fields
-```
-
-Until the complete contract is satisfied:
-
-```text
-canonical evidence status: PENDING_CANONICAL_EXECUTION
-promotion eligible: false
-downstream activation: prohibited
-handoff promotion: prohibited
-```
+Issue #5 owns canonical closure under the installed three-task, four-hash, four-equivalence, Schema-valid evidence contract. Connector-materialized reproduction remains bounded comparative evidence only.
 
 ### Optimization-target commit boundary
 
-Installed:
-
-```text
-tests/fixtures/optimization_target_commit_boundary_cases.json
-tests/fixtures/optimization_target_commit_boundary_expected_outcomes.json
-tests/fixtures/optimization_target_commit_boundary_artifact_baseline.json
-tools/run_optimization_target_commit_boundary_tests.py
-tools/verify_optimization_target_commit_boundary_artifacts.py
-tools/check_optimization_target_canonical_evidence_gate.py
-tools/tasks/optimization_target_commit_boundary_tasks.json
-schemas/optimization_target_canonical_execution_evidence.schema.json
-receipts/optimization_target_canonical_execution_evidence.pending.json
-receipts/optimization_target_connector_materialized_reproduction.json
-receipts/optimization_target_commit_boundary_downstream_activation_contract.json
-docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md
-```
-
-Required cases:
-
-```text
-OT-CB-001 EXPLICIT_CURRENT_TARGET -> ALLOW
-OT-CB-002 STALE_TARGET_BINDING -> FAIL_CLOSED
-OT-CB-003 UNAUTHORIZED_TARGET_MUTATION -> FAIL_CLOSED
-OT-CB-004 POLICY_DIVERGENCE -> FAIL_CLOSED
-OT-CB-005 DENIAL_UNREACHABLE -> FAIL_CLOSED
-```
-
-Commit-time rule:
-
-```text
-ALLOW only when:
-  target declared
-  target current
-  mutation authorized
-  policy consistent
-  denial reachable
-
-otherwise -> FAIL_CLOSED
-```
-
-Bounded connector-materialized reproduction:
-
-```text
-status: PASS
-case_count: 5
-passed_count: 5
-failed_count: 0
-expected-outcome equivalence: true
-semantic report equivalence: true
-semantic receipt equivalence: true
-authority posture: FORMALISM_TEST_EVIDENCE_ONLY
-canonical repository checkout: false
-GitHub Actions run: false
-existing CI run: false
-canonical execution claimed: false
-promotion eligible: false
-downstream activation authorized: false
-byte equivalence claimed: false
-```
-
-Issue #6 owns canonical closure. The optimization-target schema, pending record, gate checker, task manifest, issue #6 contract, downstream activation contract, and package handoff require three PASS results, four SHA-256 values, four equivalence assertions, nested evidence objects, and `FORMALISM_TEST_EVIDENCE_ONLY` authority posture.
-
-Until canonical repository-checkout, GitHub Actions, or existing-CI evidence exists:
-
-```text
-canonical evidence status: PENDING_CANONICAL_EXECUTION
-promotion eligible: false
-authority posture: FORMALISM_TEST_EVIDENCE_ONLY
-generated report PASS: not claimed
-generated receipt PASS: not claimed
-artifact verification PASS: not claimed
-downstream activation: prohibited
-```
-
-A declared target is not commit-time admissible merely because it existed earlier or was once authorized. Current binding, authorized mutation, policy consistency, and reachable denial must all remain valid until consequence binds.
+Issue #6 owns canonical closure under the installed three-task, four-hash, four-equivalence, Schema-valid evidence contract. The bounded connector-materialized reproduction is not canonical execution, byte-equivalence evidence, downstream authority, or release qualification.
 
 ## Machine-readable proof-package registry
 
@@ -271,9 +85,44 @@ tools/tasks/formalism_proof_package_registry_tasks.json
 docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_MIRROR_HANDOFF.md
 ```
 
-The registry indexes all four proof packages, installed surfaces, issues #3-#6, downstream ownership where assigned, authority boundaries, and release posture. Its validator rejects null or duplicate canonical owners, owner-to-package mismatches, missing installed surfaces, authority-posture drift, bounded-result drift, required package-handoff drift, unauthorized release state, and downstream activation that is not fail-closed.
+The registry indexes all four proof packages, installed surfaces, issues #3-#6, downstream ownership where assigned, authority boundaries, and release posture. Registry validation is inventory-consistency evidence only and does not establish canonical execution for any package.
 
-Registry validation is inventory-consistency evidence only. It does not establish canonical execution for any proof package.
+## Registry existing-workflow binding
+
+Issue #7 owns binding the existing registry declared task to the repository's existing appropriate CI/workflow surface without creating a competing workflow.
+
+Installed:
+
+```text
+status/formalism_proof_package_registry_ci_binding.pending.json
+schemas/formalism_proof_package_registry_ci_binding.schema.json
+tools/check_formalism_proof_package_registry_ci_binding.py
+tools/tasks/formalism_proof_package_registry_tasks.json
+```
+
+Required binding evidence:
+
+```text
+existing workflow path
+positive workflow run ID
+positive job ID
+40-character commit SHA
+registry verification report SHA-256
+binding_verified: true
+canonical_execution_claimed: false
+authority_posture: REGISTRY_CONSISTENCY_ONLY
+```
+
+Until authentic evidence is observable:
+
+```text
+status: PENDING_EXISTING_WORKFLOW_BINDING
+binding_verified: false
+promotion_eligible: false
+canonical proof issues satisfied: none
+```
+
+The CI-binding Schema, pending record, validator, declared task, and issue #7 must remain aligned. A verified registry workflow binding does not satisfy issues #3-#6 and grants no execution, release, publication, certification, financial, sovereign, or downstream mutation authority.
 
 ## Current active ownership
 
@@ -290,6 +139,9 @@ issue #5
 issue #6
   -> canonical optimization-target commit-boundary execution and evidence-gate satisfaction
 
+issue #7
+  -> bind registry validation to the existing appropriate CI/workflow surface
+
 admissibility-wiki issue #39
   -> bounded downstream compatibility-report promotion only after issue #5 closure
 ```
@@ -305,9 +157,10 @@ preserve fail-closed downstream activation contracts
 prepare bounded documentation references that remain unpublished and non-authoritative
 inspect repository-owned workflow evidence when exposed
 keep the machine-readable registry synchronized with package and ownership changes
+keep the registry CI-binding Schema, pending record, validator, task manifest, issue #7, and handoff synchronized
 ```
 
-Do not infer progress from elapsed time, connector access, branch existence, or external-framework claims.
+Do not infer progress from elapsed time, connector access, branch existence, issue existence, or external-framework claims.
 
 ## Downstream restrictions
 
@@ -341,4 +194,4 @@ StegVerse-002/stegguardian-wiki
 
 ## Archive posture
 
-This handoff preserves the installed denial-reachability, FI continuity, Morrison commit-time scope, optimization-target commit-boundary, and proof-package registry surfaces; bounded reproduction results; canonical evidence schemas and contracts; complete issue #3-#6 ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the installed denial-reachability, FI continuity, Morrison commit-time scope, optimization-target commit-boundary, proof-package registry, and registry existing-workflow binding surfaces; bounded reproduction results; canonical evidence Schemas and gates; complete issue #3-#7 ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
