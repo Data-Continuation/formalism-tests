@@ -50,7 +50,7 @@ OT-CB-005 DENIAL_UNREACHABLE -> FAIL_CLOSED
 
 Issue `Data-Continuation/formalism-tests#6` owns canonical execution, artifact-equivalence closure, canonical evidence generation, and completion status.
 
-Required commands:
+Required commands, in exact order:
 
 ```bash
 python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests
@@ -61,22 +61,30 @@ python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_bounda
 The canonical contract requires:
 
 ```text
-three declared commands
+three declared commands in exact order
 three task results equal PASS
 four SHA-256 values:
   report
   receipts
   artifact verification
-  canonical evidence gate
+  committed canonical-evidence gate checker source
 four equivalence assertions:
   report
   receipts
   expected outcomes
-  canonical evidence gate
+  canonical-evidence gate checker source
 nested artifact_hashes and artifact_equivalence objects
 authority_posture: FORMALISM_TEST_EVIDENCE_ONLY
 status: VERIFIED_CANONICAL_RUN
 ```
+
+`artifact_hashes.canonical_evidence_gate_sha256` is the SHA-256 of the committed source file:
+
+```text
+tools/check_optimization_target_canonical_evidence_gate.py
+```
+
+It is not the digest of the gate's generated output. This removes self-referential receipt construction while preserving exact gate-version custody. The gate recomputes that source digest and rejects a mismatch. `artifact_equivalence.canonical_evidence_gate=true` therefore means the executed gate checker is byte-identical to the committed checker source identified by that digest.
 
 ## Current state
 
@@ -129,6 +137,7 @@ release or tag creation
 Issue #6 canonical execution in an approved execution surface.
 Generate report and execution receipts from the declared-task runner.
 Regenerate artifact verification with PASS.
+Hash the committed canonical-evidence gate checker source.
 Generate canonical evidence gate output.
 Record the four required SHA-256 values.
 Confirm the four required equivalence assertions.
@@ -158,4 +167,4 @@ No release or tag is authorized until canonical execution, artifact equivalence,
 
 ## Archive posture
 
-This handoff preserves the installed optimization-target package, canonical evidence contract, issue ownership, downstream activation boundary, authority restrictions, remaining files and destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the installed optimization-target package, exact-command canonical evidence contract, non-self-referential gate-checker hash custody, issue ownership, downstream activation boundary, authority restrictions, remaining files and destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
