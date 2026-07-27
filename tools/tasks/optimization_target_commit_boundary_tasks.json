@@ -1,0 +1,21 @@
+{
+  "schema": "stegverse_declared_task_manifest.v1",
+  "manifest_name": "optimization target commit-boundary proof tasks",
+  "manifest_version": "0.1.0",
+  "tasks": [
+    {
+      "task_id": "optimization_target_commit_boundary_tests",
+      "description": "Run explicit-target, stale-binding, unauthorized-mutation, policy-divergence, and denial-unreachable fixtures.",
+      "command": [
+        "python",
+        "tools/run_optimization_target_commit_boundary_tests.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/optimization_target_commit_boundary_report.json",
+        "receipts/optimization_target_commit_boundary_execution_receipts.jsonl"
+      ],
+      "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY"
+    }
+  ]
+}
