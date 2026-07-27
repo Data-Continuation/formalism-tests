@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/optimization-target-canonical-execution-evidence.schema.json",
+  "title": "Optimization Target Canonical Execution Evidence",
+  "type": "object",
+  "required": [
+    "schema",
+    "suite_id",
+    "repository",
+    "commit_sha",
+    "execution_surface",
+    "commands",
+    "task_results",
+    "artifact_hashes",
+    "artifact_equivalence",
+    "authority_posture",
+    "status"
+  ],
+  "properties": {
+    "schema": {
+      "const": "stegverse.optimization-target.canonical-execution-evidence.v1"
+    },
+    "suite_id": {
+      "const": "optimization-target-commit-boundary-v0.1"
+    },
+    "repository": {
+      "const": "Data-Continuation/formalism-tests"
+    },
+    "commit_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "execution_surface": {
+      "type": "string",
+      "enum": [
+        "GITHUB_ACTIONS",
+        "REPOSITORY_CHECKOUT",
+        "EXISTING_CI"
+      ]
+    },
+    "run_url": {
+      "type": ["string", "null"]
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "commands": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "task_results": {
+      "type": "object",
+      "required": [
+        "optimization_target_commit_boundary_tests",
+        "verify_optimization_target_commit_boundary_artifacts",
+        "check_optimization_target_canonical_evidence_gate"
+      ],
+      "properties": {
+        "optimization_target_commit_boundary_tests": {"const": "PASS"},
+        "verify_optimization_target_commit_boundary_artifacts": {"const": "PASS"},
+        "check_optimization_target_canonical_evidence_gate": {"const": "PASS"}
+      },
+      "additionalProperties": false
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "required": [
+        "report_sha256",
+        "receipts_sha256",
+        "artifact_verification_sha256",
+        "canonical_evidence_gate_sha256"
+      ],
+      "properties": {
+        "report_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "receipts_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "artifact_verification_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "canonical_evidence_gate_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "artifact_equivalence": {
+      "type": "object",
+      "required": [
+        "report",
+        "receipts",
+        "expected_outcomes",
+        "canonical_evidence_gate"
+      ],
+      "properties": {
+        "report": {"const": true},
+        "receipts": {"const": true},
+        "expected_outcomes": {"const": true},
+        "canonical_evidence_gate": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "authority_posture": {
+      "const": "FORMALISM_TEST_EVIDENCE_ONLY"
+    },
+    "status": {
+      "const": "VERIFIED_CANONICAL_RUN"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
