@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -12,9 +13,15 @@ ROOT = Path(__file__).resolve().parents[1]
 PENDING = ROOT / "receipts/optimization_target_canonical_execution_evidence.pending.json"
 CANONICAL = ROOT / "receipts/optimization_target_canonical_execution_evidence.json"
 OUTPUT = ROOT / "reports/optimization_target_canonical_evidence_gate.json"
+CHECKER = ROOT / "tools/check_optimization_target_canonical_evidence_gate.py"
 AUTHORITY = "FORMALISM_TEST_EVIDENCE_ONLY"
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
+REQUIRED_COMMANDS = [
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests",
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id check_optimization_target_canonical_evidence_gate",
+]
 REQUIRED_TASKS = {
     "optimization_target_commit_boundary_tests",
     "verify_optimization_target_commit_boundary_artifacts",
@@ -41,6 +48,10 @@ def load(path: Path) -> dict:
     return value
 
 
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def validate_pending(record: dict) -> list[str]:
     errors: list[str] = []
     expected = {
@@ -53,9 +64,8 @@ def validate_pending(record: dict) -> list[str]:
     for key, value in expected.items():
         if record.get(key) != value:
             errors.append(f"pending.{key} must equal {value!r}")
-    commands = record.get("required_commands")
-    if not isinstance(commands, list) or len(commands) != 3:
-        errors.append("pending.required_commands must contain exactly three commands")
+    if record.get("required_commands") != REQUIRED_COMMANDS:
+        errors.append("pending.required_commands must exactly match the three declared commands in order")
     return errors
 
 
@@ -75,10 +85,8 @@ def validate_canonical(record: dict) -> list[str]:
         errors.append("canonical.commit_sha must be a lowercase 40-character SHA")
     if record.get("execution_surface") not in {"GITHUB_ACTIONS", "REPOSITORY_CHECKOUT", "EXISTING_CI"}:
         errors.append("canonical.execution_surface is not approved")
-
-    commands = record.get("commands")
-    if not isinstance(commands, list) or len(commands) < 3:
-        errors.append("canonical.commands must contain at least three commands")
+    if record.get("commands") != REQUIRED_COMMANDS:
+        errors.append("canonical.commands must exactly match the three declared commands in order")
 
     task_results = record.get("task_results")
     if not isinstance(task_results, dict) or set(task_results) != REQUIRED_TASKS:
@@ -93,6 +101,11 @@ def validate_canonical(record: dict) -> list[str]:
         for field in REQUIRED_HASHES:
             if not SHA256.fullmatch(str(artifact_hashes.get(field, ""))):
                 errors.append(f"canonical.artifact_hashes.{field} must be a lowercase SHA-256")
+        expected_checker_hash = sha256(CHECKER)
+        if artifact_hashes.get("canonical_evidence_gate_sha256") != expected_checker_hash:
+            errors.append(
+                "canonical.artifact_hashes.canonical_evidence_gate_sha256 must hash the committed gate checker source"
+            )
 
     equivalence = record.get("artifact_equivalence")
     if not isinstance(equivalence, dict) or set(equivalence) != REQUIRED_EQUIVALENCE:
@@ -140,6 +153,8 @@ def main() -> int:
         "status": "PASS" if not errors else "FAIL",
         "promotion_eligible": mode == "CANONICAL_EVIDENCE_PRESENT" and not errors,
         "authority_posture": AUTHORITY,
+        "canonical_evidence_gate_hash_target": "tools/check_optimization_target_canonical_evidence_gate.py",
+        "canonical_evidence_gate_sha256": sha256(CHECKER),
         "errors": errors,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
