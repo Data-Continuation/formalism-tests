@@ -16,7 +16,10 @@
       "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
       "bounded_result": "PASS",
       "canonical_state": "PENDING_CANONICAL_EXECUTION",
-      "canonical_owner": null,
+      "canonical_owner": {
+        "repository": "Data-Continuation/formalism-tests",
+        "issue": 3
+      },
       "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
       "installed_surfaces": [
         "tests/fixtures/denial_reachability_cases.json",
@@ -110,6 +113,10 @@
     }
   ],
   "active_issue_ownership": [
+    {
+      "issue": 3,
+      "workload": "canonical denial-reachability declared-task execution and durable byte-equivalence evidence"
+    },
     {
       "issue": 4,
       "workload": "canonical FI continuity interoperability execution and durable equivalence evidence"
