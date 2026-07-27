@@ -29,38 +29,47 @@
     "executed_at": {"type": "string", "format": "date-time"},
     "commands": {
       "type": "array",
-      "minItems": 2,
+      "minItems": 3,
       "items": {"type": "string"}
     },
     "task_results": {
       "type": "object",
       "required": [
         "morrison_runtime_commit_time_scope_tests",
-        "verify_morrison_runtime_commit_time_scope_artifacts"
+        "verify_morrison_runtime_commit_time_scope_artifacts",
+        "check_morrison_runtime_canonical_evidence_gate"
       ],
       "properties": {
         "morrison_runtime_commit_time_scope_tests": {"const": "PASS"},
-        "verify_morrison_runtime_commit_time_scope_artifacts": {"const": "PASS"}
+        "verify_morrison_runtime_commit_time_scope_artifacts": {"const": "PASS"},
+        "check_morrison_runtime_canonical_evidence_gate": {"const": "PASS"}
       },
       "additionalProperties": false
     },
     "artifact_hashes": {
       "type": "object",
-      "required": ["report_sha256", "receipts_sha256", "verification_sha256"],
+      "required": [
+        "report_sha256",
+        "receipts_sha256",
+        "verification_sha256",
+        "canonical_evidence_gate_sha256"
+      ],
       "properties": {
         "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "receipts_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "verification_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        "verification_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "canonical_evidence_gate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       },
       "additionalProperties": false
     },
     "artifact_equivalence": {
       "type": "object",
-      "required": ["report", "receipts", "expected_outcomes"],
+      "required": ["report", "receipts", "expected_outcomes", "canonical_evidence_gate"],
       "properties": {
         "report": {"const": true},
         "receipts": {"const": true},
-        "expected_outcomes": {"const": true}
+        "expected_outcomes": {"const": true},
+        "canonical_evidence_gate": {"const": true}
       },
       "additionalProperties": false
     },
