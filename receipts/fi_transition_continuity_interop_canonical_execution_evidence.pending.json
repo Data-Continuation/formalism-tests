@@ -1,0 +1,37 @@
+{
+  "schema": "stegverse.fi-transition-continuity-interop.canonical-execution-evidence.pending.v1",
+  "suite_id": "fi-transition-continuity-interoperability-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "issue": 4,
+  "status": "PENDING_CANONICAL_EXECUTION",
+  "required_commands": [
+    "python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id fi_transition_continuity_interop_tests",
+    "python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id verify_fi_transition_continuity_interop_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id check_fi_transition_continuity_interop_canonical_evidence_gate"
+  ],
+  "required_task_results": {
+    "fi_transition_continuity_interop_tests": "PENDING",
+    "verify_fi_transition_continuity_interop_artifacts": "PENDING",
+    "check_fi_transition_continuity_interop_canonical_evidence_gate": "PENDING"
+  },
+  "required_artifact_hashes": {
+    "report_sha256": "PENDING",
+    "artifact_verification_sha256": "PENDING",
+    "canonical_evidence_gate_sha256": "PENDING"
+  },
+  "required_artifact_equivalence": {
+    "report": false,
+    "expected_outcomes": false,
+    "canonical_evidence_gate": false
+  },
+  "required_schema": "schemas/fi_transition_continuity_interop_canonical_execution_evidence.schema.json",
+  "promotion_prohibited_until_complete": true,
+  "downstream_activation_prohibited": true,
+  "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
+  "non_claims": [
+    "Pending evidence is not canonical execution.",
+    "Continuity interoperability is not cross-domain validation.",
+    "A passing fixture suite does not grant production or execution authority.",
+    "No universal-law claim is established by this package."
+  ]
+}
