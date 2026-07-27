@@ -14,13 +14,34 @@
     "issue": 39,
     "state": "WAITING_FOR_UPSTREAM"
   },
+  "required_canonical_commands": [
+    "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id morrison_runtime_commit_time_scope_tests",
+    "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id verify_morrison_runtime_commit_time_scope_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id check_morrison_runtime_canonical_evidence_gate"
+  ],
   "activation_preconditions": [
-    "morrison_runtime_commit_time_scope_tests passes in a repository checkout or existing CI surface",
-    "verify_morrison_runtime_commit_time_scope_artifacts passes in the same bounded execution chain",
-    "generated report is byte-equivalent to the committed deterministic baseline",
-    "generated receipts are equivalent to the committed receipt set",
+    "all three declared tasks pass in one approved canonical execution surface",
+    "generated report is exactly equivalent to the committed deterministic baseline",
+    "generated receipts are exactly equivalent to the committed receipt set",
+    "expected outcomes are exactly equivalent to the committed expected-outcome contract",
     "artifact verification is regenerated with PASS",
-    "durable evidence records commit, execution surface, commands, results, and artifact hashes"
+    "canonical evidence gate is regenerated with PASS and promotion_eligible true",
+    "durable evidence records commit SHA, execution surface, all commands, and all task results",
+    "durable evidence records report, receipts, artifact verification, and canonical evidence gate SHA-256 values",
+    "receipts/morrison_runtime_canonical_execution_evidence.json satisfies schemas/morrison_runtime_canonical_execution_evidence.schema.json",
+    "canonical evidence status equals VERIFIED_CANONICAL_RUN"
+  ],
+  "required_artifact_hashes": [
+    "report_sha256",
+    "receipts_sha256",
+    "verification_sha256",
+    "canonical_evidence_gate_sha256"
+  ],
+  "required_equivalence_assertions": [
+    "report",
+    "receipts",
+    "expected_outcomes",
+    "canonical_evidence_gate"
   ],
   "authorized_after_completion": [
     "submit canonical proof evidence to StegVerse-Labs/admissibility-wiki issue 39",
@@ -37,5 +58,6 @@
     "stegguardian-wiki mutation",
     "claim that default Runtime Governance performs full fresh-state reconstruction"
   ],
+  "promotion_eligible_before_canonical_evidence": false,
   "failure_behavior": "FAIL_CLOSED_RETAIN_PENDING_CANONICAL_EXECUTION"
 }
