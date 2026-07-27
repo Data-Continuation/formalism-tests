@@ -43,6 +43,14 @@ canonical owner: issue #3
 
 Issue #3 owns repository-checkout, existing-CI, or GitHub Actions execution; byte-equivalence confirmation; durable run evidence; and promotion from pending to `VERIFIED_CANONICAL_RUN` only after authentic evidence exists.
 
+Installed canonical evidence surfaces:
+
+```text
+schemas/denial_reachability_canonical_execution_evidence.schema.json
+receipts/denial_reachability_canonical_execution_evidence.pending.json
+tools/check_denial_reachability_canonical_evidence_gate.py
+```
+
 ### FI continuity interoperability
 
 ```text
@@ -63,7 +71,35 @@ continuity interoperability != execution authority
 reproduction pass != canonical execution
 ```
 
-Canonical-run ownership remains with issue #4.
+Issue #4 owns canonical closure.
+
+Required commands:
+
+```bash
+python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id fi_transition_continuity_interop_tests
+python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id verify_fi_transition_continuity_interop_artifacts
+python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id check_fi_transition_continuity_interop_canonical_evidence_gate
+```
+
+Installed canonical evidence surfaces:
+
+```text
+schemas/fi_transition_continuity_interop_canonical_execution_evidence.schema.json
+receipts/fi_transition_continuity_interop_canonical_execution_evidence.pending.json
+tools/check_fi_transition_continuity_interop_canonical_evidence_gate.py
+```
+
+The FI contract requires three PASS results, three SHA-256 values, three equivalence assertions, an approved canonical execution surface, `VERIFIED_CANONICAL_RUN`, and preservation of `CONTINUITY_INTEROPERABILITY_ONLY`.
+
+Until complete Schema-valid evidence exists:
+
+```text
+canonical evidence status: PENDING_CANONICAL_EXECUTION
+promotion eligible: false
+downstream activation: prohibited
+cross-domain validation claim: prohibited
+execution authority claim: prohibited
+```
 
 ### Morrison Runtime commit-time scope
 
