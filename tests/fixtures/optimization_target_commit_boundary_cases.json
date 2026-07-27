@@ -1,0 +1,66 @@
+{
+  "schema": "stegverse.optimization-target.commit-boundary.fixtures.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "cases": [
+    {
+      "case_id": "OT-CB-001",
+      "title": "EXPLICIT_TARGET_BOUND_AT_COMMIT",
+      "inputs": {
+        "target_declared": true,
+        "target_current": true,
+        "mutation_authorized": true,
+        "policy_consistent": true,
+        "deny_reachable": true
+      },
+      "expected_result": "ALLOW"
+    },
+    {
+      "case_id": "OT-CB-002",
+      "title": "STALE_TARGET_BINDING",
+      "inputs": {
+        "target_declared": true,
+        "target_current": false,
+        "mutation_authorized": true,
+        "policy_consistent": true,
+        "deny_reachable": true
+      },
+      "expected_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "OT-CB-003",
+      "title": "UNAUTHORIZED_TARGET_MUTATION",
+      "inputs": {
+        "target_declared": true,
+        "target_current": true,
+        "mutation_authorized": false,
+        "policy_consistent": true,
+        "deny_reachable": true
+      },
+      "expected_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "OT-CB-004",
+      "title": "POLICY_DIVERGENCE",
+      "inputs": {
+        "target_declared": true,
+        "target_current": true,
+        "mutation_authorized": true,
+        "policy_consistent": false,
+        "deny_reachable": true
+      },
+      "expected_result": "FAIL_CLOSED"
+    },
+    {
+      "case_id": "OT-CB-005",
+      "title": "DENIAL_UNREACHABLE",
+      "inputs": {
+        "target_declared": true,
+        "target_current": true,
+        "mutation_authorized": true,
+        "policy_consistent": true,
+        "deny_reachable": false
+      },
+      "expected_result": "FAIL_CLOSED"
+    }
+  ]
+}
