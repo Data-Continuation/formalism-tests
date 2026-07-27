@@ -44,10 +44,77 @@
       "maxItems": 4,
       "uniqueItems": true,
       "allOf": [
-        {"contains": {"type": "object", "properties": {"package_id": {"const": "denial-reachability"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 3}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"type": "object", "properties": {"package_id": {"const": "fi-transition-continuity-interoperability"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 4}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"type": "object", "properties": {"package_id": {"const": "morrison-runtime-commit-time-scope"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 5}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"type": "object", "properties": {"package_id": {"const": "optimization-target-commit-boundary"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 6}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1}
+        {
+          "contains": {
+            "type": "object",
+            "required": ["package_id", "authority_posture", "bounded_result", "canonical_owner", "downstream_activation"],
+            "properties": {
+              "package_id": {"const": "denial-reachability"},
+              "authority_posture": {"const": "REPRODUCTION_EVIDENCE_ONLY"},
+              "bounded_result": {"const": "PASS"},
+              "canonical_owner": {"type": "object", "required": ["issue"], "properties": {"issue": {"const": 3}}},
+              "downstream_activation": {"const": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE"}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["package_id", "authority_posture", "bounded_result", "canonical_owner", "downstream_activation"],
+            "properties": {
+              "package_id": {"const": "fi-transition-continuity-interoperability"},
+              "authority_posture": {"const": "CONTINUITY_INTEROPERABILITY_ONLY"},
+              "bounded_result": {"const": "PASS"},
+              "canonical_owner": {"type": "object", "required": ["issue"], "properties": {"issue": {"const": 4}}},
+              "downstream_activation": {"const": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE"}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["package_id", "authority_posture", "bounded_result", "canonical_owner", "downstream_owner", "downstream_activation"],
+            "properties": {
+              "package_id": {"const": "morrison-runtime-commit-time-scope"},
+              "authority_posture": {"const": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"},
+              "bounded_result": {"const": "PASS"},
+              "canonical_owner": {"type": "object", "required": ["issue"], "properties": {"issue": {"const": 5}}},
+              "downstream_owner": {
+                "type": "object",
+                "required": ["repository", "issue", "state"],
+                "properties": {
+                  "repository": {"const": "StegVerse-Labs/admissibility-wiki"},
+                  "issue": {"const": 39},
+                  "state": {"const": "WAITING_FOR_UPSTREAM"}
+                }
+              },
+              "downstream_activation": {"const": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE"}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["package_id", "authority_posture", "bounded_result", "canonical_owner", "downstream_activation", "package_handoff", "installed_surfaces"],
+            "properties": {
+              "package_id": {"const": "optimization-target-commit-boundary"},
+              "authority_posture": {"const": "FORMALISM_TEST_EVIDENCE_ONLY"},
+              "bounded_result": {"const": "CONNECTOR_REPRODUCTION_PASS"},
+              "canonical_owner": {"type": "object", "required": ["issue"], "properties": {"issue": {"const": 6}}},
+              "downstream_activation": {"const": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF"},
+              "package_handoff": {"const": "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md"},
+              "installed_surfaces": {"contains": {"const": "receipts/optimization_target_connector_materialized_reproduction.json"}, "minContains": 1, "maxContains": 1}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
       ],
       "items": {
         "type": "object",
