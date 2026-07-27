@@ -10,18 +10,23 @@
     "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id verify_morrison_runtime_commit_time_scope_artifacts",
     "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id check_morrison_runtime_canonical_evidence_gate"
   ],
+  "required_task_results": {
+    "morrison_runtime_commit_time_scope_tests": "PASS",
+    "verify_morrison_runtime_commit_time_scope_artifacts": "PASS",
+    "check_morrison_runtime_canonical_evidence_gate": "PASS"
+  },
   "required_evidence": [
-    "schema-valid canonical evidence record",
     "40-character commit SHA",
     "repository checkout, GitHub Actions, or existing CI execution surface",
-    "both canonical execution task results equal PASS",
-    "canonical evidence gate task equals PASS after the evidence record is installed",
+    "all three declared task results equal PASS",
     "report SHA-256",
     "execution receipts SHA-256",
     "artifact verification SHA-256",
+    "canonical evidence gate SHA-256",
     "report equivalence true",
     "receipt equivalence true",
-    "expected-outcome equivalence true"
+    "expected-outcome equivalence true",
+    "canonical-evidence-gate equivalence true"
   ],
   "promotion_prohibited_until_complete": true,
   "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY"
