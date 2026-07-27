@@ -18,11 +18,29 @@ REQUIRED_PACKAGES = {
     "optimization-target-commit-boundary",
 }
 REQUIRED_ISSUES = {3, 4, 5, 6}
-EXPECTED_PACKAGE_OWNERS = {
-    "denial-reachability": 3,
-    "fi-transition-continuity-interoperability": 4,
-    "morrison-runtime-commit-time-scope": 5,
-    "optimization-target-commit-boundary": 6,
+EXPECTED_PACKAGE_CONTRACTS = {
+    "denial-reachability": {
+        "issue": 3,
+        "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+        "bounded_result": "PASS",
+    },
+    "fi-transition-continuity-interoperability": {
+        "issue": 4,
+        "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
+        "bounded_result": "PASS",
+    },
+    "morrison-runtime-commit-time-scope": {
+        "issue": 5,
+        "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
+        "bounded_result": "PASS",
+    },
+    "optimization-target-commit-boundary": {
+        "issue": 6,
+        "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+        "bounded_result": "CONNECTOR_REPRODUCTION_PASS",
+        "package_handoff": "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
+        "required_surface": "receipts/optimization_target_connector_materialized_reproduction.json",
+    },
 }
 FALSE_AUTHORITY_FIELDS = {
     "execution_authority_granted",
@@ -76,14 +94,20 @@ def main() -> int:
             errors.append("package entry must be an object")
             continue
         package_id = package.get("package_id", "<unknown>")
+        expected = EXPECTED_PACKAGE_CONTRACTS.get(package_id, {})
+
         if package.get("canonical_state") not in {
             "PENDING_CANONICAL_EXECUTION",
             "VERIFIED_CANONICAL_RUN",
         }:
             errors.append(f"{package_id}: invalid canonical_state")
+        if package.get("authority_posture") != expected.get("authority_posture"):
+            errors.append(f"{package_id}: authority posture mismatch")
+        if package.get("bounded_result") != expected.get("bounded_result"):
+            errors.append(f"{package_id}: bounded result mismatch")
 
         owner = package.get("canonical_owner")
-        expected_issue = EXPECTED_PACKAGE_OWNERS.get(package_id)
+        expected_issue = expected.get("issue")
         if not isinstance(owner, dict):
             errors.append(f"{package_id}: canonical_owner must be an object")
         else:
@@ -98,12 +122,22 @@ def main() -> int:
 
         if not str(package.get("downstream_activation", "")).startswith("PROHIBITED_"):
             errors.append(f"{package_id}: downstream activation must remain prohibited")
+
+        expected_handoff = expected.get("package_handoff")
+        if expected_handoff and package.get("package_handoff") != expected_handoff:
+            errors.append(f"{package_id}: package handoff mismatch")
+
         surfaces = package.get("installed_surfaces")
         if not isinstance(surfaces, list) or not surfaces:
             errors.append(f"{package_id}: installed_surfaces must be non-empty")
             continue
         if len(surfaces) != len(set(surfaces)):
             errors.append(f"{package_id}: duplicate installed surface")
+
+        required_surface = expected.get("required_surface")
+        if required_surface and required_surface not in surfaces:
+            errors.append(f"{package_id}: required installed surface missing from registry")
+
         for surface in surfaces:
             path = ROOT / surface
             if not path.exists():
