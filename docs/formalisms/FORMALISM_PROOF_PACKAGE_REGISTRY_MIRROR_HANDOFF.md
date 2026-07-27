@@ -46,12 +46,13 @@ optimization-target-commit-boundary
 Active issue ownership:
 
 ```text
+issue #3 -> canonical denial-reachability declared-task execution
 issue #4 -> canonical FI continuity interoperability execution
 issue #5 -> canonical Morrison commit-time scope execution
 issue #6 -> canonical optimization-target commit-boundary execution
 ```
 
-The validator rejects duplicate issue ownership and duplicate package identifiers.
+Every registered package now has exactly one canonical owner. The validator rejects null canonical owners, duplicate issue ownership, package-owner mismatch, and duplicate package identifiers.
 
 ## Fail-closed invariants
 
@@ -82,6 +83,7 @@ registry installed: true
 schema installed: true
 validator installed: true
 declared task installed: true
+canonical owners indexed: issues #3, #4, #5, #6
 canonical proof-package execution inferred: false
 downstream activation inferred: false
 release authorized: false
@@ -98,7 +100,7 @@ Commit the generated verification report only when authentic execution evidence 
 Update the registry whenever a package, installed surface, canonical owner, or downstream owner changes.
 Preserve one active owner per issue-owned workload.
 Do not promote package state from pending to verified without the package-specific canonical evidence contract.
-Synchronize the repository-wide handoff when its next safe update occurs.
+Synchronize the repository-wide handoff whenever registry ownership changes.
 ```
 
 ### Downstream destinations
@@ -127,4 +129,4 @@ After release qualification, queue a propagation-status review for Site, Publish
 
 ## Archive posture
 
-This handoff preserves the registry package, declared validation task, fail-closed invariants, active ownership, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the registry package, declared validation task, fail-closed invariants, complete issue #3-#6 ownership, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
