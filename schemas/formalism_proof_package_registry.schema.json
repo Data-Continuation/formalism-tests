@@ -10,6 +10,7 @@
     "authority_boundary",
     "packages",
     "active_issue_ownership",
+    "coordination_issue_ownership",
     "policy",
     "release_state",
     "manual_user_tasks_required"
@@ -187,6 +188,34 @@
         "properties": {
           "issue": {"enum": [3, 4, 5, 6]},
           "workload": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "coordination_issue_ownership": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "issue",
+          "workload",
+          "authority_posture",
+          "status",
+          "contract",
+          "handoff",
+          "canonical_proof_issues_satisfied"
+        ],
+        "properties": {
+          "issue": {"const": 7},
+          "workload": {"const": "bind proof-package registry validation to an existing CI workflow"},
+          "authority_posture": {"const": "REGISTRY_CONSISTENCY_ONLY"},
+          "status": {"enum": ["PENDING_EXISTING_WORKFLOW_BINDING", "VERIFIED_EXISTING_WORKFLOW_BINDING"]},
+          "contract": {"const": "status/formalism_proof_package_registry_ci_binding.pending.json"},
+          "handoff": {"const": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md"},
+          "canonical_proof_issues_satisfied": {"type": "array", "maxItems": 0}
         },
         "additionalProperties": false
       }
