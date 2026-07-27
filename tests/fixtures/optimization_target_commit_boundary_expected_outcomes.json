@@ -1,0 +1,18 @@
+{
+  "schema": "stegverse.optimization-target.commit-boundary.expected.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "expected": {
+    "OT-CB-001": "ALLOW",
+    "OT-CB-002": "FAIL_CLOSED",
+    "OT-CB-003": "FAIL_CLOSED",
+    "OT-CB-004": "FAIL_CLOSED",
+    "OT-CB-005": "FAIL_CLOSED"
+  },
+  "invariants": [
+    "An optimization target must be explicit and current at the commit boundary.",
+    "Target mutation requires independent authorization.",
+    "Policy divergence fails closed even when the target remains syntactically valid.",
+    "An allow path without reachable denial is inherited execution, not governed admissibility.",
+    "Fixture success grants proof-surface evidence only, not execution or installation authority."
+  ]
+}
