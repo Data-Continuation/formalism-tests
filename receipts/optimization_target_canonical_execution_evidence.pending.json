@@ -1,0 +1,30 @@
+{
+  "schema": "stegverse.optimization-target.canonical-execution-evidence.pending.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "issue": 6,
+  "status": "PENDING_CANONICAL_EXECUTION",
+  "required_commands": [
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests",
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts"
+  ],
+  "required_evidence": [
+    "40-character commit SHA",
+    "repository checkout, GitHub Actions, or existing CI execution surface",
+    "both declared task results equal PASS",
+    "report SHA-256",
+    "execution receipts SHA-256",
+    "artifact verification SHA-256",
+    "report equivalence true",
+    "receipt equivalence true",
+    "expected-outcome equivalence true"
+  ],
+  "promotion_prohibited_until_complete": true,
+  "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+  "non_claims": [
+    "Pending evidence is not canonical execution.",
+    "A passing fixture suite does not grant installation or production authority.",
+    "Optimization-target admissibility does not establish the target's objective value or truth.",
+    "Proof evidence does not grant publication, financial, or sovereign authority."
+  ]
+}
