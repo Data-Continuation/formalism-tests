@@ -34,25 +34,35 @@ reports/formalism_proof_package_registry_verification.json
 
 The output is generated validation evidence. It is not canonical execution evidence for any registered proof package.
 
-## Registered proof packages
+## Registered proof packages and exact ownership
 
 ```text
 denial-reachability
+  -> issue #3
+
 fi-transition-continuity-interoperability
+  -> issue #4
+
 morrison-runtime-commit-time-scope
+  -> issue #5
+
 optimization-target-commit-boundary
+  -> issue #6
 ```
 
-Active issue ownership:
+The Schema and validator require exactly these four packages and exactly these four issue owners. A registered package may not have a null canonical owner. Each issue may own only its mapped package workload.
+
+The validator rejects:
 
 ```text
-issue #3 -> canonical denial-reachability declared-task execution
-issue #4 -> canonical FI continuity interoperability execution
-issue #5 -> canonical Morrison commit-time scope execution
-issue #6 -> canonical optimization-target commit-boundary execution
+missing canonical owner
+wrong owner repository
+wrong package-to-issue mapping
+duplicate issue ownership
+duplicate package identifiers
+missing issue #3, #4, #5, or #6
+extra registered packages or active issue owners
 ```
-
-Every registered package now has exactly one canonical owner. The validator rejects null canonical owners, duplicate issue ownership, package-owner mismatch, and duplicate package identifiers.
 
 ## Fail-closed invariants
 
@@ -83,7 +93,7 @@ registry installed: true
 schema installed: true
 validator installed: true
 declared task installed: true
-canonical owners indexed: issues #3, #4, #5, #6
+exact package-owner mapping installed: true
 canonical proof-package execution inferred: false
 downstream activation inferred: false
 release authorized: false
@@ -100,7 +110,7 @@ Commit the generated verification report only when authentic execution evidence 
 Update the registry whenever a package, installed surface, canonical owner, or downstream owner changes.
 Preserve one active owner per issue-owned workload.
 Do not promote package state from pending to verified without the package-specific canonical evidence contract.
-Synchronize the repository-wide handoff whenever registry ownership changes.
+Synchronize the repository-wide handoff when its next safe update occurs.
 ```
 
 ### Downstream destinations
@@ -129,4 +139,4 @@ After release qualification, queue a propagation-status review for Site, Publish
 
 ## Archive posture
 
-This handoff preserves the registry package, declared validation task, fail-closed invariants, complete issue #3-#6 ownership, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the registry package, exact package-owner mapping, declared validation task, fail-closed invariants, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
