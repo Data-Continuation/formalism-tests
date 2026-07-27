@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/fi-transition-continuity-interop-canonical-execution-evidence.schema.json",
+  "title": "FI Transition Continuity Interoperability Canonical Execution Evidence",
+  "type": "object",
+  "required": [
+    "schema",
+    "suite_id",
+    "repository",
+    "issue",
+    "status",
+    "authority_posture",
+    "commit_sha",
+    "execution_surface",
+    "commands",
+    "task_results",
+    "artifact_hashes",
+    "artifact_equivalence"
+  ],
+  "properties": {
+    "schema": {"const": "stegverse.fi-transition-continuity-interop.canonical-execution-evidence.v1"},
+    "suite_id": {"const": "fi-transition-continuity-interoperability-v0.1"},
+    "repository": {"const": "Data-Continuation/formalism-tests"},
+    "issue": {"const": 4},
+    "status": {"const": "VERIFIED_CANONICAL_RUN"},
+    "authority_posture": {"const": "CONTINUITY_INTEROPERABILITY_ONLY"},
+    "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "execution_surface": {"enum": ["GITHUB_ACTIONS", "REPOSITORY_CHECKOUT", "EXISTING_CI"]},
+    "commands": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "task_results": {
+      "type": "object",
+      "required": [
+        "fi_transition_continuity_interop_tests",
+        "verify_fi_transition_continuity_interop_artifacts",
+        "check_fi_transition_continuity_interop_canonical_evidence_gate"
+      ],
+      "properties": {
+        "fi_transition_continuity_interop_tests": {"const": "PASS"},
+        "verify_fi_transition_continuity_interop_artifacts": {"const": "PASS"},
+        "check_fi_transition_continuity_interop_canonical_evidence_gate": {"const": "PASS"}
+      },
+      "additionalProperties": false
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "required": ["report_sha256", "artifact_verification_sha256", "canonical_evidence_gate_sha256"],
+      "properties": {
+        "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "artifact_verification_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "canonical_evidence_gate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "artifact_equivalence": {
+      "type": "object",
+      "required": ["report", "expected_outcomes", "canonical_evidence_gate"],
+      "properties": {
+        "report": {"const": true},
+        "expected_outcomes": {"const": true},
+        "canonical_evidence_gate": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
