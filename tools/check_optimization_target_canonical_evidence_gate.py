@@ -15,6 +15,23 @@ OUTPUT = ROOT / "reports/optimization_target_canonical_evidence_gate.json"
 AUTHORITY = "FORMALISM_TEST_EVIDENCE_ONLY"
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
+REQUIRED_TASKS = {
+    "optimization_target_commit_boundary_tests",
+    "verify_optimization_target_commit_boundary_artifacts",
+    "check_optimization_target_canonical_evidence_gate",
+}
+REQUIRED_HASHES = {
+    "report_sha256",
+    "receipts_sha256",
+    "artifact_verification_sha256",
+    "canonical_evidence_gate_sha256",
+}
+REQUIRED_EQUIVALENCE = {
+    "report",
+    "receipts",
+    "expected_outcomes",
+    "canonical_evidence_gate",
+}
 
 
 def load(path: Path) -> dict:
@@ -37,36 +54,68 @@ def validate_pending(record: dict) -> list[str]:
         if record.get(key) != value:
             errors.append(f"pending.{key} must equal {value!r}")
     commands = record.get("required_commands")
-    if not isinstance(commands, list) or len(commands) != 2:
-        errors.append("pending.required_commands must contain exactly two commands")
+    if not isinstance(commands, list) or len(commands) != 3:
+        errors.append("pending.required_commands must contain exactly three commands")
     return errors
 
 
 def validate_canonical(record: dict) -> list[str]:
     errors: list[str] = []
+    if record.get("schema") != "stegverse.optimization-target.canonical-execution-evidence.v1":
+        errors.append("canonical.schema mismatch")
+    if record.get("suite_id") != "optimization-target-commit-boundary-v0.1":
+        errors.append("canonical.suite_id mismatch")
+    if record.get("repository") != "Data-Continuation/formalism-tests":
+        errors.append("canonical.repository mismatch")
     if record.get("status") != "VERIFIED_CANONICAL_RUN":
         errors.append("canonical.status must be VERIFIED_CANONICAL_RUN")
     if record.get("authority_posture") != AUTHORITY:
         errors.append(f"canonical.authority_posture must be {AUTHORITY}")
     if not SHA40.fullmatch(str(record.get("commit_sha", ""))):
         errors.append("canonical.commit_sha must be a lowercase 40-character SHA")
-    for field in ("report_sha256", "receipts_sha256", "artifact_verification_sha256"):
-        if not SHA256.fullmatch(str(record.get(field, ""))):
-            errors.append(f"canonical.{field} must be a lowercase SHA-256")
-    required_tasks = {
-        "optimization_target_commit_boundary_tests",
-        "verify_optimization_target_commit_boundary_artifacts",
-    }
+    if record.get("execution_surface") not in {"GITHUB_ACTIONS", "REPOSITORY_CHECKOUT", "EXISTING_CI"}:
+        errors.append("canonical.execution_surface is not approved")
+
+    commands = record.get("commands")
+    if not isinstance(commands, list) or len(commands) < 3:
+        errors.append("canonical.commands must contain at least three commands")
+
     task_results = record.get("task_results")
-    if not isinstance(task_results, dict) or set(task_results) != required_tasks:
-        errors.append("canonical.task_results must contain exactly both declared optimization-target tasks")
-    elif any(task_results.get(task) != "PASS" for task in required_tasks):
-        errors.append("both canonical task results must equal PASS")
-    for field in ("report_equivalence", "receipt_equivalence", "expected_outcome_equivalence"):
-        if record.get(field) is not True:
-            errors.append(f"canonical.{field} must be true")
-    if record.get("promotion_eligible") is not True:
-        errors.append("canonical.promotion_eligible must be true")
+    if not isinstance(task_results, dict) or set(task_results) != REQUIRED_TASKS:
+        errors.append("canonical.task_results must contain exactly all three declared optimization-target tasks")
+    elif any(task_results.get(task) != "PASS" for task in REQUIRED_TASKS):
+        errors.append("all canonical task results must equal PASS")
+
+    artifact_hashes = record.get("artifact_hashes")
+    if not isinstance(artifact_hashes, dict) or set(artifact_hashes) != REQUIRED_HASHES:
+        errors.append("canonical.artifact_hashes must contain exactly four required SHA-256 values")
+    else:
+        for field in REQUIRED_HASHES:
+            if not SHA256.fullmatch(str(artifact_hashes.get(field, ""))):
+                errors.append(f"canonical.artifact_hashes.{field} must be a lowercase SHA-256")
+
+    equivalence = record.get("artifact_equivalence")
+    if not isinstance(equivalence, dict) or set(equivalence) != REQUIRED_EQUIVALENCE:
+        errors.append("canonical.artifact_equivalence must contain exactly four required checks")
+    else:
+        for field in REQUIRED_EQUIVALENCE:
+            if equivalence.get(field) is not True:
+                errors.append(f"canonical.artifact_equivalence.{field} must be true")
+
+    prohibited = {
+        "promotion_eligible",
+        "report_sha256",
+        "receipts_sha256",
+        "artifact_verification_sha256",
+        "canonical_evidence_gate_sha256",
+        "report_equivalence",
+        "receipt_equivalence",
+        "expected_outcome_equivalence",
+        "canonical_evidence_gate_equivalence",
+    }
+    present = sorted(prohibited.intersection(record))
+    if present:
+        errors.append(f"canonical contains prohibited legacy flat fields: {present}")
     return errors
 
 
