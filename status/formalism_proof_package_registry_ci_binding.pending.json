@@ -1,0 +1,42 @@
+{
+  "schema": "stegverse.formalism-tests.proof-package-registry-ci-binding.v1",
+  "repository": "Data-Continuation/formalism-tests",
+  "issue": 7,
+  "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+  "declared_task_manifest": "tools/tasks/formalism_proof_package_registry_tasks.json",
+  "task_id": "check_formalism_proof_package_registry",
+  "required_command": [
+    "python",
+    "tools/run_declared_tasks.py",
+    "tools/tasks/formalism_proof_package_registry_tasks.json",
+    "--task-id",
+    "check_formalism_proof_package_registry"
+  ],
+  "expected_output": "reports/formalism_proof_package_registry_verification.json",
+  "binding_requirements": {
+    "inspect_existing_workflow_first": true,
+    "reuse_existing_workflow": true,
+    "competing_workflow_prohibited": true,
+    "durable_workflow_evidence_required": true,
+    "report_status_required": "PASS",
+    "expected_package_count": 4,
+    "expected_active_owner_count": 4
+  },
+  "observed": {
+    "workflow_path": null,
+    "workflow_run_id": null,
+    "job_id": null,
+    "commit_sha": null,
+    "report_sha256": null,
+    "binding_verified": false,
+    "canonical_execution_claimed": false
+  },
+  "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
+  "promotion_eligible": false,
+  "canonical_proof_issues_satisfied": [],
+  "non_claims": [
+    "This record does not establish that no workflow exists or has run.",
+    "This record does not satisfy canonical execution for issues 3 through 6.",
+    "This record grants no execution, release, publication, certification, financial, sovereign, or downstream mutation authority."
+  ]
+}
