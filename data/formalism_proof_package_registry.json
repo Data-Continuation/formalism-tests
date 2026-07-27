@@ -1,0 +1,136 @@
+{
+  "schema": "stegverse.formalism-tests.proof-package-registry.v1",
+  "repository": "Data-Continuation/formalism-tests",
+  "source_of_truth": "FORMALISM_TESTS_MIRROR_HANDOFF.md",
+  "authority_boundary": {
+    "execution_authority_granted": false,
+    "publication_authority_granted": false,
+    "release_authority_granted": false,
+    "certification_authority_granted": false,
+    "financial_authority_granted": false,
+    "sovereign_authority_granted": false
+  },
+  "packages": [
+    {
+      "package_id": "denial-reachability",
+      "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+      "bounded_result": "PASS",
+      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_owner": null,
+      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "installed_surfaces": [
+        "tests/fixtures/denial_reachability_cases.json",
+        "tests/fixtures/denial_reachability_expected_outcomes.json",
+        "tests/fixtures/denial_reachability_artifact_baseline.json",
+        "tools/run_denial_reachability_tests.py",
+        "tools/verify_denial_reachability_artifacts.py",
+        "tools/tasks/denial_reachability_tasks.json",
+        "reports/denial_reachability_report.json",
+        "reports/denial_reachability_continuation_report.md",
+        "receipts/denial_reachability_execution_receipts.jsonl",
+        "receipts/denial_reachability_connector_snapshot_run.json"
+      ]
+    },
+    {
+      "package_id": "fi-transition-continuity-interoperability",
+      "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
+      "bounded_result": "PASS",
+      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_owner": {
+        "repository": "Data-Continuation/formalism-tests",
+        "issue": 4
+      },
+      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "installed_surfaces": [
+        "tests/fixtures/fi_transition_continuity_interop_cases.json",
+        "tests/fixtures/fi_transition_continuity_interop_expected_outcomes.json",
+        "tests/fixtures/fi_transition_continuity_interop_artifact_baseline.json",
+        "tools/run_fi_transition_continuity_interop.py",
+        "tools/verify_fi_transition_continuity_interop_artifacts.py",
+        "tools/tasks/fi_transition_continuity_interop_tasks.json",
+        "reports/fi_transition_continuity_interop_report.json",
+        "receipts/fi_transition_continuity_interop_connector_snapshot_run.json"
+      ]
+    },
+    {
+      "package_id": "morrison-runtime-commit-time-scope",
+      "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
+      "bounded_result": "PASS",
+      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_owner": {
+        "repository": "Data-Continuation/formalism-tests",
+        "issue": 5
+      },
+      "downstream_owner": {
+        "repository": "StegVerse-Labs/admissibility-wiki",
+        "issue": 39,
+        "state": "WAITING_FOR_UPSTREAM"
+      },
+      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "installed_surfaces": [
+        "tests/fixtures/morrison_runtime_commit_time_scope_cases.json",
+        "tests/fixtures/morrison_runtime_commit_time_scope_expected_outcomes.json",
+        "tests/fixtures/morrison_runtime_commit_time_scope_artifact_baseline.json",
+        "tools/run_morrison_runtime_commit_time_scope.py",
+        "tools/verify_morrison_runtime_commit_time_scope_artifacts.py",
+        "tools/check_morrison_runtime_canonical_evidence_gate.py",
+        "tools/tasks/morrison_runtime_commit_time_scope_tasks.json",
+        "reports/morrison_runtime_commit_time_scope_report.json",
+        "receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl",
+        "receipts/morrison_runtime_connector_materialized_reproduction.json",
+        "schemas/morrison_runtime_canonical_execution_evidence.schema.json",
+        "receipts/morrison_runtime_canonical_execution_evidence.pending.json",
+        "receipts/morrison_runtime_commit_time_scope_downstream_activation_contract.json"
+      ]
+    },
+    {
+      "package_id": "optimization-target-commit-boundary",
+      "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+      "bounded_result": "NOT_CLAIMED_UNTIL_CANONICAL_EXECUTION",
+      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_owner": {
+        "repository": "Data-Continuation/formalism-tests",
+        "issue": 6
+      },
+      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF",
+      "package_handoff": "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
+      "installed_surfaces": [
+        "tests/fixtures/optimization_target_commit_boundary_cases.json",
+        "tests/fixtures/optimization_target_commit_boundary_expected_outcomes.json",
+        "tests/fixtures/optimization_target_commit_boundary_artifact_baseline.json",
+        "tools/run_optimization_target_commit_boundary_tests.py",
+        "tools/verify_optimization_target_commit_boundary_artifacts.py",
+        "tools/check_optimization_target_canonical_evidence_gate.py",
+        "tools/tasks/optimization_target_commit_boundary_tasks.json",
+        "schemas/optimization_target_canonical_execution_evidence.schema.json",
+        "receipts/optimization_target_canonical_execution_evidence.pending.json",
+        "receipts/optimization_target_commit_boundary_downstream_activation_contract.json",
+        "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md"
+      ]
+    }
+  ],
+  "active_issue_ownership": [
+    {
+      "issue": 4,
+      "workload": "canonical FI continuity interoperability execution and durable equivalence evidence"
+    },
+    {
+      "issue": 5,
+      "workload": "canonical Morrison commit-time scope execution and evidence-gate satisfaction"
+    },
+    {
+      "issue": 6,
+      "workload": "canonical optimization-target commit-boundary execution and evidence-gate satisfaction"
+    }
+  ],
+  "policy": {
+    "one_active_owner_per_workload": true,
+    "duplicate_issue_owned_workloads_prohibited": true,
+    "connector_reproduction_is_not_canonical_execution": true,
+    "documentation_is_not_proof": true,
+    "canonical_pass_is_not_downstream_authority": true,
+    "release_requires_governed_downstream_validation": true
+  },
+  "release_state": "NOT_AUTHORIZED",
+  "manual_user_tasks_required": []
+}
