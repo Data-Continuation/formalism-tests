@@ -13,6 +13,7 @@ SCHEMA = ROOT / "schemas/formalism_proof_package_registry_ci_binding.schema.json
 OUTPUT = ROOT / "reports/formalism_proof_package_registry_ci_binding_verification.json"
 
 EXPECTED_SCHEMA_PATH = "schemas/formalism_proof_package_registry_ci_binding.schema.json"
+EXPECTED_HANDOFF_PATH = "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md"
 EXPECTED_COMMAND = [
     "python",
     "tools/run_declared_tasks.py",
@@ -43,6 +44,10 @@ def main() -> int:
         errors.append("schema mismatch")
     if record.get("required_schema") != EXPECTED_SCHEMA_PATH:
         errors.append("required_schema mismatch")
+    if record.get("handoff") != EXPECTED_HANDOFF_PATH:
+        errors.append("handoff mismatch")
+    elif not (ROOT / EXPECTED_HANDOFF_PATH).is_file():
+        errors.append("handoff file missing")
     if record.get("repository") != "Data-Continuation/formalism-tests":
         errors.append("repository mismatch")
     if record.get("issue") != 7:
@@ -116,6 +121,7 @@ def main() -> int:
         "binding_status": record.get("status"),
         "binding_verified": verified,
         "schema_reference_valid": record.get("required_schema") == EXPECTED_SCHEMA_PATH,
+        "handoff_reference_valid": record.get("handoff") == EXPECTED_HANDOFF_PATH,
         "promotion_eligible": False,
         "canonical_proof_issues_satisfied": [],
         "errors": errors,
