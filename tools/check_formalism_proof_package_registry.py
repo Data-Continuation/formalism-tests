@@ -23,21 +23,25 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 3,
         "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
         "bounded_result": "PASS",
+        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
     },
     "fi-transition-continuity-interoperability": {
         "issue": 4,
         "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
         "bounded_result": "PASS",
+        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
     },
     "morrison-runtime-commit-time-scope": {
         "issue": 5,
         "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
         "bounded_result": "PASS",
+        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
     },
     "optimization-target-commit-boundary": {
         "issue": 6,
         "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
         "bounded_result": "CONNECTOR_REPRODUCTION_PASS",
+        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF",
         "package_handoff": "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
         "required_surface": "receipts/optimization_target_connector_materialized_reproduction.json",
     },
@@ -105,6 +109,8 @@ def main() -> int:
             errors.append(f"{package_id}: authority posture mismatch")
         if package.get("bounded_result") != expected.get("bounded_result"):
             errors.append(f"{package_id}: bounded result mismatch")
+        if package.get("downstream_activation") != expected.get("downstream_activation"):
+            errors.append(f"{package_id}: downstream activation contract mismatch")
 
         owner = package.get("canonical_owner")
         expected_issue = expected.get("issue")
@@ -119,9 +125,6 @@ def main() -> int:
                 )
             if isinstance(owner.get("issue"), int):
                 package_owner_issues.append(owner["issue"])
-
-        if not str(package.get("downstream_activation", "")).startswith("PROHIBITED_"):
-            errors.append(f"{package_id}: downstream activation must remain prohibited")
 
         expected_handoff = expected.get("package_handoff")
         if expected_handoff and package.get("package_handoff") != expected_handoff:
