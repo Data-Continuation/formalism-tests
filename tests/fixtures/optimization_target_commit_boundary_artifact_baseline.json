@@ -1,0 +1,24 @@
+{
+  "schema": "stegverse.optimization-target.commit-boundary.artifact-baseline.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "required_status": "PASS",
+  "required_case_count": 5,
+  "required_passed_count": 5,
+  "required_failed_count": 0,
+  "required_authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+  "required_case_results": {
+    "OT-CB-001": "ALLOW",
+    "OT-CB-002": "FAIL_CLOSED",
+    "OT-CB-003": "FAIL_CLOSED",
+    "OT-CB-004": "FAIL_CLOSED",
+    "OT-CB-005": "FAIL_CLOSED"
+  },
+  "required_receipt_count": 5,
+  "required_invariants": [
+    "target_must_be_explicit",
+    "target_binding_must_be_current",
+    "target_mutation_must_be_authorized",
+    "target_and_policy_must_be_consistent",
+    "denial_must_remain_reachable_until_commit"
+  ]
+}
