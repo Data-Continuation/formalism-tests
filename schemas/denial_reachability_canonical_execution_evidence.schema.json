@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/denial-reachability-canonical-execution-evidence.schema.json",
+  "title": "Denial Reachability Canonical Execution Evidence",
+  "type": "object",
+  "required": [
+    "schema",
+    "suite_id",
+    "repository",
+    "commit_sha",
+    "execution_surface",
+    "commands",
+    "task_results",
+    "artifact_hashes",
+    "artifact_equivalence",
+    "status",
+    "authority_posture"
+  ],
+  "properties": {
+    "schema": {"const": "stegverse.denial-reachability.canonical-execution-evidence.v1"},
+    "suite_id": {"const": "denial-reachability-v0.1"},
+    "repository": {"const": "Data-Continuation/formalism-tests"},
+    "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "execution_surface": {"enum": ["GITHUB_ACTIONS", "REPOSITORY_CHECKOUT", "EXISTING_CI"]},
+    "commands": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "task_results": {
+      "type": "object",
+      "required": [
+        "denial_reachability_commit_boundary_tests",
+        "verify_denial_reachability_artifacts",
+        "check_denial_reachability_canonical_evidence_gate"
+      ],
+      "properties": {
+        "denial_reachability_commit_boundary_tests": {"const": "PASS"},
+        "verify_denial_reachability_artifacts": {"const": "PASS"},
+        "check_denial_reachability_canonical_evidence_gate": {"const": "PASS"}
+      },
+      "additionalProperties": false
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "required": [
+        "report_sha256",
+        "receipts_sha256",
+        "artifact_verification_sha256",
+        "canonical_evidence_gate_sha256"
+      ],
+      "properties": {
+        "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "receipts_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "artifact_verification_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "canonical_evidence_gate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "artifact_equivalence": {
+      "type": "object",
+      "required": ["report", "receipts", "expected_outcomes", "canonical_evidence_gate"],
+      "properties": {
+        "report": {"const": true},
+        "receipts": {"const": true},
+        "expected_outcomes": {"const": true},
+        "canonical_evidence_gate": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "status": {"const": "VERIFIED_CANONICAL_RUN"},
+    "authority_posture": {"const": "REPRODUCTION_EVIDENCE_ONLY"}
+  },
+  "additionalProperties": false
+}
