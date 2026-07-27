@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "optimization target commit-boundary proof tasks",
-  "manifest_version": "0.2.0",
+  "manifest_version": "0.3.0",
   "tasks": [
     {
       "task_id": "optimization_target_commit_boundary_tests",
@@ -27,6 +27,19 @@
       "enabled": true,
       "expected_outputs": [
         "reports/optimization_target_commit_boundary_artifact_verification.json"
+      ],
+      "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY"
+    },
+    {
+      "task_id": "check_optimization_target_canonical_evidence_gate",
+      "description": "Keep optimization-target promotion fail-closed until complete canonical execution evidence exists.",
+      "command": [
+        "python",
+        "tools/check_optimization_target_canonical_evidence_gate.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/optimization_target_canonical_evidence_gate.json"
       ],
       "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY"
     }
