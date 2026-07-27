@@ -3,6 +3,7 @@
   "repository": "Data-Continuation/formalism-tests",
   "issue": 7,
   "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+  "required_schema": "schemas/formalism_proof_package_registry_ci_binding.schema.json",
   "declared_task_manifest": "tools/tasks/formalism_proof_package_registry_tasks.json",
   "task_id": "check_formalism_proof_package_registry",
   "required_command": [
