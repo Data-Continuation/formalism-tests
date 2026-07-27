@@ -1,0 +1,20 @@
+{
+  "schema": "stegverse_declared_task_manifest.v1",
+  "manifest_name": "formalism proof package registry CI binding tasks",
+  "manifest_version": "0.1.0",
+  "tasks": [
+    {
+      "task_id": "check_formalism_proof_package_registry_ci_binding",
+      "description": "Validate the pending or verified binding of the proof-package registry task to an existing repository workflow.",
+      "command": [
+        "python",
+        "tools/check_formalism_proof_package_registry_ci_binding.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/formalism_proof_package_registry_ci_binding_verification.json"
+      ],
+      "authority_posture": "REGISTRY_CONSISTENCY_ONLY"
+    }
+  ]
+}
