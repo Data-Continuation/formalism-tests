@@ -1,6 +1,6 @@
 {
   "manifest_name": "denial reachability proof tasks",
-  "manifest_version": "0.2.0",
+  "manifest_version": "0.3.0",
   "schema": "stegverse_declared_task_manifest.v1",
   "tasks": [
     {
@@ -26,6 +26,17 @@
         "reports/denial_reachability_artifact_verification.json"
       ],
       "task_id": "verify_denial_reachability_artifacts"
+    },
+    {
+      "command": [
+        "python",
+        "tools/check_denial_reachability_canonical_evidence_gate.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/denial_reachability_canonical_evidence_gate.json"
+      ],
+      "task_id": "check_denial_reachability_canonical_evidence_gate"
     }
   ]
 }
