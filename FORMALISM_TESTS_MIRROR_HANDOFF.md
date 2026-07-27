@@ -159,6 +159,7 @@ tools/check_optimization_target_canonical_evidence_gate.py
 tools/tasks/optimization_target_commit_boundary_tasks.json
 schemas/optimization_target_canonical_execution_evidence.schema.json
 receipts/optimization_target_canonical_execution_evidence.pending.json
+receipts/optimization_target_connector_materialized_reproduction.json
 receipts/optimization_target_commit_boundary_downstream_activation_contract.json
 docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md
 ```
@@ -184,6 +185,26 @@ ALLOW only when:
   denial reachable
 
 otherwise -> FAIL_CLOSED
+```
+
+Bounded connector-materialized reproduction:
+
+```text
+status: PASS
+case_count: 5
+passed_count: 5
+failed_count: 0
+expected-outcome equivalence: true
+semantic report equivalence: true
+semantic receipt equivalence: true
+authority posture: FORMALISM_TEST_EVIDENCE_ONLY
+canonical repository checkout: false
+GitHub Actions run: false
+existing CI run: false
+canonical execution claimed: false
+promotion eligible: false
+downstream activation authorized: false
+byte equivalence claimed: false
 ```
 
 Issue #6 owns canonical closure. The optimization-target schema, pending record, gate checker, task manifest, issue #6 contract, downstream activation contract, and package handoff require three PASS results, four SHA-256 values, four equivalence assertions, nested evidence objects, and `FORMALISM_TEST_EVIDENCE_ONLY` authority posture.
@@ -214,7 +235,7 @@ tools/tasks/formalism_proof_package_registry_tasks.json
 docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_MIRROR_HANDOFF.md
 ```
 
-The registry indexes all four proof packages, installed surfaces, issues #3-#6, downstream ownership where assigned, authority boundaries, and release posture. Its validator rejects null or duplicate canonical owners, owner-to-package mismatches, missing installed surfaces, unauthorized release state, and downstream activation that is not fail-closed.
+The registry indexes all four proof packages, installed surfaces, issues #3-#6, downstream ownership where assigned, authority boundaries, and release posture. Its validator rejects null or duplicate canonical owners, owner-to-package mismatches, missing installed surfaces, authority-posture drift, bounded-result drift, required package-handoff drift, unauthorized release state, and downstream activation that is not fail-closed.
 
 Registry validation is inventory-consistency evidence only. It does not establish canonical execution for any proof package.
 
