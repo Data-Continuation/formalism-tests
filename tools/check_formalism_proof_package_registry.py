@@ -18,6 +18,16 @@ REQUIRED_PACKAGES = {
     "optimization-target-commit-boundary",
 }
 REQUIRED_ISSUES = {3, 4, 5, 6}
+REQUIRED_COORDINATION_ISSUES = {7}
+EXPECTED_COORDINATION_CONTRACT = {
+    "issue": 7,
+    "workload": "bind proof-package registry validation to an existing CI workflow",
+    "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
+    "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+    "contract": "status/formalism_proof_package_registry_ci_binding.pending.json",
+    "handoff": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
+    "canonical_proof_issues_satisfied": [],
+}
 EXPECTED_PACKAGE_CONTRACTS = {
     "denial-reachability": {
         "issue": 3,
@@ -120,9 +130,7 @@ def main() -> int:
             if owner.get("repository") != "Data-Continuation/formalism-tests":
                 errors.append(f"{package_id}: canonical owner repository mismatch")
             if owner.get("issue") != expected_issue:
-                errors.append(
-                    f"{package_id}: canonical owner issue must equal {expected_issue}"
-                )
+                errors.append(f"{package_id}: canonical owner issue must equal {expected_issue}")
             if isinstance(owner.get("issue"), int):
                 package_owner_issues.append(owner["issue"])
 
@@ -163,6 +171,26 @@ def main() -> int:
     if set(issues) != set(package_owner_issues):
         errors.append("package owners and active issue ownership must match")
 
+    coordination = registry.get("coordination_issue_ownership")
+    if not isinstance(coordination, list):
+        errors.append("coordination_issue_ownership must be an array")
+        coordination = []
+    coordination_issues = [item.get("issue") for item in coordination if isinstance(item, dict)]
+    if set(coordination_issues) != REQUIRED_COORDINATION_ISSUES:
+        errors.append("coordination issue ownership set mismatch")
+    if len(coordination_issues) != len(set(coordination_issues)):
+        errors.append("duplicate coordination issue owner detected")
+    if set(coordination_issues) & set(issues):
+        errors.append("coordination owners must remain separate from canonical proof owners")
+
+    if len(coordination) != 1 or coordination[0] != EXPECTED_COORDINATION_CONTRACT:
+        errors.append("issue 7 coordination contract mismatch")
+    else:
+        for field in ("contract", "handoff"):
+            path = ROOT / coordination[0][field]
+            if not path.exists():
+                errors.append(f"issue 7 missing coordination surface {coordination[0][field]}")
+
     policy = registry.get("policy")
     if not isinstance(policy, dict) or any(value is not True for value in policy.values()):
         errors.append("all registry policy flags must remain true")
@@ -176,6 +204,7 @@ def main() -> int:
         "status": "PASS" if not errors else "FAIL",
         "package_count": len(packages),
         "active_issue_count": len(ownership),
+        "coordination_issue_count": len(coordination),
         "release_state": registry.get("release_state"),
         "errors": errors,
     }
