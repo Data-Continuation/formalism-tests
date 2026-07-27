@@ -27,54 +27,22 @@ StegVerse-002/stegguardian-wiki
 
 No fixture, report, connector reproduction, workflow result, public page, or external-framework verdict independently grants execution, release, certification, publication, or admissibility authority.
 
-## Denial-reachability package
+## Installed proof packages
 
-Installed:
-
-```text
-tests/fixtures/denial_reachability_cases.json
-tests/fixtures/denial_reachability_expected_outcomes.json
-tests/fixtures/denial_reachability_artifact_baseline.json
-tools/run_denial_reachability_tests.py
-tools/verify_denial_reachability_artifacts.py
-tools/tasks/denial_reachability_tasks.json
-reports/denial_reachability_report.json
-reports/denial_reachability_continuation_report.md
-receipts/denial_reachability_execution_receipts.jsonl
-receipts/denial_reachability_connector_snapshot_run.json
-```
-
-Verified bounded result:
+### Denial reachability
 
 ```text
 status: PASS
 case_count: 5
-passed_count: 5
-failed_count: 0
 connector reproduction: PASS
 byte equivalence to committed baseline: true
 authority posture: REPRODUCTION_EVIDENCE_ONLY
 canonical execution: pending
 ```
 
-Canonical completion remains separate and must be supported by repository-checkout, existing CI, or GitHub Actions evidence.
+Canonical completion requires repository-checkout, existing CI, or GitHub Actions evidence.
 
-## FI continuity interoperability package
-
-Installed:
-
-```text
-tests/fixtures/fi_transition_continuity_interop_cases.json
-tests/fixtures/fi_transition_continuity_interop_expected_outcomes.json
-tests/fixtures/fi_transition_continuity_interop_artifact_baseline.json
-tools/run_fi_transition_continuity_interop.py
-tools/verify_fi_transition_continuity_interop_artifacts.py
-tools/tasks/fi_transition_continuity_interop_tasks.json
-reports/fi_transition_continuity_interop_report.json
-receipts/fi_transition_continuity_interop_connector_snapshot_run.json
-```
-
-Verified bounded cases:
+### FI continuity interoperability
 
 ```text
 CONTINUOUS_IDENTIFIABLE_TRANSITION -> INTEROPERABLE
@@ -96,9 +64,7 @@ reproduction pass != canonical execution
 
 Canonical-run ownership remains with issue #4.
 
-## Morrison Runtime commit-time scope package
-
-The repository contains a bounded comparative suite for the public Resurrection Tech clarification that ordinary Runtime Governance performs a second pre-execution decision, while full fresh-state reconstruction and evidence binding are separately configurable high-assurance capabilities.
+### Morrison Runtime commit-time scope
 
 Installed:
 
@@ -136,53 +102,9 @@ promotion eligible: false
 external framework validation claimed: false
 ```
 
-Verified cases:
+The connector-materialized reproduction is bounded reproduction evidence only. It is not native Morrison execution, repository checkout, GitHub Actions evidence, certification, endorsement, production validation, or StegVerse execution authority.
 
-```text
-MRG-CT-001 contradictory live evidence: ALLOW -> DENY
-MRG-CT-002 corrective live evidence: BLOCK -> ALLOW
-MRG-CT-003 missing required evidence: FAIL_CLOSED
-MRG-CT-004 unknown evidence coverage: FAIL_CLOSED
-MRG-CT-005 stale cached binding: FAIL_CLOSED
-MRG-CT-006 unmodeled material parameter: FAIL_CLOSED
-MRG-CT-007 complete commit-boundary reconstruction: ALLOW preserved
-```
-
-The connector-materialized reproduction is bounded reproduction evidence only. It is not a native Morrison execution, repository checkout, GitHub Actions run, certification, endorsement, production validation, or StegVerse execution-authority determination.
-
-## Morrison canonical evidence contract alignment
-
-The canonical-evidence checker and pending record are aligned with the committed JSON Schema and declared-task manifest.
-
-```text
-schema contract:
-  artifact_hashes.report_sha256
-  artifact_hashes.receipts_sha256
-  artifact_hashes.verification_sha256
-  artifact_equivalence.report
-  artifact_equivalence.receipts
-  artifact_equivalence.expected_outcomes
-
-canonical evidence task results:
-  morrison_runtime_commit_time_scope_tests -> PASS
-  verify_morrison_runtime_commit_time_scope_artifacts -> PASS
-
-post-install gate task:
-  check_morrison_runtime_canonical_evidence_gate -> PASS
-```
-
-The checker no longer accepts the former schema-incompatible flat fields or `promotion_eligible` inside the canonical evidence record. Promotion eligibility is derived only in the gate result after a schema-compatible canonical record passes validation.
-
-Alignment commits:
-
-```text
-e5d1707c4ec4000cbf15d24758a779cd2882051e
-5cf992b281e0f4dce47ef54b12baeb9ce342e389
-```
-
-This correction is a deterministic contract repair only. It does not claim that canonical execution occurred.
-
-## Morrison canonical evidence gate
+## Morrison canonical evidence contract
 
 Issue #5 owns canonical closure.
 
@@ -194,7 +116,28 @@ python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scop
 python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id check_morrison_runtime_canonical_evidence_gate
 ```
 
-Promotion to `VERIFIED_CANONICAL_RUN` requires durable evidence identifying the commit, approved canonical execution surface, commands, task results, exact artifact equivalence, and required SHA-256 values. Until that contract is satisfied:
+The Schema, pending record, gate checker, declared-task manifest, and issue #5 completion contract are aligned on:
+
+```text
+three declared commands
+three task results equal PASS
+four SHA-256 values:
+  report
+  receipts
+  artifact verification
+  canonical evidence gate
+four equivalence assertions:
+  report
+  receipts
+  expected outcomes
+  canonical evidence gate
+nested artifact_hashes and artifact_equivalence objects
+no legacy flat hash or equivalence fields
+```
+
+Promotion to `VERIFIED_CANONICAL_RUN` requires durable evidence identifying the commit, approved canonical execution surface, all commands, all task results, exact artifact equivalence, and all required hashes.
+
+Until that contract is satisfied:
 
 ```text
 canonical evidence status: PENDING_CANONICAL_EXECUTION
@@ -220,8 +163,6 @@ Do not duplicate these issue-owned workloads.
 
 ## Next parallel-safe work
 
-Parallel work may proceed only when it does not claim canonical execution or duplicate issue #4 or #5. Safe examples include:
-
 ```text
 verify committed references and schema consistency
 repair exact deterministic contract defects
@@ -236,7 +177,7 @@ Do not infer progress from elapsed time, connector access, branch existence, or 
 
 ```text
 StegVerse-Labs/Site
-  -> read docs/SITE_MIRROR_HANDOFF.md before any mutation
+  -> read docs/SITE_MIRROR_HANDOFF.md before mutation
   -> mirror only after admissibility-wiki validation and public-route verification
 
 GCAT-BCAT-Engine/Publisher
@@ -264,4 +205,4 @@ StegVerse-002/stegguardian-wiki
 
 ## Archive posture
 
-This handoff preserves the installed denial-reachability, FI continuity, and Morrison commit-time scope packages; bounded reproduction results; canonical evidence contract alignment; active issue ownership; canonical evidence gates; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the installed denial-reachability, FI continuity, and Morrison commit-time scope packages; bounded reproduction results; complete canonical evidence contract; active issue ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
