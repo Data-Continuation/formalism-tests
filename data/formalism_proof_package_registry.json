@@ -89,7 +89,7 @@
     {
       "package_id": "optimization-target-commit-boundary",
       "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
-      "bounded_result": "NOT_CLAIMED_UNTIL_CANONICAL_EXECUTION",
+      "bounded_result": "CONNECTOR_REPRODUCTION_PASS",
       "canonical_state": "PENDING_CANONICAL_EXECUTION",
       "canonical_owner": {
         "repository": "Data-Continuation/formalism-tests",
@@ -107,6 +107,7 @@
         "tools/tasks/optimization_target_commit_boundary_tasks.json",
         "schemas/optimization_target_canonical_execution_evidence.schema.json",
         "receipts/optimization_target_canonical_execution_evidence.pending.json",
+        "receipts/optimization_target_connector_materialized_reproduction.json",
         "receipts/optimization_target_commit_boundary_downstream_activation_contract.json",
         "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md"
       ]
