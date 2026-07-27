@@ -34,30 +34,51 @@ reports/formalism_proof_package_registry_verification.json
 
 The output is generated validation evidence. It is not canonical execution evidence for any registered proof package.
 
-## Registered proof packages and exact ownership
+## Registered proof packages and exact contracts
 
 ```text
 denial-reachability
   -> issue #3
+  -> authority: REPRODUCTION_EVIDENCE_ONLY
+  -> bounded result: PASS
+  -> downstream: PROHIBITED_UNTIL_CANONICAL_EVIDENCE
 
 fi-transition-continuity-interoperability
   -> issue #4
+  -> authority: CONTINUITY_INTEROPERABILITY_ONLY
+  -> bounded result: PASS
+  -> downstream: PROHIBITED_UNTIL_CANONICAL_EVIDENCE
 
 morrison-runtime-commit-time-scope
   -> issue #5
+  -> authority: EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY
+  -> bounded result: PASS
+  -> downstream owner: StegVerse-Labs/admissibility-wiki#39 WAITING_FOR_UPSTREAM
+  -> downstream: PROHIBITED_UNTIL_CANONICAL_EVIDENCE
 
 optimization-target-commit-boundary
   -> issue #6
+  -> authority: FORMALISM_TEST_EVIDENCE_ONLY
+  -> bounded result: CONNECTOR_REPRODUCTION_PASS
+  -> package handoff: docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md
+  -> required surface: receipts/optimization_target_connector_materialized_reproduction.json
+  -> downstream: PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF
 ```
 
-The Schema and validator require exactly these four packages and exactly these four issue owners. A registered package may not have a null canonical owner. Each issue may own only its mapped package workload.
+The Schema and validator require exactly these four packages, owners, authority postures, bounded results, and downstream states. A registered package may not have a null canonical owner. Each issue may own only its mapped package workload.
 
-The validator rejects:
+The schema and validator reject:
 
 ```text
 missing canonical owner
 wrong owner repository
 wrong package-to-issue mapping
+wrong authority posture
+wrong bounded-result classification
+weakened or substituted downstream activation state
+wrong Morrison downstream owner or readiness state
+missing optimization-target package handoff
+missing optimization-target connector-reproduction surface
 duplicate issue ownership
 duplicate package identifiers
 missing issue #3, #4, #5, or #6
@@ -82,7 +103,7 @@ All repository authority flags in the registry must remain `false`, all policy f
 
 ## Installed-surface validation
 
-The validator checks that every path declared under `installed_surfaces` exists in the repository checkout. Missing surfaces fail the registry check.
+The validator checks that every path declared under `installed_surfaces` exists in the repository checkout. Missing surfaces fail the registry check. The schema independently requires the optimization-target connector-materialized reproduction to remain present exactly once in that package's installed-surface inventory.
 
 This establishes bounded inventory consistency only. File existence does not establish correctness, canonical execution, proof validity, public deployment, or downstream admissibility.
 
@@ -94,6 +115,7 @@ schema installed: true
 validator installed: true
 declared task installed: true
 exact package-owner mapping installed: true
+exact package-contract mapping installed: true
 canonical proof-package execution inferred: false
 downstream activation inferred: false
 release authorized: false
@@ -107,7 +129,7 @@ manual user tasks required: none
 ```text
 Run the registry declared task in a repository checkout or existing CI surface.
 Commit the generated verification report only when authentic execution evidence exists.
-Update the registry whenever a package, installed surface, canonical owner, or downstream owner changes.
+Update the registry whenever a package, installed surface, canonical owner, authority posture, bounded result, or downstream owner changes.
 Preserve one active owner per issue-owned workload.
 Do not promote package state from pending to verified without the package-specific canonical evidence contract.
 Synchronize the repository-wide handoff when its next safe update occurs.
@@ -139,4 +161,4 @@ After release qualification, queue a propagation-status review for Site, Publish
 
 ## Archive posture
 
-This handoff preserves the registry package, exact package-owner mapping, declared validation task, fail-closed invariants, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the registry package, exact package-owner and package-contract mappings, declared validation task, fail-closed invariants, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
