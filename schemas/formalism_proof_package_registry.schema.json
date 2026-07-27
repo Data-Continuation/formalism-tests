@@ -41,6 +41,14 @@
     "packages": {
       "type": "array",
       "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "allOf": [
+        {"contains": {"type": "object", "properties": {"package_id": {"const": "denial-reachability"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 3}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"type": "object", "properties": {"package_id": {"const": "fi-transition-continuity-interoperability"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 4}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"type": "object", "properties": {"package_id": {"const": "morrison-runtime-commit-time-scope"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 5}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"type": "object", "properties": {"package_id": {"const": "optimization-target-commit-boundary"}, "canonical_owner": {"type": "object", "properties": {"issue": {"const": 6}}, "required": ["issue"]}}, "required": ["package_id", "canonical_owner"]}, "minContains": 1, "maxContains": 1}
+      ],
       "items": {
         "type": "object",
         "required": [
@@ -53,23 +61,25 @@
           "installed_surfaces"
         ],
         "properties": {
-          "package_id": {"type": "string", "minLength": 1},
+          "package_id": {
+            "enum": [
+              "denial-reachability",
+              "fi-transition-continuity-interoperability",
+              "morrison-runtime-commit-time-scope",
+              "optimization-target-commit-boundary"
+            ]
+          },
           "authority_posture": {"type": "string", "minLength": 1},
           "bounded_result": {"type": "string", "minLength": 1},
           "canonical_state": {"enum": ["PENDING_CANONICAL_EXECUTION", "VERIFIED_CANONICAL_RUN"]},
           "canonical_owner": {
-            "oneOf": [
-              {"type": "null"},
-              {
-                "type": "object",
-                "required": ["repository", "issue"],
-                "properties": {
-                  "repository": {"const": "Data-Continuation/formalism-tests"},
-                  "issue": {"type": "integer", "minimum": 1}
-                },
-                "additionalProperties": false
-              }
-            ]
+            "type": "object",
+            "required": ["repository", "issue"],
+            "properties": {
+              "repository": {"const": "Data-Continuation/formalism-tests"},
+              "issue": {"enum": [3, 4, 5, 6]}
+            },
+            "additionalProperties": false
           },
           "downstream_owner": {
             "type": "object",
@@ -95,11 +105,20 @@
     },
     "active_issue_ownership": {
       "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "allOf": [
+        {"contains": {"type": "object", "properties": {"issue": {"const": 3}}, "required": ["issue"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"type": "object", "properties": {"issue": {"const": 4}}, "required": ["issue"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"type": "object", "properties": {"issue": {"const": 5}}, "required": ["issue"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"type": "object", "properties": {"issue": {"const": 6}}, "required": ["issue"]}, "minContains": 1, "maxContains": 1}
+      ],
       "items": {
         "type": "object",
         "required": ["issue", "workload"],
         "properties": {
-          "issue": {"type": "integer", "minimum": 1},
+          "issue": {"enum": [3, 4, 5, 6]},
           "workload": {"type": "string", "minLength": 1}
         },
         "additionalProperties": false
