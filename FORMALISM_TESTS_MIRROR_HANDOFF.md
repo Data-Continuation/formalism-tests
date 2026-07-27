@@ -116,7 +116,7 @@ python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scop
 python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id check_morrison_runtime_canonical_evidence_gate
 ```
 
-The schema, pending record, gate checker, declared-task manifest, and issue #5 completion contract are aligned on:
+The schema, pending record, gate checker, declared-task manifest, issue #5 completion contract, and downstream activation contract are aligned on:
 
 ```text
 three declared commands
@@ -158,6 +158,7 @@ tools/run_optimization_target_commit_boundary_tests.py
 tools/verify_optimization_target_commit_boundary_artifacts.py
 tools/check_optimization_target_canonical_evidence_gate.py
 tools/tasks/optimization_target_commit_boundary_tasks.json
+schemas/optimization_target_canonical_execution_evidence.schema.json
 receipts/optimization_target_canonical_execution_evidence.pending.json
 ```
 
@@ -193,6 +194,8 @@ python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_bounda
 python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts
 python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id check_optimization_target_canonical_evidence_gate
 ```
+
+The optimization-target schema, pending record, gate checker, task manifest, and issue #6 contract require three PASS results, four SHA-256 values, four equivalence assertions, nested evidence objects, and `FORMALISM_TEST_EVIDENCE_ONLY` authority posture.
 
 Until canonical repository-checkout, GitHub Actions, or existing-CI evidence exists:
 
@@ -270,4 +273,4 @@ StegVerse-002/stegguardian-wiki
 
 ## Archive posture
 
-This handoff preserves the installed denial-reachability, FI continuity, Morrison commit-time scope, and optimization-target commit-boundary packages; bounded reproduction results; canonical evidence contracts; active issue ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
+This handoff preserves the installed denial-reachability, FI continuity, Morrison commit-time scope, and optimization-target commit-boundary packages; bounded reproduction results; canonical evidence schemas and contracts; active issue ownership; authority boundaries; downstream restrictions; and next parallel-safe work. The complete thread is ready for archiving without additional conversation context.
