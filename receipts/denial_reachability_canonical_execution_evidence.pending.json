@@ -1,0 +1,37 @@
+{
+  "schema": "stegverse.denial-reachability.canonical-execution-evidence.pending.v1",
+  "suite_id": "denial-reachability-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "issue": 3,
+  "status": "PENDING_CANONICAL_EXECUTION",
+  "required_commands": [
+    "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id denial_reachability_commit_boundary_tests",
+    "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id verify_denial_reachability_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id check_denial_reachability_canonical_evidence_gate"
+  ],
+  "required_evidence_schema": "schemas/denial_reachability_canonical_execution_evidence.schema.json",
+  "required_task_results": {
+    "denial_reachability_commit_boundary_tests": "PASS",
+    "verify_denial_reachability_artifacts": "PASS",
+    "check_denial_reachability_canonical_evidence_gate": "PASS"
+  },
+  "required_artifact_hashes": {
+    "report_sha256": "PENDING",
+    "receipts_sha256": "PENDING",
+    "artifact_verification_sha256": "PENDING",
+    "canonical_evidence_gate_sha256": "PENDING"
+  },
+  "required_artifact_equivalence": {
+    "report": false,
+    "receipts": false,
+    "expected_outcomes": false,
+    "canonical_evidence_gate": false
+  },
+  "promotion_prohibited_until_complete": true,
+  "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
+  "non_claims": [
+    "Pending evidence is not canonical execution.",
+    "Connector reproduction is not canonical execution.",
+    "A canonical PASS does not grant execution, publication, certification, release, financial, or sovereign authority."
+  ]
+}
