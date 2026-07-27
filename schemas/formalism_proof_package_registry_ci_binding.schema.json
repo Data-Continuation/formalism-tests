@@ -9,6 +9,7 @@
     "issue",
     "status",
     "required_schema",
+    "handoff",
     "declared_task_manifest",
     "task_id",
     "required_command",
@@ -26,6 +27,7 @@
     "issue": {"const": 7},
     "status": {"enum": ["PENDING_EXISTING_WORKFLOW_BINDING", "VERIFIED_EXISTING_WORKFLOW_BINDING"]},
     "required_schema": {"const": "schemas/formalism_proof_package_registry_ci_binding.schema.json"},
+    "handoff": {"const": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md"},
     "declared_task_manifest": {"const": "tools/tasks/formalism_proof_package_registry_tasks.json"},
     "task_id": {"const": "check_formalism_proof_package_registry"},
     "required_command": {
