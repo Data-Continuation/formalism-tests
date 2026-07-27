@@ -1,7 +1,7 @@
 {
   "schema": "stegverse_declared_task_manifest.v1",
   "manifest_name": "optimization target commit-boundary proof tasks",
-  "manifest_version": "0.1.0",
+  "manifest_version": "0.2.0",
   "tasks": [
     {
       "task_id": "optimization_target_commit_boundary_tests",
@@ -14,6 +14,19 @@
       "expected_outputs": [
         "reports/optimization_target_commit_boundary_report.json",
         "receipts/optimization_target_commit_boundary_execution_receipts.jsonl"
+      ],
+      "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY"
+    },
+    {
+      "task_id": "verify_optimization_target_commit_boundary_artifacts",
+      "description": "Verify the generated optimization-target report and receipts against the committed deterministic baseline.",
+      "command": [
+        "python",
+        "tools/verify_optimization_target_commit_boundary_artifacts.py"
+      ],
+      "enabled": true,
+      "expected_outputs": [
+        "reports/optimization_target_commit_boundary_artifact_verification.json"
       ],
       "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY"
     }
