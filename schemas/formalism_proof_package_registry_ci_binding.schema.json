@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/formalism-proof-package-registry-ci-binding.schema.json",
+  "title": "Formalism Proof Package Registry CI Binding",
+  "type": "object",
+  "required": [
+    "schema",
+    "repository",
+    "issue",
+    "status",
+    "required_schema",
+    "declared_task_manifest",
+    "task_id",
+    "required_command",
+    "expected_output",
+    "binding_requirements",
+    "observed",
+    "authority_posture",
+    "promotion_eligible",
+    "canonical_proof_issues_satisfied",
+    "non_claims"
+  ],
+  "properties": {
+    "schema": {"const": "stegverse.formalism-tests.proof-package-registry-ci-binding.v1"},
+    "repository": {"const": "Data-Continuation/formalism-tests"},
+    "issue": {"const": 7},
+    "status": {"enum": ["PENDING_EXISTING_WORKFLOW_BINDING", "VERIFIED_EXISTING_WORKFLOW_BINDING"]},
+    "required_schema": {"const": "schemas/formalism_proof_package_registry_ci_binding.schema.json"},
+    "declared_task_manifest": {"const": "tools/tasks/formalism_proof_package_registry_tasks.json"},
+    "task_id": {"const": "check_formalism_proof_package_registry"},
+    "required_command": {
+      "const": [
+        "python",
+        "tools/run_declared_tasks.py",
+        "tools/tasks/formalism_proof_package_registry_tasks.json",
+        "--task-id",
+        "check_formalism_proof_package_registry"
+      ]
+    },
+    "expected_output": {"const": "reports/formalism_proof_package_registry_verification.json"},
+    "binding_requirements": {
+      "type": "object",
+      "required": [
+        "inspect_existing_workflow_first",
+        "reuse_existing_workflow",
+        "competing_workflow_prohibited",
+        "durable_workflow_evidence_required",
+        "report_status_required",
+        "expected_package_count",
+        "expected_active_owner_count"
+      ],
+      "properties": {
+        "inspect_existing_workflow_first": {"const": true},
+        "reuse_existing_workflow": {"const": true},
+        "competing_workflow_prohibited": {"const": true},
+        "durable_workflow_evidence_required": {"const": true},
+        "report_status_required": {"const": "PASS"},
+        "expected_package_count": {"const": 4},
+        "expected_active_owner_count": {"const": 4}
+      },
+      "additionalProperties": false
+    },
+    "observed": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["workflow_path", "workflow_run_id", "job_id", "commit_sha", "report_sha256", "binding_verified", "canonical_execution_claimed"],
+          "properties": {
+            "workflow_path": {"type": "null"},
+            "workflow_run_id": {"type": "null"},
+            "job_id": {"type": "null"},
+            "commit_sha": {"type": "null"},
+            "report_sha256": {"type": "null"},
+            "binding_verified": {"const": false},
+            "canonical_execution_claimed": {"const": false}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["workflow_path", "workflow_run_id", "job_id", "commit_sha", "report_sha256", "binding_verified", "canonical_execution_claimed"],
+          "properties": {
+            "workflow_path": {"type": "string", "pattern": "^\\.github/workflows/"},
+            "workflow_run_id": {"type": "integer", "minimum": 1},
+            "job_id": {"type": "integer", "minimum": 1},
+            "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "binding_verified": {"const": true},
+            "canonical_execution_claimed": {"const": false}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "authority_posture": {"const": "REGISTRY_CONSISTENCY_ONLY"},
+    "promotion_eligible": {"const": false},
+    "canonical_proof_issues_satisfied": {"type": "array", "maxItems": 0},
+    "non_claims": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "PENDING_EXISTING_WORKFLOW_BINDING"}}},
+      "then": {"properties": {"observed": {"properties": {"binding_verified": {"const": false}}}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "VERIFIED_EXISTING_WORKFLOW_BINDING"}}},
+      "then": {"properties": {"observed": {"properties": {"binding_verified": {"const": true}}}}}
+    }
+  ],
+  "additionalProperties": false
+}
