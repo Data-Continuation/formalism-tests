@@ -58,6 +58,18 @@ jobs:
             python tools/run_declared_tasks.py "$TASK_MANIFEST"
           fi
 
+      - name: Validate proof-package registry layer
+        run: |
+          set -euo pipefail
+
+          python tools/run_declared_tasks.py \
+            tools/tasks/formalism_proof_package_registry_tasks.json \
+            --task-id check_formalism_proof_package_registry
+
+          python tools/run_declared_tasks.py \
+            tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json \
+            --task-id check_formalism_proof_package_registry_ci_binding
+
       - name: Commit artifact routing changes
         if: github.event_name != 'pull_request'
         run: |
@@ -93,6 +105,8 @@ jobs:
             reports/continuation_report.md
             reports/compound_receipts.jsonl
             reports/compound_continuation_report.md
+            reports/formalism_proof_package_registry_verification.json
+            reports/formalism_proof_package_registry_ci_binding_verification.json
             reports/stage_32_admissibility_space_report.json
             reports/stage_33_transition_graph_report.json
             reports/stage_34_repair_report.json
