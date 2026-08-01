@@ -30,6 +30,10 @@
     "job_id": null,
     "commit_sha": "72808db36157ace8ceed31656da2efe1748aa378",
     "report_sha256": null,
+    "layer_built": true,
+    "existing_workflow_reused": true,
+    "competing_workflow_created": false,
+    "layer_activated": true,
     "binding_verified": false,
     "canonical_execution_claimed": false
   },
@@ -37,7 +41,7 @@
   "promotion_eligible": false,
   "canonical_proof_issues_satisfied": [],
   "non_claims": [
-    "The registry layer is installed in the existing continuation-tests workflow, but durable workflow run evidence is not yet recorded.",
+    "This activated binding record does not establish a successful workflow run until durable run and job evidence are recorded.",
     "This record does not satisfy canonical execution for issues 3 through 6.",
     "This record grants no execution, release, publication, certification, financial, sovereign, or downstream mutation authority."
   ]
