@@ -40,6 +40,11 @@
   "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
   "promotion_eligible": false,
   "canonical_proof_issues_satisfied": [],
+  "next_coordinated_task": {
+    "owner_issue": 7,
+    "action": "Capture the first authentic workflow run ID, job ID, both validator PASS results, triggering commit SHA, and report SHA-256, then promote only to VERIFIED_EXISTING_WORKFLOW_BINDING.",
+    "canonical_proof_issues_affected": []
+  },
   "non_claims": [
     "This activated binding record does not establish a successful workflow run until durable run and job evidence are recorded.",
     "This record does not satisfy canonical execution for issues 3 through 6.",
