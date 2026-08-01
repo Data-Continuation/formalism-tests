@@ -20,11 +20,14 @@ on:
       - "boundary_dynamics_report.json"
       - "reports/**"
       - "legacy/runtime-artifacts/**"
+      - "receipts/formalism_proof_package_registry_ci_binding_execution.json"
+      - "status/formalism_proof_package_registry_ci_binding.pending.json"
   pull_request:
 
 permissions:
   contents: write
   actions: read
+  issues: write
 
 concurrency:
   group: data-continuation-tests-${{ github.ref }}
@@ -70,13 +73,23 @@ jobs:
             tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json \
             --task-id check_formalism_proof_package_registry_ci_binding
 
-      - name: Commit artifact routing changes
+      - name: Finalize registry CI binding from this workflow run
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          python tools/finalize_formalism_proof_package_registry_ci_binding.py
+          python tools/check_formalism_proof_package_registry_ci_binding.py
+
+      - name: Commit artifact routing and CI evidence changes
         if: github.event_name != 'pull_request'
         run: |
           set -euo pipefail
 
           if [ -z "$(git status --porcelain)" ]; then
-            echo "No artifact routing changes to commit."
+            echo "No artifact routing or CI evidence changes to commit."
             exit 0
           fi
 
@@ -86,12 +99,41 @@ jobs:
           git add -A
 
           if git diff --cached --quiet; then
-            echo "No staged artifact routing changes to commit."
+            echo "No staged artifact routing or CI evidence changes to commit."
             exit 0
           fi
 
-          git commit -m "route runtime artifacts through declared rules [skip ci]"
+          git commit -m "record repository-owned CI binding evidence [skip ci]"
           git push
+
+      - name: Close completed registry CI-binding issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          STATUS="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          record = json.loads(Path('status/formalism_proof_package_registry_ci_binding.pending.json').read_text())
+          print(record.get('status', ''))
+          PY
+          )"
+
+          if [ "$STATUS" != "VERIFIED_EXISTING_WORKFLOW_BINDING" ]; then
+            echo "Binding is not verified; issue #7 remains open."
+            exit 0
+          fi
+
+          ISSUE_STATE="$(gh issue view 7 --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
+          if [ "$ISSUE_STATE" = "OPEN" ]; then
+            gh issue close 7 \
+              --repo "$GITHUB_REPOSITORY" \
+              --comment "Repository-owned completion succeeded. The existing continuation-tests workflow recorded its run ID, numeric job ID, triggering commit, PASS registry report, report SHA-256, and durable receipt at receipts/formalism_proof_package_registry_ci_binding_execution.json. Authority remains REGISTRY_CONSISTENCY_ONLY and canonical proof issues #3-#6 remain separate."
+          else
+            echo "Issue #7 is already closed."
+          fi
 
       - name: Upload continuation artifacts
         uses: actions/upload-artifact@v4
@@ -107,6 +149,7 @@ jobs:
             reports/compound_continuation_report.md
             reports/formalism_proof_package_registry_verification.json
             reports/formalism_proof_package_registry_ci_binding_verification.json
+            receipts/formalism_proof_package_registry_ci_binding_execution.json
             reports/stage_32_admissibility_space_report.json
             reports/stage_33_transition_graph_report.json
             reports/stage_34_repair_report.json
