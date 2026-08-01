@@ -2,7 +2,7 @@
   "schema": "stegverse.formalism-tests.proof-package-registry-ci-binding.v1",
   "repository": "Data-Continuation/formalism-tests",
   "issue": 7,
-  "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+  "status": "ACTIVATED_PENDING_RUN_EVIDENCE",
   "required_schema": "schemas/formalism_proof_package_registry_ci_binding.schema.json",
   "handoff": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
   "declared_task_manifest": "tools/tasks/formalism_proof_package_registry_tasks.json",
@@ -25,10 +25,10 @@
     "expected_active_owner_count": 4
   },
   "observed": {
-    "workflow_path": null,
+    "workflow_path": ".github/workflows/continuation-tests.yml",
     "workflow_run_id": null,
     "job_id": null,
-    "commit_sha": null,
+    "commit_sha": "72808db36157ace8ceed31656da2efe1748aa378",
     "report_sha256": null,
     "binding_verified": false,
     "canonical_execution_claimed": false
@@ -37,7 +37,7 @@
   "promotion_eligible": false,
   "canonical_proof_issues_satisfied": [],
   "non_claims": [
-    "This record does not establish that no workflow exists or has run.",
+    "The registry layer is installed in the existing continuation-tests workflow, but durable workflow run evidence is not yet recorded.",
     "This record does not satisfy canonical execution for issues 3 through 6.",
     "This record grants no execution, release, publication, certification, financial, sovereign, or downstream mutation authority."
   ]
