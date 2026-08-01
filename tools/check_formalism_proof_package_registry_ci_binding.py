@@ -14,6 +14,7 @@ OUTPUT = ROOT / "reports/formalism_proof_package_registry_ci_binding_verificatio
 
 EXPECTED_SCHEMA_PATH = "schemas/formalism_proof_package_registry_ci_binding.schema.json"
 EXPECTED_HANDOFF_PATH = "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md"
+EXPECTED_WORKFLOW_PATH = ".github/workflows/continuation-tests.yml"
 EXPECTED_COMMAND = [
     "python",
     "tools/run_declared_tasks.py",
@@ -21,6 +22,10 @@ EXPECTED_COMMAND = [
     "--task-id",
     "check_formalism_proof_package_registry",
 ]
+
+
+def valid_commit_sha(value: object) -> bool:
+    return isinstance(value, str) and re.fullmatch(r"[0-9a-f]{40}", value) is not None
 
 
 def main() -> int:
@@ -88,13 +93,26 @@ def main() -> int:
     if observed.get("canonical_execution_claimed") is not False:
         errors.append("canonical_execution_claimed must remain false")
 
-    if record.get("status") == "PENDING_EXISTING_WORKFLOW_BINDING":
+    status = record.get("status")
+    if status == "PENDING_EXISTING_WORKFLOW_BINDING":
         if verified:
             errors.append("pending status cannot claim verified binding")
         for field in ("workflow_path", "workflow_run_id", "job_id", "commit_sha", "report_sha256"):
             if observed.get(field) is not None:
                 errors.append(f"pending status requires {field}=null")
-    elif record.get("status") == "VERIFIED_EXISTING_WORKFLOW_BINDING":
+    elif status == "ACTIVATED_PENDING_RUN_EVIDENCE":
+        if verified:
+            errors.append("activated pending status cannot claim verified binding")
+        if observed.get("workflow_path") != EXPECTED_WORKFLOW_PATH:
+            errors.append("activated status requires the existing continuation-tests workflow")
+        elif not (ROOT / EXPECTED_WORKFLOW_PATH).is_file():
+            errors.append("activated workflow file missing")
+        if not valid_commit_sha(observed.get("commit_sha")):
+            errors.append("activated status requires a 40-character activation commit SHA")
+        for field in ("workflow_run_id", "job_id", "report_sha256"):
+            if observed.get(field) is not None:
+                errors.append(f"activated pending status requires {field}=null until durable evidence exists")
+    elif status == "VERIFIED_EXISTING_WORKFLOW_BINDING":
         if not verified:
             errors.append("verified status requires binding_verified=true")
         workflow_path = observed.get("workflow_path")
@@ -104,11 +122,13 @@ def main() -> int:
         report_sha = observed.get("report_sha256")
         if not isinstance(workflow_path, str) or not workflow_path.startswith(".github/workflows/"):
             errors.append("verified binding requires an existing workflow path")
+        elif not (ROOT / workflow_path).is_file():
+            errors.append("verified workflow file missing")
         if not isinstance(workflow_run_id, int) or workflow_run_id < 1:
             errors.append("verified binding requires a positive workflow run ID")
         if not isinstance(job_id, int) or job_id < 1:
             errors.append("verified binding requires a positive job ID")
-        if not isinstance(commit_sha, str) or re.fullmatch(r"[0-9a-f]{40}", commit_sha) is None:
+        if not valid_commit_sha(commit_sha):
             errors.append("verified binding requires a 40-character commit SHA")
         if not isinstance(report_sha, str) or re.fullmatch(r"[0-9a-f]{64}", report_sha) is None:
             errors.append("verified binding requires a report SHA-256")
@@ -118,10 +138,12 @@ def main() -> int:
     result = {
         "schema": "stegverse.formalism-tests.proof-package-registry-ci-binding-verification.v1",
         "status": "PASS" if not errors else "FAIL",
-        "binding_status": record.get("status"),
+        "binding_status": status,
+        "workflow_path": observed.get("workflow_path"),
         "binding_verified": verified,
         "schema_reference_valid": record.get("required_schema") == EXPECTED_SCHEMA_PATH,
         "handoff_reference_valid": record.get("handoff") == EXPECTED_HANDOFF_PATH,
+        "activation_recorded": status in {"ACTIVATED_PENDING_RUN_EVIDENCE", "VERIFIED_EXISTING_WORKFLOW_BINDING"},
         "promotion_eligible": False,
         "canonical_proof_issues_satisfied": [],
         "errors": errors,
