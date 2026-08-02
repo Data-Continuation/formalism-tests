@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {"id":"MF-BS-001","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"current","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"ALLOW"},
+    {"id":"MF-BS-002","standing":"DENY","candidate_authorizing":false,"execute_requested":false,"evidence":"current","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"DENY"},
+    {"id":"MF-BS-003","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"hash_mismatch","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-004","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"missing_history","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-005","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"policy_ambiguous","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-006","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"delegation_partially_revoked","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-007","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"current","trusted_time":false,"target_identity":"clear","action_semantics":"stable","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-008","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"current","trusted_time":true,"target_identity":"ambiguous","action_semantics":"stable","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-009","standing":"ALLOW","candidate_authorizing":false,"execute_requested":false,"evidence":"current","trusted_time":true,"target_identity":"clear","action_semantics":"drifted","recovery_path":true,"expected":"FAIL_CLOSED"},
+    {"id":"MF-BS-010","standing":"ALLOW","candidate_authorizing":false,"execute_requested":true,"evidence":"current","trusted_time":true,"target_identity":"clear","action_semantics":"stable","recovery_path":false,"expected":"FAIL_CLOSED"}
+  ]
+}
