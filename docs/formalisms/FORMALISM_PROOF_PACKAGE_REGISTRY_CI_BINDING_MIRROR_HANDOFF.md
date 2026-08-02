@@ -1,79 +1,137 @@
 # Formalism Proof-Package Registry CI-Binding Mirror Handoff
 
-## Scope
+## Scope and source of truth
 
-This handoff governs issue #7 in `Data-Continuation/formalism-tests`.
+This handoff governs issue #7 in `Data-Continuation/formalism-tests` on `main`.
 
-Issue #7 exists only to bind the already-declared proof-package registry validation task into an existing repository-owned CI or workflow surface. It does not own canonical execution for any proof package.
+Issue #7 binds the already-declared proof-package registry validation task into the existing repository-owned workflow. It does not own canonical execution for any proof package.
 
-## Existing declared task
+Session consolidation record:
+
+```text
+status/session_consolidation_registry_ci_binding_2026-08-02.json
+```
+
+## Active goal and goal ID
+
+```text
+goal_id: FT-SESSION-REGISTRY-CI-2026-08-02
+active_goal: obtain durable hosted run evidence for the activated registry validation layer
+originating_goal: build, govern, activate, validate, and durably transfer the proof-package registry CI-binding layer without duplicate execution
+```
+
+## Canonical owner and claims
+
+```text
+canonical task owner: issue #7
+implementation claim: released — layer built and workflow integration committed
+validation claim: active — issue-7-registry-ci-binding-lane
+claim role: CLAIMED_FOR_VALIDATION
+claim creation: 2026-07-27T07:33:36Z
+claim release condition: VERIFIED_EXISTING_WORKFLOW_BINDING evidence committed and issue #7 closed
+collision boundary: no competing registry workflow; no issue #3-#6 canonical proof execution in this lane
+```
+
+## Existing workflow activation
+
+The correct existing workflow is:
+
+```text
+.github/workflows/continuation-tests.yml
+```
+
+Activation commit:
+
+```text
+72808db36157ace8ceed31656da2efe1748aa378
+```
+
+The workflow runs:
 
 ```bash
 python tools/run_declared_tasks.py tools/tasks/formalism_proof_package_registry_tasks.json --task-id check_formalism_proof_package_registry
+python tools/run_declared_tasks.py tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json --task-id check_formalism_proof_package_registry_ci_binding
 ```
 
-Expected output:
+Expected reports:
 
 ```text
 reports/formalism_proof_package_registry_verification.json
+reports/formalism_proof_package_registry_ci_binding_verification.json
 ```
 
-## Installed CI-binding surfaces
+## Installed surfaces
 
 ```text
+data/formalism_proof_package_registry.json
+schemas/formalism_proof_package_registry.schema.json
+tools/check_formalism_proof_package_registry.py
+tools/tasks/formalism_proof_package_registry_tasks.json
 status/formalism_proof_package_registry_ci_binding.pending.json
 schemas/formalism_proof_package_registry_ci_binding.schema.json
 tools/check_formalism_proof_package_registry_ci_binding.py
 tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json
+.github/workflows/continuation-tests.yml
 docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md
+status/session_consolidation_registry_ci_binding_2026-08-02.json
 ```
-
-The pending record must retain the exact Schema and handoff references. The checker must fail closed when either reference is missing, substituted, or points to a missing file.
 
 ## Current bounded state
 
 ```text
-status: PENDING_EXISTING_WORKFLOW_BINDING
-workflow path: not identified
-workflow run id: not observed
-job id: not observed
-commit SHA: not recorded
-report SHA-256: not recorded
+status: ACTIVATED_PENDING_RUN_EVIDENCE
+layer built: true
+existing workflow reused: true
+competing workflow created: false
+layer activated: true
+workflow path: .github/workflows/continuation-tests.yml
+activation commit: 72808db36157ace8ceed31656da2efe1748aa378
+workflow run id: not recorded
+job id: not recorded
+registry report SHA-256: not recorded
 binding verified: false
 canonical execution claimed: false
 promotion eligible: false
 authority posture: REGISTRY_CONSISTENCY_ONLY
 ```
 
-No absence claim may be inferred from missing connector-visible workflow records. No new workflow may be created merely because an existing workflow was not discoverable through code search or guessed file paths.
+File-level activation is complete. Hosted execution success is not established because no durable workflow run ID, job ID, validator results, or registry-report hash is recorded.
 
-## Required completion sequence
+## Exact remaining machine-owned task
 
-1. Inspect the repository-owned workflow inventory using an execution surface that can enumerate `.github/workflows/` reliably.
-2. Select the existing workflow that already owns declared-task, proof, validation, or repository-integrity execution.
-3. Add the existing registry command to that workflow without creating a competing registry-validation workflow.
-4. Execute the workflow on a durable commit.
-5. Confirm the registry report contains:
+Owner and state location:
 
 ```text
-status: PASS
-package_count: 4
-active_issue_count: 4
-release_state: NOT_AUTHORIZED
-errors: []
+owner: issue #7
+state: status/formalism_proof_package_registry_ci_binding.pending.json
+claim: CLAIMED_FOR_VALIDATION
+release condition: observable authentic workflow evidence
 ```
 
-6. Record the exact workflow path, positive run id, positive job id, 40-character commit SHA, and report SHA-256 in the CI-binding record.
-7. Change the record to `VERIFIED_EXISTING_WORKFLOW_BINDING` only after all evidence is present.
-8. Run:
+Required action:
 
-```bash
-python tools/run_declared_tasks.py tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json --task-id check_formalism_proof_package_registry_ci_binding
+1. Observe an authentic run of `.github/workflows/continuation-tests.yml` containing both registry tasks.
+2. Capture the workflow run ID, job ID, triggering 40-character commit SHA, and SHA-256 of `reports/formalism_proof_package_registry_verification.json`.
+3. Confirm both registry tasks returned `PASS`.
+4. Confirm the registry report records four proof packages, four canonical proof owners, `release_state: NOT_AUTHORIZED`, and no errors.
+5. Promote `status/formalism_proof_package_registry_ci_binding.pending.json` only to `VERIFIED_EXISTING_WORKFLOW_BINDING`.
+6. Re-run the CI-binding validator.
+7. Close issue #7 only after the record, reports, workflow evidence, and handoffs agree.
+
+Machine-observable release condition:
+
+```text
+workflow_run_id > 0
+job_id > 0
+commit_sha matches ^[0-9a-f]{40}$
+report_sha256 matches ^[0-9a-f]{64}$
+binding_verified == true
+both validator results == PASS
 ```
 
 ## Authority boundary
 
-Registry validation is inventory-consistency evidence only.
+Registry validation is `REGISTRY_CONSISTENCY_ONLY`.
 
 It does not satisfy or close:
 
@@ -86,18 +144,35 @@ issue #6 optimization-target commit-boundary canonical execution
 
 It grants no execution, installation, production, release, publication, certification, financial, sovereign, or downstream mutation authority.
 
-## Parallel-safe work
+## Cross-repository dependencies
 
-While workflow inventory remains unavailable, safe work is limited to:
+No propagation to Site, Publisher, admissibility-wiki, or stegguardian-wiki is authorized from registry validation alone. Those repositories remain governed by their own handoffs and by canonical proof closure.
+
+## Session consolidation
 
 ```text
-maintaining exact Schema, handoff, task, and output references
-preserving fail-closed pending state
-verifying the CI-binding checker and manifest remain synchronized
-recording newly exposed repository-owned workflow evidence
-preventing duplicate workflow creation
+MERGED INTO: Data-Continuation/formalism-tests issue #7
+durable inventory: status/session_consolidation_registry_ci_binding_2026-08-02.json
+unique session requirements transferred: yes
+chat-session-owned implementation work remaining: none
+repository-native validation work remaining: yes
 ```
 
-## Promotion prohibition
+Adjacent goals remain owned by issues #3-#6 and their package handoffs. This session must not duplicate those workloads.
 
-Documentation, issue comments, connector searches, empty status records, guessed workflow paths, and the existence of a declared task are not evidence of CI binding.
+## Metrics and denominator
+
+```text
+task completion: 6/7 = 86%
+developed files: 8/8 = 100%
+validation: 2/3 = 67%
+integration: 1/2 = 50%
+goal activation: 3/4 = 75%
+session consolidation: 7/7 = 100%
+```
+
+The incomplete denominators are durable hosted run validation and evidence promotion, both owned by issue #7.
+
+## Archive conditions
+
+This chat session may be archived because all unique session knowledge, completed mutations, remaining work, ownership, collision boundaries, evidence requirements, and release conditions are committed in this handoff and the session consolidation record. Archival does not close issue #7 or imply verified workflow execution.
