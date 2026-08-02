@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "tasks": [
+    {
+      "task_id": "mindforge_boundary_semantics_tests",
+      "command": "python tools/run_mindforge_boundary_semantics_tests.py",
+      "outputs": [
+        "reports/mindforge_boundary_semantics_report.json",
+        "receipts/mindforge_boundary_semantics_execution_receipts.jsonl"
+      ]
+    }
+  ]
+}
