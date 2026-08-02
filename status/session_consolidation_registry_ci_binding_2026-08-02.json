@@ -1,0 +1,130 @@
+{
+  "schema": "stegverse.formalism-tests.session-consolidation.v1",
+  "session_goal_id": "FT-SESSION-REGISTRY-CI-2026-08-02",
+  "originating_goal": "Build, govern, activate, validate, and durably transfer the formalism proof-package registry CI-binding layer without duplicating canonical proof execution.",
+  "repository": "Data-Continuation/formalism-tests",
+  "branch": "main",
+  "canonical_continuation": {
+    "issue": 7,
+    "handoff": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
+    "state_record": "status/formalism_proof_package_registry_ci_binding.pending.json",
+    "workflow": ".github/workflows/continuation-tests.yml"
+  },
+  "claim": {
+    "claimant": "issue-7-registry-ci-binding-lane",
+    "role": "CLAIMED_FOR_VALIDATION",
+    "created_at": "2026-07-27T07:33:36Z",
+    "release_condition": "A durable workflow run records both registry validators PASS, workflow run ID, job ID, triggering commit SHA, and registry-report SHA-256; the binding record is promoted to VERIFIED_EXISTING_WORKFLOW_BINDING and issue #7 is closed.",
+    "collision_boundary": "Do not create another registry-validation workflow and do not perform issue #3-#6 canonical proof execution in this lane."
+  },
+  "inventory": [
+    {
+      "task_id": "FT-RCI-01",
+      "goal": "Install the registry machine-readable inventory and validator",
+      "location": "data/formalism_proof_package_registry.json; tools/check_formalism_proof_package_registry.py",
+      "owner": "Data-Continuation/formalism-tests",
+      "claim_state": "COMPLETE",
+      "completion_state": "complete",
+      "validation_state": "validator installed; durable hosted PASS evidence pending",
+      "integration_state": "integrated into declared-task manifest and existing workflow",
+      "archival_dependency": false,
+      "evidence": "tools/tasks/formalism_proof_package_registry_tasks.json",
+      "next_action": "None outside issue #7 evidence capture."
+    },
+    {
+      "task_id": "FT-RCI-02",
+      "goal": "Install fail-closed CI-binding Schema, record, validator, and task",
+      "location": "schemas/formalism_proof_package_registry_ci_binding.schema.json; status/formalism_proof_package_registry_ci_binding.pending.json; tools/check_formalism_proof_package_registry_ci_binding.py; tools/tasks/formalism_proof_package_registry_ci_binding_tasks.json",
+      "owner": "issue #7",
+      "claim_state": "COMPLETE",
+      "completion_state": "complete",
+      "validation_state": "static contract validation implemented",
+      "integration_state": "integrated",
+      "archival_dependency": false,
+      "evidence": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
+      "next_action": "None."
+    },
+    {
+      "task_id": "FT-RCI-03",
+      "goal": "Reuse the existing workflow rather than create a competing workflow",
+      "location": ".github/workflows/continuation-tests.yml",
+      "owner": "issue #7",
+      "claim_state": "COMPLETE",
+      "completion_state": "complete",
+      "validation_state": "workflow mutation inspectable at commit 72808db36157ace8ceed31656da2efe1748aa378",
+      "integration_state": "integrated",
+      "archival_dependency": false,
+      "evidence": "commit 72808db36157ace8ceed31656da2efe1748aa378",
+      "next_action": "None."
+    },
+    {
+      "task_id": "FT-RCI-04",
+      "goal": "Activate both registry validators in the existing workflow",
+      "location": ".github/workflows/continuation-tests.yml",
+      "owner": "issue #7",
+      "claim_state": "COMPLETE",
+      "completion_state": "activated",
+      "validation_state": "file-level activation verified; hosted execution not yet evidenced",
+      "integration_state": "integrated",
+      "archival_dependency": false,
+      "evidence": "commit 72808db36157ace8ceed31656da2efe1748aa378",
+      "next_action": "None."
+    },
+    {
+      "task_id": "FT-RCI-05",
+      "goal": "Capture durable hosted execution evidence",
+      "location": "issue #7; status/formalism_proof_package_registry_ci_binding.pending.json",
+      "owner": "issue #7",
+      "claim_state": "MACHINE_OWNED",
+      "completion_state": "blocked pending observable workflow run",
+      "validation_state": "not complete",
+      "integration_state": "activation complete; evidence promotion pending",
+      "archival_dependency": false,
+      "evidence": "status is ACTIVATED_PENDING_RUN_EVIDENCE",
+      "next_action": "Capture workflow run ID, job ID, both PASS results, triggering commit SHA, and registry-report SHA-256; promote only to VERIFIED_EXISTING_WORKFLOW_BINDING."
+    },
+    {
+      "task_id": "FT-RCI-06",
+      "goal": "Preserve canonical proof ownership and prevent duplicate execution",
+      "location": "data/formalism_proof_package_registry.json; issues #3-#7",
+      "owner": "repository task registry",
+      "claim_state": "COMPLETE",
+      "completion_state": "complete",
+      "validation_state": "coordination ownership is separated from canonical proof ownership",
+      "integration_state": "integrated",
+      "archival_dependency": false,
+      "evidence": "issues #3-#7 and registry coordination ownership",
+      "next_action": "Issues #3-#6 continue independently; issue #7 must not satisfy them."
+    },
+    {
+      "task_id": "FT-RCI-07",
+      "goal": "Durably transfer this session's unique state and archive dependency",
+      "location": "status/session_consolidation_registry_ci_binding_2026-08-02.json; repository handoffs",
+      "owner": "Data-Continuation/formalism-tests",
+      "claim_state": "MERGED_INTO_CANONICAL_WORKSTREAM",
+      "completion_state": "complete",
+      "validation_state": "installed repository record",
+      "integration_state": "canonical continuation points to issue #7",
+      "archival_dependency": false,
+      "evidence": "this record",
+      "next_action": "No chat-session-owned action remains."
+    }
+  ],
+  "adjacent_goals": {
+    "denial_reachability": "MERGED INTO issue #3 and FORMALISM_TESTS_MIRROR_HANDOFF.md",
+    "fi_transition_continuity": "MERGED INTO issue #4 and docs/formalisms/FI_TRANSITION_CONTINUITY_INTEROP_MIRROR_HANDOFF.md",
+    "morrison_runtime_scope": "MERGED INTO issue #5 and FORMALISM_TESTS_MIRROR_HANDOFF.md",
+    "optimization_target_boundary": "MERGED INTO issue #6 and docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
+    "registry_ci_binding": "MERGED INTO issue #7 and docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md"
+  },
+  "metrics": {
+    "task_completion": {"complete": 6, "required": 7, "percent": 86},
+    "developed_files": {"complete": 8, "required": 8, "percent": 100},
+    "validation": {"complete": 2, "required": 3, "percent": 67},
+    "integration": {"complete": 1, "required": 2, "percent": 50},
+    "goal_activation": {"complete": 3, "required": 4, "percent": 75},
+    "session_consolidation": {"complete": 7, "required": 7, "percent": 100}
+  },
+  "archive_state": "MERGED_INTO_CANONICAL_WORKSTREAM",
+  "archive_rationale": "All unique session requirements, implementation history, active ownership, remaining evidence task, release condition, and collision boundaries are durably recorded. The remaining work is issue #7 machine/repository-owned validation, not chat-session-owned work."
+}
