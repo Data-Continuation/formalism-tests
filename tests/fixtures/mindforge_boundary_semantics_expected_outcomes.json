@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "expected_outcomes": {
+    "MF-BS-001": "ALLOW",
+    "MF-BS-002": "DENY",
+    "MF-BS-003": "FAIL_CLOSED",
+    "MF-BS-004": "FAIL_CLOSED",
+    "MF-BS-005": "FAIL_CLOSED",
+    "MF-BS-006": "FAIL_CLOSED",
+    "MF-BS-007": "FAIL_CLOSED",
+    "MF-BS-008": "FAIL_CLOSED",
+    "MF-BS-009": "FAIL_CLOSED",
+    "MF-BS-010": "FAIL_CLOSED"
+  }
+}
