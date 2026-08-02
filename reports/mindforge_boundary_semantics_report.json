@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "suite": "mindforge_boundary_semantics",
+  "status": "PASS",
+  "case_count": 10,
+  "passed_count": 10,
+  "failed_count": 0,
+  "allow_executes_transition": false,
+  "authority_posture": "ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY",
+  "results": [
+    {"case_id":"MF-BS-001","result":"ALLOW","expected":"ALLOW","execution_invoked":false,"reason":"standing_allows_candidate_only"},
+    {"case_id":"MF-BS-002","result":"DENY","expected":"DENY","execution_invoked":false,"reason":"standing_rejects_transition"},
+    {"case_id":"MF-BS-003","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"hash_mismatch"},
+    {"case_id":"MF-BS-004","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"missing_history"},
+    {"case_id":"MF-BS-005","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"policy_ambiguous"},
+    {"case_id":"MF-BS-006","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"delegation_partially_revoked"},
+    {"case_id":"MF-BS-007","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"trusted_time_unavailable"},
+    {"case_id":"MF-BS-008","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"target_identity_ambiguous"},
+    {"case_id":"MF-BS-009","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"action_semantic_drift"},
+    {"case_id":"MF-BS-010","result":"FAIL_CLOSED","expected":"FAIL_CLOSED","execution_invoked":false,"reason":"recovery_path_unavailable"}
+  ]
+}
