@@ -1,0 +1,10 @@
+{"case_id":"MF-BS-001","execution_invoked":false,"expected":"ALLOW","reason":"standing_allows_candidate_only","result":"ALLOW"}
+{"case_id":"MF-BS-002","execution_invoked":false,"expected":"DENY","reason":"standing_rejects_transition","result":"DENY"}
+{"case_id":"MF-BS-003","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"hash_mismatch","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-004","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"missing_history","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-005","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"policy_ambiguous","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-006","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"delegation_partially_revoked","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-007","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"trusted_time_unavailable","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-008","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"target_identity_ambiguous","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-009","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"action_semantic_drift","result":"FAIL_CLOSED"}
+{"case_id":"MF-BS-010","execution_invoked":false,"expected":"FAIL_CLOSED","reason":"recovery_path_unavailable","result":"FAIL_CLOSED"}
