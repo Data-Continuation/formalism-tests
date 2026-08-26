@@ -122,3 +122,29 @@ Any missing canonical execution evidence, artifact mismatch, unknown source prov
 ## Archive posture
 
 This file preserves the proof surface, declared commands, case contract, current standing, issue ownership, completion conditions, downstream gate, and authority boundary so continuation does not depend on prior chat context.
+
+## Canonical GitHub Actions execution observed
+
+```text
+status: VERIFIED_CANONICAL_RUN
+commit_sha: daca16578387c45cde616b82ba517d11314e1ef2
+execution_surface: GITHUB_ACTIONS
+run_id: 33014956712
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33014956712
+task_results:
+  morrison_runtime_commit_time_scope_tests: PASS
+  verify_morrison_runtime_commit_time_scope_artifacts: PASS
+  check_morrison_runtime_canonical_evidence_gate: PASS
+report_sha256: 47fe6f349b2a5f181c2653db8e874e7cd862287e69aa3ba80f762f4019079dd1
+receipts_sha256: 0993a3c118de08ea9a4bdb1aac93cad3363893c1bf0b573edc057dc247d73ce2
+verification_sha256: 7f067bf605d363850ead0acb6851ccc5d16aa3b90d07b96a35becf06f11fd3da
+canonical_evidence_gate_sha256: e670e3487487db345fcd584526109cacad81d763b04415f6c1584b5da196eddf
+report_equivalence: true
+receipts_equivalence: true
+expected_outcomes_equivalence: true
+canonical_evidence_gate_equivalence: true
+authority_posture: EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY
+downstream_owner: StegVerse-Labs/admissibility-wiki#39
+```
+
+This is repository-owned canonical execution evidence for the bounded comparative proof package. It is not Morrison certification, endorsement, production validation, StegVerse execution authority, release authority, or downstream mutation authority. Downstream promotion remains separately gated by the admissibility-wiki canonical/public-route contracts.

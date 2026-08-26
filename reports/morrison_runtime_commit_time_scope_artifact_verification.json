@@ -1,15 +1,11 @@
 {
   "schema": "stegverse.morrison-runtime.commit-time-scope.artifact-verification.v1",
   "suite_id": "morrison-runtime-commit-time-scope-v0.1",
-  "status": "PENDING_CANONICAL_EXECUTION",
+  "status": "PASS",
   "verified_report": "reports/morrison_runtime_commit_time_scope_report.json",
   "verified_receipts": "receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl",
   "case_count": 7,
   "receipt_count": 7,
   "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
-  "artifact_structure_complete": true,
-  "canonical_repository_checkout": false,
-  "github_actions_run": false,
-  "errors": [],
-  "remaining_requirement": "Run both declared tasks in a repository checkout or existing CI surface and replace this pending status only after deterministic equality is observed."
+  "errors": []
 }
