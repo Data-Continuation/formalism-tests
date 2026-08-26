@@ -51,6 +51,24 @@ MRG-CT-006 PREVIOUSLY_UNMODELED_PARAMETER_FAIL_CLOSED -> FAIL_CLOSED
 MRG-CT-007 COMPLETE_COMMIT_BOUNDARY_RECONSTRUCTION_ALLOW -> ALLOW
 ```
 
+## 2026-08-26 repository-owned canonical CI activation
+
+The existing `continuation-tests.yml` workflow is now the canonical execution surface for issue #5. It runs `tools/run_morrison_runtime_canonical_ci_capture.py` on non-PR `main` execution, which runs all three declared Morrison tasks, verifies deterministic output equivalence, creates the schema-bound canonical execution evidence, verifies the canonical gate hash, appends the hosted observation here, commits generated evidence through the repository-owned evidence step, and closes issue #5 only after `VERIFIED_CANONICAL_RUN` exists.
+
+Implementation commits:
+
+```text
+524426b45683b2eab4b0d50749e03a3f118ff3f9
+  add repository-owned Morrison canonical CI capture
+
+5f6e26bb39520f31aee56d3cb5b9353a3dfbdcba
+  bind capture, evidence upload, durable commit, and issue closure to continuation-tests.yml
+```
+
+First hosted attempt `33014851827` proved the first declared Morrison task PASS with all 7/7 cases, then correctly failed its stronger byte-equivalence gate because the committed report used a compact JSON formatting form while the deterministic generator emits canonical pretty JSON. This was an artifact-byte representation mismatch, not a semantic test failure.
+
+Commit `7bca1de68bf6cb160a2a447e74744a335cde68d4` canonicalizes the committed report to the generator's deterministic byte format without changing any semantic field, case result, authority posture, or evidence claim. A successor repository-owned run is required before canonical execution may be promoted.
+
 ## Current state
 
 ```text
