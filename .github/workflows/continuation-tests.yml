@@ -61,6 +61,12 @@ jobs:
             python tools/run_declared_tasks.py "$TASK_MANIFEST"
           fi
 
+      - name: Capture Morrison canonical proof on repository-owned main execution
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          python tools/run_morrison_runtime_canonical_ci_capture.py
+
       - name: Validate proof-package registry layer
         run: |
           set -euo pipefail
@@ -135,6 +141,29 @@ jobs:
             echo "Issue #7 is already closed."
           fi
 
+      - name: Close completed Morrison canonical proof issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/check_morrison_runtime_canonical_evidence_gate.py
+          STATUS="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          record = json.loads(Path('receipts/morrison_runtime_canonical_execution_evidence.json').read_text())
+          print(record.get('status', ''))
+          PY
+          )"
+          if [ "$STATUS" != "VERIFIED_CANONICAL_RUN" ]; then
+            echo "Morrison canonical evidence not verified; issue #5 remains open."
+            exit 1
+          fi
+          ISSUE_STATE="$(gh issue view 5 --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
+          if [ "$ISSUE_STATE" = "OPEN" ]; then
+            gh issue close 5 --repo "$GITHUB_REPOSITORY" --comment "Repository-owned canonical Morrison execution completed on this workflow run. The three declared tasks passed, deterministic report/receipt equivalence was retained, the canonical evidence gate passed, and durable evidence is committed by the preceding artifact-routing step. Authority remains EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY; downstream promotion remains owned by StegVerse-Labs/admissibility-wiki#39."
+          fi
+
       - name: Upload continuation artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -150,6 +179,12 @@ jobs:
             reports/formalism_proof_package_registry_verification.json
             reports/formalism_proof_package_registry_ci_binding_verification.json
             receipts/formalism_proof_package_registry_ci_binding_execution.json
+            reports/morrison_runtime_commit_time_scope_report.json
+            reports/morrison_runtime_commit_time_scope_artifact_verification.json
+            reports/morrison_runtime_canonical_evidence_gate.json
+            receipts/morrison_runtime_commit_time_scope_execution_receipts.jsonl
+            receipts/morrison_runtime_canonical_execution_evidence.json
+            MORRISON_RUNTIME_COMMIT_TIME_SCOPE_HANDOFF.md
             reports/stage_32_admissibility_space_report.json
             reports/stage_33_transition_graph_report.json
             reports/stage_34_repair_report.json
