@@ -1,0 +1,39 @@
+{
+  "schema": "stegverse.optimization-target.canonical-execution-evidence.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "commit_sha": "70d4780dcaddf9371feb17e1247c401c0c3038d1",
+  "execution_surface": "GITHUB_ACTIONS",
+  "run_url": "https://github.com/Data-Continuation/formalism-tests/actions/runs/33025167959",
+  "executed_at": "2026-08-26T23:58:35.309115+00:00",
+  "commands": [
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests",
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id check_optimization_target_canonical_evidence_gate"
+  ],
+  "task_results": {
+    "optimization_target_commit_boundary_tests": "PASS",
+    "verify_optimization_target_commit_boundary_artifacts": "PASS",
+    "check_optimization_target_canonical_evidence_gate": "PASS"
+  },
+  "artifact_hashes": {
+    "report_sha256": "db39b4a8cd4b8f244265e68141ab88b9b2291cd6eeab2fabdbc3059f21c37860",
+    "receipts_sha256": "ab4fad099af436cfa941785770ec016afe96adb4c59f92cbb5f1bddee4f3d44d",
+    "artifact_verification_sha256": "739a35d5b986dd7bd545f24be966c9cafca6af408c525e9101cc1e18b85a2cdd",
+    "canonical_evidence_gate_sha256": "47ac4a3ff3ebedb7a127bdaa0add64dc7a35cc0d7698d9aaefd96153990f2915"
+  },
+  "artifact_equivalence": {
+    "report": true,
+    "receipts": true,
+    "expected_outcomes": true,
+    "canonical_evidence_gate": true
+  },
+  "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+  "status": "VERIFIED_CANONICAL_RUN",
+  "notes": [
+    "Report and receipt outputs were byte-equivalent to their committed deterministic outputs before canonical capture.",
+    "Expected-outcome mapping matched the committed artifact baseline.",
+    "The canonical evidence-gate SHA-256 binds the committed checker source, avoiding self-referential gate-output hashing.",
+    "This proof grants no installation, production, publication, financial, sovereign, certification, release, or execution authority."
+  ]
+}

@@ -182,3 +182,29 @@ No release or tag is authorized until canonical execution, artifact equivalence,
 ## Archive posture
 
 This handoff preserves the installed optimization-target package, exact-command canonical evidence contract, non-self-referential gate-checker hash custody, issue ownership, downstream activation boundary, authority restrictions, remaining files and destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+
+## Canonical GitHub Actions execution observed
+
+```text
+status: VERIFIED_CANONICAL_RUN
+commit_sha: 70d4780dcaddf9371feb17e1247c401c0c3038d1
+execution_surface: GITHUB_ACTIONS
+run_id: 33025167959
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33025167959
+task_results:
+  optimization_target_commit_boundary_tests: PASS
+  verify_optimization_target_commit_boundary_artifacts: PASS
+  check_optimization_target_canonical_evidence_gate: PASS
+report_sha256: db39b4a8cd4b8f244265e68141ab88b9b2291cd6eeab2fabdbc3059f21c37860
+receipts_sha256: ab4fad099af436cfa941785770ec016afe96adb4c59f92cbb5f1bddee4f3d44d
+artifact_verification_sha256: 739a35d5b986dd7bd545f24be966c9cafca6af408c525e9101cc1e18b85a2cdd
+canonical_evidence_gate_sha256: 47ac4a3ff3ebedb7a127bdaa0add64dc7a35cc0d7698d9aaefd96153990f2915
+report_equivalence: true
+receipts_equivalence: true
+expected_outcomes_equivalence: true
+canonical_evidence_gate_equivalence: true
+authority_posture: FORMALISM_TEST_EVIDENCE_ONLY
+downstream_owner: StegVerse-Labs/admissibility-wiki
+```
+
+This is repository-owned canonical execution evidence for the optimization-target commit-boundary proof package. It establishes deterministic proof evidence only. It does not establish that an optimization target is objectively correct, nor grant installation, production, publication, financial, sovereign, certification, release, execution, or downstream mutation authority.
