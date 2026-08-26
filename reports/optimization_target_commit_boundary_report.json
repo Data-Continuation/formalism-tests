@@ -1,0 +1,46 @@
+{
+  "schema": "stegverse.optimization-target.commit-boundary.report.v1",
+  "suite_id": "optimization-target-commit-boundary-v0.1",
+  "status": "PASS",
+  "case_count": 5,
+  "passed_count": 5,
+  "failed_count": 0,
+  "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
+  "results": [
+    {
+      "case_id": "OT-CB-001",
+      "title": "EXPLICIT_TARGET_BOUND_AT_COMMIT",
+      "observed_result": "ALLOW",
+      "expected_result": "ALLOW",
+      "pass": true
+    },
+    {
+      "case_id": "OT-CB-002",
+      "title": "STALE_TARGET_BINDING",
+      "observed_result": "FAIL_CLOSED",
+      "expected_result": "FAIL_CLOSED",
+      "pass": true
+    },
+    {
+      "case_id": "OT-CB-003",
+      "title": "UNAUTHORIZED_TARGET_MUTATION",
+      "observed_result": "FAIL_CLOSED",
+      "expected_result": "FAIL_CLOSED",
+      "pass": true
+    },
+    {
+      "case_id": "OT-CB-004",
+      "title": "POLICY_DIVERGENCE",
+      "observed_result": "FAIL_CLOSED",
+      "expected_result": "FAIL_CLOSED",
+      "pass": true
+    },
+    {
+      "case_id": "OT-CB-005",
+      "title": "DENIAL_UNREACHABLE",
+      "observed_result": "FAIL_CLOSED",
+      "expected_result": "FAIL_CLOSED",
+      "pass": true
+    }
+  ]
+}
