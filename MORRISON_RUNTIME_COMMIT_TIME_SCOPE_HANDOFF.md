@@ -74,8 +74,11 @@ Commit `7bca1de68bf6cb160a2a447e74744a335cde68d4` canonicalizes the committed re
 ```text
 proof_package_structure: COMPLETE
 connector_materialized_reproduction: RECORDED
-canonical_repository_or_ci_execution: PENDING
-artifact_equivalence_promotion: BLOCKED_PENDING_CANONICAL_EXECUTION
+canonical_repository_or_ci_execution: VERIFIED_CANONICAL_RUN
+canonical_run_id: 33014956712
+canonical_run_commit: daca16578387c45cde616b82ba517d11314e1ef2
+durable_evidence_commit: 42ac1a25cf4427290f0b239c8e069253c87f86ba
+artifact_equivalence_promotion: VERIFIED
 authority_posture: EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY
 ```
 
@@ -86,10 +89,10 @@ Connector-materialized reproduction is evidence of deterministic reconstruction 
 ```text
 issue: Data-Continuation/formalism-tests#5
 title: Run canonical Morrison commit-time scope tasks and verify artifact equivalence
-state: open
+state: closed_completed
 ```
 
-Issue #5 owns the repository-checkout or existing-CI execution, exact report and receipt equivalence, verification regeneration, durable run evidence, and final handoff promotion.
+Issue #5 completed the repository-owned CI execution, exact report and receipt equivalence, verification regeneration, durable run evidence, and final upstream handoff promotion. Downstream responsibility is now exclusively `StegVerse-Labs/admissibility-wiki#39`.
 
 ## Completion conditions
 
