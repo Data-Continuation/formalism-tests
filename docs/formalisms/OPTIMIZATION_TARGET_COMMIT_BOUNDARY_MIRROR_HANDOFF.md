@@ -86,6 +86,20 @@ tools/check_optimization_target_canonical_evidence_gate.py
 
 It is not the digest of the gate's generated output. This removes self-referential receipt construction while preserving exact gate-version custody. The gate recomputes that source digest and rejects a mismatch. `artifact_equivalence.canonical_evidence_gate=true` therefore means the executed gate checker is byte-identical to the committed checker source identified by that digest.
 
+## 2026-08-26 repository-owned canonical CI activation
+
+The existing `continuation-tests.yml` workflow is the approved execution surface for issue #6; no duplicate workflow is required.
+
+```text
+1e8bc4542f2468bbfe824a2533efd27d41387e0b — deterministic report baseline committed
+36a88e1156a1ce561eb7a968b80360a8d106831d — deterministic receipt baseline committed
+75b461a89b7d139fa9dd7b7db9c2fedd9016a42b — repository-owned canonical capture runner installed
+```
+
+The capture runner requires GitHub Actions on `refs/heads/main`, regenerates all five cases, requires byte-equivalence to the committed report/receipt outputs, regenerates artifact verification, verifies expected outcomes against the committed baseline, binds four SHA-256 values including the non-self-referential committed gate-checker source, writes schema-shaped canonical evidence, runs the canonical evidence gate, and appends exact run evidence here only after the entire contract passes.
+
+Source installation is not canonical execution. Issue #6 remains open until a hosted run completes and its generated evidence is durably committed.
+
 ## Current state
 
 ```text
