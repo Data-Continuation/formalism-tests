@@ -41,7 +41,7 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 4,
         "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
         "bounded_result": "PASS",
-        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+        "downstream_activation": "PROHIBITED_UNTIL_FI_ACTIVATION_COMPLETION_RECEIPT_AND_BOUNDED_DOWNSTREAM_REVIEW",
     },
     "morrison-runtime-commit-time-scope": {
         "issue": 5,
