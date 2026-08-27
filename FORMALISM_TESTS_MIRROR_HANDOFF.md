@@ -259,6 +259,29 @@ downstream activation: prohibited
 
 A declared target is not commit-time admissible merely because it existed earlier or was once authorized. Current binding, authorized mutation, policy consistency, and reachable denial must all remain valid until consequence binds.
 
+## 2026-08-26 canonical proof ownership reconciliation
+
+Repository-owned GitHub Actions now directly closes two formerly pending canonical proof packages:
+
+```text
+Morrison Runtime commit-time scope
+  issue: #5 CLOSED
+  canonical_state: VERIFIED_CANONICAL_RUN
+  latest observed run: 33025167959
+  evidence: receipts/morrison_runtime_canonical_execution_evidence.json
+  downstream owner: StegVerse-Labs/admissibility-wiki#39
+
+Optimization-target commit boundary
+  issue: #6 CLOSED
+  canonical_state: VERIFIED_CANONICAL_RUN
+  latest observed run: 33025167959
+  five deterministic cases: 5/5 PASS
+  evidence: receipts/optimization_target_canonical_execution_evidence.json
+  downstream state: READY_FOR_BOUNDED_DOWNSTREAM_REVIEW
+```
+
+Issues #3 and #4 remain the only active canonical proof owners in this repository. Canonical proof completion does not grant downstream Wiki/publication/release/execution authority.
+
 ## Machine-readable proof-package registry
 
 Installed:
@@ -285,10 +308,10 @@ issue #4
   -> canonical FI continuity interoperability execution and durable equivalence evidence
 
 issue #5
-  -> canonical Morrison commit-time scope execution and evidence-gate satisfaction
+  -> COMPLETE / VERIFIED_CANONICAL_RUN / downstream responsibility transferred to StegVerse-Labs/admissibility-wiki#39
 
 issue #6
-  -> canonical optimization-target commit-boundary execution and evidence-gate satisfaction
+  -> COMPLETE / VERIFIED_CANONICAL_RUN / bounded downstream Wiki review pending
 
 admissibility-wiki issue #39
   -> bounded downstream compatibility-report promotion only after issue #5 closure
