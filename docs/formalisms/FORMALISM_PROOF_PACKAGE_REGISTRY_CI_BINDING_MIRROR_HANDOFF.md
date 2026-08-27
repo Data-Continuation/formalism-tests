@@ -134,13 +134,13 @@ both validator results == PASS
 Canonical proof ownership has advanced since the original four-active-owner registry binding contract.
 
 ```text
-active canonical owners: #3, #4
-completed canonical owners: #5, #6
+active canonical owners: none
+completed canonical owners: #3, #4, #5, #6
 total canonical proof owners preserved: 4
 issue #7 registry-binding authority: REGISTRY_CONSISTENCY_ONLY
 ```
 
-Hosted run `33032907096` proved both package captures and registry validation PASS, then failed only because the CI-binding finalizer still required exactly four *active* proof owners. The finalizer, binding checker, binding record, and schema now distinguish two active plus two completed owners while preserving the four-owner total. This lifecycle reconciliation does not reopen #5/#6 or satisfy #3/#4.
+Hosted run `33032907096` proved both package captures and registry validation PASS, then failed only because the CI-binding finalizer still required exactly four *active* proof owners. The finalizer, binding checker, binding record, and schema now distinguish zero active plus four completed owners while preserving the four-owner total. This lifecycle reconciliation does not reopen #5/#6 or satisfy #3/#4.
 
 ## Authority boundary
 
