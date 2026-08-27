@@ -42,8 +42,8 @@
         "durable_workflow_evidence_required": {"const": true},
         "report_status_required": {"const": "PASS"},
         "expected_package_count": {"const": 4},
-        "expected_active_owner_count": {"const": 2},
-        "expected_completed_owner_count": {"const": 2},
+        "expected_active_owner_count": {"const": 0},
+        "expected_completed_owner_count": {"const": 4},
         "expected_canonical_owner_count": {"const": 4}
       },
       "additionalProperties": false
