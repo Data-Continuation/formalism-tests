@@ -2,7 +2,7 @@
   "schema": "stegverse.denial-reachability.canonical-execution-evidence.v1",
   "suite_id": "denial-reachability-v0.1",
   "repository": "Data-Continuation/formalism-tests",
-  "commit_sha": "921c80ae6604ff97642d62adafeeaa94c774731f",
+  "commit_sha": "92231b40a3f4f6ac38b11f6b4323ccdbb95abb69",
   "execution_surface": "GITHUB_ACTIONS",
   "commands": [
     "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id denial_reachability_commit_boundary_tests",
