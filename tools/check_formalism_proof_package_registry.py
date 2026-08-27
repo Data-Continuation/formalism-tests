@@ -18,14 +18,14 @@ REQUIRED_PACKAGES = {
     "optimization-target-commit-boundary",
 }
 REQUIRED_ISSUES = {3, 4, 5, 6}
-REQUIRED_ACTIVE_ISSUES = {3, 4}
-REQUIRED_COMPLETED_ISSUES = {5, 6}
+REQUIRED_ACTIVE_ISSUES = set()
+REQUIRED_COMPLETED_ISSUES = {3, 4, 5, 6}
 REQUIRED_COORDINATION_ISSUES = {7}
 EXPECTED_COORDINATION_CONTRACT = {
     "issue": 7,
     "workload": "bind proof-package registry validation to an existing CI workflow",
     "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
-    "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+    "status": "VERIFIED_EXISTING_WORKFLOW_BINDING",
     "contract": "status/formalism_proof_package_registry_ci_binding.pending.json",
     "handoff": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
     "canonical_proof_issues_satisfied": [],
@@ -35,7 +35,7 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 3,
         "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
         "bounded_result": "PASS",
-        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+        "downstream_activation": "PROHIBITED_UNTIL_BOUNDED_DOWNSTREAM_REVIEW",
     },
     "fi-transition-continuity-interoperability": {
         "issue": 4,
