@@ -94,8 +94,12 @@ def main() -> int:
         raise RuntimeError("registry verification report must be PASS before binding finalization")
     if report.get("package_count") != 4:
         raise RuntimeError("registry verification report must contain exactly four packages")
-    if report.get("active_issue_count") != 4:
-        raise RuntimeError("registry verification report must contain exactly four active proof owners")
+    if report.get("active_issue_count") != 2:
+        raise RuntimeError("registry verification report must contain exactly two active proof owners")
+    if report.get("completed_issue_count") != 2:
+        raise RuntimeError("registry verification report must contain exactly two completed proof owners")
+    if report.get("canonical_owner_count") != 4:
+        raise RuntimeError("registry verification report must preserve exactly four total canonical proof owners")
 
     job_id = resolve_job_id(repository, run_id, token)
     report_sha256 = sha256_file(REPORT)
@@ -132,6 +136,8 @@ def main() -> int:
         "registry_report_status": report.get("status"),
         "package_count": report.get("package_count"),
         "active_issue_count": report.get("active_issue_count"),
+        "completed_issue_count": report.get("completed_issue_count"),
+        "canonical_owner_count": report.get("canonical_owner_count"),
         "binding_status": "VERIFIED_EXISTING_WORKFLOW_BINDING",
         "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
         "canonical_proof_issues_satisfied": [],
