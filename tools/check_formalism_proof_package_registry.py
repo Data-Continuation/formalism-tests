@@ -226,6 +226,8 @@ def main() -> int:
         "status": "PASS" if not errors else "FAIL",
         "package_count": len(packages),
         "active_issue_count": len(ownership),
+        "completed_issue_count": len(completed),
+        "canonical_owner_count": len(ownership) + len(completed),
         "coordination_issue_count": len(coordination),
         "release_state": registry.get("release_state"),
         "errors": errors,
