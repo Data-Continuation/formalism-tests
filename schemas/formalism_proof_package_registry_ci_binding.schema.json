@@ -34,7 +34,7 @@
     "expected_output": {"const": "reports/formalism_proof_package_registry_verification.json"},
     "binding_requirements": {
       "type": "object",
-      "required": ["inspect_existing_workflow_first", "reuse_existing_workflow", "competing_workflow_prohibited", "durable_workflow_evidence_required", "report_status_required", "expected_package_count", "expected_active_owner_count"],
+      "required": ["inspect_existing_workflow_first", "reuse_existing_workflow", "competing_workflow_prohibited", "durable_workflow_evidence_required", "report_status_required", "expected_package_count", "expected_active_owner_count", "expected_completed_owner_count", "expected_canonical_owner_count"],
       "properties": {
         "inspect_existing_workflow_first": {"const": true},
         "reuse_existing_workflow": {"const": true},
@@ -42,7 +42,9 @@
         "durable_workflow_evidence_required": {"const": true},
         "report_status_required": {"const": "PASS"},
         "expected_package_count": {"const": 4},
-        "expected_active_owner_count": {"const": 4}
+        "expected_active_owner_count": {"const": 2},
+        "expected_completed_owner_count": {"const": 2},
+        "expected_canonical_owner_count": {"const": 4}
       },
       "additionalProperties": false
     },
