@@ -57,6 +57,13 @@ canonical PASS != release
 
 No result here grants execution, publication, certification, release, financial, sovereign, or downstream mutation authority.
 
+## Repository-owned CI activation installed
+
+Capture runner: `tools/run_denial_reachability_canonical_ci_capture.py` (`74188299448635cea882bf34dd82ddbeceaf9d3c`).
+Existing workflow binding: `75e4689cb8444c867f67cb4345a53eac3379fa8c`.
+
+The source integration is installed; hosted canonical execution remains pending until a workflow run completes the three-task/evidence contract.
+
 ## Next transition
 
 Bind a canonical capture runner into the existing `continuation-tests.yml` workflow, observe the hosted run, preserve any first-attempt failure as historical evidence, repair only directly observed deterministic defects, and close issue #3 only after the full canonical contract passes.
