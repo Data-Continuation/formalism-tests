@@ -67,7 +67,7 @@
       "package_id": "morrison-runtime-commit-time-scope",
       "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
       "bounded_result": "PASS",
-      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_state": "VERIFIED_CANONICAL_RUN",
       "canonical_owner": {
         "repository": "Data-Continuation/formalism-tests",
         "issue": 5
@@ -75,9 +75,9 @@
       "downstream_owner": {
         "repository": "StegVerse-Labs/admissibility-wiki",
         "issue": 39,
-        "state": "WAITING_FOR_UPSTREAM"
+        "state": "READY_FOR_BOUNDED_DOWNSTREAM_REVIEW"
       },
-      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "downstream_activation": "PROHIBITED_UNTIL_BOUNDED_WIKI_REVIEW_AND_PUBLIC_ROUTE_VERIFICATION",
       "installed_surfaces": [
         "tests/fixtures/morrison_runtime_commit_time_scope_cases.json",
         "tests/fixtures/morrison_runtime_commit_time_scope_expected_outcomes.json",
@@ -91,19 +91,21 @@
         "receipts/morrison_runtime_connector_materialized_reproduction.json",
         "schemas/morrison_runtime_canonical_execution_evidence.schema.json",
         "receipts/morrison_runtime_canonical_execution_evidence.pending.json",
-        "receipts/morrison_runtime_commit_time_scope_downstream_activation_contract.json"
+        "receipts/morrison_runtime_commit_time_scope_downstream_activation_contract.json",
+        "receipts/morrison_runtime_canonical_execution_evidence.json",
+        "MORRISON_RUNTIME_COMMIT_TIME_SCOPE_HANDOFF.md"
       ]
     },
     {
       "package_id": "optimization-target-commit-boundary",
       "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
       "bounded_result": "CONNECTOR_REPRODUCTION_PASS",
-      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_state": "VERIFIED_CANONICAL_RUN",
       "canonical_owner": {
         "repository": "Data-Continuation/formalism-tests",
         "issue": 6
       },
-      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF",
+      "downstream_activation": "PROHIBITED_UNTIL_CURRENT_DESTINATION_HANDOFF_AND_BOUNDED_WIKI_REVIEW",
       "package_handoff": "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
       "installed_surfaces": [
         "tests/fixtures/optimization_target_commit_boundary_cases.json",
@@ -117,8 +119,16 @@
         "receipts/optimization_target_canonical_execution_evidence.pending.json",
         "receipts/optimization_target_connector_materialized_reproduction.json",
         "receipts/optimization_target_commit_boundary_downstream_activation_contract.json",
-        "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md"
-      ]
+        "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
+        "reports/optimization_target_commit_boundary_report.json",
+        "receipts/optimization_target_commit_boundary_execution_receipts.jsonl",
+        "receipts/optimization_target_canonical_execution_evidence.json"
+      ],
+      "downstream_owner": {
+        "repository": "StegVerse-Labs/admissibility-wiki",
+        "issue": null,
+        "state": "READY_FOR_BOUNDED_DOWNSTREAM_REVIEW"
+      }
     }
   ],
   "active_issue_ownership": [
@@ -129,14 +139,6 @@
     {
       "issue": 4,
       "workload": "canonical FI continuity interoperability execution and durable equivalence evidence"
-    },
-    {
-      "issue": 5,
-      "workload": "canonical Morrison commit-time scope execution and evidence-gate satisfaction"
-    },
-    {
-      "issue": 6,
-      "workload": "canonical optimization-target commit-boundary execution and evidence-gate satisfaction"
     }
   ],
   "coordination_issue_ownership": [
@@ -159,5 +161,21 @@
     "release_requires_governed_downstream_validation": true
   },
   "release_state": "NOT_AUTHORIZED",
-  "manual_user_tasks_required": []
+  "manual_user_tasks_required": [],
+  "completed_issue_ownership": [
+    {
+      "issue": 5,
+      "workload": "canonical Morrison commit-time scope execution and evidence-gate satisfaction",
+      "state": "VERIFIED_CANONICAL_RUN",
+      "run_id": 33025167959,
+      "evidence": "receipts/morrison_runtime_canonical_execution_evidence.json"
+    },
+    {
+      "issue": 6,
+      "workload": "canonical optimization-target commit-boundary execution and evidence-gate satisfaction",
+      "state": "VERIFIED_CANONICAL_RUN",
+      "run_id": 33025167959,
+      "evidence": "receipts/optimization_target_canonical_execution_evidence.json"
+    }
+  ]
 }
