@@ -85,10 +85,10 @@ def main() -> int:
         errors.append("report_status_required must be PASS")
     if requirements.get("expected_package_count") != 4:
         errors.append("expected_package_count must be 4")
-    if requirements.get("expected_active_owner_count") != 2:
-        errors.append("expected_active_owner_count must be 2")
-    if requirements.get("expected_completed_owner_count") != 2:
-        errors.append("expected_completed_owner_count must be 2")
+    if requirements.get("expected_active_owner_count") != 0:
+        errors.append("expected_active_owner_count must be 0")
+    if requirements.get("expected_completed_owner_count") != 4:
+        errors.append("expected_completed_owner_count must be 4")
     if requirements.get("expected_canonical_owner_count") != 4:
         errors.append("expected_canonical_owner_count must be 4")
 
