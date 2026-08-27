@@ -22,8 +22,8 @@
     "durable_workflow_evidence_required": true,
     "report_status_required": "PASS",
     "expected_package_count": 4,
-    "expected_active_owner_count": 2,
-    "expected_completed_owner_count": 2,
+    "expected_active_owner_count": 0,
+    "expected_completed_owner_count": 4,
     "expected_canonical_owner_count": 4
   },
   "observed": {
@@ -44,7 +44,7 @@
   "canonical_proof_issues_satisfied": [],
   "non_claims": [
     "This binding verifies registry execution in the existing repository-owned workflow; it does not itself establish a canonical proof package.",
-    "Canonical proof issues 5 and 6 are independently completed, while issues 3 and 4 remain independently active.",
+    "Canonical proof issues 3 through 6 are independently completed by their own repository-owned evidence; registry binding does not substitute for those receipts.",
     "This record grants no execution, release, publication, certification, financial, sovereign, or downstream mutation authority."
   ]
 }
