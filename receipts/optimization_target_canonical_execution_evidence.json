@@ -2,10 +2,10 @@
   "schema": "stegverse.optimization-target.canonical-execution-evidence.v1",
   "suite_id": "optimization-target-commit-boundary-v0.1",
   "repository": "Data-Continuation/formalism-tests",
-  "commit_sha": "23b3d4a228a6ac63ee0460910dbf0ecc1e3be97a",
+  "commit_sha": "0f02928f54f5170bc8e8d12d045d77281d6bdf02",
   "execution_surface": "GITHUB_ACTIONS",
-  "run_url": "https://github.com/Data-Continuation/formalism-tests/actions/runs/33033094147",
-  "executed_at": "2026-08-27T02:23:03.505165+00:00",
+  "run_url": "https://github.com/Data-Continuation/formalism-tests/actions/runs/33033356219",
+  "executed_at": "2026-08-27T02:28:01.744130+00:00",
   "commands": [
     "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id optimization_target_commit_boundary_tests",
     "python tools/run_declared_tasks.py tools/tasks/optimization_target_commit_boundary_tasks.json --task-id verify_optimization_target_commit_boundary_artifacts",
