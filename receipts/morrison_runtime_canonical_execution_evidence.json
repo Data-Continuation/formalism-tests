@@ -2,10 +2,10 @@
   "schema": "stegverse.morrison-runtime.canonical-execution-evidence.v1",
   "suite_id": "morrison-runtime-commit-time-scope-v0.1",
   "repository": "Data-Continuation/formalism-tests",
-  "commit_sha": "70d4780dcaddf9371feb17e1247c401c0c3038d1",
+  "commit_sha": "23b3d4a228a6ac63ee0460910dbf0ecc1e3be97a",
   "execution_surface": "GITHUB_ACTIONS",
-  "run_url": "https://github.com/Data-Continuation/formalism-tests/actions/runs/33025167959",
-  "executed_at": "2026-08-26T23:58:35.146486+00:00",
+  "run_url": "https://github.com/Data-Continuation/formalism-tests/actions/runs/33033094147",
+  "executed_at": "2026-08-27T02:23:03.242687+00:00",
   "commands": [
     "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id morrison_runtime_commit_time_scope_tests",
     "python tools/run_declared_tasks.py tools/tasks/morrison_runtime_commit_time_scope_tasks.json --task-id verify_morrison_runtime_commit_time_scope_artifacts",
