@@ -189,3 +189,8 @@ The incomplete denominators are durable hosted run validation and evidence promo
 ## Archive conditions
 
 This chat session may be archived because all unique session knowledge, completed mutations, remaining work, ownership, collision boundaries, evidence requirements, and release conditions are committed in this handoff and the session consolidation record. Archival does not close issue #7 or imply verified workflow execution.
+
+
+## 2026-08-26 finalizer lifecycle correction
+
+The proof registry now has `active=0`, `completed=4`, `canonical_total=4`. Run `33033767628` passed the registry validator and failed only in `finalize_formalism_proof_package_registry_ci_binding.py` because that finalizer still required the older 2-active/2-completed lifecycle. Commit `7e59d454e5a72c16ae099f366ba065e363c7d8ef` changes the finalizer requirement to 0 active / 4 completed. This correction requires a successor hosted run; historical failure remains evidence and is not rewritten.
