@@ -113,7 +113,7 @@ Required action:
 1. Observe an authentic run of `.github/workflows/continuation-tests.yml` containing both registry tasks.
 2. Capture the workflow run ID, job ID, triggering 40-character commit SHA, and SHA-256 of `reports/formalism_proof_package_registry_verification.json`.
 3. Confirm both registry tasks returned `PASS`.
-4. Confirm the registry report records four proof packages, four canonical proof owners, `release_state: NOT_AUTHORIZED`, and no errors.
+4. Confirm the registry report records four proof packages, two active canonical owners, two completed canonical owners, four total canonical proof owners, `release_state: NOT_AUTHORIZED`, and no errors.
 5. Promote `status/formalism_proof_package_registry_ci_binding.pending.json` only to `VERIFIED_EXISTING_WORKFLOW_BINDING`.
 6. Re-run the CI-binding validator.
 7. Close issue #7 only after the record, reports, workflow evidence, and handoffs agree.
@@ -128,6 +128,19 @@ report_sha256 matches ^[0-9a-f]{64}$
 binding_verified == true
 both validator results == PASS
 ```
+
+## 2026-08-26 owner lifecycle reconciliation
+
+Canonical proof ownership has advanced since the original four-active-owner registry binding contract.
+
+```text
+active canonical owners: #3, #4
+completed canonical owners: #5, #6
+total canonical proof owners preserved: 4
+issue #7 registry-binding authority: REGISTRY_CONSISTENCY_ONLY
+```
+
+Hosted run `33032907096` proved both package captures and registry validation PASS, then failed only because the CI-binding finalizer still required exactly four *active* proof owners. The finalizer, binding checker, binding record, and schema now distinguish two active plus two completed owners while preserving the four-owner total. This lifecycle reconciliation does not reopen #5/#6 or satisfy #3/#4.
 
 ## Authority boundary
 
