@@ -103,12 +103,14 @@ Source installation is not canonical execution. Issue #6 remains open until a ho
 ## Current state
 
 ```text
-canonical evidence status: PENDING_CANONICAL_EXECUTION
-promotion eligible: false
-generated report PASS: not claimed
-generated receipt PASS: not claimed
-artifact verification PASS: not claimed
-downstream activation: prohibited
+canonical evidence status: VERIFIED_CANONICAL_RUN
+canonical run: 33025167959
+canonical commit: 70d4780dcaddf9371feb17e1247c401c0c3038d1
+promotion eligible for bounded downstream review: true
+generated report: PASS / 5_OF_5
+generated receipts: PASS / byte-equivalent
+artifact verification: PASS
+downstream activation: still prohibited pending bounded Wiki review
 release/tag authority: not granted
 manual user tasks required: none
 ```
@@ -148,15 +150,10 @@ release or tag creation
 ### `Data-Continuation/formalism-tests`
 
 ```text
-Issue #6 canonical execution in an approved execution surface.
-Generate report and execution receipts from the declared-task runner.
-Regenerate artifact verification with PASS.
-Hash the committed canonical-evidence gate checker source.
-Generate canonical evidence gate output.
-Record the four required SHA-256 values.
-Confirm the four required equivalence assertions.
-Create receipts/optimization_target_canonical_execution_evidence.json only from authentic canonical evidence.
-Promote this handoff only after the evidence Schema and gate both pass.
+Issue #6 canonical execution: COMPLETE / CLOSED.
+Canonical evidence: receipts/optimization_target_canonical_execution_evidence.json.
+Next owner: StegVerse-Labs/admissibility-wiki bounded review.
+Require Wiki validation and public-route proof before any downstream propagation or release.
 ```
 
 ### Downstream destinations
