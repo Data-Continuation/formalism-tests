@@ -94,10 +94,10 @@ def main() -> int:
         raise RuntimeError("registry verification report must be PASS before binding finalization")
     if report.get("package_count") != 4:
         raise RuntimeError("registry verification report must contain exactly four packages")
-    if report.get("active_issue_count") != 2:
-        raise RuntimeError("registry verification report must contain exactly two active proof owners")
-    if report.get("completed_issue_count") != 2:
-        raise RuntimeError("registry verification report must contain exactly two completed proof owners")
+    if report.get("active_issue_count") != 0:
+        raise RuntimeError("registry verification report must contain zero active proof owners")
+    if report.get("completed_issue_count") != 4:
+        raise RuntimeError("registry verification report must contain exactly four completed proof owners")
     if report.get("canonical_owner_count") != 4:
         raise RuntimeError("registry verification report must preserve exactly four total canonical proof owners")
 
