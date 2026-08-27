@@ -282,6 +282,22 @@ Optimization-target commit boundary
 
 Issues #3 and #4 remain the only active canonical proof owners in this repository. Canonical proof completion does not grant downstream Wiki/publication/release/execution authority.
 
+## 2026-08-26 all canonical proof packages closed
+
+Run `33033427304` completed successfully on the existing `continuation-tests.yml` workflow and closed the two remaining canonical proof issues.
+
+```text
+#3 denial reachability: VERIFIED_CANONICAL_RUN / CLOSED
+#4 FI continuity interoperability: VERIFIED_CANONICAL_RUN / CLOSED
+#5 Morrison Runtime: VERIFIED_CANONICAL_RUN / CLOSED
+#6 optimization target: VERIFIED_CANONICAL_RUN / CLOSED
+active canonical proof owners: 0
+completed canonical proof owners: 4
+release_state: NOT_AUTHORIZED
+```
+
+All four proof packages now have repository-owned canonical evidence. This completes the formalism-tests canonical-execution denominator, not downstream activation, cross-domain validation, publication, release, or execution authority.
+
 ## Machine-readable proof-package registry
 
 Installed:
