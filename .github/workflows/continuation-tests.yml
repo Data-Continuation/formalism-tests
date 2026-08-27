@@ -73,6 +73,18 @@ jobs:
           set -euo pipefail
           python tools/run_optimization_target_canonical_ci_capture.py
 
+      - name: Capture denial-reachability canonical proof on repository-owned main execution
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          python tools/run_denial_reachability_canonical_ci_capture.py
+
+      - name: Capture FI continuity canonical proof on repository-owned main execution
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          python tools/run_fi_transition_continuity_interop_canonical_ci_capture.py
+
       - name: Validate proof-package registry layer
         run: |
           set -euo pipefail
@@ -191,6 +203,49 @@ jobs:
           ISSUE_STATE="$(gh issue view 6 --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
           if [ "$ISSUE_STATE" = "OPEN" ]; then
             gh issue close 6 --repo "$GITHUB_REPOSITORY" --comment "Repository-owned canonical optimization-target execution completed on this workflow run. The five deterministic cases and all three declared tasks passed, exact report/receipt equivalence was retained, four SHA-256 bindings and four equivalence predicates are durable, and authority remains FORMALISM_TEST_EVIDENCE_ONLY. Downstream wiki/public-route/release gates remain separate."
+          fi
+
+
+      - name: Close completed denial-reachability canonical proof issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/check_denial_reachability_canonical_evidence_gate.py
+          STATUS="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path('receipts/denial_reachability_canonical_execution_evidence.json').read_text()).get('status',''))
+          PY
+          )"
+          if [ "$STATUS" != "VERIFIED_CANONICAL_RUN" ]; then
+            echo "Denial-reachability canonical evidence not verified; issue #3 remains open."
+            exit 1
+          fi
+          if [ "$(gh issue view 3 --repo "$GITHUB_REPOSITORY" --json state --jq .state)" = "OPEN" ]; then
+            gh issue close 3 --repo "$GITHUB_REPOSITORY" --comment "Repository-owned canonical denial-reachability execution completed on this workflow run. All three declared tasks passed, five deterministic cases preserved their expected outcomes, report/receipt byte equivalence and four evidence hashes are durable, and authority remains REPRODUCTION_EVIDENCE_ONLY. Downstream release/publication/execution authority remains separate."
+          fi
+
+      - name: Close completed FI continuity canonical proof issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/check_fi_transition_continuity_interop_canonical_evidence_gate.py
+          STATUS="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path('receipts/fi_transition_continuity_interop_canonical_execution_evidence.json').read_text()).get('status',''))
+          PY
+          )"
+          if [ "$STATUS" != "VERIFIED_CANONICAL_RUN" ]; then
+            echo "FI continuity canonical evidence not verified; issue #4 remains open."
+            exit 1
+          fi
+          if [ "$(gh issue view 4 --repo "$GITHUB_REPOSITORY" --json state --jq .state)" = "OPEN" ]; then
+            gh issue close 4 --repo "$GITHUB_REPOSITORY" --comment "Repository-owned canonical FI continuity-interoperability execution completed on this workflow run. All three declared tasks passed, all 4/4 deterministic cases passed, canonical report equivalence and three evidence hashes are durable, and authority remains CONTINUITY_INTEROPERABILITY_ONLY. Cross-domain support, universal validity, downstream activation, release, and execution authority remain separate."
           fi
 
       - name: Upload continuation artifacts
