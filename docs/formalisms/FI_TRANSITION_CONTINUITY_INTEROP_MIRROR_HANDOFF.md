@@ -53,6 +53,14 @@ authority_posture: CONTINUITY_INTEROPERABILITY_ONLY
 status: VERIFIED_CANONICAL_RUN
 ```
 
+## 2026-08-26 repository-owned canonical CI activation
+
+Capture runner `tools/run_fi_transition_continuity_interop_canonical_ci_capture.py` is installed at `8ed2e589002350d983530d0b62a7706cfeb4fe0e` and bound to the existing `continuation-tests.yml` workflow at `75e4689cb8444c867f67cb4345a53eac3379fa8c`.
+
+The runner executes all three declared tasks, requires 4/4 deterministic cases, verifies the canonical report document hash, regenerates artifact verification, pre-binds the deterministic canonical gate output hash, emits schema-shaped canonical evidence, and rechecks the generated gate before appending hosted evidence.
+
+Source activation is not canonical execution. Issue #4 remains open until hosted evidence passes and is durably committed.
+
 ## Current state
 
 ```text
