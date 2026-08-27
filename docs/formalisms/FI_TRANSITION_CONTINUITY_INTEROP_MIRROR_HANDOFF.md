@@ -64,9 +64,10 @@ Source activation is not canonical execution. Issue #4 remains open until hosted
 ## Current state
 
 ```text
-canonical evidence status: PENDING_CANONICAL_EXECUTION
-promotion eligible: false
-downstream activation: prohibited
+canonical evidence status: VERIFIED_CANONICAL_RUN
+canonical run: 33033427304
+promotion eligible for bounded downstream activation review: true
+downstream activation: prohibited pending FI activation completion receipt
 cross-domain validation claimed: false
 universal-law support claimed: false
 production authority claimed: false
