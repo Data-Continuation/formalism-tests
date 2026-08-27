@@ -15,12 +15,12 @@
       "package_id": "denial-reachability",
       "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
       "bounded_result": "PASS",
-      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_state": "VERIFIED_CANONICAL_RUN",
       "canonical_owner": {
         "repository": "Data-Continuation/formalism-tests",
         "issue": 3
       },
-      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "downstream_activation": "PROHIBITED_UNTIL_BOUNDED_DOWNSTREAM_REVIEW",
       "installed_surfaces": [
         "tests/fixtures/denial_reachability_cases.json",
         "tests/fixtures/denial_reachability_expected_outcomes.json",
@@ -34,19 +34,26 @@
         "receipts/denial_reachability_execution_receipts.jsonl",
         "receipts/denial_reachability_connector_snapshot_run.json",
         "schemas/denial_reachability_canonical_execution_evidence.schema.json",
-        "receipts/denial_reachability_canonical_execution_evidence.pending.json"
-      ]
+        "receipts/denial_reachability_canonical_execution_evidence.pending.json",
+        "receipts/denial_reachability_canonical_execution_evidence.json",
+        "docs/formalisms/DENIAL_REACHABILITY_MIRROR_HANDOFF.md"
+      ],
+      "downstream_owner": {
+        "repository": "StegVerse-Labs/admissibility-wiki",
+        "issue": null,
+        "state": "READY_FOR_BOUNDED_DOWNSTREAM_REVIEW"
+      }
     },
     {
       "package_id": "fi-transition-continuity-interoperability",
       "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
       "bounded_result": "PASS",
-      "canonical_state": "PENDING_CANONICAL_EXECUTION",
+      "canonical_state": "VERIFIED_CANONICAL_RUN",
       "canonical_owner": {
         "repository": "Data-Continuation/formalism-tests",
         "issue": 4
       },
-      "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+      "downstream_activation": "PROHIBITED_UNTIL_FI_ACTIVATION_COMPLETION_RECEIPT_AND_BOUNDED_DOWNSTREAM_REVIEW",
       "package_handoff": "docs/formalisms/FI_TRANSITION_CONTINUITY_INTEROP_MIRROR_HANDOFF.md",
       "installed_surfaces": [
         "tests/fixtures/fi_transition_continuity_interop_cases.json",
@@ -60,8 +67,14 @@
         "receipts/fi_transition_continuity_interop_connector_snapshot_run.json",
         "schemas/fi_transition_continuity_interop_canonical_execution_evidence.schema.json",
         "receipts/fi_transition_continuity_interop_canonical_execution_evidence.pending.json",
-        "docs/formalisms/FI_TRANSITION_CONTINUITY_INTEROP_MIRROR_HANDOFF.md"
-      ]
+        "docs/formalisms/FI_TRANSITION_CONTINUITY_INTEROP_MIRROR_HANDOFF.md",
+        "receipts/fi_transition_continuity_interop_canonical_execution_evidence.json"
+      ],
+      "downstream_owner": {
+        "repository": "Admissible-Existence/FI",
+        "issue": 1,
+        "state": "CANONICAL_CONTINUITY_PROOF_READY_FOR_ACTIVATION_RECEIPT"
+      }
     },
     {
       "package_id": "morrison-runtime-commit-time-scope",
@@ -131,22 +144,13 @@
       }
     }
   ],
-  "active_issue_ownership": [
-    {
-      "issue": 3,
-      "workload": "canonical denial-reachability declared-task execution and durable byte-equivalence evidence"
-    },
-    {
-      "issue": 4,
-      "workload": "canonical FI continuity interoperability execution and durable equivalence evidence"
-    }
-  ],
+  "active_issue_ownership": [],
   "coordination_issue_ownership": [
     {
       "issue": 7,
       "workload": "bind proof-package registry validation to an existing CI workflow",
       "authority_posture": "REGISTRY_CONSISTENCY_ONLY",
-      "status": "PENDING_EXISTING_WORKFLOW_BINDING",
+      "status": "VERIFIED_EXISTING_WORKFLOW_BINDING",
       "contract": "status/formalism_proof_package_registry_ci_binding.pending.json",
       "handoff": "docs/formalisms/FORMALISM_PROOF_PACKAGE_REGISTRY_CI_BINDING_MIRROR_HANDOFF.md",
       "canonical_proof_issues_satisfied": []
@@ -163,6 +167,20 @@
   "release_state": "NOT_AUTHORIZED",
   "manual_user_tasks_required": [],
   "completed_issue_ownership": [
+    {
+      "issue": 3,
+      "workload": "canonical denial-reachability declared-task execution and durable byte-equivalence evidence",
+      "state": "VERIFIED_CANONICAL_RUN",
+      "run_id": 33033427304,
+      "evidence": "receipts/denial_reachability_canonical_execution_evidence.json"
+    },
+    {
+      "issue": 4,
+      "workload": "canonical FI continuity interoperability execution and durable equivalence evidence",
+      "state": "VERIFIED_CANONICAL_RUN",
+      "run_id": 33033427304,
+      "evidence": "receipts/fi_transition_continuity_interop_canonical_execution_evidence.json"
+    },
     {
       "issue": 5,
       "workload": "canonical Morrison commit-time scope execution and evidence-gate satisfaction",
