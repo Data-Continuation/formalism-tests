@@ -190,3 +190,7 @@ After release qualification, queue a propagation-status review for Site, Publish
 ## Archive posture
 
 This handoff preserves the registry package, exact package-owner and package-contract mappings, separate issue #7 coordination ownership, declared validation task, fail-closed invariants, installed-surface checks, authority boundaries, remaining work, downstream destinations, and release posture. The complete thread is ready for archiving without additional conversation context.
+
+## 2026-08-26 four-of-four canonical closure
+
+Run `33033427304` established repository-owned canonical evidence for the two remaining packages. Issues #3-#6 are now all closed with `VERIFIED_CANONICAL_RUN` evidence. Registry consistency remains non-authorizing and downstream activation remains separately gated.
