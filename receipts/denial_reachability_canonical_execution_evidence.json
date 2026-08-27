@@ -1,0 +1,31 @@
+{
+  "schema": "stegverse.denial-reachability.canonical-execution-evidence.v1",
+  "suite_id": "denial-reachability-v0.1",
+  "repository": "Data-Continuation/formalism-tests",
+  "commit_sha": "4125d7e2ce1c54534bac4a4dc80aebf566e25591",
+  "execution_surface": "GITHUB_ACTIONS",
+  "commands": [
+    "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id denial_reachability_commit_boundary_tests",
+    "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id verify_denial_reachability_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/denial_reachability_tasks.json --task-id check_denial_reachability_canonical_evidence_gate"
+  ],
+  "task_results": {
+    "denial_reachability_commit_boundary_tests": "PASS",
+    "verify_denial_reachability_artifacts": "PASS",
+    "check_denial_reachability_canonical_evidence_gate": "PASS"
+  },
+  "artifact_hashes": {
+    "report_sha256": "f5a07da05497bdd8d85bd60e43ceb5d043eac656bad2f873a6d9aee2d65f95be",
+    "receipts_sha256": "9f1c0dc5463dc7396addf7a62147b8beb33f818b67add8f41bc069c96cef2953",
+    "artifact_verification_sha256": "a6ae45547ce523e2455bf8bcc88cd5c4a7072e8bd49e98b055139fac5b7518bd",
+    "canonical_evidence_gate_sha256": "2fd95c240ac8cafba2a4082ac0eaa81a2b557bef3efb45e11daa9480c993af09"
+  },
+  "artifact_equivalence": {
+    "report": true,
+    "receipts": true,
+    "expected_outcomes": true,
+    "canonical_evidence_gate": true
+  },
+  "status": "VERIFIED_CANONICAL_RUN",
+  "authority_posture": "REPRODUCTION_EVIDENCE_ONLY"
+}

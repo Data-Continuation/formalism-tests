@@ -74,3 +74,22 @@ Bind a canonical capture runner into the existing `continuation-tests.yml` workf
 archive_state: NOT_READY_WHILE_CANONICAL_EXECUTION_PENDING
 manual_user_task: none
 ```
+
+## Canonical GitHub Actions execution observed
+
+```text
+status: VERIFIED_CANONICAL_RUN
+commit_sha: 4125d7e2ce1c54534bac4a4dc80aebf566e25591
+execution_surface: GITHUB_ACTIONS
+run_id: 33033427304
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33033427304
+task_results: 3/3 PASS
+report_sha256: f5a07da05497bdd8d85bd60e43ceb5d043eac656bad2f873a6d9aee2d65f95be
+receipts_sha256: 9f1c0dc5463dc7396addf7a62147b8beb33f818b67add8f41bc069c96cef2953
+artifact_verification_sha256: a6ae45547ce523e2455bf8bcc88cd5c4a7072e8bd49e98b055139fac5b7518bd
+canonical_evidence_gate_sha256: 2fd95c240ac8cafba2a4082ac0eaa81a2b557bef3efb45e11daa9480c993af09
+artifact_equivalence: report=true receipts=true expected_outcomes=true canonical_evidence_gate=true
+authority_posture: REPRODUCTION_EVIDENCE_ONLY
+```
+
+This is bounded repository-owned canonical proof evidence only. It grants no execution, publication, certification, release, financial, sovereign, or downstream mutation authority.

@@ -108,3 +108,21 @@ No release or tag is authorized until canonical execution, artifact equivalence,
 ## Archive posture
 
 This handoff preserves the FI package, canonical evidence contract, issue ownership, authority restrictions, remaining work, downstream boundary, and release posture. The complete thread is ready for archiving without additional conversation context.
+
+## Canonical GitHub Actions execution observed
+
+```text
+status: VERIFIED_CANONICAL_RUN
+commit_sha: 4125d7e2ce1c54534bac4a4dc80aebf566e25591
+execution_surface: GITHUB_ACTIONS
+run_id: 33033427304
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33033427304
+task_results: 3/3 PASS
+report_sha256: 65589a464b8a876240e1a28858c7aa1ecfbad811c99bdb06a344dee71ac2a283
+artifact_verification_sha256: f573c427225eb5c4d40486c8d6892c8cc2c229470e390cc867d7128333ebc622
+canonical_evidence_gate_sha256: 881bf74be4a2a117919ec4044a3c99fb163fdbb266b4824b5119725985167243
+artifact_equivalence: report=true expected_outcomes=true canonical_evidence_gate=true
+authority_posture: CONTINUITY_INTEROPERABILITY_ONLY
+```
+
+This is bounded continuity-interoperability proof evidence only. It establishes neither cross-domain support nor universal-law, production, publication, certification, release, or execution authority.
