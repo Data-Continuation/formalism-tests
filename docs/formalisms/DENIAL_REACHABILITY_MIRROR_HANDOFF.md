@@ -29,7 +29,7 @@ receipts/denial_reachability_canonical_execution_evidence.pending.json
 ```text
 repository: Data-Continuation/formalism-tests
 issue: #3
-state: PENDING_CANONICAL_EXECUTION
+state: VERIFIED_CANONICAL_RUN
 approved existing CI: .github/workflows/continuation-tests.yml
 duplicate workflow allowed: false
 authority_posture: REPRODUCTION_EVIDENCE_ONLY
@@ -71,7 +71,7 @@ Bind a canonical capture runner into the existing `continuation-tests.yml` workf
 ## Archive posture
 
 ```text
-archive_state: NOT_READY_WHILE_CANONICAL_EXECUTION_PENDING
+archive_state: CANONICAL_SCOPE_COMPLETE_DOWNSTREAM_REVIEW_PENDING
 manual_user_task: none
 ```
 
