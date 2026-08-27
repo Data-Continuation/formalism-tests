@@ -18,6 +18,8 @@ REQUIRED_PACKAGES = {
     "optimization-target-commit-boundary",
 }
 REQUIRED_ISSUES = {3, 4, 5, 6}
+REQUIRED_ACTIVE_ISSUES = {3, 4}
+REQUIRED_COMPLETED_ISSUES = {5, 6}
 REQUIRED_COORDINATION_ISSUES = {7}
 EXPECTED_COORDINATION_CONTRACT = {
     "issue": 7,
@@ -33,7 +35,7 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 3,
         "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
         "bounded_result": "PASS",
-        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+        "downstream_activation": "PROHIBITED_UNTIL_BOUNDED_WIKI_REVIEW_AND_PUBLIC_ROUTE_VERIFICATION",
     },
     "fi-transition-continuity-interoperability": {
         "issue": 4,
@@ -51,7 +53,7 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 6,
         "authority_posture": "FORMALISM_TEST_EVIDENCE_ONLY",
         "bounded_result": "CONNECTOR_REPRODUCTION_PASS",
-        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE_AND_CURRENT_DESTINATION_HANDOFF",
+        "downstream_activation": "PROHIBITED_UNTIL_CURRENT_DESTINATION_HANDOFF_AND_BOUNDED_WIKI_REVIEW",
         "package_handoff": "docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md",
         "required_surface": "receipts/optimization_target_connector_materialized_reproduction.json",
     },
@@ -164,12 +166,32 @@ def main() -> int:
         errors.append("active_issue_ownership must be an array")
         ownership = []
     issues = [item.get("issue") for item in ownership if isinstance(item, dict)]
-    if set(issues) != REQUIRED_ISSUES:
+    if set(issues) != REQUIRED_ACTIVE_ISSUES:
         errors.append("active issue ownership set mismatch")
     if len(issues) != len(set(issues)):
         errors.append("duplicate active issue owner detected")
-    if set(issues) != set(package_owner_issues):
-        errors.append("package owners and active issue ownership must match")
+
+    completed = registry.get("completed_issue_ownership")
+    if not isinstance(completed, list):
+        errors.append("completed_issue_ownership must be an array")
+        completed = []
+    completed_issues = [item.get("issue") for item in completed if isinstance(item, dict)]
+    if set(completed_issues) != REQUIRED_COMPLETED_ISSUES:
+        errors.append("completed issue ownership set mismatch")
+    if len(completed_issues) != len(set(completed_issues)):
+        errors.append("duplicate completed issue owner detected")
+    if set(issues).union(completed_issues) != set(package_owner_issues):
+        errors.append("active plus completed issue ownership must match package owners")
+    for item in completed:
+        if not isinstance(item, dict):
+            continue
+        if item.get("state") != "VERIFIED_CANONICAL_RUN":
+            errors.append(f"completed issue {item.get('issue')}: state must be VERIFIED_CANONICAL_RUN")
+        if not isinstance(item.get("run_id"), int):
+            errors.append(f"completed issue {item.get('issue')}: run_id must be an integer")
+        evidence = item.get("evidence")
+        if not isinstance(evidence, str) or not (ROOT / evidence).exists():
+            errors.append(f"completed issue {item.get('issue')}: canonical evidence file missing")
 
     coordination = registry.get("coordination_issue_ownership")
     if not isinstance(coordination, list):
