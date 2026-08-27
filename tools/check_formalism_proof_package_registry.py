@@ -35,7 +35,7 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 3,
         "authority_posture": "REPRODUCTION_EVIDENCE_ONLY",
         "bounded_result": "PASS",
-        "downstream_activation": "PROHIBITED_UNTIL_BOUNDED_WIKI_REVIEW_AND_PUBLIC_ROUTE_VERIFICATION",
+        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
     },
     "fi-transition-continuity-interoperability": {
         "issue": 4,
@@ -47,7 +47,7 @@ EXPECTED_PACKAGE_CONTRACTS = {
         "issue": 5,
         "authority_posture": "EXTERNAL_FRAMEWORK_COMPARATIVE_EVIDENCE_ONLY",
         "bounded_result": "PASS",
-        "downstream_activation": "PROHIBITED_UNTIL_CANONICAL_EVIDENCE",
+        "downstream_activation": "PROHIBITED_UNTIL_BOUNDED_WIKI_REVIEW_AND_PUBLIC_ROUTE_VERIFICATION",
     },
     "optimization-target-commit-boundary": {
         "issue": 6,
