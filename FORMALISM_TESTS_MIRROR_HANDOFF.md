@@ -425,3 +425,51 @@ successful `main` run persists
 issue #8 remains the only current repository machine-execution proof task.
 
 Open issue #1 is historical evidence recovery and is not a repository machine-executor task.
+
+
+## Role-aware continuation remediation — 2026-09-01
+
+Issue #11 owns the bounded implementation of remediation items DC-005/DC-006.
+
+Installed on `fix/role-aware-continuation-decisions`:
+
+```text
+src/outcome_vocabulary.py
+src/role_aware_continuation.py
+tests/test_role_aware_continuation.py
+```
+
+The six-outcome Continuation Decision Function vocabulary is canonical:
+
+```text
+ALLOW
+ALLOW_WITH_SIGNOFF
+DENY
+FAIL_CLOSED
+REDIRECT
+ESCALATE
+```
+
+Explicit projections prevent vocabulary drift:
+
+```text
+root gate:
+  ALLOW -> ALLOW
+  DENY -> DENY
+  all signoff/redirect/escalation uncertainty -> FAIL_CLOSED
+
+transition table:
+  ALLOW -> ALLOW
+  DENY -> DENY
+  FAIL_CLOSED -> FAIL_CLOSED
+  REDIRECT -> REPAIR
+  ESCALATE -> QUARANTINE
+  ALLOW_WITH_SIGNOFF -> QUARANTINE
+```
+
+Role is now an executable decision input. The required role-escalation block set from
+`Data-Continuation/formalisms/docs/TRANSITION_ROLE_MODEL.md` is evaluated at commit;
+missing, unknown, or stale required basis fails closed.
+
+Completion remains pending hosted validation on the repository's existing workflow.
+No release, downstream publication, or execution authority is implied by this branch.
