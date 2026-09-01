@@ -114,3 +114,27 @@ A successful repository-owned `main` run must generate and persist the canonical
 receipt, pass the gate, and close issue #8.
 
 Authority remains `ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY`.
+
+## Canonical repository-owned execution evidence
+
+```text
+status: VERIFIED_CANONICAL_RUN
+commit_sha: cc57f20d07dc85aa2e6f0c6e2ef8a609911129f8
+run_id: 33463237601
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33463237601
+execution_surface: GITHUB_ACTIONS
+task_results: 3/3 PASS
+report_sha256: 8ddbf8dde7db67f1bfae3742fabbd7cec01d5dd85e4d073e8f42cfd1cee75cc2
+receipts_sha256: 61e1dcda0a257db2083c7e904b90a714a3f7f048a2a1ec2d6d05bf4a70b0647c
+expected_outcomes_sha256: 47436bce4048079c7bae0bcd51efbd59206b6d6be602ac78d73ca48766f51fc6
+artifact_verification_sha256: 83e63482e0cf6e703ca7669223846a5c47868b274f7d0fc030c7531791154d3e
+report_receipt_equivalence: true
+expected_outcome_equivalence: true
+no_execution_invoked: true
+authority_posture: ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY
+```
+
+This satisfies the repository-local canonical-execution portion of issue #8. It does not create
+MindForge specification authority, implementation certification, execution authority, release
+authority, publication authority, or admissibility authority. Downstream reference transfer remains
+bounded to immutable evidence references.
