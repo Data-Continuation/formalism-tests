@@ -410,3 +410,18 @@ release_state: NOT_AUTHORIZED
 ```
 
 The formalism-tests canonical proof-package program is COMPLETE for its four issue-owned canonical proof packages and the registry/CI-binding reconciliation. Remaining downstream interpretation/activation is owned by destination repositories and must not be folded back into this completed canonical-proof goal.
+
+
+## MindForge canonical evidence continuation — 2026-08-31
+
+The four historical canonical proof packages remain terminal. A later distinct issue,
+#8, owns the MindForge boundary-semantics canonical-execution lane.
+
+The deterministic suite already passes 10/10 locally with
+`execution_invoked=false` for every case. The existing continuation workflow now
+contains a repository-owned canonical capture path and issue-closure gate. Until a
+successful `main` run persists
+`receipts/mindforge_boundary_semantics_canonical_execution_evidence.json`,
+issue #8 remains the only current repository machine-execution proof task.
+
+Open issue #1 is historical evidence recovery and is not a repository machine-executor task.
