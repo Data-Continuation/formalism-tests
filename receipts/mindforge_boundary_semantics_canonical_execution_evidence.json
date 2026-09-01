@@ -2,9 +2,9 @@
   "schema": "stegverse.mindforge-boundary-semantics.canonical-execution-evidence.v1",
   "suite_id": "mindforge-boundary-semantics-v1",
   "repository": "Data-Continuation/formalism-tests",
-  "commit_sha": "e9e1e39160213699603676a4d979cd0016ecd516",
+  "commit_sha": "580376b390a167340bed05c9862d73a44d323792",
   "execution_surface": "GITHUB_ACTIONS",
-  "run_id": 33570229626,
+  "run_id": 33570425787,
   "commands": [
     "python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id mindforge_boundary_semantics_tests",
     "python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id verify_mindforge_boundary_semantics_artifacts",
