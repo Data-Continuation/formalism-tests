@@ -2,7 +2,10 @@
   "tasks": [
     {
       "task_id": "stage17_self_audit_tests",
-      "command": ["python", "tools/run_stage17_self_audit_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage17_self_audit_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage17_self_audit_report.json",
         "reports/stage17_self_audit_receipts.jsonl"
@@ -11,7 +14,10 @@
     },
     {
       "task_id": "stage18_sandbox_candidate_generation_tests",
-      "command": ["python", "tools/run_stage18_sandbox_candidate_generation_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage18_sandbox_candidate_generation_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage18_sandbox_candidate_generation_report.json",
         "reports/stage18_sandbox_candidate_generation_receipts.jsonl"
@@ -20,7 +26,10 @@
     },
     {
       "task_id": "stage19_candidate_review_loop_tests",
-      "command": ["python", "tools/run_stage19_candidate_review_loop_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage19_candidate_review_loop_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage19_candidate_review_loop_report.json",
         "reports/stage19_candidate_review_loop_receipts.jsonl"
@@ -29,7 +38,10 @@
     },
     {
       "task_id": "stage20_release_candidate_assembly_tests",
-      "command": ["python", "tools/run_stage20_release_candidate_assembly_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage20_release_candidate_assembly_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage20_release_candidate_assembly_report.json",
         "reports/stage20_release_candidate_assembly_receipts.jsonl"
@@ -38,7 +50,10 @@
     },
     {
       "task_id": "stage21_canonical_upgrade_replay_tests",
-      "command": ["python", "tools/run_stage21_canonical_upgrade_replay_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage21_canonical_upgrade_replay_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage21_canonical_upgrade_replay_report.json",
         "reports/stage21_canonical_upgrade_replay_receipts.jsonl"
@@ -47,7 +62,10 @@
     },
     {
       "task_id": "stage22_public_mirror_propagation_tests",
-      "command": ["python", "tools/run_stage22_public_mirror_propagation_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage22_public_mirror_propagation_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage22_public_mirror_propagation_report.json",
         "reports/stage22_public_mirror_propagation_receipts.jsonl"
@@ -56,7 +74,10 @@
     },
     {
       "task_id": "stage23_ingestible_bundle_tests",
-      "command": ["python", "tools/run_stage23_ingestible_bundle_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage23_ingestible_bundle_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage23_ingestible_bundle_report.json",
         "reports/stage23_ingestible_bundle_receipts.jsonl"
@@ -65,7 +86,10 @@
     },
     {
       "task_id": "stage24_test_plan_tests",
-      "command": ["python", "tools/run_stage24_test_plan_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage24_test_plan_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage24_test_plan_report.json",
         "reports/stage24_test_plan_receipts.jsonl"
@@ -74,11 +98,26 @@
     },
     {
       "task_id": "stage25_entity_charter_tests",
-      "command": ["python", "tools/run_stage25_entity_charter_tests.py"],
+      "command": [
+        "python",
+        "tools/run_stage25_entity_charter_tests.py"
+      ],
       "expected_outputs": [
         "reports/stage25_entity_charter_report.json",
         "reports/stage25_entity_charter_receipts.jsonl"
       ],
+      "enabled": true
+    },
+    {
+      "task_id": "role_aware_continuation_tests",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_role_aware_continuation.py"
+      ],
+      "expected_outputs": [],
       "enabled": true
     }
   ]
