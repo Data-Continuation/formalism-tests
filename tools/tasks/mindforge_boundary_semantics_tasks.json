@@ -8,6 +8,20 @@
         "reports/mindforge_boundary_semantics_report.json",
         "receipts/mindforge_boundary_semantics_execution_receipts.jsonl"
       ]
+    },
+    {
+      "task_id": "verify_mindforge_boundary_semantics_artifacts",
+      "command": "python tools/verify_mindforge_boundary_semantics_artifacts.py",
+      "outputs": [
+        "reports/mindforge_boundary_semantics_artifact_verification.json"
+      ]
+    },
+    {
+      "task_id": "check_mindforge_boundary_semantics_canonical_evidence_gate",
+      "command": "python tools/check_mindforge_boundary_semantics_canonical_evidence_gate.py",
+      "outputs": [
+        "reports/mindforge_boundary_semantics_canonical_evidence_gate.json"
+      ]
     }
   ]
 }
