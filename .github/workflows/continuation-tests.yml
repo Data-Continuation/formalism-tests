@@ -39,12 +39,12 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
 
@@ -60,6 +60,13 @@ jobs:
           else
             python tools/run_declared_tasks.py "$TASK_MANIFEST"
           fi
+
+      - name: Validate MindForge boundary semantics contract
+        run: |
+          set -euo pipefail
+          python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id mindforge_boundary_semantics_tests
+          python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id verify_mindforge_boundary_semantics_artifacts
+          python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id check_mindforge_boundary_semantics_canonical_evidence_gate
 
       - name: Capture Morrison canonical proof on repository-owned main execution
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
@@ -84,6 +91,12 @@ jobs:
         run: |
           set -euo pipefail
           python tools/run_fi_transition_continuity_interop_canonical_ci_capture.py
+
+      - name: Capture MindForge boundary canonical proof on repository-owned main execution
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          python tools/run_mindforge_boundary_semantics_canonical_ci_capture.py
 
       - name: Validate proof-package registry layer
         run: |
@@ -128,7 +141,8 @@ jobs:
           fi
 
           git commit -m "record repository-owned CI binding evidence [skip ci]"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
 
       - name: Close completed registry CI-binding issue
         if: github.event_name != 'pull_request'
@@ -248,8 +262,29 @@ jobs:
             gh issue close 4 --repo "$GITHUB_REPOSITORY" --comment "Repository-owned canonical FI continuity-interoperability execution completed on this workflow run. All three declared tasks passed, all 4/4 deterministic cases passed, canonical report equivalence and three evidence hashes are durable, and authority remains CONTINUITY_INTEROPERABILITY_ONLY. Cross-domain support, universal validity, downstream activation, release, and execution authority remain separate."
           fi
 
+      - name: Close completed MindForge canonical proof issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/check_mindforge_boundary_semantics_canonical_evidence_gate.py
+          STATUS="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path('receipts/mindforge_boundary_semantics_canonical_execution_evidence.json').read_text()).get('status',''))
+          PY
+          )"
+          if [ "$STATUS" != "VERIFIED_CANONICAL_RUN" ]; then
+            echo "MindForge canonical evidence not verified; issue #8 remains open."
+            exit 1
+          fi
+          if [ "$(gh issue view 8 --repo "$GITHUB_REPOSITORY" --json state --jq .state)" = "OPEN" ]; then
+            gh issue close 8 --repo "$GITHUB_REPOSITORY" --comment "Repository-owned canonical MindForge boundary-semantics execution completed on this workflow run. All 10 deterministic cases and the three-stage canonical task chain passed; report/receipt equivalence, expected-outcome equivalence, and no-execution-invoked were preserved. Authority remains ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY; downstream publication/release/execution authority remains separate."
+          fi
+
       - name: Upload continuation artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: data-continuation-theorem-surface
           path: |
@@ -275,6 +310,12 @@ jobs:
             receipts/optimization_target_commit_boundary_execution_receipts.jsonl
             receipts/optimization_target_canonical_execution_evidence.json
             docs/formalisms/OPTIMIZATION_TARGET_COMMIT_BOUNDARY_MIRROR_HANDOFF.md
+            reports/mindforge_boundary_semantics_report.json
+            reports/mindforge_boundary_semantics_artifact_verification.json
+            reports/mindforge_boundary_semantics_canonical_evidence_gate.json
+            receipts/mindforge_boundary_semantics_execution_receipts.jsonl
+            receipts/mindforge_boundary_semantics_canonical_execution_evidence.json
+            docs/formalisms/MINDFORGE_BOUNDARY_SEMANTICS_MIRROR_HANDOFF.md
             reports/stage_32_admissibility_space_report.json
             reports/stage_33_transition_graph_report.json
             reports/stage_34_repair_report.json

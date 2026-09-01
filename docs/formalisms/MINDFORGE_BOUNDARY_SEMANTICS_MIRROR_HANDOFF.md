@@ -81,3 +81,36 @@ session_consolidation: transferred
 ## Archive condition
 
 The originating chat session may be archived once this handoff, the formalism-tests canonical-execution issue, and admissibility-wiki issue #49 contain all unique requirements and exact continuation actions. No conversation-only execution authority exists.
+
+
+## Canonical execution machinery installed — 2026-08-31
+
+Issue #8 now has a repository-owned closure path integrated into the existing
+`.github/workflows/continuation-tests.yml`.
+
+Installed surfaces:
+
+```text
+schemas/mindforge_boundary_semantics_canonical_execution_evidence.schema.json
+receipts/mindforge_boundary_semantics_canonical_execution_evidence.pending.json
+tools/verify_mindforge_boundary_semantics_artifacts.py
+tools/check_mindforge_boundary_semantics_canonical_evidence_gate.py
+tools/run_mindforge_boundary_semantics_canonical_ci_capture.py
+reports/mindforge_boundary_semantics_artifact_verification.json (generated)
+reports/mindforge_boundary_semantics_canonical_evidence_gate.json (generated)
+receipts/mindforge_boundary_semantics_canonical_execution_evidence.json (generated on main)
+```
+
+The canonical chain is:
+
+```text
+mindforge_boundary_semantics_tests
+-> verify_mindforge_boundary_semantics_artifacts
+-> check_mindforge_boundary_semantics_canonical_evidence_gate
+```
+
+PR execution validates the source path but does not claim canonical completion.
+A successful repository-owned `main` run must generate and persist the canonical
+receipt, pass the gate, and close issue #8.
+
+Authority remains `ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY`.

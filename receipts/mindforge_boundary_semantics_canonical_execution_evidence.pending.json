@@ -1,0 +1,25 @@
+{
+  "schema": "stegverse.mindforge-boundary-semantics.canonical-execution-pending.v1",
+  "suite_id": "mindforge-boundary-semantics-v1",
+  "repository": "Data-Continuation/formalism-tests",
+  "issue": 8,
+  "status": "PENDING_CANONICAL_EXECUTION",
+  "promotion_prohibited_until_complete": true,
+  "authority_posture": "ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY",
+  "required_commands": [
+    "python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id mindforge_boundary_semantics_tests",
+    "python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id verify_mindforge_boundary_semantics_artifacts",
+    "python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id check_mindforge_boundary_semantics_canonical_evidence_gate"
+  ],
+  "required_task_results": {
+    "mindforge_boundary_semantics_tests": "PASS",
+    "verify_mindforge_boundary_semantics_artifacts": "PASS",
+    "check_mindforge_boundary_semantics_canonical_evidence_gate": "PASS"
+  },
+  "required_artifact_equivalence": {
+    "report_receipt_equivalence": true,
+    "expected_outcome_equivalence": true,
+    "no_execution_invoked": true
+  },
+  "required_evidence_schema": "schemas/mindforge_boundary_semantics_canonical_execution_evidence.schema.json"
+}
