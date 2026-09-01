@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Data-Continuation/formalism-tests/schemas/sv011-external-derivation-package.schema.json",
+  "title": "SV-011 External Derivation Package",
+  "type": "object",
+  "required": [
+    "schema",
+    "entity_id",
+    "first_transition_element",
+    "source_pins",
+    "authority",
+    "cases",
+    "reconstruction"
+  ],
+  "properties": {
+    "schema": {"const": "stegverse.sv011-external-derivation-package/v0.1"},
+    "entity_id": {"const": "SV-011"},
+    "first_transition_element": {
+      "type": "object",
+      "required": ["element_id", "sha256"],
+      "properties": {
+        "element_id": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["repository", "path", "commit", "blob"],
+        "properties": {
+          "repository": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "blob": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["execution_authorized", "publication_authorized", "proofs_accepted"],
+      "properties": {
+        "execution_authorized": {"const": false},
+        "publication_authorized": {"const": false},
+        "proofs_accepted": {"const": false}
+      },
+      "additionalProperties": true
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "source_role",
+          "target_role",
+          "required_blocks",
+          "block_results",
+          "decision",
+          "capability",
+          "receipt_id"
+        ],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "source_role": {"type": "string", "minLength": 1},
+          "target_role": {"type": "string", "minLength": 1},
+          "required_blocks": {
+            "type": "array",
+            "minItems": 9,
+            "uniqueItems": true,
+            "items": {"type": "string"}
+          },
+          "block_results": {"type": "object"},
+          "decision": {
+            "enum": ["ALLOW", "ALLOW_WITH_SIGNOFF", "DENY", "FAIL_CLOSED", "REDIRECT", "ESCALATE"]
+          },
+          "capability": {"type": "string", "minLength": 1},
+          "receipt_id": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": true
+      }
+    },
+    "reconstruction": {
+      "type": "object",
+      "required": ["ordered_receipt_ids", "ordered_root"],
+      "properties": {
+        "ordered_receipt_ids": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "ordered_root": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
