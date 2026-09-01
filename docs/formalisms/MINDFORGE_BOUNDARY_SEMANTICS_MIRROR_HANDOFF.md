@@ -119,9 +119,9 @@ Authority remains `ARCHITECTURAL_BOUNDARY_SEMANTICS_ONLY`.
 
 ```text
 status: VERIFIED_CANONICAL_RUN
-commit_sha: 13c74eb6f130cf8e3535d4a7eb5ea825620ea5c7
-run_id: 33568763954
-run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33568763954
+commit_sha: 75aeeeb8b6ce805ba96d2b69fe6f4ea4a920450a
+run_id: 33570095325
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33570095325
 execution_surface: GITHUB_ACTIONS
 task_results: 3/3 PASS
 report_sha256: 8ddbf8dde7db67f1bfae3742fabbd7cec01d5dd85e4d073e8f42cfd1cee75cc2
