@@ -1,0 +1,32 @@
+{
+  "schema": "stegverse.formalism-tests.cosv-task-vector-index/v1",
+  "repository": "Data-Continuation/formalism-tests",
+  "profile": "task.v1",
+  "notation": "L R U I V G O C M T B E A P",
+  "width": 14,
+  "canonical_profile_ref": "StegVerse-Labs/.github/management/COSV_PROFILE_V1.json",
+  "observed_at": "2026-08-31T21:42:00-05:00",
+  "authority_effect": "NONE",
+  "tasks": [],
+  "terminal_tasks_excluded": [
+    "denial-reachability",
+    "fi-transition-continuity-interoperability",
+    "morrison-runtime-commit-time-scope",
+    "optimization-target-commit-boundary",
+    "FORMALISM-MINDFORGE-BOUNDARY-001"
+  ],
+  "non_machine_open_issues_excluded": [
+    {
+      "issue": 1,
+      "reason": "historical evidence recovery requiring recovered conversation/image evidence; not a repository machine-execution owner"
+    }
+  ],
+  "coverage": {
+    "current_structured_active_tasks_audited": 0,
+    "current_structured_active_tasks_projected": 0,
+    "current_structured_active_task_gap": 0,
+    "repository_active_task_surface_audit_complete": true,
+    "repository_vector_present_claimed": false,
+    "repository_no_active_task_surface_candidate": true
+  }
+}
