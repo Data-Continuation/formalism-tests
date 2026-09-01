@@ -15,7 +15,8 @@ assert mindforge["status"]=="VERIFIED_CANONICAL_RUN"
 assert mindforge["run_id"]==33463237601
 assert all(v=="PASS" for v in mindforge["task_results"].values())
 assert mindforge["artifact_equivalence"]["no_execution_invoked"] is True
-assert "current structured active machine tasks: 0" in handoff\nassert "issue #8: CLOSED by repository-owned workflow" in handoff
+assert "current structured active machine tasks: 0" in handoff
+assert "issue #8: CLOSED by repository-owned workflow" in handoff
 
 assert idx["tasks"]==[]
 cov=idx["coverage"]
