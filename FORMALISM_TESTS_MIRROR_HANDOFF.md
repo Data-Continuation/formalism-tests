@@ -419,9 +419,42 @@ The four historical canonical proof packages remain terminal. A later distinct i
 
 The deterministic suite already passes 10/10 locally with
 `execution_invoked=false` for every case. The existing continuation workflow now
-contains a repository-owned canonical capture path and issue-closure gate. Until a
-successful `main` run persists
-`receipts/mindforge_boundary_semantics_canonical_execution_evidence.json`,
-issue #8 remains the only current repository machine-execution proof task.
+contains a repository-owned canonical capture path and issue-closure gate. Main run `33463237601` persisted `receipts/mindforge_boundary_semantics_canonical_execution_evidence.json`, passed the three-stage canonical gate, and closed issue #8. No current repository machine-execution proof task remains.
 
 Open issue #1 is historical evidence recovery and is not a repository machine-executor task.
+
+
+## COSV terminal task-surface audit — 2026-09-01
+
+Current repository-owned machine proof lanes are terminal:
+
+```text
+denial reachability                         VERIFIED_CANONICAL_RUN
+FI transition continuity interoperability  VERIFIED_CANONICAL_RUN
+Morrison Runtime commit-time scope          VERIFIED_CANONICAL_RUN
+optimization-target commit boundary         VERIFIED_CANONICAL_RUN
+MindForge boundary semantics                VERIFIED_CANONICAL_RUN
+```
+
+MindForge closure evidence:
+
+```text
+run: 33463237601
+job: 99717682370
+canonical receipt: receipts/mindforge_boundary_semantics_canonical_execution_evidence.json
+artifact: 9783921003
+artifact digest: sha256:4477d826b59568bdfdf0567ab37513f4f3cb1240a1a727fa63c11e60695186a2
+issue #8: CLOSED by repository-owned workflow
+```
+
+Open issue #1 is historical evidence recovery for the GCAT/BCAT sketch lineage. It is not a
+repository machine-execution owner and requires newly recovered conversation/image evidence before
+its record can advance.
+
+COSV disposition:
+
+```text
+current structured active machine tasks: 0
+repository classification candidate: NO_ACTIVE_TASK_SURFACE
+authority effect: NONE
+```
