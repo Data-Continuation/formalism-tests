@@ -112,9 +112,6 @@
       "task_id": "role_aware_continuation_tests",
       "command": [
         "python",
-        "-m",
-        "pytest",
-        "-q",
         "tests/test_role_aware_continuation.py"
       ],
       "expected_outputs": [],
