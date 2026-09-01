@@ -114,10 +114,10 @@ This handoff preserves the FI package, canonical evidence contract, issue owners
 
 ```text
 status: VERIFIED_CANONICAL_RUN
-commit_sha: cc57f20d07dc85aa2e6f0c6e2ef8a609911129f8
+commit_sha: 13c74eb6f130cf8e3535d4a7eb5ea825620ea5c7
 execution_surface: GITHUB_ACTIONS
-run_id: 33463237601
-run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33463237601
+run_id: 33568763954
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33568763954
 task_results: 3/3 PASS
 report_sha256: 65589a464b8a876240e1a28858c7aa1ecfbad811c99bdb06a344dee71ac2a283
 artifact_verification_sha256: f573c427225eb5c4d40486c8d6892c8cc2c229470e390cc867d7128333ebc622
