@@ -489,3 +489,23 @@ certification, or execution authority is implied.
 ## SV-011 external evaluator preparation — 2026-09-01
 
 A new bounded evaluation lane is prepared at `docs/formalisms/SV_011_EXTERNAL_DERIVATION_EVALUATION_MIRROR_HANDOFF.md`. It reuses the now-hosted-PASS six-outcome vocabulary and role-aware continuation implementation as independent evaluation references, but does not implement SV-011's derivation generator for the target entity. Passing results remain evaluation evidence only and grant no execution, publication, custody, proof-acceptance, runtime, release, or autonomous status.
+
+
+## SV-011 machine-readable external evaluator — 2026-09-01
+
+Goal: `SV011-EXTERNAL-EVALUATOR-001`
+
+Installed on `feat/sv011-external-evaluator-v1`:
+
+```text
+schemas/sv011-external-derivation-package.schema.json
+tools/check_sv011_external_derivation_package.py
+tests/test_sv011_external_derivation_package.py
+tools/tasks/formalism_tests_tasks.json -> sv011_external_derivation_package_tests
+```
+
+The checker enforces the minimum construction milestone: one hashed first element, exact source commit/blob pins, authority-false posture, the canonical nine-block escalation set, at least one `ALLOW`, at least one `DENY` or `FAIL_CLOSED`, per-case receipt IDs, and deterministic ordered-root reconstruction.
+
+This evaluator does not implement SV-011's generator and grants no execution, publication, proof-acceptance, custody, release, or autonomous status.
+
+Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
