@@ -4,6 +4,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,10 +26,6 @@ BLOCKS = [
 def make_package():
     ids = ["sv011-allow-001", "sv011-deny-001"]
     root = "sha256:" + hashlib.sha256("\n".join(ids).encode()).hexdigest()
-    common = {
-        "required_blocks": BLOCKS,
-        "block_results": {k: "PASS" for k in BLOCKS},
-    }
     return {
         "schema": "stegverse.sv011-external-derivation-package/v0.1",
         "entity_id": "SV-011",
@@ -51,46 +48,69 @@ def make_package():
                 "case_id": "allow",
                 "source_role": "context",
                 "target_role": "evidence",
+                "required_blocks": BLOCKS,
+                "block_results": {k: "PASS" for k in BLOCKS},
                 "decision": "ALLOW",
                 "capability": "evidence_candidate",
                 "receipt_id": ids[0],
-                **common,
             },
             {
                 "case_id": "deny",
                 "source_role": "instruction",
                 "target_role": "command",
+                "required_blocks": BLOCKS,
+                "block_results": {**{k: "PASS" for k in BLOCKS}, "authority_current": "FAIL"},
                 "decision": "DENY",
                 "capability": "command_candidate",
                 "receipt_id": ids[1],
-                **common,
             },
         ],
         "reconstruction": {"ordered_receipt_ids": ids, "ordered_root": root},
     }
 
 
-def run_checker(tmp_path, package):
-    path = tmp_path / "package.json"
-    path.write_text(json.dumps(package), encoding="utf-8")
-    return subprocess.run([sys.executable, str(CHECKER), str(path)], capture_output=True, text=True)
+def run_checker(package):
+    with tempfile.TemporaryDirectory() as d:
+        path = Path(d) / "package.json"
+        path.write_text(json.dumps(package), encoding="utf-8")
+        return subprocess.run([sys.executable, str(CHECKER), str(path)], capture_output=True, text=True)
 
 
-def test_minimum_package_passes(tmp_path):
-    result = run_checker(tmp_path, make_package())
+def test_minimum_package_passes():
+    result = run_checker(make_package())
     assert result.returncode == 0, result.stderr + result.stdout
     assert "PASS:" in result.stdout
 
 
-def test_authority_expansion_fails(tmp_path):
+def test_authority_expansion_fails():
     package = make_package()
     package["authority"]["execution_authorized"] = True
-    result = run_checker(tmp_path, package)
+    result = run_checker(package)
     assert result.returncode != 0
 
 
-def test_missing_denial_fails(tmp_path):
+def test_missing_denial_fails():
     package = make_package()
     package["cases"][1]["decision"] = "ALLOW"
-    result = run_checker(tmp_path, package)
+    result = run_checker(package)
     assert result.returncode != 0
+
+
+def test_block_set_drift_fails():
+    package = make_package()
+    package["cases"][0]["required_blocks"] = package["cases"][0]["required_blocks"][:-1]
+    result = run_checker(package)
+    assert result.returncode != 0
+
+
+def main():
+    test_minimum_package_passes()
+    test_authority_expansion_fails()
+    test_missing_denial_fails()
+    test_block_set_drift_fails()
+    print("SV011_EXTERNAL_DERIVATION_PACKAGE_PASS cases=4")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
