@@ -61,6 +61,13 @@ jobs:
             python tools/run_declared_tasks.py "$TASK_MANIFEST"
           fi
 
+      - name: Validate MindForge boundary semantics contract
+        run: |
+          set -euo pipefail
+          python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id mindforge_boundary_semantics_tests
+          python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id verify_mindforge_boundary_semantics_artifacts
+          python tools/run_declared_tasks.py tools/tasks/mindforge_boundary_semantics_tasks.json --task-id check_mindforge_boundary_semantics_canonical_evidence_gate
+
       - name: Capture Morrison canonical proof on repository-owned main execution
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: |
