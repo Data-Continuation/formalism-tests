@@ -473,3 +473,8 @@ missing, unknown, or stale required basis fails closed.
 
 Completion remains pending hosted validation on the repository's existing workflow.
 No release, downstream publication, or execution authority is implied by this branch.
+
+
+## SV-011 external evaluator preparation — 2026-09-01
+
+A new bounded evaluation lane is prepared at `docs/formalisms/SV_011_EXTERNAL_DERIVATION_EVALUATION_MIRROR_HANDOFF.md`. It reuses the existing six-outcome vocabulary and role-aware continuation implementation as independent evaluation references, but does not implement SV-011's derivation generator for the target entity. Passing results remain evaluation evidence only and grant no execution, publication, custody, proof-acceptance, runtime, release, or autonomous status.
