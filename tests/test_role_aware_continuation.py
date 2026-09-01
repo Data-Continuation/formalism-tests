@@ -79,3 +79,17 @@ def test_signoff_is_distinct_from_allow():
     )
     assert result["decision"] == "ALLOW_WITH_SIGNOFF"
     assert result["projections"]["root_gate"] == "FAIL_CLOSED"
+
+
+def main():
+    test_projection_contract_is_total_and_fail_closed()
+    test_role_is_a_real_decision_input()
+    test_missing_unknown_or_stale_block_fails_closed()
+    test_failed_block_can_redirect()
+    test_capacity_gap_can_escalate()
+    test_signoff_is_distinct_from_allow()
+    print("ROLE_AWARE_CONTINUATION_PASS cases=6")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
