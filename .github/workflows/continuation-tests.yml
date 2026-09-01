@@ -61,6 +61,9 @@ jobs:
             python tools/run_declared_tasks.py "$TASK_MANIFEST"
           fi
 
+      - name: Validate COSV terminal task audit
+        run: python tools/check_cosv_terminal_audit.py
+
       - name: Validate MindForge boundary semantics contract
         run: |
           set -euo pipefail
