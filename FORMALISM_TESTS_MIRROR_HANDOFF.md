@@ -471,5 +471,16 @@ Role is now an executable decision input. The required role-escalation block set
 `Data-Continuation/formalisms/docs/TRANSITION_ROLE_MODEL.md` is evaluated at commit;
 missing, unknown, or stale required basis fails closed.
 
-Completion remains pending hosted validation on the repository's existing workflow.
-No release, downstream publication, or execution authority is implied by this branch.
+Hosted validation is complete for the role-aware continuation implementation.
+
+```text
+workflow: Data Continuation Tests
+run_id: 33569949086
+run_number: 712
+result: PASS
+role-aware direct test: PASS
+issue_owner: #11
+```
+
+This closes the implementation/hosted-validation gap only. No release, downstream publication,
+certification, or execution authority is implied.
