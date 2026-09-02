@@ -592,3 +592,25 @@ Rules are explicit: `main` is not identity, commit+blob is identity, and a downs
 Destination construction remains blocked until the connected GitHub installation exposes the `SV-011` organization.
 
 Implementation: MERGED_MAIN via PR #21 at `e053136b0731e58f62bffb29eddd149dbd0a0f0f`. Hosted validation: PASS on `Data Continuation Tests` run `33633138110` / run number `725`; `continuation-tests` and `Run declared tasks` completed successfully. This is source/test evidence only, not runtime authority.
+
+
+## SV-011 commit-zero bootstrap — 2026-09-02
+
+Goal: `SV011-COMMIT-ZERO-BOOTSTRAP-001`
+
+Installed on `feat/sv011-commit-zero-bootstrap-v1`:
+
+```text
+tools/build_sv011_commit_zero.py
+tests/test_sv011_commit_zero_bootstrap.py
+docs/formalisms/SV_011_COMMIT_ZERO_BOOTSTRAP_MIRROR_HANDOFF.md
+tools/tasks/formalism_tests_tasks.json -> sv011_commit_zero_bootstrap_tests
+```
+
+The builder deterministically emits the Phase-0 `SV-011/entity` file tree from the canonical source pinset. The generated tree contains E0, external entity-registration binding, Stage-25 charter binding, authority-false initial boundary, transition-ledger contract/emitter, canonical source pins, and a commit-zero manifest with the E0 SHA-256.
+
+The generated destination tree contains exactly one Python executable: `.stegverse/transition-ledger/emit.py`. No inference, worker, transport, boundary runtime, tool executor, or consequence path is installed.
+
+Destination state: the `SV-011` GitHub App installation is active, but the installation currently exposes zero repositories. Repository creation is not available through the connected GitHub action set, so destination installation remains blocked until the empty `SV-011/entity` repository exists.
+
+Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.

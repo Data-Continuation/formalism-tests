@@ -155,6 +155,15 @@
       ],
       "expected_outputs": [],
       "enabled": true
+    },
+    {
+      "task_id": "sv011_commit_zero_bootstrap_tests",
+      "command": [
+        "python",
+        "tests/test_sv011_commit_zero_bootstrap.py"
+      ],
+      "expected_outputs": [],
+      "enabled": true
     }
   ]
 }
