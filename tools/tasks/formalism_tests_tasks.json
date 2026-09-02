@@ -125,6 +125,15 @@
       ],
       "expected_outputs": [],
       "enabled": true
+    },
+    {
+      "task_id": "sv011_portable_reduction_objective_tests",
+      "command": [
+        "python",
+        "tests/test_sv011_portable_reduction_objective.py"
+      ],
+      "expected_outputs": [],
+      "enabled": true
     }
   ]
 }
