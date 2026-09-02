@@ -613,4 +613,4 @@ The generated destination tree contains exactly one Python executable: `.stegver
 
 Destination state: the `SV-011` GitHub App installation is active, but the installation currently exposes zero repositories. Repository creation is not available through the connected GitHub action set, so destination installation remains blocked until the empty `SV-011/entity` repository exists.
 
-Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+Implementation: MERGED_MAIN via PR #25 at `e6889f5940d761c66b8ba224250c45141154e4c5`. Hosted validation: PASS on `Data Continuation Tests` run `33651025900` / run number `731`; `continuation-tests` and `Run declared tasks` completed successfully. This proves the deterministic bootstrap contract only; it is not destination runtime evidence.
