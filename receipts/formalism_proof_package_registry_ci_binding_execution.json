@@ -5,11 +5,11 @@
   "canonical_execution_claimed": false,
   "canonical_owner_count": 4,
   "canonical_proof_issues_satisfied": [],
-  "commit_sha": "50812085707b130529eff2996652055e99fa6f83",
+  "commit_sha": "1620246cd863d701aade75d42501e07afa88b3ea",
   "completed_issue_count": 4,
   "downstream_mutation_authority_granted": false,
   "issue": 7,
-  "job_id": 100402480928,
+  "job_id": 100422982199,
   "package_count": 4,
   "publication_authority_granted": false,
   "registry_report": "reports/formalism_proof_package_registry_verification.json",
@@ -19,5 +19,5 @@
   "repository": "Data-Continuation/formalism-tests",
   "schema": "stegverse.formalism-tests.proof-package-registry-ci-binding-execution.v1",
   "workflow_path": ".github/workflows/continuation-tests.yml",
-  "workflow_run_id": 33676520148
+  "workflow_run_id": 33682766016
 }
