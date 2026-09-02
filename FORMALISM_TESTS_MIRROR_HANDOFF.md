@@ -614,3 +614,25 @@ The generated destination tree contains exactly one Python executable: `.stegver
 Destination state: the `SV-011` GitHub App installation is active, but the installation currently exposes zero repositories. Repository creation is not available through the connected GitHub action set, so destination installation remains blocked until the empty `SV-011/entity` repository exists.
 
 Implementation: MERGED_MAIN via PR #25 at `e6889f5940d761c66b8ba224250c45141154e4c5`. Hosted validation: PASS on `Data Continuation Tests` run `33651025900` / run number `731`; `continuation-tests` and `Run declared tasks` completed successfully. This proves the deterministic bootstrap contract only; it is not destination runtime evidence.
+
+
+## SV-011 destination commit-zero verifier — 2026-09-02
+
+Goal: `SV011-DESTINATION-COMMIT-ZERO-VERIFY-001`
+
+Installed on `feat/sv011-destination-commit-zero-verifier-v1`:
+
+```text
+tools/check_sv011_destination_commit_zero.py
+tests/test_sv011_destination_commit_zero.py
+docs/formalisms/SV_011_DESTINATION_COMMIT_ZERO_VERIFICATION_MIRROR_HANDOFF.md
+tools/tasks/formalism_tests_tasks.json -> sv011_destination_commit_zero_verifier_tests
+```
+
+The verifier regenerates the validated commit-zero tree and requires the real destination checkout to match it exactly byte-for-byte, ignoring only `.git` metadata. Missing, changed, or extra files fail.
+
+This protects the from-scratch experiment from silent contamination by repository templates, README starters, workflows, licenses, helper files, or other unreviewed content.
+
+Destination state at installation time: `SV-011/entity` does not yet exist. Direct GitHub lookup returns 404 and the SV-011 installation exposes zero repositories.
+
+Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
