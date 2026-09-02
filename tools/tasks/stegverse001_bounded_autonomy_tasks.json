@@ -1,0 +1,19 @@
+{
+  "name": "StegVerse-001 Bounded Autonomy Formalism Tests",
+  "version": "0.1.0",
+  "tasks": [
+    {
+      "task_id": "stage35_stegverse001_bounded_autonomy_tests",
+      "description": "Validate bounded autonomy lease semantics, task discovery separation, commit-time denial reachability, repair boundaries, revocation/expiry, and correct-output unauthorized-path rejection.",
+      "command": [
+        "python",
+        "tools/run_stegverse001_bounded_autonomy_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/stage35_stegverse001_bounded_autonomy_report.json",
+        "reports/stage35_stegverse001_bounded_autonomy_receipts.jsonl"
+      ],
+      "enabled": true
+    }
+  ]
+}
