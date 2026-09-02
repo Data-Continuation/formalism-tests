@@ -1,0 +1,84 @@
+{
+  "schema": "stegverse.sv011-canonical-source-pins/v0.1",
+  "entity_id": "SV-011",
+  "authority_effect": "NONE",
+  "pins": [
+    {
+      "id": "tt_transition_element_schema",
+      "repository": "Admissible-Existence/TT",
+      "path": "schemas/transition-element-fixture.schema.json",
+      "commit": "6966cf0607c38ab7b58a1a0676f669fd154cea01",
+      "blob": "c4e04d4877186f2efbf6e6a91bc06e8c0ce3fc1a",
+      "role": "construction_origin_schema"
+    },
+    {
+      "id": "transition_role_model",
+      "repository": "Data-Continuation/formalisms",
+      "path": "docs/TRANSITION_ROLE_MODEL.md",
+      "commit": "9a2c5e7e0b650b0f42a65a67a2a43ef9500a831c",
+      "blob": "222a170d33813a6a8fce64c4d086ac4e46ebc8d4",
+      "role": "canonical_role_model"
+    },
+    {
+      "id": "continuation_decision_function",
+      "repository": "Data-Continuation/formalisms",
+      "path": "docs/CONTINUATION_DECISION_FUNCTION.md",
+      "commit": "9a2c5e7e0b650b0f42a65a67a2a43ef9500a831c",
+      "blob": "911fed67e136310e8d5622e910b14669385dade2",
+      "role": "canonical_cdf"
+    },
+    {
+      "id": "standing_proof_candidates",
+      "repository": "Admissible-Existence/standing-proof-formalism",
+      "path": "formalism/proof-candidates.yaml",
+      "commit": "849e984b212f957818b9d0f9cb1785df18e69d2c",
+      "blob": "9abb69c92ab9429851fc2ff386560d2291ac5565",
+      "role": "standing_reference"
+    },
+    {
+      "id": "entity_architecture_slot",
+      "repository": "Data-Continuation/core-lite",
+      "path": "entity-architecture.json",
+      "commit": "44341de051e825f6638c3f171fabe7928dc6332b",
+      "blob": "ca290aab548a76e1e468bb1ddccd3f5b431a5b88",
+      "role": "external_entity_registration"
+    },
+    {
+      "id": "stage25_entity_charter_runner",
+      "repository": "Data-Continuation/formalism-tests",
+      "path": "tools/run_stage25_entity_charter_tests.py",
+      "commit": "11770706bf80e540627315ab88156ada171c38b2",
+      "blob": "671a271ef774fb776b4611a13e1c6a2c2ecb6c30",
+      "role": "charter_reference"
+    },
+    {
+      "id": "stage30_instantiation_runner",
+      "repository": "Data-Continuation/formalism-tests",
+      "path": "tools/run_stage30_governed_instantiation_packet_tests.py",
+      "commit": "11770706bf80e540627315ab88156ada171c38b2",
+      "blob": "482e0a4405f867548a095e921fb3d8a65cd66f44",
+      "role": "instantiation_reference"
+    },
+    {
+      "id": "external_derivation_schema",
+      "repository": "Data-Continuation/formalism-tests",
+      "path": "schemas/sv011-external-derivation-package.schema.json",
+      "commit": "11770706bf80e540627315ab88156ada171c38b2",
+      "blob": "b29337f793c2cd5c9ab7773e3794e94eb07e6289",
+      "role": "external_acceptance"
+    },
+    {
+      "id": "portable_reduction_schema",
+      "repository": "Data-Continuation/formalism-tests",
+      "path": "schemas/sv011-portable-reduction-objective.schema.json",
+      "commit": "11770706bf80e540627315ab88156ada171c38b2",
+      "blob": "e402e74e3f77289fa180c32d3cc24d7147ba2f71",
+      "role": "reduction_acceptance"
+    }
+  ],
+  "rules": {
+    "resolve_by_commit_and_blob": true,
+    "main_branch_is_not_identity": true,
+    "downstream_copy_is_not_authority": true
+  }
+}
