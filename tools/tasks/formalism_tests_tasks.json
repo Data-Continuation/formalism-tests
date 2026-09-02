@@ -164,6 +164,15 @@
       ],
       "expected_outputs": [],
       "enabled": true
+    },
+    {
+      "task_id": "sv011_destination_commit_zero_verifier_tests",
+      "command": [
+        "python",
+        "tests/test_sv011_destination_commit_zero.py"
+      ],
+      "expected_outputs": [],
+      "enabled": true
     }
   ]
 }
