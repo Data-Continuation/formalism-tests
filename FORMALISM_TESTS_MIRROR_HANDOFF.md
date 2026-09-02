@@ -532,3 +532,41 @@ The minimization rule is deterministic: remove a component, rebuild, reinstall i
 This repository evaluates package evidence only. It does not build the SV-011 destination entity and does not convert CI, installation success, or archive existence into runtime/execution/autonomous authority.
 
 Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+
+
+## StegVerse-001 bounded autonomy proof — 2026-09-02
+
+Issue #19 owns the additive Stage 35 bounded-autonomy lease proof for `StegVerse-001 / Beta_Orionis`.
+
+Goal-specific source of truth:
+`docs/formalisms/STEGVERSE_001_BOUNDED_AUTONOMY_MIRROR_HANDOFF.md`
+
+Installed source surfaces:
+
+```text
+schemas/stegverse001_bounded_autonomy_lease.schema.json
+tests/fixtures/stegverse001_bounded_autonomy_cases.json
+tools/run_stegverse001_bounded_autonomy_tests.py
+tools/tasks/stegverse001_bounded_autonomy_tasks.json
+tools/tasks/formalism_tests_tasks.json -> stage35_stegverse001_bounded_autonomy_tests
+```
+
+The proof preserves:
+
+```text
+autonomy != authority
+authority != sovereignty
+discovery creates candidate work only
+planning does not self-authorize
+DENY remains reachable at consequence binding
+repair cannot widen authority
+correct output does not prove authorized execution
+lease expiry/revocation fail closed
+receipts remain mandatory
+```
+
+Current state: SOURCE_IMPLEMENTED_ON_BRANCH / CANONICAL HOSTED VALIDATION PENDING.
+
+This source does not establish persistent runtime autonomy, live micro-node execution, production status, release authority, financial authority, or sovereign authority.
+
+If deterministic canonical validation passes, the next distinct integration candidate is an authentic bounded-autonomy runtime proof with Master Records custody and StegVerse-002 adversarial observation.

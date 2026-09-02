@@ -136,6 +136,7 @@ stage31_production_accreditation_revocation_tests
 stage32_admissibility_space_coordinates_tests
 stage33_transition_graph_geometry_tests
 stage34_repair_nearest_admissible_transition_tests
+stage35_stegverse001_bounded_autonomy_tests
 denial_reachability_commit_boundary_tests
 discover_core_lite_state
 build_production_candidate_review_packet
@@ -202,3 +203,10 @@ docs/theorem/THEOREM_PROOF_MAP.md
 ## Boundary
 
 Completion of a proof does not itself grant installation, node, financial, publication, or sovereign authority. Every downstream transition remains independently governed and receipt-bound.
+
+
+## Stage 35 — StegVerse-001 Bounded Autonomy
+
+Stage 35 is additive to the completed 34-stage roadmap. It tests whether `StegVerse-001 / Beta_Orionis` can operate under a bounded autonomy lease while preserving external authority, commit-time denial reachability, revocation, receipt emission, and Stage-34 repair constraints.
+
+Source completion or CI success does not establish authentic autonomous runtime operation.

@@ -134,6 +134,18 @@
       ],
       "expected_outputs": [],
       "enabled": true
+    },
+    {
+      "task_id": "stage35_stegverse001_bounded_autonomy_tests",
+      "command": [
+        "python",
+        "tools/run_stegverse001_bounded_autonomy_tests.py"
+      ],
+      "expected_outputs": [
+        "reports/stage35_stegverse001_bounded_autonomy_report.json",
+        "reports/stage35_stegverse001_bounded_autonomy_receipts.jsonl"
+      ],
+      "enabled": true
     }
   ]
 }
