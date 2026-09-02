@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Data-Continuation/formalism-tests/schemas/sv011-portable-reduction-objective.schema.json",
+  "title": "SV-011 Portable Reduction Objective",
+  "type": "object",
+  "required": [
+    "schema","entity_id","package_class","artifact","installation",
+    "self_tests","ablation","authority"
+  ],
+  "properties": {
+    "schema": {"const": "stegverse.sv011-portable-reduction-objective/v0.1"},
+    "entity_id": {"const": "SV-011"},
+    "package_class": {"enum": ["bootstrap_minimal","offline_self_contained"]},
+    "artifact": {
+      "type": "object",
+      "required": ["filename","format","sha256","compressed_bytes","file_count","dependency_count"],
+      "properties": {
+        "filename": {"type":"string","minLength":1},
+        "format": {"enum":["tar.gz","zip"]},
+        "sha256": {"type":"string","pattern":"^sha256:[0-9a-f]{64}$"},
+        "compressed_bytes": {"type":"integer","minimum":1},
+        "file_count": {"type":"integer","minimum":1},
+        "dependency_count": {"type":"integer","minimum":0}
+      },
+      "additionalProperties": true
+    },
+    "installation": {
+      "type":"object",
+      "required":["fresh_destination","network_required","steps","result"],
+      "properties":{
+        "fresh_destination":{"const":true},
+        "network_required":{"type":"boolean"},
+        "steps":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+        "result":{"const":"PASS"}
+      },
+      "additionalProperties": true
+    },
+    "self_tests": {
+      "type":"array",
+      "minItems":6,
+      "items":{
+        "type":"object",
+        "required":["test_id","result","receipt_id"],
+        "properties":{
+          "test_id":{"enum":[
+            "admitted_capability",
+            "denied_capability",
+            "stale_or_unknown_basis",
+            "stopped_chain",
+            "replay_no_authority",
+            "ordered_reconstruction"
+          ]},
+          "result":{"const":"PASS"},
+          "receipt_id":{"type":"string","minLength":1}
+        },
+        "additionalProperties": true
+      }
+    },
+    "ablation": {
+      "type":"object",
+      "required":["method","irreducible_components"],
+      "properties":{
+        "method":{"const":"remove_rebuild_reinstall_retest"},
+        "irreducible_components":{
+          "type":"array",
+          "minItems":1,
+          "items":{
+            "type":"object",
+            "required":["component","removal_breaks_invariant","failed_test_ids","evidence_receipt_id"],
+            "properties":{
+              "component":{"type":"string","minLength":1},
+              "removal_breaks_invariant":{"const":true},
+              "failed_test_ids":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+              "evidence_receipt_id":{"type":"string","minLength":1}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "authority": {
+      "type":"object",
+      "required":["package_installation_is_runtime_authority","workflow_pass_is_runtime_authority"],
+      "properties":{
+        "package_installation_is_runtime_authority":{"const":false},
+        "workflow_pass_is_runtime_authority":{"const":false}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
