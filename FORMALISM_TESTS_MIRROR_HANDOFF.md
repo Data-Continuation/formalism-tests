@@ -591,4 +591,4 @@ Rules are explicit: `main` is not identity, commit+blob is identity, and a downs
 
 Destination construction remains blocked until the connected GitHub installation exposes the `SV-011` organization.
 
-Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+Implementation: MERGED_MAIN via PR #21 at `e053136b0731e58f62bffb29eddd149dbd0a0f0f`. Hosted validation: PASS on `Data Continuation Tests` run `33633138110` / run number `725`; `continuation-tests` and `Run declared tasks` completed successfully. This is source/test evidence only, not runtime authority.
