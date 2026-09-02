@@ -508,7 +508,7 @@ The checker enforces the minimum construction milestone: one hashed first elemen
 
 This evaluator does not implement SV-011's generator and grants no execution, publication, proof-acceptance, custody, release, or autonomous status.
 
-Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+Implementation: MERGED_MAIN at `3ac2e12797558ef465bd2dcc1f66ee40ecf69e70`. Hosted PR validation: PASS on `Data Continuation Tests` run `33583312102` / run number `719`; `continuation-tests` completed successfully and the declared-task step passed. This is source/test evidence only, not runtime authority.
 
 
 ## SV-011 portable reduction objective — 2026-09-01
