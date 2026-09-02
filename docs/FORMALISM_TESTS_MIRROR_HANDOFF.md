@@ -68,3 +68,28 @@ B. Resolve the GCAT/BCAT sketch's first-upload and first-discussion chronology f
 ## Archival boundary
 
 The lineage facts discovered by the 2026-07-13 session are now durable in this repository. The origin-search task remains open but can continue from these records without requiring the conversation, provided any subsequently recovered image is hashed and attached before claims are updated.
+
+
+## StegClaw P2 authority decision closure — 2026-09-02
+
+Target-local StegClaw predicate P2 `live_evaluator_runtime_authority` has a completed durable decision:
+
+```text
+issue: #29 CLOSED_COMPLETED
+pull request: #30
+Data Continuation Tests: 33675947928 SUCCESS
+decision: UNAVAILABLE_UNDER_CURRENT_AUTHORITY
+merge: 76e095ff909b899b02a3d14ebfbb344f74cad57d
+satisfied: false
+runtime_proven: false
+authority_effect: NONE
+```
+
+Canonical decision evidence:
+
+```text
+docs/STEGCLAW_P2_LIVE_EVALUATOR_AUTHORITY_MIRROR_HANDOFF.md
+evidence/stegclaw-p2-live-evaluator-authority-decision.json
+```
+
+The existing StegClaw evaluation handoff remains compatibility/validation evidence only. It does not create a live evaluator runtime. Future P2 satisfaction requires new target-local runtime authority and a live evaluator execution receipt; waiting for such evidence is not work.
