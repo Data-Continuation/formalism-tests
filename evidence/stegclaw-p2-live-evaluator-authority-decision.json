@@ -1,0 +1,28 @@
+{
+  "schema": "formalism_tests.stegclaw_live_evaluator_authority_decision/v1",
+  "repository": "Data-Continuation/formalism-tests",
+  "predicate_id": "P2",
+  "predicate_name": "live_evaluator_runtime_authority",
+  "observed_at": "2026-09-02T19:52:30Z",
+  "canonical_handoff": "docs/FORMALISM_TESTS_MIRROR_HANDOFF.md",
+  "observed_boundaries": [
+    "LOCAL_ONLY",
+    "STEGCLAW_EVALUATION_HANDOFF_DECLARED",
+    "STEGCLAW_EVALUATION_VALIDATOR_PRESENT",
+    "STEGCLAW_EVALUATION_WORKFLOW_COVERED"
+  ],
+  "existing_compatibility_evidence": [
+    "docs/STEGCLAW_EVALUATION_HANDOFF.md",
+    "formalism_tests/stegclaw_evaluation_handoff.json"
+  ],
+  "decision": "UNAVAILABLE_UNDER_CURRENT_AUTHORITY",
+  "satisfied": false,
+  "missing_required_evidence": [
+    "explicit target-local evaluator runtime authority",
+    "live evaluator execution receipt for the StegClaw path"
+  ],
+  "evaluator_runtime_authority_granted": false,
+  "runtime_proven": false,
+  "authority_effect": "NONE",
+  "manual_user_action_required": false
+}
