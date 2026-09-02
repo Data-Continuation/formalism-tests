@@ -4,7 +4,7 @@ Updated: 2026-09-02
 Repository: `Data-Continuation/formalism-tests`
 Issue: #29
 Branch: `docs/stegclaw-p2-decision-29`
-State: DECISION_IMPLEMENTATION_ACTIVE
+State: DECISION_COMPLETE_MERGED_NO_GO
 
 ## Authority
 
@@ -43,3 +43,19 @@ runtime_proven: false
 ## Completion boundary
 
 This lane completes when the decision record is merged. It must not transform hosted validation into runtime authority.
+
+
+## Completion evidence
+
+```text
+issue: #29 CLOSED_COMPLETED
+pull request: #30
+validation: Data Continuation Tests 33675947928 SUCCESS
+decision: UNAVAILABLE_UNDER_CURRENT_AUTHORITY
+merge: 76e095ff909b899b02a3d14ebfbb344f74cad57d
+satisfied: false
+runtime_proven: false
+authority_effect: NONE
+```
+
+This closes the P2 decision task only. It does not grant live evaluator runtime authority.
