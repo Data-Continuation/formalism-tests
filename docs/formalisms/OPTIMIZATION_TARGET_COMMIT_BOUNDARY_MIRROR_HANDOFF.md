@@ -184,10 +184,10 @@ This handoff preserves the installed optimization-target package, exact-command 
 
 ```text
 status: VERIFIED_CANONICAL_RUN
-commit_sha: 580376b390a167340bed05c9862d73a44d323792
+commit_sha: 3ac2e12797558ef465bd2dcc1f66ee40ecf69e70
 execution_surface: GITHUB_ACTIONS
-run_id: 33570425787
-run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33570425787
+run_id: 33583354215
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33583354215
 task_results:
   optimization_target_commit_boundary_tests: PASS
   verify_optimization_target_commit_boundary_artifacts: PASS
