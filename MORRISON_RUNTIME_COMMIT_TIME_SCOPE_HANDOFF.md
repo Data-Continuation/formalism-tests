@@ -130,10 +130,10 @@ This file preserves the proof surface, declared commands, case contract, current
 
 ```text
 status: VERIFIED_CANONICAL_RUN
-commit_sha: fe640c6c66b911aec359a44ac60a4cd33256c3ae
+commit_sha: e053136b0731e58f62bffb29eddd149dbd0a0f0f
 execution_surface: GITHUB_ACTIONS
-run_id: 33604868427
-run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33604868427
+run_id: 33633175575
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33633175575
 task_results:
   morrison_runtime_commit_time_scope_tests: PASS
   verify_morrison_runtime_commit_time_scope_artifacts: PASS
