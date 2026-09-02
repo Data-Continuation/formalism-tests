@@ -509,3 +509,26 @@ The checker enforces the minimum construction milestone: one hashed first elemen
 This evaluator does not implement SV-011's generator and grants no execution, publication, proof-acceptance, custody, release, or autonomous status.
 
 Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+
+
+## SV-011 portable reduction objective — 2026-09-01
+
+Goal: `SV011-PORTABLE-REDUCTION-001`
+
+Installed on `feat/sv011-portable-reduction-v1`:
+
+```text
+schemas/sv011-portable-reduction-objective.schema.json
+tools/check_sv011_portable_reduction_objective.py
+tests/test_sv011_portable_reduction_objective.py
+docs/formalisms/SV_011_PORTABLE_REDUCTION_MIRROR_HANDOFF.md
+tools/tasks/formalism_tests_tasks.json -> sv011_portable_reduction_objective_tests
+```
+
+The contract measures compressed bytes, file count, dependency count, artifact SHA-256, fresh-destination installation, six canonical governance self-tests, and component-by-component ablation evidence.
+
+The minimization rule is deterministic: remove a component, rebuild, reinstall in a fresh destination, rerun the canonical self-tests; a component is demonstrated irreducible only when removal breaks a declared invariant and the failure is receipted.
+
+This repository evaluates package evidence only. It does not build the SV-011 destination entity and does not convert CI, installation success, or archive existence into runtime/execution/autonomous authority.
+
+Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
