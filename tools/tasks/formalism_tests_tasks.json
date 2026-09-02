@@ -146,6 +146,15 @@
         "reports/stage35_stegverse001_bounded_autonomy_receipts.jsonl"
       ],
       "enabled": true
+    },
+    {
+      "task_id": "sv011_canonical_source_pins_tests",
+      "command": [
+        "python",
+        "tests/test_sv011_canonical_source_pins.py"
+      ],
+      "expected_outputs": [],
+      "enabled": true
     }
   ]
 }
