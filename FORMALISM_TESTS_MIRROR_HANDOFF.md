@@ -635,4 +635,4 @@ This protects the from-scratch experiment from silent contamination by repositor
 
 Destination state at installation time: `SV-011/entity` does not yet exist. Direct GitHub lookup returns 404 and the SV-011 installation exposes zero repositories.
 
-Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+Implementation: MERGED_MAIN via PR #27 at `d6496aa1993406c14df7dad908a57adad811a2ab`. Hosted validation: PASS on `Data Continuation Tests` run `33652165418` / run number `735`; `continuation-tests` and `Run declared tasks` completed successfully. This proves the destination-verification contract only; it is not destination runtime evidence.
