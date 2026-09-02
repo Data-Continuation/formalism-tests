@@ -5,7 +5,7 @@
   "issue": 4,
   "status": "VERIFIED_CANONICAL_RUN",
   "authority_posture": "CONTINUITY_INTEROPERABILITY_ONLY",
-  "commit_sha": "05af5196b202626125014467a10fb104a7fa260b",
+  "commit_sha": "76e095ff909b899b02a3d14ebfbb344f74cad57d",
   "execution_surface": "GITHUB_ACTIONS",
   "commands": [
     "python tools/run_declared_tasks.py tools/tasks/fi_transition_continuity_interop_tasks.json --task-id fi_transition_continuity_interop_tests",
