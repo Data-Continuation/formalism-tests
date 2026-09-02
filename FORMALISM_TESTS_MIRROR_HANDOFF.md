@@ -508,7 +508,7 @@ The checker enforces the minimum construction milestone: one hashed first elemen
 
 This evaluator does not implement SV-011's generator and grants no execution, publication, proof-acceptance, custody, release, or autonomous status.
 
-Implementation: MERGED_MAIN at `3ac2e12797558ef465bd2dcc1f66ee40ecf69e70`. Hosted PR validation: PASS on `Data Continuation Tests` run `33583312102` / run number `719`; `continuation-tests` completed successfully and the declared-task step passed. This is source/test evidence only, not runtime authority.
+Implementation: MERGED_MAIN via PR #16. Fresh workflow on the original merge commit was not observed, but the evaluator task was subsequently executed inside the declared task set on `Data Continuation Tests` run `33583312102` / run number `719`; `continuation-tests` and `Run declared tasks` both completed successfully. This is source/test evidence only, not runtime authority.
 
 
 ## SV-011 portable reduction objective — 2026-09-01
@@ -531,7 +531,7 @@ The minimization rule is deterministic: remove a component, rebuild, reinstall i
 
 This repository evaluates package evidence only. It does not build the SV-011 destination entity and does not convert CI, installation success, or archive existence into runtime/execution/autonomous authority.
 
-Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
+Implementation: MERGED_MAIN via PR #17 at `3ac2e12797558ef465bd2dcc1f66ee40ecf69e70`. Hosted validation: PASS on `Data Continuation Tests` run `33583312102` / run number `719`; `continuation-tests` and `Run declared tasks` completed successfully. This is source/test evidence only, not runtime authority.
 
 
 ## StegVerse-001 bounded autonomy proof — 2026-09-02
@@ -570,3 +570,25 @@ Current state: SOURCE_IMPLEMENTED_ON_BRANCH / CANONICAL HOSTED VALIDATION PENDIN
 This source does not establish persistent runtime autonomy, live micro-node execution, production status, release authority, financial authority, or sovereign authority.
 
 If deterministic canonical validation passes, the next distinct integration candidate is an authentic bounded-autonomy runtime proof with Master Records custody and StegVerse-002 adversarial observation.
+
+
+## SV-011 canonical source pinset — 2026-09-02
+
+Goal: `SV011-CANONICAL-SOURCE-PINS-001`
+
+Installed on `feat/sv011-canonical-source-pins-v1`:
+
+```text
+data/sv011_canonical_source_pins.json
+tools/check_sv011_canonical_source_pins.py
+tests/test_sv011_canonical_source_pins.py
+tools/tasks/formalism_tests_tasks.json -> sv011_canonical_source_pins_tests
+```
+
+The pinset freezes the exact commit + blob identities required to initialize `SV-011/entity`: TT transition-element schema; Transition Role Model; Continuation Decision Function; standing proof candidates; the externally registered 011 entity slot; Stage 25 charter runner; Stage 30 instantiation runner; external derivation acceptance schema; portable reduction acceptance schema.
+
+Rules are explicit: `main` is not identity, commit+blob is identity, and a downstream copy does not become source authority.
+
+Destination construction remains blocked until the connected GitHub installation exposes the `SV-011` organization.
+
+Implementation: INSTALLED_ON_BRANCH. Hosted validation: PENDING_PR_WORKFLOW.
