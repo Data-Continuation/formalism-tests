@@ -1,0 +1,85 @@
+{
+ "schema": "stegverse.workflow-surface-registry/v1",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "repository": "Data-Continuation/formalism-tests",
+ "policy_issue": "StegVerse-Labs/.github#167, #168; StegVerse-org/.github#166",
+ "preferred_repository_workflow_count_max": 2,
+ "exception_repository_workflow_count_max": 3,
+ "credential_authority": "the SKAP Vault inside KV is the only PII and credential store for every user, including the StegVerse ecosystem's own; no secret or token is referenced, introduced or moved by this fold",
+ "invariants": [
+  "Every workflow file is registered in surfaces[]; an unregistered or changed one fails closed (tests/test_workflow_surface_registry.py).",
+  "A new check is a group in tools/tasks/task_catalog.json, never a new workflow file.",
+  "The stable dispatcher carries no workflow_dispatch, schedule, repository_dispatch, issues or workflow_run trigger; a kept surface is pinned by sha256 and unchanged by the fold."
+ ],
+ "unregistered_workflow_outcome": {
+  "disposition": "FAIL_CLOSED",
+  "failure_code": "UNREGISTERED_WORKFLOW_SURFACE",
+  "failed_predicate": "EVERY_WORKFLOW_FILE_IS_REGISTERED",
+  "required_evidence_or_repair": "register the file in control/workflow-surface-registry.json surfaces[] or fold it into tools/tasks/task_catalog.json",
+  "retry_entrypoint": "tests/test_workflow_surface_registry.py",
+  "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); StegVerse-org/.github#166",
+  "next_attempt": "the next pull request touching .github/workflows/"
+ },
+ "surfaces": [
+  {
+   "path": ".github/workflows/validation-dispatcher.yml",
+   "classification": "KEEP_STABLE_DISPATCHER",
+   "triggers": [
+    "pull_request",
+    "push"
+   ],
+   "permissions": {
+    "contents": "read"
+   }
+  },
+  {
+   "path": ".github/workflows/continuation-tests.yml",
+   "classification": "KEEP_EXISTING_SURFACE_UNCHANGED",
+   "triggers": [
+    "workflow_dispatch",
+    "push",
+    "pull_request"
+   ],
+   "permissions": {
+    "contents": "write",
+    "actions": "read",
+    "issues": "write"
+   },
+   "reason": "KEEP_EXISTING_SURFACE_UNCHANGED: push-triggered receipt writer (commits and pushes evidence to main), which a contents: read validator dispatcher must not carry. Unchanged by this fold; pinned by sha256. Owning goal: StegVerse-org/.github#166.",
+   "verbatim_sha256": "65606388dfe2b0d6a7c01ea332841c8395e55a41cfedbfe75e4c1cade3cff2d3"
+  }
+ ],
+ "folded": [
+  {
+   "workflow": ".github/workflows/ai-block-formalism-tests.yml",
+   "name": "AI Block Formalism Tests",
+   "triggers_before": [
+    "workflow_dispatch",
+    "push"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "status": "DONE",
+   "catalog_groups": [
+    "ai-block-formalism-tests.ai-block-tests"
+   ],
+   "verbatim_record": "tools/tasks/folded/ai-block-formalism-tests.yml",
+   "verbatim_sha256": "dd4ce6331d891908d4f467124e3e3e5f0d4a5e266e54e1a19fb21e0ff61d3c4b"
+  },
+  {
+   "workflow": ".github/workflows/stegclaw-evaluation-handoff.yml",
+   "name": "StegClaw Evaluation Handoff",
+   "triggers_before": [
+    "workflow_dispatch",
+    "pull_request",
+    "push"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "status": "DONE",
+   "catalog_groups": [
+    "stegclaw-evaluation-handoff.validate-stegclaw-evaluation"
+   ],
+   "verbatim_record": "tools/tasks/folded/stegclaw-evaluation-handoff.yml",
+   "verbatim_sha256": "1eb281929c9472f6d35dd902522590b258e59777ba62ffeadfb8ac86bf5d871f"
+  }
+ ]
+}
