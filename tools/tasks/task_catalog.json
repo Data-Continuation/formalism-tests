@@ -1,0 +1,135 @@
+{
+ "schema": "stegverse.task-catalog/v1",
+ "repository": "Data-Continuation/formalism-tests",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "authority": "Rigel 2026-10-24 retroactive G17 enforcement (StegVerse-org/.github#166); pattern StegVerse-Labs/StegDB#60 (eab2e773)",
+ "dispatcher": ".github/workflows/validation-dispatcher.yml",
+ "runner": "tools/tasks/run_catalog.py",
+ "runner_source": "StegVerse-Labs/StegDB tools/tasks/run_catalog.py @ eab2e773271f3e63466a710f1b4555f677882848 (sha256 f741f30557888fd8e4852a52adfc65736a08898d49ade7519f6bcc2672921e9b), copied unmodified",
+ "rule": "Every check a folded workflow job ran is one group here; its step bodies are the original run blocks byte for byte, pinned by sha256, except the repairs listed. A new check is a new group (or a step in one), never a new workflow file.",
+ "path_filters": "Dropped: every group runs on every pull_request and push to main (a superset of the original path-filtered runs). workflow_dispatch/schedule triggers are not carried (no manual dispatch, no cron).",
+ "repairs": [
+  "None of the folded run blocks is changed. workflow_dispatch and schedule are not carried (no manual dispatch, no cron). Push/path filters are dropped, so each group runs on every pull_request and push to main (a superset)."
+ ],
+ "folded_from_commit": "3c7fa75bf4f4c88e4eb6d39aae7c6c33431d4bb9",
+ "groups": [
+  {
+   "id": "ai-block-formalism-tests.ai-block-tests",
+   "source": {
+    "workflow": ".github/workflows/ai-block-formalism-tests.yml",
+    "workflow_name": "AI Block Formalism Tests",
+    "job": "ai-block-tests",
+    "job_name": null,
+    "commit": "3c7fa75",
+    "triggers_before": [
+     "workflow_dispatch",
+     "push"
+    ],
+    "permissions_before": null
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Run AI Block tests",
+     "run_file": "tools/tasks/steps/ai-block-formalism-tests.ai-block-tests/01-run-ai-block-tests.sh",
+     "run_sha256": "1bb4174243ac1455b287f9778c2f505f997aaf3218b19f3748b352c94b0acdc2"
+    },
+    {
+     "name": "Write test summary",
+     "run_file": "tools/tasks/steps/ai-block-formalism-tests.ai-block-tests/02-write-test-summary.sh",
+     "run_sha256": "16d0812fc8de2bd8a726c4d2acd2b81b0dbbcfbe8dbe75d40fa28956ae2e855f",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "ai-block-formalism-tests",
+     "path": "artifacts/",
+     "if_no_files_found": "warn",
+     "if": "always()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.x",
+    "artifact_name": "ai-block-formalism-tests",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "stegclaw-evaluation-handoff.validate-stegclaw-evaluation",
+   "source": {
+    "workflow": ".github/workflows/stegclaw-evaluation-handoff.yml",
+    "workflow_name": "StegClaw Evaluation Handoff",
+    "job": "validate-stegclaw-evaluation",
+    "job_name": null,
+    "commit": "3c7fa75",
+    "triggers_before": [
+     "workflow_dispatch",
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate StegClaw evaluation handoff",
+     "run_file": "tools/tasks/steps/stegclaw-evaluation-handoff.validate-stegclaw-evaluation/01-validate-stegclaw-evaluation-handoff.sh",
+     "run_sha256": "ec4a07039692b03a460dde09f39e813226a4849f9190c098d5c62ed6787b254f"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "stegclaw-evaluation-handoff",
+     "path": "reports/stegclaw_evaluation_handoff.json",
+     "if_no_files_found": "error",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 30,
+    "python_version": "3.12",
+    "artifact_name": "stegclaw-evaluation-handoff",
+    "artifact_if_no_files_found": "error"
+   }
+  },
+  {
+   "id": "workflow-surface-registry.validate",
+   "catalog_addition": "G17 registry gate (no folded source workflow)",
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Workflow files equal the registered surfaces; catalog verifies ALLOW",
+     "run_file": "tools/tasks/steps/workflow-surface-registry.validate/01-registry.sh",
+     "run_sha256": "811824e88664923006be2eeb35632d710f5504145967f61632ad9e8fbdcb35ca"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 10,
+    "python_version": "3.11"
+   }
+  }
+ ]
+}
