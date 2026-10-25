@@ -79,10 +79,10 @@ manual_user_task: none
 
 ```text
 status: VERIFIED_CANONICAL_RUN
-commit_sha: 1620246cd863d701aade75d42501e07afa88b3ea
+commit_sha: a9e308dbdb5b6c4e8006f897f6eecb1dcdbca908
 execution_surface: GITHUB_ACTIONS
-run_id: 33682766016
-run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/33682766016
+run_id: 40155017573
+run_url: https://github.com/Data-Continuation/formalism-tests/actions/runs/40155017573
 task_results: 3/3 PASS
 report_sha256: f5a07da05497bdd8d85bd60e43ceb5d043eac656bad2f873a6d9aee2d65f95be
 receipts_sha256: 9f1c0dc5463dc7396addf7a62147b8beb33f818b67add8f41bc069c96cef2953
